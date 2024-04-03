@@ -1,0 +1,121 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Login</h1>
+    <h5>Email</h5>
+    <input id="email"type="text" />
+    <h5>Mật khẩu</h5>
+    <input id="password"type="text" />
+    <h5>OTP</h5>
+    <input id="otp" type="text" />
+    <h5></h5>
+    <button id="login">Lấy OTP</button>
+    <button id="loginOTP">Login</button>
+    <button id="getRoleDataAdmin">Lấy dữ liệu AdminDemo</button>
+    <button id="getNewToken">Lấy Token mới</button>
+</div>
+
+@section Scripts {
+           
+    <script>
+
+        function SetCookie(myObject) {
+            // Chuyển đối tượng thành chuỗi JSON
+            var jsonStr = JSON.stringify(myObject);
+
+            // Mã hóa giá trị cookie để tránh ký tự đặc biệt
+            var encodedJsonStr = encodeURIComponent(jsonStr);
+
+            // Tạo một đối tượng ngày mới và thiết lập thời gian hết hạn 30 ngày từ ngày hiện tại
+            var expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 30);
+
+            // Tạo cookie và đặt thời gian sống của nó
+            document.cookie = "myObject=" + encodedJsonStr + "; expires=" + expirationDate.toUTCString() + "; path=/";
+
+            // Lưu trữ cookie sẽ tự động đi kèm với mỗi yêu cầu tới server
+        }
+
+        function GetCookie() {
+            var cookieName = "myObject=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var cookieArray = decodedCookie.split(';');
+            for (var i = 0; i < cookieArray.length; i++) {
+                var cookie = cookieArray[i].trim();
+                if (cookie.indexOf(cookieName) == 0) {
+                    var cookieValue = cookie.substring(cookieName.length, cookie.length);
+                    var myObject = JSON.parse(cookieValue);
+                    return myObject;
+                }
+            }
+            return null; // Trả về null nếu không tìm thấy cookie
+        }
+
+        $(document).ready(function () {
+            $('#login').click(function () {
+                let login = {
+                    Username: $('#email').val(),
+                    Password: $('#password').val()
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "/Authentication/Login",
+                    data: { loginModel: login },
+                    success: function (data) {
+                    }
+                });
+            });
+            $('#getRoleDataAdmin').click(function () {
+                var tokens = GetCookie();
+                $.ajax({
+                    type: "GET",
+                    url: "/AdminDemo/Get",
+                    headers: {
+                        // Thêm token vào header 'Authorization'
+                        'Authorization': 'Bearer ' + tokens.accessToken.token,
+                        // Thêm Accept vào header
+                        // 'Accept': 'text/plain'
+                    },
+                    success: function (data) {
+                        alert(data);
+                    }
+                });
+            });
+            $('#getNewToken').click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Authentication/RefreshToken",
+                    data: { tokens: GetCookie() },
+                    success: function (data) {
+                        SetCookie(data.response);
+                        alert(GetCookie());
+                    }
+                });
+            });
+            $('#loginOTP').click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "/Authentication/LoginWithOTP",
+                    data: { code: $('#otp').val(), username: $('#email').val() },
+                    success: function (data) {
+                        if(data != null){
+                            SetCookie(data.response);
+                            alert(GetCookie());
+                            // {
+                            //     "isSuccess": true,
+                            //         "message": "Xác thực 2 yếu tố thất bại",
+                            //             "statusCode": 200,
+                            //                 "response": {
+                            //         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoibWF2dW9uZ2tpa2kyMDAyQGdtYWlsLmNvbSIsImp0aSI6Ijg2ZGFlNTA0LWFlZGUtNGQwZS1hZDJiLTMyZWM0NWRiNGZmNiIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IsSQ4bqndSBi4bq_cCIsImV4cCI6MTcxMTEyMDc0MSwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo1MDAyIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo0MjAwIn0.hzK__C_ex75ghiAXMBSLsOFYAShSygJmcQqONrhDEAA",
+                            //             "expiryTokenDate": "2024-03-22T15:19:01Z"
+                            //     }
+                            // }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

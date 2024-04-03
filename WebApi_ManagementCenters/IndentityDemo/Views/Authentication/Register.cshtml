@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 id="lbdemo" class="display-4">Đăng ký tài khoản</h1>
+    <div id="box">
+        <h5>Loại tài khoản</h5>
+        <input id="role" type="text" />
+        <h5>Email</h5>
+        <input id="email" type="text" />
+        <h5>Mật khẩu</h5>
+        <input id="password" type="text" />
+        <h5></h5>
+        <button id="create">Đăng ký tài khoản</button>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function CreateAccount() {
+            // Định nghĩa một object RegisterUser
+            const RegisterUser = {
+                Username: $('#email').val(),
+                Email: $('#email').val(),
+                Password: $('#password').val(),
+                Roles: [$('#role').val()]
+            };
+            // kiểm tra các giá trị cho đúng nhé
+            $.ajax({
+                type: "POST",
+                url: "/Authentication/Register",
+                data: { registerUser: RegisterUser},
+                success: function (data) {
+                    $("#box").hide();
+                    $("#lbdemo").text("Vui lòng kiểm tra và Xác nhận email");
+                }
+            });
+        }
+        $(document).ready(function () {
+            $('#create').click(function () {
+                CreateAccount();
+            });
+        });
+    </script>
+}

@@ -1,0 +1,50 @@
+D:\IndentityDemo\ManagementService\bin\Debug\net8.0\ManagementService.deps.json
+D:\IndentityDemo\ManagementService\bin\Debug\net8.0\ManagementService.dll
+D:\IndentityDemo\ManagementService\bin\Debug\net8.0\ManagementService.pdb
+D:\IndentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.csproj.AssemblyReference.cache
+D:\IndentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.GeneratedMSBuildEditorConfig.editorconfig
+D:\IndentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.AssemblyInfoInputs.cache
+D:\IndentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.AssemblyInfo.cs
+D:\IndentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.csproj.CoreCompileInputs.cache
+D:\IndentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.dll
+D:\IndentityDemo\ManagementService\obj\Debug\net8.0\refint\ManagementService.dll
+D:\IndentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.pdb
+D:\IndentityDemo\ManagementService\obj\Debug\net8.0\ref\ManagementService.dll
+D:\IndentityDemo\ManagementService\bin\Debug\net8.0\ManagementService.runtimeconfig.json
+D:\IndentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.genruntimeconfig.cache
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\bin\Debug\net8.0\ManagementService.deps.json
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\bin\Debug\net8.0\ManagementService.runtimeconfig.json
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\bin\Debug\net8.0\ManagementService.dll
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\bin\Debug\net8.0\ManagementService.pdb
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.csproj.AssemblyReference.cache
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.GeneratedMSBuildEditorConfig.editorconfig
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.AssemblyInfoInputs.cache
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.AssemblyInfo.cs
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.csproj.CoreCompileInputs.cache
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.sourcelink.json
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.dll
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\obj\Debug\net8.0\refint\ManagementService.dll
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.pdb
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\obj\Debug\net8.0\ManagementService.genruntimeconfig.cache
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\obj\Debug\net8.0\ref\ManagementService.dll
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\obj\Debug\net8.0\Manageme.F4B575D5.Up2Date
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\bin\Debug\net8.0\Data.dll
+D:\GITHUB\IdentityDemo\IdentityDemo\ManagementService\bin\Debug\net8.0\Data.pdb
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\bin\Debug\net8.0\ManagementService.deps.json
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\bin\Debug\net8.0\ManagementService.runtimeconfig.json
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\bin\Debug\net8.0\ManagementService.dll
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\bin\Debug\net8.0\ManagementService.pdb
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\bin\Debug\net8.0\Data.dll
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\bin\Debug\net8.0\Data.pdb
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\obj\Debug\net8.0\ManagementService.csproj.AssemblyReference.cache
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\obj\Debug\net8.0\ManagementService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\obj\Debug\net8.0\ManagementService.AssemblyInfoInputs.cache
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\obj\Debug\net8.0\ManagementService.AssemblyInfo.cs
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\obj\Debug\net8.0\ManagementService.csproj.CoreCompileInputs.cache
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\obj\Debug\net8.0\ManagementService.sourcelink.json
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\obj\Debug\net8.0\Manageme.F4B575D5.Up2Date
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\obj\Debug\net8.0\ManagementService.dll
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\obj\Debug\net8.0\refint\ManagementService.dll
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\obj\Debug\net8.0\ManagementService.pdb
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\obj\Debug\net8.0\ManagementService.genruntimeconfig.cache
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\WebApi_ManagementCenters\ManagementService\obj\Debug\net8.0\ref\ManagementService.dll

@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    var status = (bool)ViewData["Status"];
+}
+
+<div class="text-center">
+    @if (status == true)
+    {
+        <h1 class="display-4 text-success">Chúc mừng bạn đã kích hoạt Tài khoản thành công</h1>
+        <a href="/Authentication/Login">
+            <button id="loginOTP">Đăng nhập</button>
+        </a>
+    }
+    else
+    {
+        <h1  class="display-4 text-dark">Kích hoạt Tài khoản thất bại</h1>
+    }
+
+</div>

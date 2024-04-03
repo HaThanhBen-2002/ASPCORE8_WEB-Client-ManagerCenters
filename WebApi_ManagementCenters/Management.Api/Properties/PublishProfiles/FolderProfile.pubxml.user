@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\PublicWebApi</_PublishTargetUrl>
+    <History>True|2024-04-03T10:05:22.6799858Z;True|2024-04-03T15:16:00.6614712+07:00;True|2024-04-03T05:38:12.6809986+07:00;True|2024-04-03T05:31:24.9236558+07:00;True|2024-04-01T18:50:52.8257917+07:00;True|2024-04-01T14:40:25.9256000+07:00;True|2024-04-01T13:59:36.9070833+07:00;True|2024-04-01T02:26:20.7141992+07:00;True|2024-04-01T02:21:14.0004984+07:00;True|2024-04-01T02:07:28.4256819+07:00;</History>
+    <LastFailureDetails />
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="ConStr">
+      <Value>Data Source=DESKTOP-125DL48\SERVER%3bInitial Catalog=ManagementCenters%3bIntegrated Security=True%3bTrusted_Connection=True%3bTrustServerCertificate=True%3bMultipleActiveResultSets=true</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="Data.Models.ApplicationDbContext">
+      <Value>Data Source=DESKTOP-125DL48\SERVER%3bInitial Catalog=ManagementCenters%3bIntegrated Security=True%3bTrusted_Connection=True%3bTrustServerCertificate=True%3bMultipleActiveResultSets=true</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
