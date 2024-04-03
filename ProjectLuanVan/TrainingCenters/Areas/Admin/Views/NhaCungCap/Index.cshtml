@@ -1,0 +1,127 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    List<int> deletes = new List<int>();
+}
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="align-self-center">Thông Tin Nhà Cung Cấp</h4>
+    <!-- FORM DATA -->
+    <div class="card mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Mã nhà cung cấp</label>
+                            <input class="form-control h-50" id="nhaCungCap_MaNhaCungCap" type="number" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Tên nhà cung cấp</label>
+                            <input class="form-control h-50" id="nhaCungCap_TenNhaCungCap" type="text" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Giới thiệu</label>
+                            <input class="form-control h-50" id="nhaCungCap_GioiThieu" type="text" placeholder="" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Email</label>
+                            <input class="form-control h-50" id="nhaCungCap_Email" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Số điện thoại</label>
+                            <input class="form-control h-50" id="nhaCungCap_SoDienThoai" placeholder="" type="number" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Tên ngân hàng</label>
+                            <select name="nhaCungCap_NganHang" id="nhaCungCap_NganHang" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                <option>Tất cả</option>
+                                <option>TPBank</option>
+                                <option>Vietcombank</option>
+                                <option>MB</option>
+                                <option>Techcombank</option>
+                                <option>ACB</option>
+                                <option>VietinBank</option>
+                                <option>BIDV</option>
+                                <option>LPBank</option>
+                                <option>Agribank</option>
+                                <option>Sacombank</option>
+                                <option>SeAbank</option>
+                                <option>HDBank</option>
+                                <option>VIB</option>
+                                <option>MSB</option>
+                                <option>SHB</option>
+                                <option>VPBank</option>
+                                <option>Eximbank</option>
+                                <option>OCB</option>
+                                <option>NamABank</option>
+                                <option>PVcomBank</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Số tài khoản</label>
+                            <input class="form-control h-50" id="nhaCungCap_SoTaiKhoan" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Mã số thuế</label>
+                            <input class="form-control h-50" id="nhaCungCap_MaSoThue" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Trung tâm</label>
+                            <select name="nhaCungCap_MaTrungTam" id="nhaCungCap_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /FORM DATA -->
+    <!-- FORM Button -->
+    <div class="pb-2 mt-2">
+        <button type="button" id="btnCreateNhaCungCap" class="btn-sm btn-primary ">
+            Thêm
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnDeleteNhaCungCap" class="btn-sm btn-primary ">
+            Xóa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnResetNhaCungCap" class="btn-sm btn-primary ">
+            Làm mới
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnUpdateNhaCungCap" class="btn-sm btn-primary ">
+            Sửa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnSearchNhaCungCap" class="btn-sm btn-primary ">
+            Tìm kiếm
+        </button>
+    </div>
+    <!-- /FORM Button -->
+    <!-- Table-->
+    <div class="card">
+        <div class="table-responsive p-3">
+            <table id="myTable" class="table">
+                <thead>
+                    <tr>
+                        <th><input id="checkAll" type="checkbox" /></th>
+                        <th>Tên nhà cung cấp</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Mã số thuế</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!--/Table-->
+
+</div>
+<!-- / Content -->
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="/AdminAssets/module/nhaCungCap.js"></script>
+}

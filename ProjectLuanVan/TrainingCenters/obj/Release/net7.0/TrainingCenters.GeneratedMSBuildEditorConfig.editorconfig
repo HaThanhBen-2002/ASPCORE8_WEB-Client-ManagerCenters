@@ -1,0 +1,281 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = TrainingCenters
+build_property.RootNamespace = TrainingCenters
+build_property.ProjectDir = C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\TrainingCenters\TrainingCenters\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\TrainingCenters\TrainingCenters
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/AcademicScore/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWNhZGVtaWNTY29yZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/DormitoryRoom/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRG9ybWl0b3J5Um9vbVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/DormitoryRoom/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRG9ybWl0b3J5Um9vbVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/DormitoryRoom/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRG9ybWl0b3J5Um9vbVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/DormitoryRoom/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRG9ybWl0b3J5Um9vbVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/DormitoryRoom/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRG9ybWl0b3J5Um9vbVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Employee/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRW1wbG95ZWVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Employee/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRW1wbG95ZWVcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Employee/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRW1wbG95ZWVcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Employee/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRW1wbG95ZWVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Employee/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRW1wbG95ZWVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Parent/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFyZW50XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Parent/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFyZW50XERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Parent/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFyZW50XERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Parent/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFyZW50XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Parent/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFyZW50XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Shared/_MenuMain.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9NZW51TWFpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Shared/_NotificationAlert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb25BbGVydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Student/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Student/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Student/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Student/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Student/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Subject/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3ViamVjdFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Subject/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3ViamVjdFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Subject/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3ViamVjdFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Subject/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3ViamVjdFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Subject/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3ViamVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/TrainingCenter/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJhaW5pbmdDZW50ZXJcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/TrainingCenter/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJhaW5pbmdDZW50ZXJcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/TrainingCenter/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJhaW5pbmdDZW50ZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/TrainingCenter/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJhaW5pbmdDZW50ZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/TrainingCenter/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJhaW5pbmdDZW50ZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/AcademicScore/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNhZGVtaWNTY29yZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/AcademicScore/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNhZGVtaWNTY29yZVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/AcademicScore/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNhZGVtaWNTY29yZVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/AcademicScore/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNhZGVtaWNTY29yZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/AcademicScore/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNhZGVtaWNTY29yZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Account/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Account/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Account/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Account/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Account/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/CenterStatistic/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VudGVyU3RhdGlzdGljXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/CenterStatistic/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VudGVyU3RhdGlzdGljXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/CenterStatistic/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VudGVyU3RhdGlzdGljXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/CenterStatistic/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VudGVyU3RhdGlzdGljXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/CenterStatistic/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VudGVyU3RhdGlzdGljXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Class/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Class/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Class/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Class/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Class/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-usaf15q15f
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ygjc9oy46i

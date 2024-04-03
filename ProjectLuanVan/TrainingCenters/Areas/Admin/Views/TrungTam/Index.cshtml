@@ -1,0 +1,138 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    List<int> deletes = new List<int>();
+}
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="align-self-center">Thông Tin Trung Tâm</h4>
+    <!-- FORM DATA -->
+    <div class="card mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Mã trung tâm</label>
+                            <input class="form-control h-50" id="trungTam_MaTrungTam" type="number" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Tên trung tâm</label>
+                            <input class="form-control h-50" id="trungTam_TenTrungTam" type="text" placeholder="" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Email</label>
+                            <input class="form-control h-50" id="trungTam_Email" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Số điện thoại</label>
+                            <input class="form-control h-50" id="trungTam_SoDienThoai"placeholder="" type="number" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Diện tích</label>
+                            <input class="form-control h-50" id="trungTam_DienTich" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Mã số thuế</label>
+                            <input class="form-control h-50" id="trungTam_MaSoThue" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Tên ngân hàng</label>
+                            <select name="CbbSubjectId" id="trungTam_NganHang" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                <option >Tất cả</option>
+                                <option >TPBank</option>
+                                <option >Vietcombank</option>
+                                <option >MB</option>
+                                <option >Techcombank</option>
+                                <option >ACB</option>
+                                <option >VietinBank</option>
+                                <option >BIDV</option>
+                                <option >LPBank</option>
+                                <option >Agribank</option>
+                                <option >Sacombank</option>
+                                <option >SeAbank</option>
+                                <option >HDBank</option>
+                                <option >VIB</option>
+                                <option >MSB</option>
+                                <option >SHB</option>
+                                <option >VPBank</option>
+                                <option >Eximbank</option>
+                                <option >OCB</option>
+                                <option >NamABank</option>
+                                <option >PVcomBank</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Số tài khoản</label>
+                            <input class="form-control h-50" id="trungTam_SoTaiKhoan" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Địa chỉ</label>
+                            <input class="form-control h-50" id="trungTam_DiaChi" placeholder="" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /FORM DATA -->
+    <!-- FORM Button -->
+    <div class="pb-2 mt-2">
+        <button type="button" id="btnCreateTrungTam" class="btn-sm btn-primary ">
+            Thêm
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnDeleteTrungTam" class="btn-sm btn-primary ">
+            Xóa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnResetTrungTam" class="btn-sm btn-primary ">
+            Làm mới
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnUpdateTrungTam" class="btn-sm btn-primary ">
+            Sửa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnSearchTrungTam" class="btn-sm btn-primary ">
+            Tìm kiếm
+        </button>
+    </div>
+    <!-- /FORM Button -->
+    <!-- Table-->
+    <div class="card">
+        <div class="table-responsive p-3">
+            <table id="myTable" class="table">
+                <thead>
+                    <tr>
+                        <th><input id="checkAll" type="checkbox" /></th>
+                        <th>Tên trung tâm</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Diện tích</th>
+                        <th>Địa chỉ</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!--/Table-->
+
+</div>
+<!-- / Content -->
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="/AdminAssets/module/trungTam.js"></script>
+}
+@*          
+            $('#trungTam_MaTrungTam').val();
+            $('#trungTam_TenTrungTam').val();
+            $('#trungTam_Email').val();
+            $('#trungTam_SoDienThoai').val();
+            $('#trungTam_DienTich').val();
+            $('#trungTam_MaSoThue').val();
+            $('#trungTam_NganHang').val();
+            $('#trungTam_SoTaiKhoan').val();
+            $('#trungTam_DiaChi').val(); 
+*@

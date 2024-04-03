@@ -1,0 +1,212 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    List<int> deletes = new List<int>();
+}
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="align-self-center">Thông Tin Học Sinh</h4>
+    <!-- FORM DATA -->
+    <div class="card mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Mã học sinh</label>
+                            <input class="form-control h-50" id="hocSinh_MaHocSinh" type="number" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Tên học sinh</label>
+                            <input class="form-control h-50" id="hocSinh_TenHocSinh" type="text" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Ngày sinh</label>
+                            <input class="form-control h-50" id="hocSinh_NgaySinh" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label  m-0 p-0">Giới tính</label>
+                            <select name="hocSinh_GioiTinh" id="hocSinh_GioiTinh" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                <option>Tất cả</option>
+                                <option>Nam</option>
+                                <option>Nữ</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label  m-0 p-0">Mã lớp</label>
+                            <select name="hocSinh_MaLop" id="hocSinh_MaLop" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label  m-0 p-0">Trung tâm</label>
+                            <select name="hocSinh_MaTrungTam" id="hocSinh_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Thông tin</label>
+                            <input class="form-control h-50" id="hocSinh_ThongTin" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Địa chỉ</label>
+                            <input class="form-control h-50" id="hocSinh_DiaChi" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Chiều cao</label>
+                            <input class="form-control h-50" id="hocSinh_ChieuCao" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Cân nặng</label>
+                            <input class="form-control h-50" id="hocSinh_CanNang" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Tình trạng răng</label>
+                            <input class="form-control h-50" id="hocSinh_TinhTrangRang" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Tình trạng mắt</label>
+                            <input class="form-control h-50" id="hocSinh_TinhTrangMat" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">BMI</label>
+                            <input class="form-control h-50" id="hocSinh_Bmi" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Tình trạng tâm lý</label>
+                            <input class="form-control h-50" id="hocSinh_TinhTrangTamLy" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Chức năng cơ thể</label>
+                            <input class="form-control h-50" id="hocSinh_ChucNangCoThe" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Đánh giá sức khỏe</label>
+                            <input class="form-control h-50" id="hocSinh_DanhGiaSucKhoe" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">CCCD cha</label>
+                            <input class="form-control h-50" id="hocSinh_Cccdcha" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">CCCD mẹ</label>
+                            <input class="form-control h-50" id="hocSinh_Cccdme" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Tên cha</label>
+                            <input class="form-control h-50" id="hocSinh_TenCha" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Tên mẹ</label>
+                            <input class="form-control h-50" id="hocSinh_TenMe" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Ngày sinh cha</label>
+                            <input class="form-control h-50" id="hocSinh_NgaySinhCha" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Ngày sinh mẹ</label>
+                            <input class="form-control h-50" id="hocSinh_NgaySinhMe" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Số điện thoại cha</label>
+                            <input class="form-control h-50" id="hocSinh_SoDienThoaiCha" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Số điện thoại mẹ</label>
+                            <input class="form-control h-50" id="hocSinh_SoDienThoaiMe" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Email cha</label>
+                            <input class="form-control h-50" id="hocSinh_EmailCha" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Email mẹ</label>
+                            <input class="form-control h-50" id="hocSinh_EmailMe" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Nghề nghiệp cha</label>
+                            <input class="form-control h-50" id="hocSinh_NgheNghiepCha" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label m-0 p-0">Nghề nghiệp mẹ</label>
+                            <input class="form-control h-50" id="hocSinh_NgheNghiepMe" placeholder="" type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 pt-3">
+                    @* Show Image *@
+                    <div class="mt-3">
+                        @* <h5 class="my-4">Hình Ảnh Khách Hàng</h5> *@
+                        <div class="pb-3">
+                            <!-- Thêm ảnh -->
+                            <button class="btn btn-success" id="addImage">Thêm ảnh</button>
+
+                            <!-- Thẻ input ẩn để chọn file -->
+                            <input type="file" id="fileInput" style="display:none" accept="image/*" onchange="handleFileSelect(this)">
+
+                            <button class="btn btn-danger text-white" onclick="deleteImage()">Xóa ảnh</button>
+                        </div>
+                        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img id="imageShow" src="https://images.pexels.com/photos/2415255/pexels-photo-2415255.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="d-block img-fluid" style="border-radius: 0.5rem" alt="Không tìm thấy ảnh" />
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /FORM DATA -->
+    <!-- FORM Button -->
+    <div class="pb-2 mt-2">
+        <button type="button" id="btnCreateHocSinh" class="btn-sm btn-primary ">
+            Thêm
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnDeleteHocSinh" class="btn-sm btn-primary ">
+            Xóa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnResetHocSinh" class="btn-sm btn-primary ">
+            Làm mới
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnUpdateHocSinh" class="btn-sm btn-primary ">
+            Sửa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnSearchHocSinh" class="btn-sm btn-primary ">
+            Tìm kiếm
+        </button>
+    </div>
+    <!-- /FORM Button -->
+    <!-- Table-->
+    <div class="card">
+        <div class="table-responsive p-3">
+            <table id="myTable" class="table">
+                <thead>
+                    <tr>
+                        <th><input id="checkAll" type="checkbox" /></th>
+                        <th>Tên học sinh</th>
+                        <th>Ngày sinh</th>
+                        <th>Giới tính</th>
+                        <th>Lớp</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!--/Table-->
+
+</div>
+<!-- / Content -->
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="/AdminAssets/module/hocSinh.js"></script>
+}
