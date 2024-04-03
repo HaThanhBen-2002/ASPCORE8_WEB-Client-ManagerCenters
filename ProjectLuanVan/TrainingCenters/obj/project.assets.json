@@ -11347,11 +11347,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\ProjectLuanVan\\TrainingCenters\\TrainingCenters.csproj",
+      "projectUniqueName": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\TrainingCenters.csproj",
       "projectName": "TrainingCenters",
-      "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\ProjectLuanVan\\TrainingCenters\\TrainingCenters.csproj",
+      "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\TrainingCenters.csproj",
       "packagesPath": "C:\\Users\\mavuo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\ProjectLuanVan\\TrainingCenters\\obj\\",
+      "outputPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

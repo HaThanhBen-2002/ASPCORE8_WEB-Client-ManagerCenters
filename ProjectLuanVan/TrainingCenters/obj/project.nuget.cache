@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JuNKO/FJDpT4+WZNnOuVF5p+cPai1A+fZE8LT65M7GlW2058pX/9T9PIxpHTWYGfaEKaeYT0843T61Eq8cS9HQ==",
+  "dgSpecHash": "UePqDGYPdTbfzCP1cUhjufxSdvsJWDOs29w2tPdySaZtmVfmpaq3IkY2L21iPxyPV8UFVkhN7YWTKWVInSRx0A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\ProjectLuanVan\\TrainingCenters\\TrainingCenters.csproj",
+  "projectFilePath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\TrainingCenters.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mavuo\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\mavuo\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

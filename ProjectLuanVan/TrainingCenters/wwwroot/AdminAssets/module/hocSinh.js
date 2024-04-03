@@ -1,25 +1,86 @@
-﻿
-function CreateDichVu() {
-    let item = {
-        MaDichVu: 0,
-        TenDichVu: $('#dichVu_TenDichVu').val(),
-        ThongTin: $('#dichVu_ThongTin').val(),
-        Gia: $('#dichVu_Gia').val(),
-    };
-
-    // Kiểm tra tính hợp lệ
-    if (item.TenDichVu == null || item.TenDichVu.trim() === "") {
-        displayMessages(2, "Vui lòng nhập (Tên dịch vụ)");
-    } else if (item.ThongTin == null || item.ThongTin.trim() === "") {
+﻿function isValidHocSinh(item) {
+    if (CheckIsNull(item.TenHocSinh)) {
+        displayMessages(2, "Vui lòng nhập (Tên học sinh)");
+        return false;
+    } else if (CheckIsNull(item.NgaySinh)) {
+        displayMessages(2, "Vui lòng chọn (Ngày sinh)");
+        return false;
+    } else if (CheckIsNull(item.GioiTinh)) {
+        displayMessages(2, "Vui lòng chọn (Giới tính)");
+        return false;
+    } else if (CheckIsNull(item.MaLop)) {
+        displayMessages(2, "Vui lòng chọn (Mã lớp)");
+        return false;
+    } else if (CheckIsNull(item.MaTrungTam)) {
+        displayMessages(2, "Vui lòng chọn (Mã trung tâm)");
+        return false;
+    } else if (CheckIsNull(item.ThongTin)) {
         displayMessages(2, "Vui lòng nhập (Thông tin)");
-    } else if (item.Gia == null || item.Gia.trim() === "" || parseFloat(item.Gia) <= 0) {
-        displayMessages(2, "Vui lòng nhập (Giá)");
-    } else {
+        return false;
+    } else if (CheckIsNull(item.DiaChi)) {
+        displayMessages(2, "Vui lòng nhập (Địa chỉ)");
+        return false;
+    } else if (CheckIsNull(item.SoDienThoaiCha)) {
+        displayMessages(2, "Vui lòng nhập (Số điện thoại cha)");
+        return false;
+    } else if (CheckIsNull(item.SoDienThoaiMe)) {
+        displayMessages(2, "Vui lòng nhập (Số điện thoại mẹ)");
+        return false;
+    } else if (CheckIsNull(item.EmailCha)) {
+        displayMessages(2, "Vui lòng nhập (Email cha)");
+        return false;
+    } else if (CheckIsNull(item.EmailMe)) {
+        displayMessages(2, "Vui lòng nhập (Email mẹ)");
+        return false;
+    }
+    return true;
+}
+
+function GetHocSinhData() {
+    return {
+        MaHocSinh: $('#hocSinh_MaHocSinh').val(),
+        TenHocSinh: $('#hocSinh_TenHocSinh').val(),
+        NgaySinh: $('#hocSinh_NgaySinh').val(),
+        GioiTinh: $('#hocSinh_GioiTinh').val(),
+        MaLop: $('#hocSinh_MaLop').val(),
+        MaTrungTam: $('#hocSinh_MaTrungTam').val(),
+        ThongTin: $('#hocSinh_ThongTin').val(),
+        HinhAnh: $('#imageShow').attr('src'),
+        DiaChi: $('#hocSinh_DiaChi').val(),
+        ChieuCao: $('#hocSinh_ChieuCao').val(),
+        CanNang: $('#hocSinh_CanNang').val(),
+        TinhTrangRang: $('#hocSinh_TinhTrangRang').val(),
+        TinhTrangMat: $('#hocSinh_TinhTrangMat').val(),
+        Bmi: $('#hocSinh_Bmi').val(),
+        TinhTrangTamLy: $('#hocSinh_TinhTrangTamLy').val(),
+        ChucNangCoThe: $('#hocSinh_ChucNangCoThe').val(),
+        DanhGiaSucKhoe: $('#hocSinh_DanhGiaSucKhoe').val(),
+        Cccdcha: $('#hocSinh_Cccdcha').val(),
+        Cccdme: $('#hocSinh_Cccdme').val(),
+        TenCha: $('#hocSinh_TenCha').val(),
+        TenMe: $('#hocSinh_TenMe').val(),
+        NgaySinhCha: $('#hocSinh_NgaySinhCha').val(),
+        NgaySinhMe: $('#hocSinh_NgaySinhMe').val(),
+        SoDienThoaiCha: $('#hocSinh_SoDienThoaiCha').val(),
+        SoDienThoaiMe: $('#hocSinh_SoDienThoaiMe').val(),
+        EmailCha: $('#hocSinh_EmailCha').val(),
+        EmailMe: $('#hocSinh_EmailMe').val(),
+        NgheNghiepCha: $('#hocSinh_NgheNghiepCha').val(),
+        NgheNghiepMe: $('#hocSinh_NgheNghiepMe').val(),
+    };
+}
+
+
+function CreateHocSinh() {
+    let item = GetHocSinhData();
+    // Kiểm tra tính hợp lệ
+    if (isValidHocSinh(item)) {
         let status = false;
+        item.MaHocSinh = null;
         // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
         $.ajax({
             type: "POST",
-            url: "/Admin/DichVu/Create",
+            url: "/Admin/HocSinh/Create",
             async: false,
             data: { item: item },
             success: function (data) {
@@ -30,27 +91,15 @@ function CreateDichVu() {
     }
 }
 
-function UpdateDichVu() {
-    let item = {
-        MaDichVu: $('#dichVu_MaDichVu').val(),
-        TenDichVu: $('#dichVu_TenDichVu').val(),
-        ThongTin: $('#dichVu_ThongTin').val(),
-        Gia: $('#dichVu_Gia').val(),
-    };
-
+function UpdateHocSinh() {
+    let item = GetHocSinhData();
     // Kiểm tra tính hợp lệ
-    if (item.TenDichVu == null || item.TenDichVu.trim() === "") {
-        displayMessages(2, "Vui lòng nhập (Tên dịch vụ)");
-    } else if (item.ThongTin == null || item.ThongTin.trim() === "") {
-        displayMessages(2, "Vui lòng nhập (Thông tin)");
-    } else if (item.Gia == null || item.Gia.trim() === "") {
-        displayMessages(2, "Vui lòng nhập (Giá)");
-    } else {
+    if (isValidHocSinh(item) && !CheckIsNull(item.MaHocSinh)) {
         let status = false;
         // Gửi dữ liệu thông qua AJAX để cập nhật vào CSDL
         $.ajax({
             type: "POST",
-            url: "/Admin/DichVu/Update",
+            url: "/Admin/HocSinh/Update",
             async: false,
             data: { item: item },
             success: function (data) {
@@ -61,13 +110,164 @@ function UpdateDichVu() {
     }
 }
 
+
+function CbbTrungTam() {
+    var trungTam = {
+        MaTrungTam: null,
+        TenTrungTam: null,
+        DiaChi: null,
+        Email: null,
+        MaSoThue: null,
+        SoDienThoai: null,
+        DienTich: null,
+        NganHang: null,
+        SoTaiKhoan: null,
+    };
+    $.ajax({
+        type: "POST",
+        url: "/Admin/TrungTam/SearchName",
+        data: { item: trungTam },
+        success: function (data) {
+            $('#hocSinh_MaTrungTam').empty();
+            $('#hocSinh_MaTrungTam').append($('<option>', {
+                value: 0,
+                text: "Tất cả"
+            }));
+            // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
+            $.each(data.$values, function (index, item) {
+                $('#hocSinh_MaTrungTam').append($('<option>', {
+                    value: item.maTrungTam,
+                    text: item.tenTrungTam
+                }));
+            });
+        }
+    });
+
+}
+
+
+function CbbLopByMaTrungTam() {
+    let trungTam = $('#hocSinh_MaTrungTam').val();
+    if (!CheckIsNull(trungTam)) {
+        var lop = {
+            MaLop: null,
+            TenLop: null,
+            MaNhanVien: null,
+            MaTrungTam: trungTam,
+            NamHoc: null,
+            HocPhi: null,
+            LichHoc: null,
+            ThongTin: null,
+            NgayBatDau: null,
+            NgayKetThuc: null
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/Lop/SearchName",
+            async: false,
+            data: { item: lop },
+            success: function (data) {
+                $('#hocSinh_MaLop').empty();
+                $('#hocSinh_MaLop').append($('<option>', {
+                    value: 0,
+                    text: "Tất cả"
+                }));
+                // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
+                $.each(data.$values, function (index, item) {
+                    $('#hocSinh_MaLop').append($('<option>', {
+                        value: item.maLop,
+                        text: item.tenLop
+                    }));
+                });
+            }
+        });
+    }
+    else {
+        $('#hocSinh_MaLop').empty();
+        $('#hocSinh_MaLop').append($('<option>', {
+            value: 0,
+            text: "Tất cả"
+        }));
+    }
+}
+
+//===== Func xữ lí ảnh
+function openFileInput() {
+    $("#fileInput").click();
+}
+// Xử lý file ảnh mà người dùng chọn
+function handleFileSelect(input) {
+    var file = input.files[0];
+    if (file) {
+        // Kiểm tra kích thước của file
+        if (file.size > 500 * 1024) { // Kích thước lớn hơn 500KB
+            alert("Vui lòng chọn một file ảnh có kích thước nhỏ hơn 500KB.");
+            return;
+        }
+
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            image = e.target.result;
+            updateCarousel();
+        };
+        reader.readAsDataURL(file);
+    }
+}
+// Hàm cập nhật carousel-inner
+function updateCarousel() {
+    var carouselInner = $("#carouselExample .carousel-inner");
+    carouselInner.empty(); // Xóa tất cả các ảnh hiện tại
+    var carouselItem =
+        '<div class="carousel-item active">' +
+        '<img id="imageShow" class="d-block img-fluid" style="border-radius: 0.5rem" alt="Không tìm thấy ảnh" src="' + image + '">' +
+        '</div>';
+    carouselInner.append(carouselItem);
+}
+// Hàm xóa ảnh
+function deleteImage() {
+    image = ""; // Xóa ảnh cuối cùng trong mảng
+    updateCarousel();
+}
+
 $(document).ready(function () {
-   // ============================================== TABLE ===============================================
-    var dichVu = {
-        MaDichVu: null,
-        TenDichVu: null,
+    //=============================== IMAGE ===================================
+    // đối tượng ảnh
+    var image = "";
+    $("#addImage").click(function () {
+        openFileInput();
+    });
+    // ============================================== TABLE ===============================================
+    var hocSinh = {
+        MaHocSinh: null,
+        TenHocSinh: null,
+        NgaySinh: null,
+        GioiTinh: null,
+        MaLop: null,
+        MaTrungTam: null,
         ThongTin: null,
-        Gia: null,
+        HinhAnh: null,
+        DiaChi: null,
+        ChieuCao: null,
+        CanNang: null,
+        TinhTrangRang: null,
+        TinhTrangMat: null,
+        Bmi: null,
+        TinhTrangTamLy: null,
+        ChucNangCoThe: null,
+        DanhGiaSucKhoe: null,
+        Cccdcha: null,
+        Cccdme: null,
+        TenCha: null,
+        TenMe: null,
+        NgaySinhCha: null,
+        NgaySinhMe: null,
+        SoDienThoaiCha: null,
+        SoDienThoaiMe: null,
+        EmailCha: null,
+        EmailMe: null,
+        NgheNghiepCha: null,
+        NgheNghiepMe: null
     };
     // Loading Data Table
     $('#myTable').DataTable({
@@ -78,25 +278,22 @@ $(document).ready(function () {
         ordering: false,
         ajax: {
             type: "POST",
-            url: "/Admin/DichVu/LoadingDataTableView",
+            url: "/Admin/HocSinh/LoadingDataTableView",
             dataType: "json",
-            data: { item: dichVu },
+            data: { item: hocSinh },
             dataSrc: 'data'
         },
         columns: [
             {
-                data: 'maDichVu',
+                data: 'maHocSinh',
                 render: function (data, type, row) {
                     return '<input data-checkbox-id="' + data + '" type="checkbox"/>';
-            }
-            },
-            { data: "tenDichVu" },
-            {
-                data: 'gia',
-                render: function (data, type, row) {
-                    return formatToVND(data);
                 }
-            }
+            },
+            { data: "tenHocSinh" },
+            { data: "ngaySinh" },
+            { data: "gioiTinh" },
+            { data: "tenLop" }
         ],
 
     });
@@ -118,21 +315,48 @@ $(document).ready(function () {
             table.$('tr.selected').removeClass('selected')
             $(this).addClass('selected')
             // xử lý ở đây
-            const rowId = table.row(this).data().maDichVu;
+            const rowId = table.row(this).data().maHocSinh;
             // Thực hiện get giá trị của Academic với rowId
             $.ajax({
                 type: "POST",
-                url: "/Admin/DichVu/GetById",
+                url: "/Admin/HocSinh/GetById",
                 //contentType: "application/json",
                 data: { id: rowId },
                 success: function (data) {
-                    $('#dichVu_MaDichVu').val(data.maDichVu);
-                    $('#dichVu_TenDichVu').val(data.tenDichVu);
-                    $('#dichVu_ThongTin').val(data.thongTin);
-                    $('#dichVu_Gia').val(data.gia);
+
+
+                    $('#hocSinh_MaHocSinh').val(data.maHocSinh);
+                    $('#hocSinh_TenHocSinh').val(data.tenHocSinh);
+                    $('#hocSinh_NgaySinh').val(data.ngaySinh);
+                    $('#hocSinh_GioiTinh').val(data.gioiTinh);
+                    $('#hocSinh_MaTrungTam').val(data.maTrungTam);
+                    CbbLopByMaTrungTam();
+                    $('#hocSinh_MaLop').val(data.maLop);
+                    $('#hocSinh_ThongTin').val(data.thongTin);
+                    $('#hocSinh_DiaChi').val(data.diaChi);
+                    $('#hocSinh_ChieuCao').val(data.chieuCao);
+                    $('#hocSinh_CanNang').val(data.canNang);
+                    $('#hocSinh_TinhTrangRang').val(data.tinhTrangRang);
+                    $('#hocSinh_TinhTrangMat').val(data.tinhTrangMat);
+                    $('#hocSinh_Bmi').val(data.bmi);
+                    $('#hocSinh_TinhTrangTamLy').val(data.tinhTrangTamLy);
+                    $('#hocSinh_ChucNangCoThe').val(data.chucNangCoThe);
+                    $('#hocSinh_DanhGiaSucKhoe').val(data.danhGiaSucKhoe);
+                    $('#hocSinh_Cccdcha').val(data.cccdCha);
+                    $('#hocSinh_Cccdme').val(data.cccdMe);
+                    $('#hocSinh_TenCha').val(data.tenCha);
+                    $('#hocSinh_TenMe').val(data.tenMe);
+                    $('#hocSinh_NgaySinhCha').val(data.ngaySinhCha);
+                    $('#hocSinh_NgaySinhMe').val(data.ngaySinhMe);
+                    $('#hocSinh_SoDienThoaiCha').val(data.soDienThoaiCha);
+                    $('#hocSinh_SoDienThoaiMe').val(data.soDienThoaiMe);
+                    $('#hocSinh_EmailCha').val(data.emailCha);
+                    $('#hocSinh_EmailMe').val(data.emailMe);
+                    $('#hocSinh_NgheNghiepCha').val(data.ngheNghiepCha);
+                    $('#hocSinh_NgheNghiepMe').val(data.ngheNghiepMe);
+                    $('#imageShow').attr('src', data.hinhAnh);
                 }
             });
-
         }
     });
 
@@ -155,22 +379,27 @@ $(document).ready(function () {
             });
         }
     });
+    //=============================== CBB ===================================
+    CbbTrungTam();
+    $('#hocSinh_MaTrungTam').change(function () {
+        CbbLopByMaTrungTam();
+    });
     // ============================================== BUTTON ===============================================
-    $('#btnCreateDichVu').click(function () {
+    $('#btnCreateHocSinh').click(function () {
         //If Status Create = True => Update Row Table
-        if (CreateDichVu() == true) {
+        if (CreateHocSinh() == true) {
             displayMessages(1, "Thêm thông tin thành công");
             let itemView;
             $.ajax({
                 type: "POST",
-                url: "/Admin/DichVu/GetByIdTable",
+                url: "/Admin/HocSinh/GetByIdTable",
                 async: false,
-                data: { id: $('#dichVu_MaDichVu').val() },
+                data: { id: $('#hocSinh_MaHocSinh').val() },
                 success: function (data) {
                     itemView = data;
                 }
             });
-            itemView.maDichVu = '<input data-checkbox-id="' + itemView.maDichVu + '" type="checkbox"/>';
+            itemView.maHocSinh = '<input data-checkbox-id="' + itemView.maHocSinh + '" type="checkbox"/>';
             if (itemView != null) {
                 table.row.add(itemView).draw(false);
             }
@@ -180,21 +409,21 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnUpdateDichVu').click(function () {
+    $('#btnUpdateHocSinh').click(function () {
         //If Status Create = True => Update Row Table
-        if (UpdateDichVu() == true) {
+        if (UpdateHocSinh() == true) {
             displayMessages(1, "Cập nhật thông tin thành công");
             let itemView;
             $.ajax({
                 type: "POST",
-                url: "/Admin/DichVu/GetByIdTable",
+                url: "/Admin/HocSinh/GetByIdTable",
                 async: false,
-                data: { id: $('#dichVu_MaDichVu').val() },
+                data: { id: $('#hocSinh_MaHocSinh').val() },
                 success: function (data) {
                     itemView = data;
                 }
             });
-            itemView.maDichVu = '<input data-checkbox-id="' + itemView.maDichVu + '" type="checkbox"/>';
+            itemView.maHocSinh = '<input data-checkbox-id="' + itemView.maHocSinh + '" type="checkbox"/>';
             if (itemView != null) {
                 table.rows('.selected').remove().draw(false);
                 table.row.add(itemView).draw(false);
@@ -205,7 +434,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnDeleteDichVu').click(function () {
+    $('#btnDeleteHocSinh').click(function () {
         let selectedIds = [];
         // Lặp qua các checkbox để xác định đối tượng nào được chọn
         $('input[type="checkbox"]:checked').each(function () {
@@ -231,9 +460,9 @@ $(document).ready(function () {
             // Gửi danh sách ID được chọn đến action bằng Ajax
             $.ajax({
                 type: "POST",
-                url: "/Admin/DichVu/Delete",
+                url: "/Admin/HocSinh/Delete",
                 async: false,
-                data: { ids: selectedIds, nguoiXoa:"Nhân viên TEST" }, // Truyền danh sách ID đến action
+                data: { ids: selectedIds, nguoiXoa: "Nhân viên TEST" }, // Truyền danh sách ID đến action
                 success: function (data) {
                     if (data.isSuccess == true) {
                         displayMessages(1, "Xóa thành công");
@@ -251,8 +480,8 @@ $(document).ready(function () {
                 table.rows().every(function () {
                     var rowData = this.data();
                     // Kiểm tra xem rowData có tồn tại không trước khi truy cập thuộc tính
-                    if (rowData && rowData.maDichVu) {
-                        var checkbox = $('input[data-checkbox-id="' + rowData.maDichVu + '"]');
+                    if (rowData && rowData.maHocSinh) {
+                        var checkbox = $('input[data-checkbox-id="' + rowData.maHocSinh + '"]');
                         if (checkbox.prop('checked')) {
                             // Xóa hàng nếu checkbox được kiểm tra
                             this.remove();
@@ -265,21 +494,55 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnResetDichVu').click(function () {
-        $('#dichVu_MaDichVu').val(null);
-        $('#dichVu_TenDichVu').val(null);
-        $('#dichVu_ThongTin').val(null);
-        $('#dichVu_Gia').val(null);
+    $('#btnResetHocSinh').click(function () {
 
+        $('#hocSinh_MaHocSinh').val(null);
+        $('#hocSinh_TenHocSinh').val(null);
+        $('#hocSinh_NgaySinh').val(null);
+        $('#hocSinh_GioiTinh').val(null);
+        $('#hocSinh_MaTrungTam').val(null);
+        CbbLopByMaTrungTam();
+        $('#hocSinh_MaLop').val(null);
+        $('#hocSinh_ThongTin').val(null);
+        $('#hocSinh_DiaChi').val(null);
+        $('#hocSinh_ChieuCao').val(null);
+        $('#hocSinh_CanNang').val(null);
+        $('#hocSinh_TinhTrangRang').val(null);
+        $('#hocSinh_TinhTrangMat').val(null);
+        $('#hocSinh_Bmi').val(null);
+        $('#hocSinh_TinhTrangTamLy').val(null);
+        $('#hocSinh_ChucNangCoThe').val(null);
+        $('#hocSinh_DanhGiaSucKhoe').val(null);
+        $('#hocSinh_Cccdcha').val(null);
+        $('#hocSinh_Cccdme').val(null);
+        $('#hocSinh_TenCha').val(null);
+        $('#hocSinh_TenMe').val(null);
+        $('#hocSinh_NgaySinhCha').val(null);
+        $('#hocSinh_NgaySinhMe').val(null);
+        $('#hocSinh_SoDienThoaiCha').val(null);
+        $('#hocSinh_SoDienThoaiMe').val(null);
+        $('#hocSinh_EmailCha').val(null);
+        $('#hocSinh_EmailMe').val(null);
+        $('#hocSinh_NgheNghiepCha').val(null);
+        $('#hocSinh_NgheNghiepMe').val(null);
+        $('#imageShow').attr('src', null);
     });
 
-    $('#btnSearchDichVu').click(function () {
-        dichVu.MaDichVu = $('#dichVu_MaDichVu').val() || null;
-        dichVu.TenDichVu = $('#dichVu_TenDichVu').val() || null;
-        dichVu.ThongTin = $('#dichVu_ThongTin').val() || null;
-        dichVu.Gia = $('#dichVu_Gia').val() || null;
-        
-        table.settings()[0].ajax.data = { item: dichVu };
+    $('#btnSearchHocSinh').click(function () {
+
+        hocSinh = GetHocSinhData();
+        hocSinh.HinhAnh = null;
+        // Bạn có thể thêm các xử lý bổ sung ở đây nếu cần
+       
+        if (hocSinh.MaTrungTam == 0) {
+            hocSinh.MaTrungTam = null;
+        }
+        if (hocSinh.MaLop == 0) {
+            hocSinh.MaLop = null;
+        }
+
+        table.settings()[0].ajax.data = { item: hocSinh };
         table.ajax.reload();
+       
     });
 });

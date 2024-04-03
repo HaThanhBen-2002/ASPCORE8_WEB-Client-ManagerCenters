@@ -1,13 +1,13 @@
-﻿function CheckIsNullDichVu(item) {
+﻿function isValidDichVu(item) {
     // Kiểm tra tính hợp lệ
     if (CheckIsNull(item.TenDichVu )) {
-        displayMessages(2, "Vui lòng nhập (Tên dịch vụ)"); return true;
+        displayMessages(2, "Vui lòng nhập (Tên dịch vụ)"); return false;
     } else if (CheckIsNull(item.ThongTin)) {
-        displayMessages(2, "Vui lòng nhập (Thông tin)"); return true;
+        displayMessages(2, "Vui lòng nhập (Thông tin)"); return false;
     } else if (CheckIsNull(item.Gia)) {
-        displayMessages(2, "Vui lòng nhập (Giá)"); return true;
+        displayMessages(2, "Vui lòng nhập (Giá)"); return false;
     } else {
-        return false;
+        return true;
     }
 }
 function GetDichVuById() {
@@ -22,7 +22,7 @@ function GetDichVuById() {
 function CreateDichVu() {
     let item = GetDichVuById();
     // Kiểm tra tính hợp lệ
-    if (CheckIsNullDichVu(item)!=true) {
+    if (isValidDichVu(item)) {
         let status = false;
         item.MaDichVu = null;
         // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
@@ -43,7 +43,7 @@ function UpdateDichVu() {
     let item = GetDichVuById();
 
     // Kiểm tra tính hợp lệ
-    if (CheckIsNullDichVu(item) != true && CheckIsNull(item.MaDichVu)!=true) {
+    if (isValidDichVu(item) && CheckIsNull(item.MaDichVu)!=true) {
         let status = false;
         // Gửi dữ liệu thông qua AJAX để cập nhật vào CSDL
         $.ajax({

@@ -4286,11 +4286,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Data\\Data.csproj",
+      "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\Data.csproj",
       "packagesPath": "C:\\Users\\mavuo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Data\\obj\\",
+      "outputPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

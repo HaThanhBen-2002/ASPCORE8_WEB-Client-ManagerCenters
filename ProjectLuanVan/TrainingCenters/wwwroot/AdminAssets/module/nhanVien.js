@@ -1,35 +1,35 @@
-﻿function CheckIsNullNhanVien(item) {
+﻿function isValidNhanVien(item) {
     // Kiểm tra tính hợp lệ
     if (CheckIsNull(item.TenNhanVien)) {
-        displayMessages(2, "Vui lòng nhập (Tên nhân viên)"); return true;
+        displayMessages(2, "Vui lòng nhập (Tên nhân viên)"); return false;
     } else if (CheckIsNull(item.Cccd)) {
-        displayMessages(2, "Vui lòng nhập (CCCD)"); return true;
+        displayMessages(2, "Vui lòng nhập (CCCD)"); return false;
     } else if (CheckIsNull(item.NgaySinh)) {
-        displayMessages(2, "Vui lòng nhập (Ngày sinh)"); return true;
+        displayMessages(2, "Vui lòng nhập (Ngày sinh)"); return false;
     } else if (CheckIsNull(item.SoDienThoai)) {
-        displayMessages(2, "Vui lòng nhập (Số điện thoại)"); return true;
+        displayMessages(2, "Vui lòng nhập (Số điện thoại)"); return false;
     } else if (CheckIsNull(item.Email)) {
-        displayMessages(2, "Vui lòng nhập (Email)"); return true;
+        displayMessages(2, "Vui lòng nhập (Email)"); return false;
     } else if (CheckIsNull(item.Luong)) {
-        displayMessages(2, "Vui lòng nhập (Lương)"); return true;
+        displayMessages(2, "Vui lòng nhập (Lương)"); return false;
     } else if (CheckIsNull(item.NganHang)) {
-        displayMessages(2, "Vui lòng nhập (Mã tài khoản)"); return true;
+        displayMessages(2, "Vui lòng nhập (Mã tài khoản)"); return false;
     } else if (CheckIsNull(item.SoTaiKhoan)) {
-        displayMessages(2, "Vui lòng nhập (Số tài khoản)"); return true;
+        displayMessages(2, "Vui lòng nhập (Số tài khoản)"); return false;
     } else if (CheckIsNull(item.GioiTinh)) {
-        displayMessages(2, "Vui lòng chọn (Giới tính)"); return true;
+        displayMessages(2, "Vui lòng chọn (Giới tính)"); return false;
     } else if (CheckIsNull(item.MaTrungTam)) {
-        displayMessages(2, "Vui lòng chọn (Trung tâm)"); return true;
+        displayMessages(2, "Vui lòng chọn (Trung tâm)"); return false;
     } else if (CheckIsNull(item.LoaiNhanVien)) {
-        displayMessages(2, "Vui lòng chọn (Loại nhân viên)"); return true;
+        displayMessages(2, "Vui lòng chọn (Loại nhân viên)"); return false;
     } else if (CheckIsNull(item.PhongBan)) {
-        displayMessages(2, "Vui lòng chọn (Phòng ban)"); return true;
+        displayMessages(2, "Vui lòng chọn (Phòng ban)"); return false;
     } else if (CheckIsNull(item.DanToc)) {
-        displayMessages(2, "Vui lòng chọn (Dân tộc)"); return true;
+        displayMessages(2, "Vui lòng chọn (Dân tộc)"); return false;
     } else if (CheckIsNull(item.TonGiao)) {
-        displayMessages(2, "Vui lòng chọn (Tôn giáo)"); return true;
+        displayMessages(2, "Vui lòng chọn (Tôn giáo)"); return false;
     } else {
-        return false;
+        return true;
     }
 }
 
@@ -61,7 +61,7 @@ function GetNhanVienById() {
 
 function CreateNhanVien() {
     let item = GetNhanVienById();
-    if (CheckIsNullNhanVien(item) != true) {
+    if (isValidNhanVien(item)) {
         item.MaNhanVien = null;
         let status = false;
         // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
@@ -82,7 +82,7 @@ function UpdateNhanVien() {
 
     let item = GetNhanVienById();
 
-    if (CheckIsNullNhanVien(item) != true && CheckIsNull(item.MaNhanVien)!=true){
+    if (isValidNhanVien(item) && CheckIsNull(item.MaNhanVien)!=true){
         let status = false;
         // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
         $.ajax({

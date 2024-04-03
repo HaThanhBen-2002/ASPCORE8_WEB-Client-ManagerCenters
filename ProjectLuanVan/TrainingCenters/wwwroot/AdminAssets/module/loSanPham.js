@@ -1,21 +1,21 @@
 ﻿
 
-function CheckIsNullLoSanPham(item) {
+function isValidLoSanPham(item) {
     // Kiểm tra tính hợp lệ
     if (CheckIsNull(item.TenLoSanPham)) {
-        displayMessages(2, "Vui lòng nhập (Tên lô sản phẩm)"); return true;
+        displayMessages(2, "Vui lòng nhập (Tên lô sản phẩm)"); return false;
     } else if (CheckIsNull(item.MaSanPham)) {
-        displayMessages(2, "Vui lòng nhập (Mã sản phẩm)");; return true;
+        displayMessages(2, "Vui lòng nhập (Mã sản phẩm)");; return false;
     } else if (CheckIsNull(item.SoLuong)) {
-        displayMessages(2, "Vui lòng nhập (Số lượng)");; return true;
+        displayMessages(2, "Vui lòng nhập (Số lượng)");; return false;
     } else if (CheckIsNull(item.DonVi)) {
-        displayMessages(2, "Vui lòng nhập (Đơn vị)");; return true;
+        displayMessages(2, "Vui lòng nhập (Đơn vị)");; return false;
     } else if (CheckIsNull(item.NgayNhap)) {
-        displayMessages(2, "Vui lòng nhập (Ngày nhập)");; return true;
+        displayMessages(2, "Vui lòng nhập (Ngày nhập)");; return false;
     } else if (CheckIsNull(item.NgayHetHan)) {
-        displayMessages(2, "Vui lòng nhập (Ngày hết hạn)");; return true;
+        displayMessages(2, "Vui lòng nhập (Ngày hết hạn)");; return false;
     } else {
-        return false
+        return true
     }
 }
 
@@ -177,7 +177,7 @@ function CbbSanPhamByMaTrungTamByLoaiSanPham() {
 function CreateLoSanPham() {
     let item = GetLoSanPhamById();
     // Kiểm tra tính hợp lệ
-    if (CheckIsNullLoSanPham(item)!= true){
+    if (isValidLoSanPham(item)){
         let status = false;
         item.MaLoSanPham = null;
         // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
@@ -198,7 +198,7 @@ function UpdateLoSanPham() {
     
     let item = GetLoSanPhamById();
     // Kiểm tra tính hợp lệ
-    if (CheckIsNullLoSanPham(item) != true && CheckIsNull(item.MaLoSanPham)!=true) {
+    if (isValidLoSanPham(item) && CheckIsNull(item.MaLoSanPham)!=true) {
         let status = false;
         // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
         $.ajax({

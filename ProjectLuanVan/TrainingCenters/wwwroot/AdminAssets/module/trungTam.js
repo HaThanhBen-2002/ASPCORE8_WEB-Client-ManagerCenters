@@ -14,36 +14,36 @@ function GetTrungTamById() {
     return item;
 }
 
-function CheckIsNullTrungTam(item) {
+function isValidTrungTam(item) {
     //Check Valid
     if (CheckIsNull(item.TenTrungTam)) {
         displayMessages(2, "Vui lòng nhập (Tên trung tâm)");
-        return true;
+        return false;
     }
     else if (CheckIsNull(item.DiaChi)) {
         displayMessages(2, "Vui lòng nhập (Địa chỉ)");
-        return true;
+        return false;
     }
     else if (CheckIsNull(item.Email)) {
         displayMessages(2, "Vui lòng nhập (Email)");
-        return true;
+        return false;
     }
     else if (CheckIsNull(item.SoDienThoai)) {
         displayMessages(2, "Vui lòng nhập (Số điện thoại)");
-        return true;
+        return false;
     }
     else if (CheckIsNull(item.NganHang)) {
         item.NganHang = null;
     }
     else {
-        return false;
+        return true;
     }
 }
 
 function CreateTrungTam() {
     let item = GetTrungTamById();
     //Check Valid
-    if (CheckIsNullTrungTam(item) != true){
+    if (isValidTrungTam(item)){
         item.MaTrungTam = null;
         var status = false;
         // Gọi ajax thêm dữ liệu vào CSDL
@@ -63,7 +63,7 @@ function CreateTrungTam() {
 function UpdateTrungTam() {
     let item = GetTrungTamById();
     //Check Valid
-    if (CheckIsNullTrungTam(item) != true && CheckIsNull(item.MaTrungTam)!=true){
+    if (isValidTrungTam(item)&& CheckIsNull(item.MaTrungTam)!=true){
         let status = false;
         // Gọi ajax thêm dữ liệu vào CSDL
         $.ajax({

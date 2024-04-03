@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Management.Api\\ManagementApi.csproj": {}
+    "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Management.Api\\ManagementApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Data\\Data.csproj": {
+    "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Data\\Data.csproj",
+        "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\mavuo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Data\\obj\\",
+        "outputPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -88,14 +88,14 @@
         }
       }
     },
-    "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Management.Api\\ManagementApi.csproj": {
+    "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Management.Api\\ManagementApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Management.Api\\ManagementApi.csproj",
+        "projectUniqueName": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Management.Api\\ManagementApi.csproj",
         "projectName": "ManagementApi",
-        "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Management.Api\\ManagementApi.csproj",
+        "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Management.Api\\ManagementApi.csproj",
         "packagesPath": "C:\\Users\\mavuo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Management.Api\\obj\\",
+        "outputPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Management.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -116,8 +116,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\ManagementService\\ManagementService.csproj": {
-                "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\ManagementService\\ManagementService.csproj"
+              "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\ManagementService\\ManagementService.csproj": {
+                "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\ManagementService\\ManagementService.csproj"
               }
             }
           }
@@ -189,14 +189,14 @@
         }
       }
     },
-    "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\ManagementService\\ManagementService.csproj": {
+    "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\ManagementService\\ManagementService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\ManagementService\\ManagementService.csproj",
+        "projectUniqueName": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\ManagementService\\ManagementService.csproj",
         "projectName": "ManagementService",
-        "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\ManagementService\\ManagementService.csproj",
+        "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\ManagementService\\ManagementService.csproj",
         "packagesPath": "C:\\Users\\mavuo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\ManagementService\\obj\\",
+        "outputPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\ManagementService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -217,8 +217,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Data\\Data.csproj"
+              "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\Data.csproj"
               }
             }
           }

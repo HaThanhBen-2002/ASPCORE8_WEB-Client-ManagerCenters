@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pUDufUCgah/GoE8zMm97bGEWLdBmAaPh0++eRE+UmOGKXyTLEcvrqKEiyD/FhFVPExQ68q+ftsK+ngx3diM5VA==",
+  "dgSpecHash": "OXMiW/TfM4d0zO10ojKm44h7rqt099cNDVFuBPhRQOfG92y+Hu1YoSBK0cneyn4jyUt7/Mm+6f6wqDJqvV9JuA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\ManagementService\\ManagementService.csproj",
+  "projectFilePath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\ManagementService\\ManagementService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mavuo\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\mavuo\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

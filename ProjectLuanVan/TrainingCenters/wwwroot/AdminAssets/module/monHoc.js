@@ -1,28 +1,31 @@
-﻿function CheckIsNullMonHoc(item) {
+﻿function isValidMonHoc(item) {
     if (CheckIsNull(item.TenMonHoc)) {
-        displayMessages(2, "Vui lòng nhập (Tên môn học)"); return true;
-    } else if (CheckIsNull(item.ThongTin)) {
-        displayMessages(2, "Vui lòng nhập (Thông tin)"); return true;
-    } else if (CheckIsNull(item.Gia)) {
-        displayMessages(2, "Vui lòng nhập (Giá)"); return true;
-    } else {
+        displayMessages(2, "Vui lòng nhập (Tên môn học)");
         return false;
+    } else if (CheckIsNull(item.ThongTin)) {
+        displayMessages(2, "Vui lòng nhập (Thông tin)");
+        return false;
+    } else if (CheckIsNull(item.Gia)) {
+        displayMessages(2, "Vui lòng nhập (Giá)");
+        return false;
+    } else {
+        return true;
     }
 }
-function GetMonHocById() {
-    let item = {
-        MaMonHoc : $('#monHoc_MaMonHoc').val(),
+
+function GetMonHocData() {
+    return {
+        MaMonHoc: $('#monHoc_MaMonHoc').val(),
         TenMonHoc: $('#monHoc_TenMonHoc').val(),
         ThongTin: $('#monHoc_ThongTin').val(),
         Gia: $('#monHoc_Gia').val(),
-    }
-    return item;
+    };
 }
-function CreateMonHoc() {
-    let item = GetMonHocById();
 
+function CreateMonHoc() {
+    let item = GetMonHocData();
     // Kiểm tra tính hợp lệ
-    if (GetMonHocById(item) != true) {
+    if (isValidMonHoc(item)) {
         let status = false;
         item.MaMonHoc = null;
         // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
@@ -40,10 +43,9 @@ function CreateMonHoc() {
 }
 
 function UpdateMonHoc() {
-    let item = GetMonHocById();
-
+    let item = GetMonHocData();
     // Kiểm tra tính hợp lệ
-    if (CheckIsNullMonHoc(item) != true && CheckIsNull(item.MaMonHoc)!=true) {
+    if (isValidMonHoc(item) && CheckIsNull(item.MaMonHoc)!=true) {
         let status = false;
         // Gửi dữ liệu thông qua AJAX để cập nhật vào CSDL
         $.ajax({
@@ -270,11 +272,10 @@ $(document).ready(function () {
         $('#monHoc_TenMonHoc').val(null);
         $('#monHoc_ThongTin').val(null);
         $('#monHoc_Gia').val(null);
-
     });
 
     $('#btnSearchMonHoc').click(function () {
-        monHoc = GetMonHocById();
+        monHoc = GetMonHocData();
         
         table.settings()[0].ajax.data = { item: monHoc };
         table.ajax.reload();

@@ -1,19 +1,19 @@
 ﻿
 
-function CheckIsNullNhaCungCap(item) {
+function isValidNhaCungCap(item) {
     // Kiểm tra tính hợp lệ
     if (CheckIsNull(item.TenNhaCungCap)) {
-        displayMessages(2, "Vui lòng nhập (Tên nhà cung cấp)"); return true;
+        displayMessages(2, "Vui lòng nhập (Tên nhà cung cấp)"); return false;
     } else if (CheckIsNull(item.Email)) {
-        displayMessages(2, "Vui lòng nhập (Email)"); return true;
+        displayMessages(2, "Vui lòng nhập (Email)"); return false;
     } else if (CheckIsNull(item.SoDienThoai )) {
-        displayMessages(2, "Vui lòng nhập (Số điện thoại)"); return true;
+        displayMessages(2, "Vui lòng nhập (Số điện thoại)"); return false;
     } else if (CheckIsNull(item.NganHang)) {
         item.NganHang = null;
     } else if (CheckIsNull(item.MaTrungTam)) {
-        displayMessages(2, "Vui lòng chọn (Trung tâm)"); return true;
+        displayMessages(2, "Vui lòng chọn (Trung tâm)"); return false;
     } else {
-        return false;
+        return true;
     }
 }
 
@@ -36,7 +36,7 @@ function CreateNhaCungCap() {
     let item = GetNhaCungCapById();
 
     // Kiểm tra tính hợp lệ
-    if (CheckIsNullNhaCungCap(item)!=true){
+    if (isValidNhaCungCap(item)){
         let status = false;
         item.MaNhaCungCap = null;
         // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
@@ -91,7 +91,7 @@ function UpdateNhaCungCap() {
 
     let item = GetNhaCungCapById();
     // Kiểm tra tính hợp lệ
-    if (CheckIsNullNhaCungCap(item) != true && CheckIsNull(item.MaNhaCungCap)!=true){
+    if (isValidNhaCungCap(item) && CheckIsNull(item.MaNhaCungCap)!=true){
         let status = false;
         // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
         $.ajax({

@@ -1,28 +1,28 @@
-﻿function CheckIsNullSanPham(item) {
+﻿function isValidSanPham(item) {
     // Kiểm tra tính hợp lệ
     if (CheckIsNull(item.TenSanPham)) {
         displayMessages(2, "Vui lòng nhập (Tên sản phẩm)");
-        return true;
+        return false;
     } else if (CheckIsNull(item.ThongTin)) {
         displayMessages(2, "Vui lòng nhập (Thông tin)");
-        return true;
+        return false;
     } else if (CheckIsNull(item.HanSuDung)) {
         displayMessages(2, "Vui lòng chọn (Hạn sử dụng)");
-        return true;
+        return false;
     } else if (CheckIsNull(item.LoaiSanPham)) {
         displayMessages(2, "Vui lòng chọn (Loại sản phẩm)");
-        return true;
+        return false;
     } else if (CheckIsNull(item.MaNhaCungCap)) {
         displayMessages(2, "Vui lòng chọn (Nhà cung cấp)");
-        return true;
+        return false;
     } else if (CheckIsNull(item.MaTrungTam)) {
         displayMessages(2, "Vui lòng chọn (Trung tâm)");
-        return true;
+        return false;
     } else if (CheckIsNull(item.Gia)) {
         displayMessages(2, "Vui lòng nhập (Giá)");
-        return true;
-    } else {
         return false;
+    } else {
+        return true;
     }
 }
 
@@ -123,7 +123,7 @@ function CbbNhaCungCapByMaTrungTam() {
 function CreateSanPham() {
     let item = GetSanPhamById();
     // Kiểm tra tính hợp lệ
-    if (CheckIsNullSanPham(item) != true) {
+    if (isValidSanPham(item)) {
         item.MaSanPham = null;
         let status = false;
         // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
@@ -143,7 +143,7 @@ function CreateSanPham() {
 function UpdateSanPham() {
     let item = GetSanPhamById();
     // Kiểm tra tính hợp lệ
-    if (CheckIsNullSanPham(item) != true && CheckIsNull(item.MaSanPham)!=true){
+    if (isValidSanPham(item)&& CheckIsNull(item.MaSanPham)!=true){
         let status = false;
         // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
         $.ajax({

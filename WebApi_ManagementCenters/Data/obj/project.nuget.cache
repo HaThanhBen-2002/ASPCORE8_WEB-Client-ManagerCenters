@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "t49Neflwh1N0uRzKWewUqjMKYnBxWAdlhLxlU16O4wP+GLt7qIkxnHQfJ/JaZAV6k0PWvGEKXF9bUPt4pMZlCQ==",
+  "dgSpecHash": "P8clglMjbfJUGKF+OgfdeyjEeykjHuAwIR46Hy/6VoHkcTeJDO4Dt/HmuH52VH8GxKE/RRflt7R1934QcXB+aQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\DuAnTotNghiep\\Code\\WebApi_ManagementCenters\\Data\\Data.csproj",
+  "projectFilePath": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mavuo\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\mavuo\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
