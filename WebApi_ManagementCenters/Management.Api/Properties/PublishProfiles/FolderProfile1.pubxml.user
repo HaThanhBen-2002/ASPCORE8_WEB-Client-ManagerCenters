@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\WEBAPI</_PublishTargetUrl>
+    <History>True|2024-04-05T15:52:26.5657686Z;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="ConStr">
+      <Value>Data Source=DESKTOP-125DL48\SERVER%3bInitial Catalog=ManagementCenters%3bIntegrated Security=True%3bTrusted_Connection=True%3bTrustServerCertificate=True%3bMultipleActiveResultSets=true</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="Data.Models.ApplicationDbContext">
+      <Value>Data Source=DESKTOP-125DL48\SERVER%3bInitial Catalog=ManagementCenters%3bIntegrated Security=True%3bTrusted_Connection=True%3bTrustServerCertificate=True%3bMultipleActiveResultSets=true</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

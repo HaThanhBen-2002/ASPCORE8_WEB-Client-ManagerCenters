@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Q+2gXgU/M8Enq7rqpJ7cfX5dfhBfDIspG6ibJ152MnA=",
+  "Hash": "8rtivjJN4n7hR7yWNAU0BNKEp1ZdWAjiCvpmQ0qI/Js=",
   "Source": "TrainingCenters",
   "BasePath": "_content/TrainingCenters",
   "Mode": "Default",
@@ -5031,6 +5031,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AdminAssets\\module\\hocSinh.js"
+    },
+    {
+      "Identity": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\ketQua.js",
+      "SourceId": "TrainingCenters",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\",
+      "BasePath": "_content/TrainingCenters",
+      "RelativePath": "AdminAssets/module/ketQua.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssets\\module\\ketQua.js"
     },
     {
       "Identity": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\lop.js",

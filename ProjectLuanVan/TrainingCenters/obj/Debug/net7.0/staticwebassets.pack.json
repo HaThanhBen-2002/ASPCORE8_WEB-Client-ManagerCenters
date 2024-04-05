@@ -1053,6 +1053,10 @@
       "PackagePath": "staticwebassets\\AdminAssets\\module\\hocSinh.js"
     },
     {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\ketQua.js",
+      "PackagePath": "staticwebassets\\AdminAssets\\module\\ketQua.js"
+    },
+    {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\loSanPham.js",
       "PackagePath": "staticwebassets\\AdminAssets\\module\\loSanPham.js"
     },

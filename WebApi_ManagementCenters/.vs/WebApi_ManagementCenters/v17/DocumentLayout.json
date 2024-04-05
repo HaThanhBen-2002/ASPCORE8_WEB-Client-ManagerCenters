@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CBC99B4A-9372-4A26-B216-B2E32B42727F}|Data\\Data.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\webapi_managementcenters\\data\\repositorydata\\ketquarepon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC99B4A-9372-4A26-B216-B2E32B42727F}|Data\\Data.csproj|solutionrelative:data\\repositorydata\\ketquarepon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "KetQuaRepon.cs",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\RepositoryData\\KetQuaRepon.cs",
+              "RelativeDocumentMoniker": "Data\\RepositoryData\\KetQuaRepon.cs",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\RepositoryData\\KetQuaRepon.cs",
+              "RelativeToolTip": "Data\\RepositoryData\\KetQuaRepon.cs",
+              "ViewState": "AQIAAKMAAAAAAAAAAAAAAK4AAACIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-05T15:48:12.622Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TrainingCenters")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ce7e62d558b744eab76b5b7b399a8dcc42057d80")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2625e1185d0f840002168a34abcffc89023a2b48")]
 [assembly: System.Reflection.AssemblyProductAttribute("TrainingCenters")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TrainingCenters")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

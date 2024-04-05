@@ -172,7 +172,7 @@ namespace Data.RepositoryData
             {
                 x.MaKetQua,
                 x.TenKetQua,
-                TenHocSinh = x.MaHocSinh != null ? _context.MonHocs.Where(mh => mh.MaMonHoc == x.MaHocSinh).Select(mh => mh.TenMonHoc).FirstOrDefault() : null,
+                TenHocSinh = x.MaHocSinh != null ? _context.HocSinhs.Where(mh => mh.MaHocSinh == x.MaHocSinh).Select(mh => mh.TenHocSinh).FirstOrDefault() : null,
                 TenMonHoc = x.MaMonHoc != null ? _context.MonHocs.Where(mh => mh.MaMonHoc == x.MaMonHoc).Select(mh => mh.TenMonHoc).FirstOrDefault() : null,
                 x.TrangThai
             }).ToList();

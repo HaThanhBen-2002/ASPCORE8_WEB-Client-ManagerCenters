@@ -88,16 +88,19 @@ namespace TrainingCenters.Areas.Admin.Controllers
             var data = await _unit.KetQua.Search(item);
             return Ok(data);
         }
+
         public async Task<IActionResult> SearchName(KetQua item)
         {
             var data = await _unit.KetQua.SearchName(item);
             return Json(data);
         }
+
         public async Task<IActionResult> SearchCount(KetQua item)
         {
             var data = await _unit.KetQua.SearchCount(item);
             return Ok(data);
         }
+
         public async Task<IActionResult> LoadingDataTableView(KetQua item)
         {
             var skip = Request.Form["start"];
