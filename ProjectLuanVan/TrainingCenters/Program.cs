@@ -13,8 +13,18 @@ builder.Services.Configure<ConnectApi>(builder.Configuration.GetSection("Connect
 
 builder.Services.AddHttpClient("ConnectApi", client =>
 {
-    client.BaseAddress = new Uri(builder.Configuration.GetSection("ConnectionStrings")["StringConnectAPI"]);
+    var stringConnectApi = builder.Configuration.GetSection("ConnectionStrings")["StringConnectAPI"];
+    if (stringConnectApi != null)
+    {
+        client.BaseAddress = new Uri(stringConnectApi);
+    }
+    else
+    {
+        // Handle the case where stringConnectApi is null
+        // For example, you could log a warning or throw an exception
+    }
 });
+
 
 builder.Services.AddControllersWithViews().AddJsonOptions(options =>
 {

@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using TrainingCenters.InterfacesApi;
 
 namespace TrainingCenters.Controllers
 {
-    public class HomeController : Controller
-    { 
+    public class HomeController(IUnitOfWork unit) : Controller
+    {
+        private readonly IUnitOfWork _unit = unit;
         public IActionResult Index()
         {
             return View();

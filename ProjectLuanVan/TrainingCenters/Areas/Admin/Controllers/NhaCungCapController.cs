@@ -5,16 +5,12 @@ using TrainingCenters.Models;
 namespace TrainingCenters.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class NhaCungCapController : Controller
+    public class NhaCungCapController(IUnitOfWork unit) : Controller
     {
-        private readonly IUnitOfWork _unit;
+        private readonly IUnitOfWork _unit = unit;
 
-        public NhaCungCapController(IUnitOfWork unit)
-        {
-            _unit = unit;
-        }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             TempData["menu"] = "NhaCungCap";
             return View();

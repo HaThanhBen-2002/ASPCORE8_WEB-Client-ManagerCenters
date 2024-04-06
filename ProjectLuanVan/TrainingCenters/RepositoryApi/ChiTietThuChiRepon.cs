@@ -13,7 +13,7 @@ namespace TrainingCenters.RepositoryApi
         public ChiTietThuChiRepon(HttpClient httpClient, IOptions<TrainingCenters.ConnectApi.ConnectApi> connectionStrings)
         {
             _httpClient = httpClient = new HttpClient();
-            _apiUrl = connectionStrings.Value.StringConnectAPI;
+            _apiUrl = connectionStrings?.Value?.StringConnectAPI ?? throw new ArgumentNullException(nameof(connectionStrings));
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
         }
         
@@ -30,14 +30,14 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    return responseObject.IsSuccess;
+                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
                 }
                 else
                 {
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }
@@ -57,14 +57,14 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    return responseObject.IsSuccess;
+                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
                 }
                 else
                 {
                     return false; 
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }
@@ -80,7 +80,7 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    return responseObject.IsSuccess;
+                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
                 }
                 else
                 {
@@ -108,14 +108,18 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
                     var values = JsonConvert.DeserializeObject<ICollection<ChiTietThuChi>>(content1);
-                    return values;
+                    if (values != null)
+                    {
+                        
+                    }
+                    return [];
                 }
                 else
                 {
                     return new List<ChiTietThuChi>(); 
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<ChiTietThuChi>();
             }
@@ -135,14 +139,18 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
                     var values = JsonConvert.DeserializeObject<ICollection<ChiTietThuChi>>(content1);
-                    return values;
+                    if (values != null)
+                    {
+                        return values;
+                    }
+                    return [];
                 }
                 else
                 {
                     return new List<ChiTietThuChi>();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<ChiTietThuChi>();
             }
@@ -162,14 +170,14 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    return responseObject.IsSuccess;
+                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
                 }
                 else
                 {
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }

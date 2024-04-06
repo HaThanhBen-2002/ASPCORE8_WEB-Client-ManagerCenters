@@ -20,7 +20,7 @@ namespace TrainingCenters.RepositoryApi
         public PhieuThuChiRepon(HttpClient httpClient, IOptions<TrainingCenters.ConnectApi.ConnectApi> connectionStrings)
         {
             _httpClient = httpClient = new HttpClient();
-            _apiUrl = connectionStrings.Value.StringConnectAPI;
+            _apiUrl = connectionStrings?.Value?.StringConnectAPI ?? throw new ArgumentNullException(nameof(connectionStrings));
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
         }
 
@@ -37,14 +37,14 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    return responseObject.IsSuccess;
+                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
                 }
                 else
                 {
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }
@@ -64,14 +64,14 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    return responseObject.IsSuccess;
+                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
                 }
                 else
                 {
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }
@@ -87,7 +87,7 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    return responseObject.IsSuccess;
+                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
                 }
                 else
                 {
@@ -115,16 +115,20 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
                     var values = JsonConvert.DeserializeObject<ICollection<PhieuThuChi>>(content1);
-                    return values;
+                    if (values != null)
+                    {
+                        return values;
+                    }
+                    return [];
                 }
                 else
                 {
-                    return new List<PhieuThuChi>();
+                    return [];
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                return new List<PhieuThuChi>();
+                return [];
             }
         }
 
@@ -142,14 +146,14 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    return responseObject.IsSuccess;
+                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
                 }
                 else
                 {
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }
@@ -168,16 +172,20 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
                     var values = JsonConvert.DeserializeObject<ICollection<PhieuThuChi>>(content1);
-                    return values;
+                    if(values != null)
+                    {
+                        return values;
+                    }
+                    return [];
                 }
                 else
                 {
-                    return new List<PhieuThuChi>();
+                    return [];
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                return new List<PhieuThuChi>();
+                return [];
             }
         }
 
@@ -194,14 +202,18 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<PhieuThuChi>(jsonResponse);
-                    return responseObject;
+                    if(responseObject != null)
+                    {
+                        return responseObject;
+                    }
+                    return new PhieuThuChi();
                 }
                 else
                 {
                     return new PhieuThuChi();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return new PhieuThuChi();
             }
@@ -224,12 +236,12 @@ namespace TrainingCenters.RepositoryApi
                 }
                 else
                 {
-                    return null;
+                    return new object();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                return null;
+                return new object();
             }
         }
 
@@ -253,7 +265,7 @@ namespace TrainingCenters.RepositoryApi
                     return 0;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return 0;
             }
@@ -279,7 +291,7 @@ namespace TrainingCenters.RepositoryApi
                     return 0;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return 0;
             }

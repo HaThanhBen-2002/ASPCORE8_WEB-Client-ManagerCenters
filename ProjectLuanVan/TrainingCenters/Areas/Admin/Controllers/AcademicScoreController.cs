@@ -15,7 +15,7 @@
 //namespace TrainingCenters.Areas.Admin.Controllers
 //{
 //    [Area("Admin")]
-//    public class AcademicScoreController : Controller
+//    public class AcademicScoreController(IUnitOfWork unit) : Controller
 //    {
 //        private readonly IUnitOfWork _unitOfWork;
 //        public AcademicScoreController(IUnitOfWork unitOfWork)

@@ -9,16 +9,12 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace TrainingCenters.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class TrungTamController : Controller
+    public class TrungTamController(IUnitOfWork unit) : Controller
     {
-        private readonly IUnitOfWork _unit;
+        private readonly IUnitOfWork _unit = unit;
 
-        public TrungTamController(IUnitOfWork unit)
-        {
-            _unit = unit;
-        }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             TempData["menu"] = "TrungTam";
             return View();

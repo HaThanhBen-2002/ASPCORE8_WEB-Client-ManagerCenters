@@ -6,16 +6,11 @@ using TrainingCenters.Models;
 namespace TrainingCenters.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class LoSanPhamController : Controller
+    public class LoSanPhamController(IUnitOfWork unit) : Controller
     {
-        private readonly IUnitOfWork _unit;
+        private readonly IUnitOfWork _unit = unit;
 
-        public LoSanPhamController(IUnitOfWork unit)
-        {
-            _unit = unit;
-        }
-
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             TempData["menu"] = "LoSanPham";
             return View();
@@ -37,7 +32,7 @@ namespace TrainingCenters.Areas.Admin.Controllers
         public async Task<IActionResult> GetByIdTable(string id)
         {
             var data = await _unit.LoSanPham.GetById(Convert.ToInt32(id));
-            SanPham item1 = await _unit.SanPham.GetById((int)data.MaSanPham);
+            SanPham item1 = await _unit.SanPham.GetById(Convert.ToInt32(data.MaSanPham));
             var rTable = new
             {
                 maLoSanPham = data.MaLoSanPham,

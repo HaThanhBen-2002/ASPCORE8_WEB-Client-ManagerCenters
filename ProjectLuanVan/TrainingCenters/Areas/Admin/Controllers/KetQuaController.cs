@@ -6,16 +6,11 @@ using TrainingCenters.Models;
 namespace TrainingCenters.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class KetQuaController : Controller
+    public class KetQuaController(IUnitOfWork unit) : Controller
     {
-        private readonly IUnitOfWork _unit;
+        private readonly IUnitOfWork _unit = unit;
 
-        public KetQuaController(IUnitOfWork unit)
-        {
-            _unit = unit;
-        }
-
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             TempData["menu"] = "KetQua";
             return View();
@@ -37,17 +32,22 @@ namespace TrainingCenters.Areas.Admin.Controllers
         public async Task<IActionResult> GetByIdTable(string id)
         {
             var data = await _unit.KetQua.GetById(Convert.ToInt32(id));
-            HocSinh item1 = await _unit.HocSinh.GetById((int)data.MaHocSinh);
-            MonHoc item2 = await _unit.MonHoc.GetById((int)data.MaMonHoc);
-            var rTable = new
+            if (data != null)
             {
-                maKetQua = data.MaKetQua,
-                tenKetQua = data.TenKetQua,
-                tenHocSinh = item1.TenHocSinh,
-                tenMonHoc = item2.TenMonHoc,
-                trangThai = data.TrangThai,
-            };
-            return Ok(rTable);
+                HocSinh item1 = await _unit.HocSinh.GetById(Convert.ToInt32(data.MaHocSinh));
+                MonHoc item2 = await _unit.MonHoc.GetById(Convert.ToInt32(data.MaMonHoc));
+                var rTable = new
+                {
+                    maKetQua = data.MaKetQua,
+                    tenKetQua = data.TenKetQua,
+                    tenHocSinh = item1.TenHocSinh,
+                    tenMonHoc = item2.TenMonHoc,
+                    trangThai = data.TrangThai,
+                };
+                return Ok(rTable);
+            }
+
+            return Ok(false);
 
         }
 

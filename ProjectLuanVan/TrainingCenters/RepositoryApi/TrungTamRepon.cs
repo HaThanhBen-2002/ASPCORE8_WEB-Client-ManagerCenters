@@ -22,7 +22,7 @@ namespace TrainingCenters.RepositoryApi
         public TrungTamRepon(HttpClient httpClient, IOptions<TrainingCenters.ConnectApi.ConnectApi> connectionStrings)
         {
             _httpClient = httpClient = new HttpClient();
-            _apiUrl = connectionStrings.Value.StringConnectAPI;
+            _apiUrl = connectionStrings?.Value?.StringConnectAPI ?? throw new ArgumentNullException(nameof(connectionStrings));
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
         }
         
@@ -39,14 +39,18 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    return responseObject.IsSuccess;
+                    if (responseObject != null)
+                    {
+                        if(responseObject != null){ return responseObject.IsSuccess;} return false;
+                    }
+                    return false;
                 }
                 else
                 {
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }
@@ -66,14 +70,14 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    return responseObject.IsSuccess;
+                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
                 }
                 else
                 {
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }
@@ -89,7 +93,7 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    return responseObject.IsSuccess;
+                    if(responseObject != null){ if(responseObject != null){ return responseObject.IsSuccess;} return false;} return false;
                 }
                 else
                 {
@@ -117,14 +121,18 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
                     var values = JsonConvert.DeserializeObject<ICollection<TrungTam>>(content1);
-                    return values;
+                    if (values != null)
+                    {
+                        return values;
+                    }
+                    return [];
                 }
                 else
                 {
                     return new List<TrungTam>();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return new List<TrungTam>();
             }
@@ -144,14 +152,14 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    return responseObject.IsSuccess;
+                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
                 }
                 else
                 {
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return false;
             }
@@ -170,16 +178,20 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
                     var values = JsonConvert.DeserializeObject<ICollection<TrungTam>>(content1);
-                    return values;
+                    if (values != null)
+                    {
+                        return values;
+                    }
+                    return [];
                 }
                 else
                 {
-                    return new List<TrungTam>();
+                    return [];
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                return new List<TrungTam>();
+                return [];
             }
         }
 
@@ -196,14 +208,18 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<TrungTam>(jsonResponse);
-                    return responseObject;
+                    if (responseObject != null)
+                    {
+                        return responseObject;
+                    }
+                    return new TrungTam();
                 }
                 else
                 {
                     return new TrungTam();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return new TrungTam();
             }
@@ -226,12 +242,12 @@ namespace TrainingCenters.RepositoryApi
                 }
                 else
                 {
-                    return null;
+                    return new object();
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                return null;
+                return new object();
             }
         }
 
@@ -248,16 +264,20 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
                     var objects = JsonConvert.DeserializeObject<List<TrungTamMN>>(content1);
-                    return objects;
+                    if(objects != null)
+                    {
+                        return objects;
+                    }
+                    return [];
                 }
                 else
                 {
-                    return null;
+                    return [];
                 }
             }
-            catch (Exception ex)
+            catch 
             {
-                return null;
+                return [];
             }
         }
 
@@ -281,7 +301,7 @@ namespace TrainingCenters.RepositoryApi
                     return 0;
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 return 0;
             }

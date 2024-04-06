@@ -6,16 +6,11 @@ using TrainingCenters.Models;
 namespace TrainingCenters.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class HocSinhController : Controller
+    public class HocSinhController(IUnitOfWork unit) : Controller
     {
-        private readonly IUnitOfWork _unit;
+        private readonly IUnitOfWork _unit = unit;
 
-        public HocSinhController(IUnitOfWork unit)
-        {
-            _unit = unit;
-        }
-
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             TempData["menu"] = "HocSinh";
             return View();
@@ -41,7 +36,7 @@ namespace TrainingCenters.Areas.Admin.Controllers
         public async Task<IActionResult> GetByIdTable(string id)
         {
             var data = await _unit.HocSinh.GetById(Convert.ToInt32(id));
-            Lop item1 = await _unit.Lop.GetById((int)data.MaLop);
+            Lop item1 = await _unit.Lop.GetById(Convert.ToInt32(data.MaLop));
             var rTable = new
             {
 

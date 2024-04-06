@@ -4,6 +4,6 @@
     {
         public int RecordsFiltered { get; set; }
         public int RecordsTotal { get; set; }
-        public List<TrungTam> Data { get; set; }
+        public List<TrungTam>? Data { get; set; }
     }
 }

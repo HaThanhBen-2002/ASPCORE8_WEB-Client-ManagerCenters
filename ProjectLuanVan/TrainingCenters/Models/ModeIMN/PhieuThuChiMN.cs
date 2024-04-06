@@ -3,5 +3,5 @@
 public class PhieuThuChiMN
 {
     public int maPhieuThuChi { get; set; }
-    public string tenPhieuThuChi { get; set; }
+    public string? tenPhieuThuChi { get; set; }
 }
