@@ -12,6 +12,8 @@ namespace TrainingCenters.Models
 
         public string? NgayTao { get; set; }
 
+        public string? CodeHoaDon { get; set; }
+
         public string? NgayThanhToan { get; set; }
 
         public string? LoaiPhieu { get; set; }

@@ -9,7 +9,7 @@ namespace Data.Dtos
     public class PhieuThuChiDto
     {
         public int? MaPhieu { get; set; }
-
+        public string? CodeHoaDon { get; set; }
         public string? NgayTao { get; set; }
 
         public string? NgayThanhToan { get; set; }

@@ -311,6 +311,7 @@ BEGIN
     CREATE TABLE [PhieuThuChi] (
         [maPhieu] int NOT NULL IDENTITY,
         [ngayTao] nvarchar(20) NULL,
+        [codeHoaDon] char(23) NULL,
         [ngayThanhToan] nvarchar(20) NULL,
         [loaiPhieu] nvarchar(50) NULL,
         [tongTien] nvarchar(15) NULL,

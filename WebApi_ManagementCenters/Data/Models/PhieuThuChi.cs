@@ -11,6 +11,9 @@ public partial class PhieuThuChi
     [Required]
     public string? NgayTao { get; set; }
 
+    [Required]
+    public string? CodeHoaDon { get; set; }
+
     public string? NgayThanhToan { get; set; }
 
     [Required]

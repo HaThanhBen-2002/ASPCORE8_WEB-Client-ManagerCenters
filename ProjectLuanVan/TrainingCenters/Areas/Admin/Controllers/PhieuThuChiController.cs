@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Options;
 using TrainingCenters.InterfacesApi;
 using TrainingCenters.Models;
 
@@ -19,7 +20,44 @@ namespace TrainingCenters.Areas.Admin.Controllers
             TempData["menu"] = "PhieuThuChi";
             return View();
         }
+        public string GenerateInvoiceCode(string loaiHoaDon)
+        {
+            string textCode = "";
+            if(loaiHoaDon == "Hóa đơn thu")
+            {
+                textCode = "HDT";
+            }
+            else if(loaiHoaDon == "Hóa đơn chi")
+            {
+                textCode = "HDC";
+            }
+            else if (loaiHoaDon == "Hóa đơn tạm ứng")
+            {
+                textCode = "HDU";
+            }
+            else if (loaiHoaDon == "Hóa đơn khác")
+            {
+                textCode = "HDK";
+            }
+            else 
+            {
+                textCode = "HD";
+            }
+            // Lấy thời gian hiện tại
+            DateTime currentTime = DateTime.Now;
 
+            // Tạo mã hóa đơn từ thông tin thời gian
+            string invoiceCode = string.Format(textCode + "-{0}{1}{2}-{3}{4}{5}-{6}",
+                                                currentTime.Year,
+                                                currentTime.Month.ToString("00"),
+                                                currentTime.Day.ToString("00"),
+                                                currentTime.Hour.ToString("00"),
+                                                currentTime.Minute.ToString("00"),
+                                                currentTime.Second.ToString("00"),
+                                                currentTime.Millisecond.ToString("000"));
+
+            return invoiceCode;
+        }
         #region Api Data
         public async Task<IActionResult> GetAll()
         {
@@ -49,10 +87,31 @@ namespace TrainingCenters.Areas.Admin.Controllers
 
         }
 
-        public async Task<IActionResult> Create(PhieuThuChi item)
+        public async Task<IActionResult> Create(PhieuThuChi item, List<ChiTietThuChi> chiTietThuChis)
         {
-            var status = await _unit.PhieuThuChi.Create(item);
-            return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
+            bool statusCreate = false;
+            if(item!= null)
+            {
+                if(item.LoaiPhieu != null)
+                {
+                    item.CodeHoaDon = GenerateInvoiceCode(item.LoaiPhieu);
+                    var status = await _unit.PhieuThuChi.Create(item);
+                    if (status)
+                    {
+                        var phieuThuChiNew = await _unit.PhieuThuChi.Search(item) as List<PhieuThuChi>;
+                        if(phieuThuChiNew != null)
+                        {
+                            foreach (var ct in chiTietThuChis)
+                            {
+                                ct.MaPhieu = phieuThuChiNew[0].MaPhieu;
+                                statusCreate = await _unit.ChiTietThuChi.Create(ct);
+                            }
+                        }
+                    }
+                }
+            }
+            return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = statusCreate });
+
         }
 
         public async Task<IActionResult> Update(PhieuThuChi item)

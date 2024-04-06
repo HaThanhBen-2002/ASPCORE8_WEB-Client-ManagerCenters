@@ -91,6 +91,15 @@ namespace Data.RepositoryData
                 );
                 expressions.Add(expression);
             }
+            if (!string.IsNullOrEmpty(item.CodeHoaDon))
+            {
+                var expression = Expression.Call(
+                    Expression.Property(parameterExpression, nameof(PhieuThuChi.CodeHoaDon)),
+                    typeof(string).GetMethod("Contains", new[] { typeof(string) }),
+                    Expression.Constant(item.CodeHoaDon)
+                );
+                expressions.Add(expression);
+            }
             if (!string.IsNullOrEmpty(item.TongTien))
             {
                 var expression = Expression.Call(

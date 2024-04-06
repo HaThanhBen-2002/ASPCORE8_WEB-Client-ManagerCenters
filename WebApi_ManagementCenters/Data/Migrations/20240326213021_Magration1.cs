@@ -370,6 +370,7 @@ namespace Data.Migrations
                     maPhieu = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ngayTao = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    codeHoaDon = table.Column<string>(type: "char(23)", maxLength: 23, nullable: true),
                     ngayThanhToan = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     loaiPhieu = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     tongTien = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),

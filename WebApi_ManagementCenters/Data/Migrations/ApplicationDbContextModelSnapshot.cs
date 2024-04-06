@@ -113,12 +113,12 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.ChiTietThuChi", b =>
                 {
-                    b.Property<int>("MaChiTiet")
+                    b.Property<int?>("MaChiTiet")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("maChiTiet");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaChiTiet"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MaChiTiet"));
 
                     b.Property<string>("DonVi")
                         .HasMaxLength(50)
@@ -164,14 +164,15 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.DichVu", b =>
                 {
-                    b.Property<int>("MaDichVu")
+                    b.Property<int?>("MaDichVu")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("maDichVu");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaDichVu"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MaDichVu"));
 
                     b.Property<string>("Gia")
+                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)")
                         .HasColumnName("gia");
@@ -191,6 +192,7 @@ namespace Data.Migrations
                         .HasColumnName("post");
 
                     b.Property<string>("TenDichVu")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("tenDichVu");
@@ -208,12 +210,12 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.HocSinh", b =>
                 {
-                    b.Property<int>("MaHocSinh")
+                    b.Property<int?>("MaHocSinh")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("maHocSinh");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaHocSinh"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MaHocSinh"));
 
                     b.Property<string>("Bmi")
                         .HasMaxLength(10)
@@ -266,6 +268,7 @@ namespace Data.Migrations
                         .HasColumnName("emailMe");
 
                     b.Property<string>("GioiTinh")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("gioiTinh");
@@ -279,10 +282,12 @@ namespace Data.Migrations
                         .HasColumnName("maLop");
 
                     b.Property<int?>("MaTrungTam")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maTrungTam");
 
                     b.Property<string>("NgaySinh")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("ngaySinh");
@@ -333,6 +338,7 @@ namespace Data.Migrations
                         .HasColumnName("tenCha");
 
                     b.Property<string>("TenHocSinh")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("tenHocSinh");
@@ -374,35 +380,41 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.KetQua", b =>
                 {
-                    b.Property<int>("MaKetQua")
+                    b.Property<int?>("MaKetQua")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("maKetQua");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaKetQua"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MaKetQua"));
 
                     b.Property<string>("Diem")
+                        .IsRequired()
                         .HasMaxLength(5)
                         .HasColumnType("nvarchar(5)")
                         .HasColumnName("diem");
 
                     b.Property<int?>("MaHocSinh")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maHocSinh");
 
                     b.Property<int?>("MaMonHoc")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maMonHoc");
 
                     b.Property<int?>("MaNhanVien")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maNhanVien");
 
                     b.Property<int?>("MaTrungTam")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maTrungTam");
 
                     b.Property<string>("NgayKiemTra")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("ngayKiemTra");
@@ -418,16 +430,19 @@ namespace Data.Migrations
                         .HasColumnName("nguoiXoa");
 
                     b.Property<string>("TenKetQua")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("tenKetQua");
 
                     b.Property<string>("TrangThai")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("trangThai");
 
                     b.Property<string>("XepLoai")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("xepLoai");
@@ -448,14 +463,15 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.LoSanPham", b =>
                 {
-                    b.Property<int>("MaLoSanPham")
+                    b.Property<int?>("MaLoSanPham")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("maLoSanPham");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaLoSanPham"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MaLoSanPham"));
 
                     b.Property<string>("DonVi")
+                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)")
                         .HasColumnName("donVi");
@@ -466,23 +482,28 @@ namespace Data.Migrations
                         .HasColumnName("ghiChu");
 
                     b.Property<int?>("MaNhanVien")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maNhanVien");
 
                     b.Property<int?>("MaSanPham")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maSanPham");
 
                     b.Property<int?>("MaTrungTam")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maTrungTam");
 
                     b.Property<string>("NgayHetHan")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("ngayHetHan");
 
                     b.Property<string>("NgayNhap")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("ngayNhap");
@@ -498,16 +519,19 @@ namespace Data.Migrations
                         .HasColumnName("nguoiXoa");
 
                     b.Property<string>("SoLuong")
+                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)")
                         .HasColumnName("soLuong");
 
                     b.Property<string>("TenLoSanPham")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("tenLoSanPham");
 
                     b.Property<string>("TrangThai")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("trangThai");
@@ -526,41 +550,48 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.Lop", b =>
                 {
-                    b.Property<int>("MaLop")
+                    b.Property<int?>("MaLop")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("maLop");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaLop"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MaLop"));
 
                     b.Property<string>("HocPhi")
+                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)")
                         .HasColumnName("hocPhi");
 
                     b.Property<string>("LichHoc")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("lichHoc");
 
                     b.Property<int?>("MaNhanVien")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maNhanVien");
 
                     b.Property<int?>("MaTrungTam")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maTrungTam");
 
                     b.Property<int?>("NamHoc")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("namHoc");
 
                     b.Property<string>("NgayBatDau")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("ngayBatDau");
 
                     b.Property<string>("NgayKetThuc")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("ngayKetThuc");
@@ -576,6 +607,7 @@ namespace Data.Migrations
                         .HasColumnName("nguoiXoa");
 
                     b.Property<string>("TenLop")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("tenLop");
@@ -597,14 +629,15 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.MonHoc", b =>
                 {
-                    b.Property<int>("MaMonHoc")
+                    b.Property<int?>("MaMonHoc")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("maMonHoc");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaMonHoc"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MaMonHoc"));
 
                     b.Property<string>("Gia")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("gia");
@@ -620,6 +653,7 @@ namespace Data.Migrations
                         .HasColumnName("nguoiXoa");
 
                     b.Property<string>("TenMonHoc")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("tenMonHoc");
@@ -637,12 +671,12 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.NhaCungCap", b =>
                 {
-                    b.Property<int>("MaNhaCungCap")
+                    b.Property<int?>("MaNhaCungCap")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("maNhaCungCap");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaNhaCungCap"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MaNhaCungCap"));
 
                     b.Property<string>("Email")
                         .HasMaxLength(255)
@@ -660,6 +694,7 @@ namespace Data.Migrations
                         .HasColumnName("maSoThue");
 
                     b.Property<int?>("MaTrungTam")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maTrungTam");
 
@@ -689,6 +724,7 @@ namespace Data.Migrations
                         .HasColumnName("soTaiKhoan");
 
                     b.Property<string>("TenNhaCungCap")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("tenNhaCungCap");
@@ -703,14 +739,15 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.NhanVien", b =>
                 {
-                    b.Property<int>("MaNhanVien")
+                    b.Property<int?>("MaNhanVien")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("maNhanVien");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaNhanVien"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MaNhanVien"));
 
                     b.Property<string>("Cccd")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("CCCD");
@@ -721,16 +758,19 @@ namespace Data.Migrations
                         .HasColumnName("danToc");
 
                     b.Property<string>("DiaChi")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("diaChi");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("email");
 
                     b.Property<string>("GioiTinh")
+                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)")
                         .HasColumnName("gioiTinh");
@@ -740,6 +780,7 @@ namespace Data.Migrations
                         .HasColumnName("hinhAnh");
 
                     b.Property<string>("LoaiNhanVien")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("loaiNhanVien");
@@ -758,6 +799,7 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("MaTrungTam")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maTrungTam");
 
@@ -767,6 +809,7 @@ namespace Data.Migrations
                         .HasColumnName("nganHang");
 
                     b.Property<string>("NgaySinh")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("ngaySinh");
@@ -782,6 +825,7 @@ namespace Data.Migrations
                         .HasColumnName("nguoiXoa");
 
                     b.Property<string>("PhongBan")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("phongBan");
@@ -797,6 +841,7 @@ namespace Data.Migrations
                         .HasColumnName("soTaiKhoan");
 
                     b.Property<string>("TenNhanVien")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("tenNhanVien");
@@ -823,12 +868,16 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.PhieuThuChi", b =>
                 {
-                    b.Property<int>("MaPhieu")
+                    b.Property<int?>("MaPhieu")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("maPhieu");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaPhieu"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MaPhieu"));
+
+                    b.Property<string>("CodeHoaDon")
+                        .IsRequired()
+                        .HasColumnType("char(23)");
 
                     b.Property<string>("GhiChu")
                         .HasMaxLength(1000)
@@ -836,24 +885,29 @@ namespace Data.Migrations
                         .HasColumnName("ghiChu");
 
                     b.Property<string>("HinhThucThanhToan")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("hinhThucThanhToan");
 
                     b.Property<string>("LoaiPhieu")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("loaiPhieu");
 
                     b.Property<int?>("MaNhanVien")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maNhanVien");
 
                     b.Property<int?>("MaTrungTam")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maTrungTam");
 
                     b.Property<string>("NgayTao")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("ngayTao");
@@ -874,11 +928,13 @@ namespace Data.Migrations
                         .HasColumnName("nguoiXoa");
 
                     b.Property<string>("TongTien")
+                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)")
                         .HasColumnName("tongTien");
 
                     b.Property<string>("TrangThai")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)")
                         .HasColumnName("trangThai");
@@ -895,33 +951,38 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.SanPham", b =>
                 {
-                    b.Property<int>("MaSanPham")
+                    b.Property<int?>("MaSanPham")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("maSanPham");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaSanPham"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MaSanPham"));
 
                     b.Property<string>("Gia")
+                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)")
                         .HasColumnName("gia");
 
                     b.Property<string>("HanSuDung")
+                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)")
                         .HasColumnName("hanSuDung");
 
                     b.Property<string>("LoaiSanPham")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("loaiSanPham");
 
                     b.Property<int?>("MaNhaCungCap")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maNhaCungCap");
 
                     b.Property<int?>("MaTrungTam")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maTrungTam");
 
@@ -936,6 +997,7 @@ namespace Data.Migrations
                         .HasColumnName("nguoiXoa");
 
                     b.Property<string>("TenSanPham")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("tenSanPham");
@@ -957,31 +1019,36 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.SuDungDichVu", b =>
                 {
-                    b.Property<int>("MaSuDungDichVu")
+                    b.Property<int?>("MaSuDungDichVu")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("maSuDungDichVu");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaSuDungDichVu"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MaSuDungDichVu"));
 
                     b.Property<int?>("MaDichVu")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maDichVu");
 
                     b.Property<int?>("MaHocSinh")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maHocSinh");
 
                     b.Property<int?>("MaTrungTam")
+                        .IsRequired()
                         .HasColumnType("int")
                         .HasColumnName("maTrungTam");
 
                     b.Property<string>("NgayBatDau")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("ngayBatDau");
 
                     b.Property<string>("NgayKetThuc")
+                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("ngayKetThuc");
@@ -997,11 +1064,13 @@ namespace Data.Migrations
                         .HasColumnName("nguoiXoa");
 
                     b.Property<string>("TenSuDungDichVu")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("tenSuDungDichVu");
 
                     b.Property<string>("TrangThai")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("trangThai");
@@ -1020,14 +1089,15 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Models.TrungTam", b =>
                 {
-                    b.Property<int>("MaTrungTam")
+                    b.Property<int?>("MaTrungTam")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("maTrungTam");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MaTrungTam"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MaTrungTam"));
 
                     b.Property<string>("DiaChi")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("diaChi");
@@ -1073,6 +1143,7 @@ namespace Data.Migrations
                         .HasColumnName("soTaiKhoan");
 
                     b.Property<string>("TenTrungTam")
+                        .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)")
                         .HasColumnName("tenTrungTam");
@@ -1112,35 +1183,35 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "69588984-3bd9-4526-9aea-98fd0a2e122e",
+                            Id = "0c57ab30-5200-4c9e-beee-141218ff445a",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "cf2b7b31-03e0-49c9-9d3b-7b02af83153c",
+                            Id = "2bb6f724-1aaf-4ef9-9e2b-92096da52fbf",
                             ConcurrencyStamp = "2",
                             Name = "Quản lý trung tâm",
                             NormalizedName = "Quản lý trung tâm"
                         },
                         new
                         {
-                            Id = "74407c4c-fd6c-4265-8963-660301fe42ff",
+                            Id = "a541e4a5-f65c-4774-bdad-b1c273d73499",
                             ConcurrencyStamp = "3",
                             Name = "Giáo viên",
                             NormalizedName = "Giáo viên"
                         },
                         new
                         {
-                            Id = "1b59904a-3cdb-4c62-af58-fce68dc36cd0",
+                            Id = "e301c434-2ae0-49ba-9f12-8da68078d1da",
                             ConcurrencyStamp = "4",
                             Name = "Thu ngân",
                             NormalizedName = "Thu ngân"
                         },
                         new
                         {
-                            Id = "77987efa-50f6-488c-a5bd-5cbae27509ba",
+                            Id = "8437cfac-88fe-4023-be82-4090078e112d",
                             ConcurrencyStamp = "5",
                             Name = "Đầu bếp",
                             NormalizedName = "Đầu bếp"
@@ -1273,6 +1344,8 @@ namespace Data.Migrations
                     b.HasOne("Data.Models.TrungTam", "MaTrungTamNavigation")
                         .WithMany("HocSinhs")
                         .HasForeignKey("MaTrungTam")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__HocSinh__maTrung__6D0D32F4");
 
                     b.Navigation("MaLopNavigation");
@@ -1285,21 +1358,29 @@ namespace Data.Migrations
                     b.HasOne("Data.Models.HocSinh", "MaHocSinhNavigation")
                         .WithMany("KetQuas")
                         .HasForeignKey("MaHocSinh")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__KetQua__maHocSin__6E01572D");
 
                     b.HasOne("Data.Models.MonHoc", "MaMonHocNavigation")
                         .WithMany("KetQuas")
                         .HasForeignKey("MaMonHoc")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__KetQua__maMonHoc__6EF57B66");
 
                     b.HasOne("Data.Models.NhanVien", "MaNhanVienNavigation")
                         .WithMany("KetQuas")
                         .HasForeignKey("MaNhanVien")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__KetQua__maNhanVi__6FE99F9F");
 
                     b.HasOne("Data.Models.TrungTam", "MaTrungTamNavigation")
                         .WithMany("KetQuas")
                         .HasForeignKey("MaTrungTam")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__KetQua__maTrungT__70DDC3D8");
 
                     b.Navigation("MaHocSinhNavigation");
@@ -1316,16 +1397,22 @@ namespace Data.Migrations
                     b.HasOne("Data.Models.NhanVien", "MaNhanVienNavigation")
                         .WithMany("LoSanPhams")
                         .HasForeignKey("MaNhanVien")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__LoSanPham__maNha__73BA3083");
 
                     b.HasOne("Data.Models.SanPham", "MaSanPhamNavigation")
                         .WithMany("LoSanPhams")
                         .HasForeignKey("MaSanPham")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__LoSanPham__maSan__74AE54BC");
 
                     b.HasOne("Data.Models.TrungTam", "MaTrungTamNavigation")
                         .WithMany("LoSanPhams")
                         .HasForeignKey("MaTrungTam")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__LoSanPham__maTru__75A278F5");
 
                     b.Navigation("MaNhanVienNavigation");
@@ -1340,11 +1427,15 @@ namespace Data.Migrations
                     b.HasOne("Data.Models.NhanVien", "MaNhanVienNavigation")
                         .WithMany("Lops")
                         .HasForeignKey("MaNhanVien")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__Lop__maNhanVien__71D1E811");
 
                     b.HasOne("Data.Models.TrungTam", "MaTrungTamNavigation")
                         .WithMany("Lops")
                         .HasForeignKey("MaTrungTam")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__Lop__maTrungTam__72C60C4A");
 
                     b.Navigation("MaNhanVienNavigation");
@@ -1357,6 +1448,8 @@ namespace Data.Migrations
                     b.HasOne("Data.Models.TrungTam", "MaTrungTamNavigation")
                         .WithMany("NhaCungCaps")
                         .HasForeignKey("MaTrungTam")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__NhaCungCa__maTru__76969D2E");
 
                     b.Navigation("MaTrungTamNavigation");
@@ -1371,6 +1464,8 @@ namespace Data.Migrations
                     b.HasOne("Data.Models.TrungTam", "MaTrungTamNavigation")
                         .WithMany("NhanViens")
                         .HasForeignKey("MaTrungTam")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__NhanVien__maTrun__787EE5A0");
 
                     b.Navigation("MaTaiKhoanNavigation");
@@ -1383,11 +1478,15 @@ namespace Data.Migrations
                     b.HasOne("Data.Models.NhanVien", "MaNhanVienNavigation")
                         .WithMany("PhieuThuChis")
                         .HasForeignKey("MaNhanVien")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__PhieuThuC__maNha__797309D9");
 
                     b.HasOne("Data.Models.TrungTam", "MaTrungTamNavigation")
                         .WithMany("PhieuThuChis")
                         .HasForeignKey("MaTrungTam")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__PhieuThuC__maTru__7A672E12");
 
                     b.Navigation("MaNhanVienNavigation");
@@ -1400,11 +1499,15 @@ namespace Data.Migrations
                     b.HasOne("Data.Models.NhaCungCap", "MaNhaCungCapNavigation")
                         .WithMany("SanPhams")
                         .HasForeignKey("MaNhaCungCap")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__SanPham__maNhaCu__7B5B524B");
 
                     b.HasOne("Data.Models.TrungTam", "MaTrungTamNavigation")
                         .WithMany("SanPhams")
                         .HasForeignKey("MaTrungTam")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__SanPham__maTrung__7C4F7684");
 
                     b.Navigation("MaNhaCungCapNavigation");
@@ -1417,16 +1520,22 @@ namespace Data.Migrations
                     b.HasOne("Data.Models.DichVu", "MaDichVuNavigation")
                         .WithMany("SuDungDichVus")
                         .HasForeignKey("MaDichVu")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__SuDungDic__maDic__7D439ABD");
 
                     b.HasOne("Data.Models.HocSinh", "MaHocSinhNavigation")
                         .WithMany("SuDungDichVus")
                         .HasForeignKey("MaHocSinh")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__SuDungDic__maHoc__7E37BEF6");
 
                     b.HasOne("Data.Models.TrungTam", "MaTrungTamNavigation")
                         .WithMany("SuDungDichVus")
                         .HasForeignKey("MaTrungTam")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
                         .HasConstraintName("FK__SuDungDic__maTru__7F2BE32F");
 
                     b.Navigation("MaDichVuNavigation");
