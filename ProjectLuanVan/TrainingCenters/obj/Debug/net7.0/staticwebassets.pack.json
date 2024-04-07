@@ -1045,6 +1045,10 @@
       "PackagePath": "staticwebassets\\AdminAssets\\module\\academicScore.js"
     },
     {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\chiTietHoaDon.js",
+      "PackagePath": "staticwebassets\\AdminAssets\\module\\chiTietHoaDon.js"
+    },
+    {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\dichVu.js",
       "PackagePath": "staticwebassets\\AdminAssets\\module\\dichVu.js"
     },
