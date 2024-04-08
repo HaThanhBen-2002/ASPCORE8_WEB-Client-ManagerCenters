@@ -410,7 +410,7 @@ $(document).ready(function () {
         $('#lop_NgayBatDau').val(null);
         $('#lop_NgayKetThuc').val(null);
         $('#lop_MaTrungTam').val(0);
-        CbbNhanVienByMaTrungTam(); // Giả sử hàm này làm một số thao tác liên quan đến DOM hoặc dữ liệu, bạn có thể cần kiểm tra xem nó cần được gọi như thế nào khi gán giá trị null cho các phần tử.
+        CbbNhanVienByMaTrungTam();
         $('#lop_MaNhanVien').val(0);
     });
 

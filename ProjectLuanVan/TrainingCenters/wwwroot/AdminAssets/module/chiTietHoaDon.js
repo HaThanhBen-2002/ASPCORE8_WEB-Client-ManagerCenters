@@ -1,4 +1,4 @@
-﻿
+﻿var selectedItems = [];
 function GetLopData() {
     return {
         MaLop: $('#lop_MaLop').val(),
@@ -13,46 +13,67 @@ function GetLopData() {
         NgayKetThuc: $('#lop_NgayKetThuc').val(),
     };
 }
-
-function CreateLop() {
-    let item = GetLopData();
-    // Kiểm tra tính hợp lệ
-    if (isValidLop(item)) {
-        let status = false;
-        item.MaLop = null;
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/Lop/Create",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
+// Hàm để cập nhật bảng từ mảng các đối tượng
+function updateTable() {
+    var tongTien = 0;
+    // Đối tượng tạm thời để theo dõi các phần tử đã xuất hiện và số lượng của chúng
+    var tempItems = {};
+    // Kiểm tra và gộp các phần tử trùng lặp
+    selectedItems.forEach(function (item) {
+        var key = item.ten + item.gia; // Tạo khóa dựa trên các thuộc tính ten và gia
+        var soLuongInt = parseInt(item.soLuong); // Chuyển đổi kiểu số lượng thành số nguyên
+        if (tempItems[key]) {
+            // Nếu phần tử đã tồn tại trong tempItems, cập nhật lại số lượng và tính lại tổng giá
+            tempItems[key].soLuong += soLuongInt;
+            tempItems[key].tongGia = formatToVND(tempItems[key].soLuong * parseVNDToNumber(tempItems[key].gia));
+        } else {
+            // Nếu phần tử chưa tồn tại trong tempItems, thêm vào với số lượng hiện tại, tính tổng giá và giữ lại donViTinh
+            tempItems[key] = {
+                ten: item.ten,
+                gia: item.gia,
+                soLuong: soLuongInt,
+                tongGia: formatToVND(soLuongInt * parseVNDToNumber(item.gia)),
+                donViTinh: item.donViTinh // Giữ lại donViTinh
+            };
+        }
+    });
+    // Chuyển đổi tempItems trở lại thành mảng selectedItems
+    selectedItems = Object.values(tempItems).map(function (value) {
+        return value;
+    });
+    // Tính tổng tiền của hóa đơn
+    selectedItems.forEach(function (item) {
+        tongTien += parseVNDToNumber(item.tongGia)
+        $("#phieuThuChiTongTien").text(formatToVND(tongTien));
+    });
+    // Xóa các hàng hiện tại trong bảng trừ tiêu đề
+    $('#myTableHoaDon tbody').empty();
+    if (selectedItems != null) {
+        // Lặp qua từng đối tượng trong mảng selectedItems và thêm vào bảng
+        selectedItems.forEach(function (item, index) {
+            var row = '<tr>';
+            row += '<td width="30%" class="px-1">' + item.ten + '</td>';
+            row += '<td class="px-1">' + item.gia + '/' + item.donViTinh + '</td>';
+            row += '<td width="10%" class="px-1"><input type="number" class="quantity-input w-100 rounded-1" value="' + item.soLuong + '" min="1" data-index="' + index + '"/></td>';
+            row += '<td class="px-1" data-tonggia="' + item.tongGia + '">' + item.tongGia + '</td>'; // Thêm data-tonggia vào để lưu trữ tổng giá ban đầu
+            row += '</tr>';
+            $('#myTableHoaDon tbody').append(row);
         });
-        return status;
     }
-}
 
-function UpdateLop() {
-    let item = GetLopData();
-    // Kiểm tra tính hợp lệ
-    if (isValidLop(item) && CheckIsNull(item.MaLop)!=true) {
-        let status = false;
-        // Gửi dữ liệu thông qua AJAX để cập nhật vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/Lop/Update",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
-        return status;
-    }
-}
+    // Thêm Id cho mỗi button trong hàng, chứa chỉ mục của hàng
+    $('#myTableHoaDon tbody tr').each(function (index) {
+        var rowIndex = index; // Lấy chỉ mục của hàng
+        $(this).append('<td width="10%" class="px-1"><button onclick="DeleteItem(' + rowIndex +')" class="btn btn-xs btn-danger">Xóa</button></td>');
+    });
 
+}
+function DeleteItem(index) {
+    // Xóa phần tử tương ứng trong danh sách selectedItems
+    selectedItems.splice(index, 1);
+    // Cập nhật lại bảng
+    updateTable();
+}
 function CbbTrungTam() {
     var trungTam = {
         MaTrungTam: null,
@@ -70,14 +91,14 @@ function CbbTrungTam() {
         url: "/Admin/TrungTam/SearchName",
         data: { item: trungTam },
         success: function (data) {
-            $('#sanPham_MaTrungTam').empty();
-            $('#sanPham_MaTrungTam').append($('<option>', {
+            $('#phieuThuChi_MaTrungTam').empty();
+            $('#phieuThuChi_MaTrungTam').append($('<option>', {
                 value: 0,
                 text: "Tất cả"
             }));
             // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
             $.each(data.$values, function (index, item) {
-                $('#sanPham_MaTrungTam').append($('<option>', {
+                $('#phieuThuChi_MaTrungTam').append($('<option>', {
                     value: item.maTrungTam,
                     text: item.tenTrungTam
                 }));
@@ -87,7 +108,7 @@ function CbbTrungTam() {
 
 }
 function CbbNhaCungCapByMaTrungTam() {
-    let trungTam = $('#sanPham_MaTrungTam').val();
+    let trungTam = $('#phieuThuChi_MaTrungTam').val();
     if (trungTam != 0 && trungTam != null) {
 
         let nhaCungCap = {
@@ -131,9 +152,8 @@ function CbbNhaCungCapByMaTrungTam() {
         }));
     }
 }
-
 function CbbNhanVienByMaTrungTam() {
-    let trungTam = $('#lop_MaTrungTam').val();
+    let trungTam = $('#phieuThuChi_MaTrungTam').val();
     if (CheckIsNull(trungTam)!=true) {
 
         let nhanVien = {
@@ -187,20 +207,74 @@ function CbbNhanVienByMaTrungTam() {
     }
 }
 
+
 $(document).ready(function () {
     // ============================================== TABLE ===============================================
-
-
-    // Loading Data Table
-   
+    // Gán sự kiện change cho mỗi input
+    // Gán sự kiện input cho mỗi input
+    // Sử dụng delegation events để gán sự kiện input
+    $('#myTableHoaDon').on('input', '.quantity-input', function () {
+        let soLuong = parseInt($(this).val()); // Lấy giá trị mới của input
+        let indexItem = $(this).data('index'); // Lấy giá của sản phẩm
+        let tongGia = formatToVND(soLuong * parseVNDToNumber(selectedItems[indexItem].gia)); // Tính tổng giá mới
+        selectedItems[indexItem].soLuong = soLuong;
+        selectedItems[indexItem.tongGia] = tongGia;
+        updateTable(); // Cập nhật lại bảng
+    });
 
     // ============================================== CBB ===============================================
     CbbTrungTam();
-    CbbNhaCungCapByMaTrungTam();
-    $('#sanPham_MaTrungTam').change(function () {
+    $('#phieuThuChi_MaTrungTam').change(function () {
         CbbNhaCungCapByMaTrungTam();
+        CbbNhanVienByMaTrungTam();
     });
     // ============================================== BUTTON ===============================================
+    // Sản phẩm
+    $("#btnResetChiTietPhieuThuChiSanPham").click(function () {
+
+        $('#sanPham_MaSanPham').val(null);
+        $('#sanPham_TenSanPham').val(null);
+        $('#sanPham_ThongTin').val(null);
+        $('#sanPham_Gia').val(null);
+        $('#sanPham_HanSuDung').val("Tất cả");
+        $('#sanPham_LoaiSanPham').val("Tất cả");
+        $('#sanPham_MaNhaCungCap').val(0);
+
+        $('#checkAllSanPham').prop('checked', false);
+        var isChecked = $(this).prop('checked');
+        if (isChecked) {
+            $('#myTableSanPham input[type="checkbox"]').each(function () {
+                if (!$(this).hasClass('form-check-input')) {
+                    $(this).prop('checked', true);
+                }
+            });
+        } else {
+            $('#myTableSanPham input[type="checkbox"]').each(function () {
+                if (!$(this).hasClass('form-check-input')) {
+                    $(this).prop('checked', false);
+                }
+            });
+        }
+    });
+    $("#btnCreateChiTietPhieuThuChiSanPham").click(function () {
+        $('#myTableSanPham tbody tr').each(function () {
+            var checkbox = $(this).find('.checkbox');
+            if (checkbox.prop('checked')) {
+                var tenSanPham = $(this).find('td:nth-child(2)').text();
+                var gia = $(this).find('td:nth-child(3)').text();
+                var soLuong = $(this).find('.quantity-input').val();
+                selectedItems.push({
+                    ten: tenSanPham,
+                    gia: gia,
+                    soLuong: soLuong,
+                    donViTinh: "sp",
+                    tongGia: formatToVND(soLuong * parseVNDToNumber(gia))
+                });
+
+            }
+        });
+        updateTable();
+    });
     $("#btnSearchChiTietPhieuThuChiSanPham").click(function () {
 
         let sanPham = {
@@ -211,7 +285,7 @@ $(document).ready(function () {
             HanSuDung: $('#sanPham_HanSuDung').val(),
             LoaiSanPham: $('#sanPham_LoaiSanPham').val(),
             MaNhaCungCap: $('#sanPham_MaNhaCungCap').val(),
-            MaTrungTam: $('#sanPham_MaTrungTam').val()
+            MaTrungTam: $('#phieuThuChi_MaTrungTam').val()
         };
 
         if (sanPham.LoaiSanPham == "Tất cả") {
@@ -232,7 +306,7 @@ $(document).ready(function () {
         // Table Object
         $('#myTableSanPham').DataTable({
             serverSide: true,
-            scrollY: 400,
+            scrollY: 300,
             searching: false,
             lengthChange: true,
             ordering: false,
@@ -270,26 +344,304 @@ $(document).ready(function () {
         // Event pageChange"myTable"
         $('#myTableSanPham').on('page.dt', function () {
             // Thực hiện các hành động khi trang của DataTable thay đổi
-            $('#checkAll').prop('checked', false);
+            $('#checkAllSanPham').prop('checked', false);
         });
         // Event checkbox "Check All"
         $('#checkAllSanPham').change(function () {
             var isChecked = $(this).prop('checked');
             if (isChecked) {
-                $('input[type="checkbox"]').each(function () {
-                    if ($(this).hasClass('form-check-input') != true) {
-                        // Thực hiện hành động cho checkbox có class "form-check-input" ở đây
+                $('#myTableSanPham input[type="checkbox"]').each(function () {
+                    if (!$(this).hasClass('form-check-input')) {
                         $(this).prop('checked', true);
                     }
                 });
             } else {
-                $('input[type="checkbox"]').each(function () {
-                    if ($(this).hasClass('form-check-input') != true) {
-                        // Thực hiện hành động cho checkbox có class "form-check-input" ở đây
+                $('#myTableSanPham input[type="checkbox"]').each(function () {
+                    if (!$(this).hasClass('form-check-input')) {
                         $(this).prop('checked', false);
                     }
                 });
             }
         });
+
     });
+
+    // Dịch vụ
+    $("#btnResetChiTietPhieuThuChiDichVu").click(function () {
+
+        $('#dichVu_MaDichVu').val(null);
+        $('#dichVu_TenDichVu').val(null);
+        $('#dichVu_ThongTin').val(null);
+        $('#dichVu_Gia').val(null);
+
+        $('#checkAllDichVu').prop('checked', false);
+        var isChecked = $(this).prop('checked');
+        if (isChecked) {
+            $('#myTableDichVu input[type="checkbox"]').each(function () {
+                if (!$(this).hasClass('form-check-input')) {
+                    $(this).prop('checked', true);
+                }
+            });
+        } else {
+            $('#myTableDichVu input[type="checkbox"]').each(function () {
+                if (!$(this).hasClass('form-check-input')) {
+                    $(this).prop('checked', false);
+                }
+            });
+        }
+    });
+    $("#btnCreateChiTietPhieuThuChiDichVu").click(function () {
+        $('#myTableDichVu tbody tr').each(function () {
+            var checkbox = $(this).find('.checkbox');
+            if (checkbox.prop('checked')) {
+                var tenDichVu = $(this).find('td:nth-child(2)').text();
+                var gia = $(this).find('td:nth-child(3)').text();
+                var soLuong = $(this).find('.quantity-input').val();
+                selectedItems.push({
+                    ten: tenDichVu,
+                    gia: gia,
+                    soLuong: soLuong,
+                    donViTinh: "dv",
+                    tongGia: formatToVND(soLuong * parseVNDToNumber(gia))
+                });
+            }
+        });
+        updateTable();
+    });
+    $("#btnSearchChiTietPhieuThuChiDichVu").click(function () {
+
+        let dichVu = {
+            MaDichVu: $('#dichVu_MaDichVu').val(),
+            TenDichVu: $('#dichVu_TenDichVu').val(),
+            ThongTin: $('#dichVu_ThongTin').val(),
+            Gia: $('#dichVu_Gia').val(),
+        };
+
+        
+        if ($.fn.DataTable.isDataTable('#myTableDichVu')) {
+            $('#myTableDichVu').DataTable().destroy();
+        }
+        // Table Object
+        $('#myTableDichVu').DataTable({
+            serverSide: true,
+            scrollY: 300,
+            searching: false,
+            lengthChange: true,
+            ordering: false,
+            ajax: {
+                type: "POST",
+                url: "/Admin/DichVu/LoadingDataTableView",
+                dataType: "json",
+                data: { item: dichVu },
+                dataSrc: 'data'
+            },
+            columns: [
+                {
+                    data: 'maDichVu',
+                    render: function (data, type, row) {
+                        return '<input data-checkbox-id="' + data + '" type="checkbox" class="checkbox"/>';
+                    }
+                },
+                {
+                    data: "tenDichVu"
+                },
+                {
+                    data: "gia",
+                    render: function (data, type, row) {
+                        return formatToVND(data);
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return '<input type="number" class="quantity-input w-100 rounded-1" value="1" min="1" />';
+                    }
+                }
+            ]
+        });
+        // Event pageChange"myTable"
+        $('#myTableDichVu').on('page.dt', function () {
+            // Thực hiện các hành động khi trang của DataTable thay đổi
+            $('#checkAllDichVu').prop('checked', false);
+        });
+        // Event checkbox "Check All"
+        $('#checkAllDichVu').change(function () {
+            var isChecked = $(this).prop('checked');
+            if (isChecked) {
+                $('#myTableDichVu input[type="checkbox"]').each(function () {
+                    if (!$(this).hasClass('form-check-input')) {
+                        $(this).prop('checked', true);
+                    }
+                });
+            } else {
+                $('#myTableDichVu input[type="checkbox"]').each(function () {
+                    if (!$(this).hasClass('form-check-input')) {
+                        $(this).prop('checked', false);
+                    }
+                });
+            }
+        });
+
+    });
+
+    // Tùy chỉnh
+    $("#btnResetChiTietPhieuThuChiTuyChinh").click(function () {
+        $('#chiTietPhieuThuChi_TenChiTiet').val(null);
+        $('#chiTietPhieuThuChi_SoLuong').val(null);
+        $('#chiTietPhieuThuChi_DonViTinh').val(null);
+        $('#chiTietPhieuThuChi_Gia').val(null);
+        $('#chiTietPhieuThuChi_TongTien').val(null);
+    });
+    $("#btnCreateChiTietPhieuThuChiTuyChinh").click(function () {
+            // Lấy giá trị từ các input
+            let tenChiTiet = $('#chiTietPhieuThuChi_TenChiTiet').val();
+            let soLuong = $('#chiTietPhieuThuChi_SoLuong').val();
+            let donViTinh = $('#chiTietPhieuThuChi_DonViTinh').val();
+            let gia = $('#chiTietPhieuThuChi_Gia').val();
+            selectedItems.push({
+                ten: tenChiTiet,
+                gia: formatToVND(gia),
+                soLuong: soLuong,
+                donViTinh: donViTinh,
+                tongGia: formatToVND(soLuong * parseVNDToNumber(gia))
+            });
+            updateTable();
+    });
+
+    // Học phi
+    $("#btnResetChiTietPhieuThuChiLop").click(function () {
+
+        $('#lop_MaLop').val(null);
+        $('#lop_TenLop').val(null);
+        $('#lop_NamHoc').val(null);
+        $('#lop_HocPhi').val(null);
+        $('#lop_LichHoc').val(null);
+        $('#lop_ThongTin').val(null);
+        $('#lop_NgayBatDau').val(null);
+        $('#lop_NgayKetThuc').val(null);
+        CbbNhanVienByMaTrungTam();
+        $('#lop_MaNhanVien').val(0);
+
+        $('#checkAllLop').prop('checked', false);
+        var isChecked = $(this).prop('checked');
+        if (isChecked) {
+            $('#myTableLop input[type="checkbox"]').each(function () {
+                if (!$(this).hasClass('form-check-input')) {
+                    $(this).prop('checked', true);
+                }
+            });
+        } else {
+            $('#myTableLop input[type="checkbox"]').each(function () {
+                if (!$(this).hasClass('form-check-input')) {
+                    $(this).prop('checked', false);
+                }
+            });
+        }
+    });
+    $("#btnCreateChiTietPhieuThuChiLop").click(function () {
+        $('#myTableLop tbody tr').each(function () {
+            var checkbox = $(this).find('.checkbox');
+            if (checkbox.prop('checked')) {
+                var tenLop = $(this).find('td:nth-child(2)').text();
+                var gia = $(this).find('td:nth-child(3)').text();
+                var soLuong = $(this).find('.quantity-input').val();
+                selectedItems.push({
+                    ten: tenLop,
+                    gia: gia,
+                    soLuong: soLuong,
+                    donViTinh: "dv",
+                    tongGia: formatToVND(soLuong * parseVNDToNumber(gia))
+                });
+            }
+        });
+        updateTable();
+    });
+    $("#btnSearchChiTietPhieuThuChiLop").click(function () {
+
+        let lop = {
+            MaLop: $('#lop_MaLop').val(),
+            TenLop: $('#lop_TenLop').val(),
+            MaNhanVien: $('#lop_MaNhanVien').val(),
+            MaTrungTam: $('#phieuThuChi_MaTrungTam').val(),
+            NamHoc: $('#lop_NamHoc').val(),
+            HocPhi: $('#lop_HocPhi').val(),
+            LichHoc: $('#lop_LichHoc').val(),
+            ThongTin: $('#lop_ThongTin').val(),
+            NgayBatDau: $('#lop_NgayBatDau').val(),
+            NgayKetThuc: $('#lop_NgayKetThuc').val(),
+        };
+        if (lop.MaNhanVien == 0) {
+            lop.MaNhanVien = null;
+        }
+        if (lop.MaTrungTam == 0) {
+            lop.MaTrungTam = null;
+        }
+        if ($.fn.DataTable.isDataTable('#myTableLop')) {
+            $('#myTableLop').DataTable().destroy();
+        }
+        // Table Object
+        $('#myTableLop').DataTable({
+            serverSide: true,
+            scrollY: 300,
+            searching: false,
+            lengthChange: true,
+            ordering: false,
+            ajax: {
+                type: "POST",
+                url: "/Admin/Lop/LoadingDataTableView",
+                dataType: "json",
+                data: { item: lop },
+                dataSrc: 'data'
+            },
+            columns: [
+                {
+                    data: 'maLop',
+                    render: function (data, type, row) {
+                        return '<input data-checkbox-id="' + data + '" type="checkbox" class="checkbox"/>';
+                    }
+                },
+                {
+                    data: "tenLop"
+                },
+                {
+                    data: "hocPhi",
+                    render: function (data, type, row) {
+                        return formatToVND(data);
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return '<input type="number" class="quantity-input w-100 rounded-1" value="1" min="1" />';
+                    }
+                }
+            ]
+        });
+        // Event pageChange"myTable"
+        $('#myTableLop').on('page.dt', function () {
+            // Thực hiện các hành động khi trang của DataTable thay đổi
+            $('#checkAllLop').prop('checked', false);
+        });
+        // Event checkbox "Check All"
+        $('#checkAllLop').change(function () {
+            var isChecked = $(this).prop('checked');
+            if (isChecked) {
+                $('#myTableLop input[type="checkbox"]').each(function () {
+                    if (!$(this).hasClass('form-check-input')) {
+                        $(this).prop('checked', true);
+                    }
+                });
+            } else {
+                $('#myTableLop input[type="checkbox"]').each(function () {
+                    if (!$(this).hasClass('form-check-input')) {
+                        $(this).prop('checked', false);
+                    }
+                });
+            }
+        });
+
+    });
+
+    // Table
+
 });

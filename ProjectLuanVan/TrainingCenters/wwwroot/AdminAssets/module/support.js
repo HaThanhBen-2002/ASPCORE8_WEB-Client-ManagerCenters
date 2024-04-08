@@ -15,7 +15,13 @@ function formatToVND(number) {
     formattedNumber += ' đ';
     return formattedNumber;
 }
-
+function parseVNDToNumber(vndString) {
+    // Loại bỏ dấu chấm và ký tự không phải số từ chuỗi
+    var numberString = vndString.replace(/[^\d]/g, '');
+    // Chuyển đổi chuỗi thành số
+    var number = parseFloat(numberString);
+    return number;
+}
 // Func hiển hiện Tin Nhắn Thông Báo
 function displayMessages(status, mesg) {
     let successData = '';

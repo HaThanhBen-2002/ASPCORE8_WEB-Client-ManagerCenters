@@ -6,105 +6,140 @@
 <!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
 
-    <h4 class="align-self-center">Danh Sách Hóa Đơn</h4>
-    <!-- FORM DATA -->
+    <h4 class="align-self-center">Hóa Đơn</h4>
     <div class="row">
+
+        @* Hóa đơn *@
         <div class="col-sm-7">
-            <div class="card mb-2">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm">
-                            <div class="row ">
-                                <div class="col-md-6">
-                                    <label class="form-label m-0 p-0">Mã phiếu</label>
-                                    <input class="form-control h-50" id="phieuThuChi_MaPhieu" type="number" placeholder="" autofocus />
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label m-0 p-0">Ngày tạo</label>
-                                    <input class="form-control h-50" id="phieuThuChi_NgayTao" type="text" placeholder="" autofocus />
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label m-0 p-0">Ngày thanh toán</label>
-                                    <input class="form-control h-50" id="phieuThuChi_NgayThanhToan" type="text" placeholder="" />
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label m-0 p-0">Tổng tiền</label>
-                                    <input class="form-control h-50" id="phieuThuChi_TongTien" placeholder="" type="text" />
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label m-0 p-0">Ghi chú</label>
-                                    <input class="form-control h-50" id="phieuThuChi_GhiChu" placeholder="" type="text" />
-                                </div>
+            <div class="mb-0">
+                <div class="container bootstrap snippets bootdey card p-4">
+                    <div class="panel panel-default">
+                        <div id="printableDiv" class="panel-body">
+                            <div class="row">
+                                <div class="col text-right ">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="w-auto">
+                                                    <img class="w-px-75 h-px-75 rounded-circle" src="/AdminAssets/assets/img/favicon/HTB.ico" />
+                                                </div>
+                                                <div class="col d-flex align-items-center ps-0">
+                                                    <h4 class="text-start mt-3 "><strong>BEN BEN</strong></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 row h-px-100">
+                                            <h6 class="my-0 mx-0 py-0" style="font-size:13px">Mã HD: HDC-20241230-253645-123</h6>
+                                            <h6 class="my-0 mx-0 py-0" style="font-size:13px">Ngày tạo: 08/04/2024</h6>
+                                            <h6 class="my-0 mx-0 py-0" style="font-size:13px">Ngày thanh toán: 08/04/2024</h6>
+                                            <h6 class="my-0 mx-0 py-0" style="font-size:13px">Tạo bởi: Admin</h6>
+                                            <h6 class="my-0 mx-0 py-0" style="font-size:13px">Trạng thái: Đang khởi tạo</h6>
+                                        </div>
 
-                                <div class="col-md-6">
-                                    <label class="form-label  m-0 p-0">Loại phiếu</label>
-                                    <select name="phieuThuChi_LoaiPhieu" id="phieuThuChi_LoaiPhieu" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
-                                        <option>Tất cả</option>
-                                        <option>Hóa đơn thu</option>
-                                        <option>Hóa đơn chi</option>
-                                        <option>Hóa đơn tạm ứng</option>
-                                        <option>Hóa đơn khác</option>
-                                    </select>
-                                </div>
+                                    </div>
 
-                                <div class="col-md-6">
-                                    <label class="form-label  m-0 p-0">Trạng thái</label>
-                                    <select name="phieuThuChi_TrangThai" id="phieuThuChi_TrangThai" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
-                                        <option>Tất cả</option>
-                                        <option>Thành công</option>
-                                        <option>Thất bại</option>
-                                        <option>Chờ xử lý</option>
-                                        <option>Hủy bỏ</option>
-                                    </select>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <label class="form-label  m-0 p-0">Hình thức thanh toán</label>
-                                    <select name="phieuThuChi_HinhThucThanhToan" id="phieuThuChi_HinhThucThanhToan" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
-                                        <option>Tất cả</option>
-                                        <option>Tiền mặt</option>
-                                        <option>Thẻ tín dụng</option>
-                                        <option>Thẻ ghi nợ</option>
-                                        <option>Ví điện tử</option>
-                                        <option>Chuyển khoản ngân hàng</option>
-                                    </select>
-                                </div>
+                                    <div class="row mt-3">
 
-                                <div class="col-md-6">
-                                    <label class="form-label  m-0 p-0">Trung tâm</label>
-                                    <select name="phieuThuChi_MaTrungTam" id="phieuThuChi_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
-                                    </select>
+                                        <div class="col-md-6">
+                                            <label class="form-label  m-0 p-0">Trung tâm</label>
+                                            <select name="phieuThuChi_MaTrungTam" id="phieuThuChi_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label  m-0 p-0">Loại phiếu</label>
+                                            <select name="phieuThuChi_LoaiPhieu" id="phieuThuChi_LoaiPhieu" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                                <option>Tất cả</option>
+                                                <option>Hóa đơn thu</option>
+                                                <option>Hóa đơn chi</option>
+                                                <option>Hóa đơn tạm ứng</option>
+                                                <option>Hóa đơn khác</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
 
-                                <div class="col-md-6">
-                                    <label class="form-label  m-0 p-0">Giáo viên</label>
-                                    <select name="phieuThuChi_MaNhanVien" id="phieuThuChi_MaNhanVien" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
-                                    </select>
+                            <div class="table-responsive">
+                                <table id="myTableHoaDon" class="table table-condensed nomargin">
+                                    <thead>
+                                        <tr>
+                                            <th width="30%" class="px-1">Thông tin</th>
+                                            <th class="px-1">Giá</th>
+                                            <th width="10%" class="px-1">SL</th>
+                                            <th class="px-1">Tổng Tiền</th>
+                                            <th width="10%" class="px-1"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <hr class="nomargin-top">
+                            <div class="row">
+                                <div class="col text-left">
+                                    <div class="">
+                                        <label class="form-label m-0 p-0">Ghi chú</label>
+                                        <textarea id="phieuThuChi_GhiChu" class="form-control"
+                                                  placeholder="Nhập ghi chú"></textarea>
+                                    </div>
                                 </div>
+                                
 
+                                <div class="col text-right">
+                                    <div class="mb-3">
+                                        <div class="">
+                                            <label class="form-label m-0 p-0">Hình thức thanh toán</label>
+                                            <select name="phieuThuChi_HinhThucThanhToan" id="phieuThuChi_HinhThucThanhToan" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                                <option>Tất cả</option>
+                                                <option>Tiền mặt</option>
+                                                <option>Thẻ tín dụng</option>
+                                                <option>Thẻ ghi nợ</option>
+                                                <option>Ví điện tử</option>
+                                                <option>Chuyển khoản ngân hàng</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <ul class="list-unstyled">
+                                        <li><strong style="font-size: 20px">Tổng tiền:</strong> <span id="phieuThuChiTongTien" style="font-size: 20px"></span></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
+                <!-- FORM Button -->
+                <div class="container">
+                    <div class="row mt-3">
+                        <button type="button" id="btnCreatePhieuThuChi" class="btn btn-primary float-end">
+                            Tạo hóa đơn
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
+        @* Hỗ trợ truy xuất thông tin *@
         <div class="col-sm-5 ps-0">
             <div class="card-body pt-0 pe-0 me-3">
-                    <div class="row pt-0 mt-0">
-                        <div class="col-md m-0 p-0">
-                            <div class="accordion " id="accordionExample">
-                                @* Tùy chỉnh *@
-                                <div class="card accordion-item active">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button type="button"
-                                                class="accordion-button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#accordionOne"
-                                                aria-expanded="true"
-                                                aria-controls="accordionOne">
-                                            Tùy chỉnh
-                                        </button>
-                                    </h2>
+                <div class="row pt-0 mt-0">
+                    <div class="col-md m-0 p-0">
+                        <div class="accordion " id="accordionExample">
+                            @* Tùy chỉnh *@
+                            <div class="card accordion-item active">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button type="button"
+                                            class="accordion-button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#accordionOne"
+                                            aria-expanded="true"
+                                            aria-controls="accordionOne">
+                                        Tùy chỉnh
+                                    </button>
+                                </h2>
 
                                 <div id="accordionOne"
                                      class="accordion-collapse collapse show"
@@ -129,40 +164,36 @@
                                                 <label class="form-label m-0 p-0">Giá / 1</label>
                                                 <input class="form-control h-50" id="chiTietPhieuThuChi_Gia" type="number" placeholder="" />
                                             </div>
-                                            <div class="col-md-6">
-                                                <label class="form-label m-0 p-0 text-danger">Tổng tiền</label>
-                                                <input class="form-control h-50" id="chiTietPhieuThuChi_TongTien" type="text" placeholder="" />
-                                            </div>
                                         </div>
                                         <div class="pb-2 mt-2">
-                                            <button type="button" id="btnResetChiTietPhieuThuChi" class="btn btn-sm btn-secondary ">
+                                            <button type="button" id="btnResetChiTietPhieuThuChiTuyChinh" class="btn btn-sm btn-secondary ">
                                                 Làm mới
                                             </button>
                                             <span class="p-1"></span>
-                                            <button type="button" id="btnSearchChiTietPhieuThuChi" class="btn btn-sm btn-success ">
+                                            <button type="button" id="btnCreateChiTietPhieuThuChiTuyChinh" class="btn btn-sm btn-success ">
                                                 Thêm vào hóa đơn
                                             </button>
                                         </div>
                                     </div>
                                 </div>
-                                </div>
-                                @* Sản phẩm *@
-                                <div class="card accordion-item">
-                                    <h2 class="accordion-header" id="headingTwo">
-                                        <button type="button"
-                                                class="accordion-button collapsed"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#accordionTwo"
-                                                aria-expanded="false"
-                                                aria-controls="accordionTwo">
-                                            Sản phẩm
-                                        </button>
-                                    </h2>
-                                    <div id="accordionTwo"
-                                         class="accordion-collapse collapse"
-                                         aria-labelledby="headingTwo"
-                                         data-bs-parent="#accordionExample">
-                                        <div class="accordion-body row">
+                            </div>
+                            @* Sản phẩm *@
+                            <div class="card accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button type="button"
+                                            class="accordion-button collapsed"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#accordionTwo"
+                                            aria-expanded="false"
+                                            aria-controls="accordionTwo">
+                                        Sản phẩm
+                                    </button>
+                                </h2>
+                                <div id="accordionTwo"
+                                     class="accordion-collapse collapse"
+                                     aria-labelledby="headingTwo"
+                                     data-bs-parent="#accordionExample">
+                                    <div class="accordion-body row">
                                         <div class="col-md-6">
                                             <label class="form-label m-0 p-0">Mã sản phẩm</label>
                                             <input class="form-control h-50" id="sanPham_MaSanPham" type="number" placeholder="" autofocus />
@@ -240,11 +271,6 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="form-label  m-0 p-0">Trung tâm</label>
-                                            <select name="sanPham_MaTrungTam" id="sanPham_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
                                             <label class="form-label  m-0 p-0">Nhà cung cấp</label>
                                             <select name="sanPham_MaNhaCungCap" id="sanPham_MaNhaCungCap" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
                                             </select>
@@ -258,13 +284,13 @@
                                                 Tìm kiếm
                                             </button>
                                             <span class="p-1"></span>
-                                            <button type="button" id="btnSearchChiTietPhieuThuChiSanPham" class="btn btn-sm btn-success ">
+                                            <button type="button" id="btnCreateChiTietPhieuThuChiSanPham" class="btn btn-sm btn-success ">
                                                 Thêm vào hóa đơn
                                             </button>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="card bg-body ">
-                                            <div class="table-responsive">
+                                                <div class="table-responsive">
                                                     <table id="myTableSanPham" class="table">
                                                         <thead>
                                                             <tr>
@@ -279,33 +305,78 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        </div>
                                     </div>
                                 </div>
-                                @* Dịch Vụ *@
-                                <div class="card accordion-item">
-                                    <h2 class="accordion-header" id="headingThree">
-                                        <button type="button"
-                                                class="accordion-button collapsed"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#accordionThree"
-                                                aria-expanded="false"
-                                                aria-controls="accordionThree">
-                                            Dịch vụ
-                                        </button>
-                                    </h2>
-                                    <div id="accordionThree"
-                                         class="accordion-collapse collapse"
-                                         aria-labelledby="headingThree"
-                                         data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            Oat cake toffee chocolate bar jujubes. Marshmallow brownie lemon drops cheesecake. Bonbon
-                                            gingerbread marshmallow sweet jelly beans muffin. Sweet roll bear claw candy canes oat cake
-                                            dragée caramels. Ice cream wafer danish cookie caramels muffin.
+                            </div>
+                            @* Dịch Vụ *@
+                            <div class="card accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button type="button"
+                                            class="accordion-button collapsed"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#accordionThree"
+                                            aria-expanded="false"
+                                            aria-controls="accordionThree">
+                                        Dịch vụ
+                                    </button>
+                                </h2>
+                                <div id="accordionThree"
+                                     class="accordion-collapse collapse"
+                                     aria-labelledby="headingThree"
+                                     data-bs-parent="#accordionExample">
+                                    <div class="accordion-body row">
+                                        <div class="col-md-6">
+                                            <label class="form-label m-0 p-0">Mã dịch vụ</label>
+                                            <input class="form-control h-50" id="dichVu_MaDichVu" type="number" placeholder="" autofocus />
                                         </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label m-0 p-0">Tên dịch vụ</label>
+                                            <input class="form-control h-50" id="dichVu_TenDichVu" type="text" placeholder="" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label m-0 p-0">Thông tin</label>
+                                            <input class="form-control h-50" id="dichVu_ThongTin" type="text" placeholder="" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label m-0 p-0">Giá</label>
+                                            <input class="form-control h-50" id="dichVu_Gia" placeholder="" type="text" />
+                                        </div>
+                                        <div class="pb-2 mt-2">
+                                            <button type="button" id="btnResetChiTietPhieuThuChiDichVu" class="btn btn-sm btn-secondary ">
+                                                Làm mới
+                                            </button>
+                                            <span class="p-1"></span>
+                                            <button type="button" id="btnSearchChiTietPhieuThuChiDichVu" class="btn btn-sm btn-primary">
+                                                Tìm kiếm
+                                            </button>
+                                            <span class="p-1"></span>
+                                            <button type="button" id="btnCreateChiTietPhieuThuChiDichVu" class="btn btn-sm btn-success ">
+                                                Thêm vào hóa đơn
+                                            </button>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="card bg-body ">
+                                                <div class="table-responsive">
+                                                    <table id="myTableDichVu" class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th><input id="checkAllDichVu" class="" type="checkbox" /></th>
+                                                                <th>Tên dịch vụ</th>
+                                                                <th>Giá</th>
+                                                                <th width="15%">SL</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
-                                @* Lớp học *@
+                            </div>
+                            @* Lớp học *@
                             <div class="card accordion-item">
                                 <h2 class="accordion-header" id="heading4">
                                     <button type="button"
@@ -321,29 +392,86 @@
                                      class="accordion-collapse collapse"
                                      aria-labelledby="heading4"
                                      data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        Oat cake toffee chocolate bar jujubes. Marshmallow brownie lemon drops cheesecake. Bonbon
-                                        gingerbread marshmallow sweet jelly beans muffin. Sweet roll bear claw candy canes oat cake
-                                        dragée caramels. Ice cream wafer danish cookie caramels muffin.
+                                    <div class="accordion-body row">
+                                        <div class="col-md-6">
+                                            <label class="form-label m-0 p-0">Mã lớp</label>
+                                            <input class="form-control h-50" id="lop_MaLop" type="number" placeholder="" autofocus />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label m-0 p-0">Tên lớp</label>
+                                            <input class="form-control h-50" id="lop_TenLop" type="text" placeholder="" autofocus />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label m-0 p-0">Năm học</label>
+                                            <input class="form-control h-50" id="lop_NamHoc" placeholder="" type="number" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label m-0 p-0">Học phí</label>
+                                            <input class="form-control h-50" id="lop_HocPhi" placeholder="" type="text" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label m-0 p-0">Lịch học</label>
+                                            <input class="form-control h-50" id="lop_LichHoc" placeholder="" type="text" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label m-0 p-0">Thông tin</label>
+                                            <input class="form-control h-50" id="lop_ThongTin" placeholder="" type="text" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label m-0 p-0">Ngày bắt đầu</label>
+                                            <input class="form-control h-50" id="lop_NgayBatDau" placeholder="" type="text" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label m-0 p-0">Ngày kết thúc</label>
+                                            <input class="form-control h-50" id="lop_NgayKetThuc" placeholder="" type="text" />
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label class="form-label  m-0 p-0">Giáo viên phụ trách</label>
+                                            <select name="lop_MaNhanVien" id="lop_MaNhanVien" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                            </select>
+                                        </div>
+                                        <div class="pb-2 mt-2">
+                                            <button type="button" id="btnResetChiTietPhieuThuChiLop" class="btn btn-sm btn-secondary ">
+                                                Làm mới
+                                            </button>
+                                            <span class="p-1"></span>
+                                            <button type="button" id="btnSearchChiTietPhieuThuChiLop" class="btn btn-sm btn-primary">
+                                                Tìm kiếm
+                                            </button>
+                                            <span class="p-1"></span>
+                                            <button type="button" id="btnCreateChiTietPhieuThuChiLop" class="btn btn-sm btn-success ">
+                                                Thêm vào hóa đơn
+                                            </button>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="card bg-body ">
+                                                <div class="table-responsive">
+                                                    <table id="myTableLop" class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th><input id="checkAllLop" class="" type="checkbox" /></th>
+                                                                <th>Tên dịch vụ</th>
+                                                                <th>Giá</th>
+                                                                <th width="15%">SL</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
         
     </div>
-    
-    <!-- /FORM DATA -->
-    <!-- FORM Button -->
-    <div class="pb-2 mt-2">
-        <button type="button" id="btnCreatePhieuThuChi" class="btn btn-sm btn-primary ">
-            Thêm
-        </button>
-    </div>
-    <!-- /FORM Button -->
 
 </div>
 <!-- / Content -->
