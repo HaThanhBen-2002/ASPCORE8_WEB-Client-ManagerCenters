@@ -88,7 +88,11 @@ namespace TrainingCenters.Areas.Admin.Controllers
             return Ok(rTable);
 
         }
-
+        private string GetDateNow()
+        {
+            DateTime now = DateTime.Now;
+            return now.ToString("dd/MM/yyyy HH:mm:ss");
+        }
         public async Task<IActionResult> Create(PhieuThuChi item, List<ChiTietThuChi> chiTietThuChis)
         {
             bool statusCreate = false;
@@ -97,6 +101,9 @@ namespace TrainingCenters.Areas.Admin.Controllers
                 if(item.LoaiPhieu != null)
                 {
                     item.CodeHoaDon = GenerateInvoiceCode(item.LoaiPhieu);
+                    item.TrangThai = "Thành công";
+                    item.NgayTao = GetDateNow();
+                    item.NgayThanhToan = item.NgayTao;
                     var status = await _unit.PhieuThuChi.Create(item);
                     if (status)
                     {
@@ -112,8 +119,11 @@ namespace TrainingCenters.Areas.Admin.Controllers
                     }
                 }
             }
-            return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = statusCreate });
-
+            if (statusCreate == true)
+            {
+                return Ok(item);
+            }
+            return Ok(null);
         }
 
         public async Task<IActionResult> Update(PhieuThuChi item)

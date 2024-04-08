@@ -34,8 +34,6 @@ public partial class PhieuThuChi
     [Required]
     public string? HinhThucThanhToan { get; set; }
 
-    [Range(1, int.MaxValue)]
-    [Required]
     public int? MaNhanVien { get; set; }
 
     public string? NgayXoa { get; set; }

@@ -642,6 +642,95 @@ $(document).ready(function () {
 
     });
 
-    // Table
+    // Create Hóa Đơn
+    $("#btnCreatePhieuThuChi").click(function () {
+        let phieuThuChi = {
+            MaPhieu: null,
+            NgayTao: null,
+            CodeHoaDon: null,
+            NgayThanhToan: null,
+            LoaiPhieu: $('#phieuThuChi_LoaiPhieu').val(),
+            TongTien: parseVNDToNumber($('#phieuThuChiTongTien').text()),
+            GhiChu: $('#phieuThuChi_GhiChu').val(),
+            MaTrungTam: $('#phieuThuChi_MaTrungTam').val(),
+            TrangThai: null,
+            HinhThucThanhToan: $('#phieuThuChi_HinhThucThanhToan').val(),
+            MaNhanVien: null
+        };
+        if (phieuThuChi.MaTrungTam == "Tất cả" || phieuThuChi.LoaiPhieu == "Tất cả" || phieuThuChi.HinhThucThanhToan == "Tất cả") {
+            displayMessages(2, "Vui lòng chọn đầy đủ thông tin hóa đơn");
+        }
+        else {
+            var listChiTietHoaDon = [];
+            if (selectedItems.length > 0) {
+                selectedItems.forEach(function (item) {
+                    listChiTietHoaDon.push({
+                        MaChiTiet: null,
+                        TenChiTiet: item.ten,
+                        MaPhieu: null,
+                        SoLuong: item.soLuong,
+                        DonVi: item.donViTinh,
+                        TongTien: parseVNDToNumber(item.tongGia)
+                    });
+                });
+                // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/PhieuThuChi/Create",
+                    async: false,
+                    data: { item: phieuThuChi, chiTietThuChis: listChiTietHoaDon },
+                    success: function (data) {
+                        phieuThuChi.NgayTao = data.ngayTao;
+                        phieuThuChi.CodeHoaDon = data.codeHoaDon;
+                        phieuThuChi.NgayThanhToan = data.ngayThanhToan;
+                    }
+                });
+                if (phieuThuChi != null) {
+                    displayMessages(1, "Tạo hóa đơn thành công");
+                    $('#phieuThuChi_MaCodeHoaDon').text("Mã HD: " + phieuThuChi.CodeHoaDon);
+                    $('#phieuThuChi_NgayTao').text("Ngày tạo: " + phieuThuChi.NgayTao);
+                    $('#phieuThuChi_NgayThanhToan').text("Ngày thanh toán: " + phieuThuChi.NgayThanhToan);
 
+                    // Lưu lại phần hình ảnh
+                    var imageHtml = $('#imageDiv').html();
+
+                    // Thay đổi các select box thành dạng text
+                    var trungTamText = $('select[name="phieuThuChi_MaTrungTam"] option:selected').text();
+                    $('#phieuThuChi_MaTrungTam').replaceWith('<span>' + trungTamText + '</span>');
+
+                    var loaiPhieuText = $('select[name="phieuThuChi_LoaiPhieu"] option:selected').text();
+                    $('#phieuThuChi_LoaiPhieu').replaceWith('<span>' + loaiPhieuText + '</span>');
+
+                    var hinhThucThanhToanText = $('select[name="phieuThuChi_HinhThucThanhToan"] option:selected').text();
+                    $('#phieuThuChi_HinhThucThanhToan').replaceWith('<span>' + hinhThucThanhToanText + '</span>');
+
+                    // Chuyển phần textarea thành dạng text
+                    var ghiChuText = $('#phieuThuChi_GhiChu').val();
+                    $('#phieuThuChi_GhiChu').replaceWith('<span>' + ghiChuText + '</span>');
+
+                    // Thêm lại phần hình ảnh
+                    $('#imageDiv').html(imageHtml);
+
+                    // Loại bỏ cột cuối cùng trong bảng
+                    $('#myTableHoaDon th:last-child').remove();
+                    $('#myTableHoaDon td:last-child').remove();
+
+                    // In hóa đơn
+                    var invoiceContent = $('#printableDiv').html();
+                    var originalContent = $('body').html();
+                    $('body').empty().html(invoiceContent);
+                    window.print();
+                    window.location.href = "/Admin/PhieuThuChi/ChiTietHoaDon";
+                }
+                else {
+                    displayMessages(2, "Tạo hóa đơn thất bại");
+
+                }
+
+            }
+            else {
+                displayMessages(2, "Hóa đơn không có nội dung");
+            }
+        }
+    });
 });
