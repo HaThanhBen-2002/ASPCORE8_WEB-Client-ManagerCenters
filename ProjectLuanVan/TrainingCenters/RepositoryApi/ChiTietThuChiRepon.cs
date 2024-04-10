@@ -129,11 +129,9 @@ namespace TrainingCenters.RepositoryApi
         {
             try
             {
-                var apiUrl = $"{_apiUrl}/api/ChiTietThuChi/SearchByPhieuThuChi";
-
-                // Chuyển dữ liệu thành JSON
+                var apiUrl = $"{_apiUrl}/api/ChiTietThuChi/SearchByPhieuThuChiId?id={id}";
                 var content = new StringContent(JsonConvert.SerializeObject(id), Encoding.UTF8, "application/json");
-                var response = await _httpClient.PostAsync(apiUrl, content);
+                var response = await _httpClient.PostAsync(apiUrl,content);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
                 if (response.IsSuccessStatusCode)
                 {

@@ -93,7 +93,7 @@ namespace TrainingCenters.Areas.Admin.Controllers
             DateTime now = DateTime.Now;
             return now.ToString("dd/MM/yyyy HH:mm:ss");
         }
-        public async Task<IActionResult> Create(PhieuThuChi item, List<ChiTietThuChi> chiTietThuChis)
+        public async Task<IActionResult> Create(PhieuThuChi item, List<ChiTietThuChi> chiTietThuChis, bool thanhToan)
         {
             bool statusCreate = false;
             if(item!= null)
@@ -101,7 +101,19 @@ namespace TrainingCenters.Areas.Admin.Controllers
                 if(item.LoaiPhieu != null)
                 {
                     item.CodeHoaDon = GenerateInvoiceCode(item.LoaiPhieu);
-                    item.TrangThai = "Thành công";
+                    if (thanhToan == true)
+                    {
+                        item.TrangThai = "Đã thanh toán";
+                    }
+                    else if(item.HinhThucThanhToan == "Trả góp")
+                    {
+                        item.TrangThai = "Đang trả góp";
+                    }
+                    else
+                    {
+                        item.TrangThai = "Chưa thanh toán";
+                    }
+
                     item.NgayTao = GetDateNow();
                     item.NgayThanhToan = item.NgayTao;
                     var status = await _unit.PhieuThuChi.Create(item);

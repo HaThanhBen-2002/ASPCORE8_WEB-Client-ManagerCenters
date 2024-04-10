@@ -33,7 +33,7 @@
                                             <h6 id="phieuThuChi_NgayTao" class="my-0 mx-0 py-0" style="font-size:13px">Ngày tạo: ??/??/???? ??:??:??</h6>
                                             <h6 id="phieuThuChi_NgayThanhToan" class="my-0 mx-0 py-0" style="font-size:13px">Ngày thanh toán: ??/??/???? ??:??:??</h6>
                                             <h6 class="my-0 mx-0 py-0" style="font-size:13px">Tạo bởi: Admin</h6>
-                                            <h6 class="my-0 mx-0 py-0" style="font-size:13px">Trạng thái: Đang khởi tạo</h6>
+                                            <h6 id="phieuThuChi_TrangThai" class="my-0 mx-0 py-0" style="font-size:13px">Trạng thái: Chưa thanh toán</h6>
                                         </div>
 
                                     </div>
@@ -96,13 +96,18 @@
                                                 <option>Tất cả</option>
                                                 <option>Tiền mặt</option>
                                                 <option>Thẻ tín dụng</option>
-                                                <option>Thẻ ghi nợ</option>
+                                                <option>Trả góp</option>
                                                 <option>Ví điện tử</option>
                                                 <option>Chuyển khoản ngân hàng</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <ul class="list-unstyled">
+                                    <form class="col-sm-12" id="showThanhToan">
+                                        <input type="checkbox" id="thanhToan" name="thanhToan" value="thanhToan">
+                                        <label for="thanhToan">Đã thanh toán</label>
+                                    </form>
+
+                                    <ul class="list-unstyled mt-2">
                                         <li><strong style="font-size: 20px">Tổng tiền:</strong> <span id="phieuThuChiTongTien" style="font-size: 20px"></span></li>
                                     </ul>
                                 </div>

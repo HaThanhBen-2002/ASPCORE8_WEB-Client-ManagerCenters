@@ -207,8 +207,9 @@ function CbbNhanVienByMaTrungTam() {
     }
 }
 
-
 $(document).ready(function () {
+    let thanhToan = false;
+
     // ============================================== TABLE ===============================================
     // Gán sự kiện change cho mỗi input
     // Gán sự kiện input cho mỗi input
@@ -678,7 +679,7 @@ $(document).ready(function () {
                     type: "POST",
                     url: "/Admin/PhieuThuChi/Create",
                     async: false,
-                    data: { item: phieuThuChi, chiTietThuChis: listChiTietHoaDon },
+                    data: { item: phieuThuChi, chiTietThuChis: listChiTietHoaDon, thanhToan: thanhToan },
                     success: function (data) {
                         phieuThuChi.NgayTao = data.ngayTao;
                         phieuThuChi.CodeHoaDon = data.codeHoaDon;
@@ -686,10 +687,11 @@ $(document).ready(function () {
                     }
                 });
                 if (phieuThuChi != null) {
-                    displayMessages(1, "Tạo hóa đơn thành công");
+                    
                     $('#phieuThuChi_MaCodeHoaDon').text("Mã HD: " + phieuThuChi.CodeHoaDon);
                     $('#phieuThuChi_NgayTao').text("Ngày tạo: " + phieuThuChi.NgayTao);
                     $('#phieuThuChi_NgayThanhToan').text("Ngày thanh toán: " + phieuThuChi.NgayThanhToan);
+
 
                     // Lưu lại phần hình ảnh
                     var imageHtml = $('#imageDiv').html();
@@ -708,6 +710,9 @@ $(document).ready(function () {
                     var ghiChuText = $('#phieuThuChi_GhiChu').val();
                     $('#phieuThuChi_GhiChu').replaceWith('<span>' + ghiChuText + '</span>');
 
+                    // Ẩn checkbox thanh toán
+                    $('#showThanhToan').hide();
+
                     // Thêm lại phần hình ảnh
                     $('#imageDiv').html(imageHtml);
 
@@ -721,6 +726,8 @@ $(document).ready(function () {
                     $('body').empty().html(invoiceContent);
                     window.print();
                     window.location.href = "/Admin/PhieuThuChi/ChiTietHoaDon";
+                    displayMessages(1, "Tạo hóa đơn thành công");
+                    
                 }
                 else {
                     displayMessages(2, "Tạo hóa đơn thất bại");
@@ -731,6 +738,18 @@ $(document).ready(function () {
             else {
                 displayMessages(2, "Hóa đơn không có nội dung");
             }
+        }
+    });
+
+    //========================= CHECK BOX================
+    $('#thanhToan').change(function () {
+        if ($(this).is(':checked')) {
+            thanhToan = true;
+            $('#phieuThuChi_TrangThai').text("Trạng thái: Đã thanh toán");
+            
+        } else {
+            thanhToan = false;
+            $('#phieuThuChi_TrangThai').text("Trạng thái: Chưa thanh toán");
         }
     });
 });

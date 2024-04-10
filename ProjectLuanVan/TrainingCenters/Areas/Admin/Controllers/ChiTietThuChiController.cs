@@ -59,7 +59,6 @@ namespace TrainingCenters.Areas.Admin.Controllers
             var data = await _unit.ChiTietThuChi.SearchByPhieuThuChiId(Convert.ToInt32(id));
             return Ok(data);
         }
-
         #endregion
     }
 }

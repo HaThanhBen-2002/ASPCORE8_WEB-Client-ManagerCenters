@@ -1053,6 +1053,10 @@
       "PackagePath": "staticwebassets\\AdminAssets\\module\\dichVu.js"
     },
     {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\hoaDon.js",
+      "PackagePath": "staticwebassets\\AdminAssets\\module\\hoaDon.js"
+    },
+    {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\hocSinh.js",
       "PackagePath": "staticwebassets\\AdminAssets\\module\\hocSinh.js"
     },
