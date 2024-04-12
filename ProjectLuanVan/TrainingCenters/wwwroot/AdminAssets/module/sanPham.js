@@ -3,9 +3,6 @@
     if (CheckIsNull(item.TenSanPham)) {
         displayMessages(2, "Vui lòng nhập (Tên sản phẩm)");
         return false;
-    } else if (CheckIsNull(item.ThongTin)) {
-        displayMessages(2, "Vui lòng nhập (Thông tin)");
-        return false;
     } else if (CheckIsNull(item.HanSuDung)) {
         displayMessages(2, "Vui lòng chọn (Hạn sử dụng)");
         return false;

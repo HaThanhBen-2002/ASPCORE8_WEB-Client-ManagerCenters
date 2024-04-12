@@ -2,8 +2,6 @@
     // Kiểm tra tính hợp lệ
     if (CheckIsNull(item.TenDichVu )) {
         displayMessages(2, "Vui lòng nhập (Tên dịch vụ)"); return false;
-    } else if (CheckIsNull(item.ThongTin)) {
-        displayMessages(2, "Vui lòng nhập (Thông tin)"); return false;
     } else if (CheckIsNull(item.Gia)) {
         displayMessages(2, "Vui lòng nhập (Giá)"); return false;
     } else {

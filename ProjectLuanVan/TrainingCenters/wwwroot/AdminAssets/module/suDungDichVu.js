@@ -6,10 +6,10 @@
         displayMessages(2, "Vui lòng nhập (Mã dịch vụ)");
         return false;
     } else if (CheckIsNull(item.MaHocSinh)) {
-        displayMessages(2, "Vui lòng chọn (Mã học sinh)");
+        displayMessages(2, "Vui lòng nhập (Mã học sinh)");
         return false;
     } else if (CheckIsNull($('#suDungDichVu_TenHocSinh').val())) {
-        displayMessages(2, "Vui lòng không để trống(Tên học sinh)");
+        displayMessages(2, "Học sinh không hợp lệ");
         return false;
     } else if (CheckIsNull(item.MaTrungTam)) {
         displayMessages(2, "Vui lòng chọn (Mã trung tâm)");

@@ -7,40 +7,70 @@
 <div class="container-xxl flex-grow-1 container-p-y">
 
     <div class="modal fade" id="troGiup" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content ">
-                <div class="modal-header mb-0 pb-0">
+        <div class="modal-dialog modal-dialog-scrollable  " role="document">
+            <div class="modal-content bg-body ">
+                <div class="modal-header mb-0  pb-0">
                     <button type="button"
                             class="btn-close"
                             data-bs-dismiss="modal"
                             aria-label="Close"></button>
                 </div>
-                <div class="modal-body mt-0 pt-0">
-                    <div class="mt-0 pt-0">
-                        <div class="list-group list-group-horizontal-md text-md-center mt-0 pt-0">
+                <div class="modal-body mt-0 pt-0 ">
+                    <div class="mt-0 pt-0 ">
+                        <div class="list-group list-group-horizontal-md text-md-center mt-0 pt-2">
                             <a class="list-group-item list-group-item-action active"
-                               id="home-list-item"
+                               id="huongdan-list-item"
                                data-bs-toggle="list"
-                               href="#horizontal-home">Hướng dẫn</a>
+                               href="#horizontal-huongdan">Hướng dẫn</a>
                             <a class="list-group-item list-group-item-action"
-                               id="profile-list-item"
+                               id="thongbaoloi-list-item"
                                data-bs-toggle="list"
-                               href="#horizontal-profile">Thông báo lỗi</a>
+                               href="#horizontal-thongbaoloi">Thông báo lỗi</a>
                             <a class="list-group-item list-group-item-action"
-                               id="messages-list-item"
+                               id="baocaosuco-list-item"
                                data-bs-toggle="list"
-                               href="#horizontal-messages">Báo cáo sự cố</a>
+                               href="#horizontal-baocaosuco">Báo cáo sự cố</a>
                         </div>
                         <div class="tab-content px-0 mt-0">
-                            <div class="tab-pane fade show active" id="horizontal-home">
-                                Donut sugar plum sweet roll biscuit. Cake oat cake gummi bears. Tart wafer wafer halvah
-                                gummi bears cheesecake. Topping croissant cake sweet roll. Dessert fruitcake gingerbread
-                                halvah marshmallow pudding bear claw cheesecake. Bonbon dragée cookie gummies. Pudding
-                                marzipan liquorice. Sugar plum dragée cupcake cupcake cake dessert chocolate bar. Pastry
-                                lollipop lemon drops lollipop halvah croissant. Pastry sweet gingerbread lemon drops topping
-                                ice cream.
+                            @* Hướng dẫn *@
+                            <div class="tab-pane fade show active" id="horizontal-huongdan">
+                                <div class="col-md-12 m-0 p-0 accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button type="button"
+                                                class="accordion-button ps-3 text-primary"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#hd-Create"
+                                                aria-expanded="true"
+                                                aria-controls="hd-Create">
+                                            Thêm mới dữ liệu 
+                                        </button>
+                                    </h2>
+
+                                    <div id="hd-Create"
+                                         class="accordion-collapse collapse  m-0 p-0"
+                                         data-bs-parent="#accordionExample">
+                                        <div class="accordion-body row m-0 p-0 ">
+                                            <p>1. Bạn cần (nhập/chọn) tối thiểu đầy đủ các thông tin có ký hiệu <span class="text-danger">(*)</span>.</p>
+                                           <div class="col-sm-12">
+                                                <p>
+                                                    2. Sau khi nhập dữ liệu, bạn hãy nhấn nút <span>
+                                                        <button type="button" class="btn btn-sm btn-primary ">
+                                                            Thêm
+                                                        </button>
+                                                    </span>
+                                                    để dữ liệu được lưu vào hệ thống.
+                                                </p>
+                                               
+                                           </div>
+                                           <p>3. Khi dữ liệu được thêm thành công bạn sẽ nhìn thấy thống báo <span>
+
+                                           </span></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="tab-pane fade" id="horizontal-profile">
+                            @* Báo lỗi *@
+                            <div class="tab-pane fade" id="horizontal-thongbaoloi">
                                 Muffin lemon drops chocolate chupa chups jelly beans dessert jelly-o. Soufflé gummies
                                 gummies. Ice cream powder marshmallow cotton candy oat cake wafer. Marshmallow gingerbread
                                 tootsie roll. Chocolate cake bonbon jelly beans lollipop jelly beans halvah marzipan danish
@@ -48,7 +78,8 @@
                                 brownie. Toffee cookie apple pie cheesecake bear claw sugar plum wafer gummi bears
                                 fruitcake.
                             </div>
-                            <div class="tab-pane fade" id="horizontal-messages">
+                            @* Liên hệ kỹ thuật viên *@
+                            <div class="tab-pane fade" id="horizontal-baocaosuco">
                                 Ice cream dessert candy sugar plum croissant cupcake tart pie apple pie. Pastry chocolate
                                 chupa chups tiramisu. Tiramisu cookie oat cake. Pudding brownie bonbon. Pie carrot cake
                                 chocolate macaroon. Halvah jelly jelly beans cake macaroon jelly-o. Danish pastry dessert
@@ -71,37 +102,37 @@
     <h4 class="align-self-center">Thông Tin Nhân Viên</h4>
     <!-- FORM DATA -->
     <div class="card mb-2">
-        <div class="card-body">
-            <div class="row">
+        <div class="card-body" id="viewShowThongTin">
+            <div class="row" >
                 <div class="col-sm">
                     <div class="row ">
                         <div class="col-md-6">
-                            <label class="form-label m-0 p-0">Mã nhân viên</label>
+                            <label class="form-label m-0 p-0">Mã nhân viên </label>
                             <input class="form-control h-50" id="nhanVien_MaNhanVien" type="number" placeholder="" autofocus />
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label m-0 p-0">Tên nhân viên</label>
+                            <label class="form-label m-0 p-0">Tên nhân viên <span class="text-danger">(*)</span></label>
                             <input class="form-control h-50" id="nhanVien_TenNhanVien" type="text" placeholder="" autofocus />
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label m-0 p-0">CCCD</label>
+                            <label class="form-label m-0 p-0">CCCD <span class="text-danger">(*)</span></label>
                             <input class="form-control h-50" id="nhanVien_Cccd" type="text" placeholder="" />
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label m-0 p-0">Ngày sinh</label>
+                            <label class="form-label m-0 p-0">Ngày sinh <span class="text-danger">(*)</span></label>
                             <input class="form-control h-50" id="nhanVien_NgaySinh" placeholder="" type="text" />
                         </div>
                         
                         <div class="col-md-6">
-                            <label class="form-label m-0 p-0">Địa chỉ</label>
+                            <label class="form-label m-0 p-0">Địa chỉ <span class="text-danger">(*)</span></label>
                             <input class="form-control h-50" id="nhanVien_DiaChi" placeholder="" type="text" />
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label m-0 p-0">Số điện thoại</label>
+                            <label class="form-label m-0 p-0">Số điện thoại <span class="text-danger">(*)</span></label>
                             <input class="form-control h-50" id="nhanVien_SoDienThoai" placeholder="" type="text" />
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label m-0 p-0">Email</label>
+                            <label class="form-label m-0 p-0">Email <span class="text-danger">(*)</span></label>
                             <input class="form-control h-50" id="nhanVien_Email" placeholder="" type="text" />
                         </div>
                         <div class="col-md-6">
@@ -171,12 +202,12 @@
                                  data-bs-parent="#accordionExample">
                                 <div class="accordion-body row m-0 p-0 ">
                                     <div class="col-md-6">
-                                        <label class="form-label  m-0 p-0">Trung tâm</label>
+                                        <label class="form-label  m-0 p-0">Trung tâm <span class="text-danger">(*)</span></label>
                                         <select name="nhanVien_MaTrungTam" id="nhanVien_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label  m-0 p-0">Giới tính</label>
+                                        <label class="form-label  m-0 p-0">Giới tính<span class="text-danger">(*)</span></label>
                                         <select name="nhanVien_GioiTinh" id="nhanVien_GioiTinh" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
                                             <option>Tất cả</option>
                                             <option>Nam</option>
@@ -184,7 +215,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label m-0 p-0">Loại nhân viên</label>
+                                        <label class="form-label m-0 p-0">Loại nhân viên <span class="text-danger">(*)</span></label>
                                         <select name="nhanVien_LoaiNhanVien" id="nhanVien_LoaiNhanVien" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
                                             <option>Tất cả</option>
                                             <option>Giáo viên cấp 1</option>
@@ -223,7 +254,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label m-0 p-0">Phòng ban</label>
+                                        <label class="form-label m-0 p-0">Phòng ban <span class="text-danger">(*)</span></label>
                                         <select name="nhanVien_PhongBan" id="nhanVien_PhongBan" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
                                             <option>Tất cả</option>
                                             <option>Tổ chức - Nhân sự</option>
@@ -256,7 +287,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label m-0 p-0">Dân tộc</label>
+                                        <label class="form-label m-0 p-0">Dân tộc </label>
                                         <select name="nhanVien_DanToc" id="nhanVien_DanToc" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
                                             <option>Tất cả</option>
                                             <option>Kinh (Việt)</option>
@@ -398,18 +429,25 @@
             </button>
         </div>
         <div class="pb-2 mt-2 col-sm-6">
-            <div class="btn-group left" role="group" aria-label="Button group with nested dropdown">
-                <button type="button" 
-                    class="btn btn-outline-secondary btn-sm"
-                    data-bs-toggle="modal"
-                    data-bs-target="#troGiup">
-                    <i class="tf-icons bx bx-car"></i>
+            <!-- Thay class justify-content-end thành justify-content-start -->
+            <div class="d-flex justify-content-end" role="group" aria-label="Button group with nested dropdown">
+                <button type="button"
+                        class="btn btn-outline-secondary btn-sm w-px-25"
+                        data-bs-toggle="modal"
+                        data-bs-target="#troGiup">
+                    <i class='bx bx-help-circle'></i>
                 </button>
-                <button type="button" class="btn btn-outline-secondary btn-sm">
+                <button type="button" id="giaiPhongDuLieu" class="btn btn-outline-secondary btn-sm">
                     <i class="tf-icons bx bx-rocket"></i>
+                </button>
+                <button type="button" id="showThongTin" class="btn btn-outline-secondary btn-sm">
+                    <i class='bx bx-show'></i>
                 </button>
                 <button type="button" class="btn btn-outline-secondary btn-sm">
                     <i class="tf-icons bx bx-bulb"></i>
+                </button>
+                <button type="button" class="btn btn-outline-secondary btn-sm">
+                    <i class='bx bx-envelope'></i>
                 </button>
                 <div class="btn-group" role="group">
                     <button id="btnGroupDrop1"
@@ -418,15 +456,18 @@
                             data-bs-toggle="dropdown"
                             aria-haspopup="true"
                             aria-expanded="false">
-                        Dropdown
+                        Xuất file
                     </button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <a class="dropdown-item" href="javascript:void(0);">Dropdown link</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Dropdown link</a>
+                        <a class="dropdown-item" href="javascript:void(0);" onclick="exportToExcel()">Xuất file Excel</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Xuất file Word</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Xuất file Pp</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Xuất file Text</a>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
    
     <!-- /FORM Button -->

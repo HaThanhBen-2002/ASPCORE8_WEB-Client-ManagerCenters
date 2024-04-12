@@ -4,14 +4,12 @@ function isValidNhaCungCap(item) {
     // Kiểm tra tính hợp lệ
     if (CheckIsNull(item.TenNhaCungCap)) {
         displayMessages(2, "Vui lòng nhập (Tên nhà cung cấp)"); return false;
-    } else if (CheckIsNull(item.Email)) {
-        displayMessages(2, "Vui lòng nhập (Email)"); return false;
-    } else if (CheckIsNull(item.SoDienThoai )) {
-        displayMessages(2, "Vui lòng nhập (Số điện thoại)"); return false;
-    } else if (CheckIsNull(item.NganHang)) {
-        item.NganHang = null;
     } else if (CheckIsNull(item.MaTrungTam)) {
         displayMessages(2, "Vui lòng chọn (Trung tâm)"); return false;
+    } else if (CheckIsNull(item.Email)) {
+        displayMessages(2, "Vui lòng nhập (Email)"); return false;
+    } else if (CheckIsNull(item.SoDienThoai)) {
+        displayMessages(2, "Vui lòng nhập (Số điện thoại)"); return false;
     } else {
         return true;
     }

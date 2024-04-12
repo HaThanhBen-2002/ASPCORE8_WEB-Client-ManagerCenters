@@ -22,7 +22,7 @@ public partial class NhanVien
 
     [Required]
     public string? DiaChi { get; set; }
-
+    [Required]
     [RegularExpression(@"^(0|\+84)\d{9,10}$")]
     public string? SoDienThoai { get; set; }
 

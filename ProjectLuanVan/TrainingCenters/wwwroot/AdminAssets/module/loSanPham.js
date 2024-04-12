@@ -5,13 +5,19 @@ function isValidLoSanPham(item) {
     if (CheckIsNull(item.TenLoSanPham)) {
         displayMessages(2, "Vui lòng nhập (Tên lô sản phẩm)"); return false;
     } else if (CheckIsNull(item.MaSanPham)) {
-        displayMessages(2, "Vui lòng nhập (Mã sản phẩm)");; return false;
+        displayMessages(2, "Vui lòng chọn (Mã sản phẩm)");; return false;
     } else if (CheckIsNull(item.SoLuong)) {
         displayMessages(2, "Vui lòng nhập (Số lượng)");; return false;
     } else if (CheckIsNull(item.DonVi)) {
         displayMessages(2, "Vui lòng nhập (Đơn vị)");; return false;
     } else if (CheckIsNull(item.NgayNhap)) {
         displayMessages(2, "Vui lòng nhập (Ngày nhập)");; return false;
+    } else if (CheckIsNull(item.TrangThai)) {
+        displayMessages(2, "Vui lòng chọn (Trạng thái)");; return false;
+    } else if (CheckIsNull(item.MaNhanVien)) {
+        displayMessages(2, "Vui lòng chọn (Nhân viên)");; return false;
+    } else if (CheckIsNull(item.MaTrungTam)) {
+        displayMessages(2, "Vui lòng chọn (Trung Tâm)");; return false;
     } else if (CheckIsNull(item.NgayHetHan)) {
         displayMessages(2, "Vui lòng nhập (Ngày hết hạn)");; return false;
     } else {

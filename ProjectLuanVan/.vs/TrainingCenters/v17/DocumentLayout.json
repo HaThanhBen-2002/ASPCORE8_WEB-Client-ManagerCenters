@@ -3,152 +3,96 @@
   "WorkspaceRootPath": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\trainingcenters\\wwwroot\\adminassets\\module\\hoadon.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\wwwroot\\adminassets\\module\\hoadon.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\trainingcenters\\wwwroot\\adminassets\\module\\nhanvien.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\wwwroot\\adminassets\\module\\nhanvien.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\trainingcenters\\areas\\admin\\views\\phieuthuchi\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\areas\\admin\\views\\phieuthuchi\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\trainingcenters\\wwwroot\\adminassets\\module\\support.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\wwwroot\\adminassets\\module\\support.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\projectluanvan\\trainingcenters\\areas\\admin\\views\\hocsinh\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\areas\\admin\\views\\hocsinh\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\projectluanvan\\trainingcenters\\models\\phieuthuchi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\models\\phieuthuchi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\trainingcenters\\areas\\admin\\views\\nhanvien\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\areas\\admin\\views\\nhanvien\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\trainingcenters\\areas\\admin\\controllers\\trungtamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\projectluanvan\\trainingcenters\\areas\\admin\\controllers\\trungtamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\areas\\admin\\controllers\\trungtamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\trainingcenters\\areas\\admin\\controllers\\phieuthuchicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\areas\\admin\\controllers\\phieuthuchicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\projectluanvan\\trainingcenters\\areas\\admin\\views\\nhanvien\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\areas\\admin\\views\\nhanvien\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\projectluanvan\\trainingcenters\\areas\\admin\\controllers\\nhanviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\areas\\admin\\controllers\\nhanviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "DockedHeight": 337,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PhieuThuChiController.cs",
-              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Controllers\\PhieuThuChiController.cs",
-              "RelativeDocumentMoniker": "TrainingCenters\\Areas\\Admin\\Controllers\\PhieuThuChiController.cs",
-              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Controllers\\PhieuThuChiController.cs",
-              "RelativeToolTip": "TrainingCenters\\Areas\\Admin\\Controllers\\PhieuThuChiController.cs",
-              "ViewState": "AQIAAEoAAAAAAAAAAAAAAG0AAAA4AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-08T14:34:35.769Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\HocSinh\\Index.cshtml",
-              "RelativeDocumentMoniker": "TrainingCenters\\Areas\\Admin\\Views\\HocSinh\\Index.cshtml",
-              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\HocSinh\\Index.cshtml",
-              "RelativeToolTip": "TrainingCenters\\Areas\\Admin\\Views\\HocSinh\\Index.cshtml",
-              "ViewState": "AQIAAGYAAAAAAAAAAAAAAG0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-10T13:17:24.184Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PhieuThuChi.cs",
-              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Models\\PhieuThuChi.cs",
-              "RelativeDocumentMoniker": "TrainingCenters\\Models\\PhieuThuChi.cs",
-              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Models\\PhieuThuChi.cs",
-              "RelativeToolTip": "TrainingCenters\\Models\\PhieuThuChi.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-09T15:19:49.767Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\NhanVien\\Index.cshtml",
-              "RelativeDocumentMoniker": "TrainingCenters\\Areas\\Admin\\Views\\NhanVien\\Index.cshtml",
-              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\NhanVien\\Index.cshtml",
-              "RelativeToolTip": "TrainingCenters\\Areas\\Admin\\Views\\NhanVien\\Index.cshtml",
-              "ViewState": "AQIAAEkAAAAAAAAAAAAAAFkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-09T14:59:12.784Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "TrungTamController.cs",
               "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Controllers\\TrungTamController.cs",
               "RelativeDocumentMoniker": "TrainingCenters\\Areas\\Admin\\Controllers\\TrungTamController.cs",
               "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Controllers\\TrungTamController.cs",
               "RelativeToolTip": "TrainingCenters\\Areas\\Admin\\Controllers\\TrungTamController.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAAB0AAAAwAAAA",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAAAFgAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-09T07:25:31.722Z"
+              "WhenOpened": "2024-04-12T11:58:28.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "NhanVienController.cs",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Controllers\\NhanVienController.cs",
+              "RelativeDocumentMoniker": "TrainingCenters\\Areas\\Admin\\Controllers\\NhanVienController.cs",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Controllers\\NhanVienController.cs",
+              "RelativeToolTip": "TrainingCenters\\Areas\\Admin\\Controllers\\NhanVienController.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAAAAAE8AAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T11:48:11.565Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "support.js",
-              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\support.js",
-              "RelativeDocumentMoniker": "TrainingCenters\\wwwroot\\AdminAssets\\module\\support.js",
-              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\support.js",
-              "RelativeToolTip": "TrainingCenters\\wwwroot\\AdminAssets\\module\\support.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-04-09T07:22:55.219Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\NhanVien\\Index.cshtml",
+              "RelativeDocumentMoniker": "TrainingCenters\\Areas\\Admin\\Views\\NhanVien\\Index.cshtml",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\NhanVien\\Index.cshtml",
+              "RelativeToolTip": "TrainingCenters\\Areas\\Admin\\Views\\NhanVien\\Index.cshtml",
+              "ViewState": "AQIAALMBAAAAAAAAAAAIwM0BAABjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-12T11:41:48.32Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "hoaDon.js",
-              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\hoaDon.js",
-              "RelativeDocumentMoniker": "TrainingCenters\\wwwroot\\AdminAssets\\module\\hoaDon.js",
-              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\hoaDon.js",
-              "RelativeToolTip": "TrainingCenters\\wwwroot\\AdminAssets\\module\\hoaDon.js",
-              "ViewState": "AQIAAPEAAAAAAAAAAAAAAEgBAAAAAAAA",
+              "Title": "nhanVien.js",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\nhanVien.js",
+              "RelativeDocumentMoniker": "TrainingCenters\\wwwroot\\AdminAssets\\module\\nhanVien.js",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\nhanVien.js",
+              "RelativeToolTip": "TrainingCenters\\wwwroot\\AdminAssets\\module\\nhanVien.js",
+              "ViewState": "AQIAANMAAAAAAAAAAAAAAPwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-04-09T06:16:40.721Z",
+              "WhenOpened": "2024-04-10T17:02:39.687Z",
               "EditorCaption": ""
-            },
+            }
+          ]
+        },
+        {
+          "DockedHeight": 15,
+          "SelectedChildIndex": -1,
+          "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\PhieuThuChi\\Index.cshtml",
-              "RelativeDocumentMoniker": "TrainingCenters\\Areas\\Admin\\Views\\PhieuThuChi\\Index.cshtml",
-              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\PhieuThuChi\\Index.cshtml",
-              "RelativeToolTip": "TrainingCenters\\Areas\\Admin\\Views\\PhieuThuChi\\Index.cshtml",
-              "ViewState": "AQIAAOwAAAAAAAAAAAAIwAEBAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-09T06:14:21.486Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }

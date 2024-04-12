@@ -2,9 +2,6 @@
     if (CheckIsNull(item.TenMonHoc)) {
         displayMessages(2, "Vui lòng nhập (Tên môn học)");
         return false;
-    } else if (CheckIsNull(item.ThongTin)) {
-        displayMessages(2, "Vui lòng nhập (Thông tin)");
-        return false;
     } else if (CheckIsNull(item.Gia)) {
         displayMessages(2, "Vui lòng nhập (Giá)");
         return false;

@@ -658,7 +658,7 @@ $(document).ready(function () {
             HinhThucThanhToan: $('#phieuThuChi_HinhThucThanhToan').val(),
             MaNhanVien: null
         };
-        if (phieuThuChi.MaTrungTam == "Tất cả" || phieuThuChi.LoaiPhieu == "Tất cả" || phieuThuChi.HinhThucThanhToan == "Tất cả") {
+        if (phieuThuChi.MaTrungTam == "Tất cả" || phieuThuChi.MaTrungTam == 0 || phieuThuChi.LoaiPhieu == "Tất cả" || phieuThuChi.HinhThucThanhToan == "Tất cả") {
             displayMessages(2, "Vui lòng chọn đầy đủ thông tin hóa đơn");
         }
         else {

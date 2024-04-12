@@ -1,4 +1,26 @@
-﻿function isValidNhanVien(item) {
+﻿
+var nhanVien = {
+    MaNhanVien: null,
+    TenNhanVien: null,
+    Cccd: null,
+    NgaySinh: null,
+    GioiTinh: null,
+    DiaChi: null,
+    SoDienThoai: null,
+    Email: null,
+    ThongTin: null,
+    HinhAnh: null,
+    MaTrungTam: null,
+    MaTaiKhoan: null,
+    LoaiNhanVien: null,
+    PhongBan: null,
+    Luong: null,
+    NganHang: null,
+    SoTaiKhoan: null,
+    DanToc: null,
+    TonGiao: null
+};
+function isValidNhanVien(item) {
     // Kiểm tra tính hợp lệ
     if (CheckIsNull(item.TenNhanVien)) {
         displayMessages(2, "Vui lòng nhập (Tên nhân viên)"); return false;
@@ -10,29 +32,37 @@
         displayMessages(2, "Vui lòng nhập (Số điện thoại)"); return false;
     } else if (CheckIsNull(item.Email)) {
         displayMessages(2, "Vui lòng nhập (Email)"); return false;
-    } else if (CheckIsNull(item.Luong)) {
-        displayMessages(2, "Vui lòng nhập (Lương)"); return false;
-    } else if (CheckIsNull(item.NganHang)) {
-        displayMessages(2, "Vui lòng nhập (Mã tài khoản)"); return false;
-    } else if (CheckIsNull(item.SoTaiKhoan)) {
-        displayMessages(2, "Vui lòng nhập (Số tài khoản)"); return false;
     } else if (CheckIsNull(item.GioiTinh)) {
         displayMessages(2, "Vui lòng chọn (Giới tính)"); return false;
     } else if (CheckIsNull(item.MaTrungTam)) {
         displayMessages(2, "Vui lòng chọn (Trung tâm)"); return false;
     } else if (CheckIsNull(item.LoaiNhanVien)) {
         displayMessages(2, "Vui lòng chọn (Loại nhân viên)"); return false;
+    } else if (CheckIsNull(item.NganHang)) {
+        item.NganHang = null;
+    } else if (CheckIsNull(item.DanToc)) {
+        item.DanToc = null;
+    } else if (CheckIsNull(item.TonGiao)) {
+        item.TonGiao = null;
     } else if (CheckIsNull(item.PhongBan)) {
         displayMessages(2, "Vui lòng chọn (Phòng ban)"); return false;
-    } else if (CheckIsNull(item.DanToc)) {
-        displayMessages(2, "Vui lòng chọn (Dân tộc)"); return false;
-    } else if (CheckIsNull(item.TonGiao)) {
-        displayMessages(2, "Vui lòng chọn (Tôn giáo)"); return false;
     } else {
         return true;
     }
 }
+function createCellPos(n) {
+    var ordA = 'A'.charCodeAt(0);
+    var ordZ = 'Z'.charCodeAt(0);
+    var len = ordZ - ordA + 1;
+    var s = "";
 
+    while (n >= 0) {
+        s = String.fromCharCode(n % len + ordA) + s;
+        n = Math.floor(n / len) - 1;
+    }
+
+    return s;
+}
 function GetNhanVienById() {
     let item = {
         MaNhanVien: $('#nhanVien_MaNhanVien').val(),
@@ -170,6 +200,68 @@ function deleteImage() {
     updateCarousel();
 }
 
+function exportToExcel() {
+    var listNhanVien = [];
+    var listTrungTam = [];
+
+    $.ajax({
+        type: "POST",
+        url: "/Admin/NhanVien/Search",
+        async: false,
+        data: { item: nhanVien },
+        success: function (data) {
+            listNhanVien = data.$values.map(function (item) {
+                delete item.$id;
+                return {
+                    'Mã Nhân Viên': item.maNhanVien,
+                    'Tên Nhân Viên': item.tenNhanVien,
+                    'CCCD': item.cccd,
+                    'Ngày Sinh': item.ngaySinh,
+                    'Giới Tính': item.gioiTinh,
+                    'Địa Chỉ': item.diaChi,
+                    'Số Điện Thoại': item.soDienThoai,
+                    'Email': item.email,
+                    'Thông Tin': item.thongTin,
+                    'Mã Trung Tâm': item.maTrungTam,
+                    'Mã Tài Khoản': item.maTaiKhoan,
+                    'Loại Nhân Viên': item.loaiNhanVien,
+                    'Phòng Ban': item.phongBan,
+                    'Lương': item.luong,
+                    'Tên Ngân Hàng': item.nganHang,
+                    'Số Tài Khoản': item.soTaiKhoan,
+                    'Dân Tộc': item.danToc,
+                    'Tôn Giáo': item.tonGiao
+                };
+            });
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/Admin/TrungTam/SearchName",
+        async: false,
+        success: function (data) {
+            listTrungTam = data.$values.map(function (item) {
+                delete item.$id;
+                return {
+                    'Mã Trung Tâm': item.maTrungTam,
+                    'Tên Trung Tâm': item.tenTrungTam
+                };
+            });
+        }
+    });
+
+    var workbook = XLSX.utils.book_new();
+
+    var danhSachNhanVien = XLSX.utils.json_to_sheet(listNhanVien);
+    XLSX.utils.book_append_sheet(workbook, danhSachNhanVien, "Danh sách nhân viên");
+
+    var danhSachTrungTam = XLSX.utils.json_to_sheet(listTrungTam);
+    XLSX.utils.book_append_sheet(workbook, danhSachTrungTam, "Thông tin trung tâm");
+
+    XLSX.writeFile(workbook, "DanhSachNhanVien.xlsx");
+}
+
 $(document).ready(function () {
     //=============================== IMAGE ===================================
     // đối tượng ảnh
@@ -178,27 +270,7 @@ $(document).ready(function () {
         openFileInput();
     });
     // ============================================== TABLE ===============================================
-    var nhanVien = {
-        MaNhanVien: null,
-        TenNhanVien: null,
-        Cccd: null,
-        NgaySinh: null,
-        GioiTinh: null,
-        DiaChi: null,
-        SoDienThoai: null,
-        Email: null,
-        ThongTin: null,
-        HinhAnh: null,
-        MaTrungTam: null,
-        MaTaiKhoan: null,
-        LoaiNhanVien: null,
-        PhongBan: null,
-        Luong: null,
-        NganHang: null,
-        SoTaiKhoan: null,
-        DanToc: null,
-        TonGiao: null
-    };
+
     // Loading Data Table
     $('#myTable').DataTable({
         serverSide: true,
@@ -226,8 +298,13 @@ $(document).ready(function () {
             { data: "gioiTinh" },
             { data: "phongBan" }
         ],
-
+        layout: {
+            topEnd: {
+                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+            }
+        },
     });
+
 
     // Table Object
     var table = $('#myTable').DataTable();
@@ -431,6 +508,16 @@ $(document).ready(function () {
         $('#nhanVien_DanToc').val("Tất cả");
         $('#nhanVien_TonGiao').val("Tất cả");
         $('#imageShow').attr('src', null);
+    });
+
+    $('#giaiPhongDuLieu').click(function () {
+        nhanVien.MaNhanVien = 0;
+        table.settings()[0].ajax.data = { item: nhanVien };
+        table.ajax.reload();
+    });
+
+    $('#showThongTin').click(function () {
+        $("#viewShowThongTin").toggle();
     });
 
     $('#btnSearchNhanVien').click(function () {

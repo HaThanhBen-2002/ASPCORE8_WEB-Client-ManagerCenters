@@ -8,29 +8,11 @@
     } else if (CheckIsNull(item.GioiTinh)) {
         displayMessages(2, "Vui lòng chọn (Giới tính)");
         return false;
-    } else if (CheckIsNull(item.MaLop)) {
-        displayMessages(2, "Vui lòng chọn (Mã lớp)");
-        return false;
     } else if (CheckIsNull(item.MaTrungTam)) {
         displayMessages(2, "Vui lòng chọn (Mã trung tâm)");
         return false;
-    } else if (CheckIsNull(item.ThongTin)) {
-        displayMessages(2, "Vui lòng nhập (Thông tin)");
-        return false;
-    } else if (CheckIsNull(item.DiaChi)) {
-        displayMessages(2, "Vui lòng nhập (Địa chỉ)");
-        return false;
-    } else if (CheckIsNull(item.SoDienThoaiCha)) {
-        displayMessages(2, "Vui lòng nhập (Số điện thoại cha)");
-        return false;
-    } else if (CheckIsNull(item.SoDienThoaiMe)) {
-        displayMessages(2, "Vui lòng nhập (Số điện thoại mẹ)");
-        return false;
-    } else if (CheckIsNull(item.EmailCha)) {
-        displayMessages(2, "Vui lòng nhập (Email cha)");
-        return false;
-    } else if (CheckIsNull(item.EmailMe)) {
-        displayMessages(2, "Vui lòng nhập (Email mẹ)");
+    } else if (CheckIsNull(item.MaLop)) {
+        item.MaLop = null;
         return false;
     }
     return true;

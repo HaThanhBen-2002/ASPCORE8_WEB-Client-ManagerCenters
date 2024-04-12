@@ -12,10 +12,10 @@ public partial class NhaCungCap
     public string? TenNhaCungCap { get; set; }
 
     public string? GioiThieu { get; set; }
-
+    [Required]
     [EmailAddress]
     public string? Email { get; set; }
-
+    [Required]
     [RegularExpression(@"^(0|\+84)\d{9,10}$")]
     public string? SoDienThoai { get; set; }
 

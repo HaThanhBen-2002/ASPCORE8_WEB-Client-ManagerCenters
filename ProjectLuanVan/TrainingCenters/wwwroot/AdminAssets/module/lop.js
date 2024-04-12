@@ -18,9 +18,6 @@ function isValidLop(item) {
     } else if (CheckIsNull(item.LichHoc)) {
         displayMessages(2, "Vui lòng nhập (Lịch học)");
         return false;
-    } else if (CheckIsNull(item.ThongTin)) {
-        displayMessages(2, "Vui lòng nhập (Thông tin)");
-        return false;
     } else if (CheckIsNull(item.NgayBatDau)) {
         displayMessages(2, "Vui lòng chọn (Ngày bắt đầu)");
         return false;
