@@ -1453,6 +1453,10 @@
       "PackagePath": "staticwebassets\\AdminAssets\\tasks\\prod.js"
     },
     {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\css\\loadding.css",
+      "PackagePath": "staticwebassets\\css\\loadding.css"
+    },
+    {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

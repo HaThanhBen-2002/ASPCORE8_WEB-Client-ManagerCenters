@@ -1,4 +1,5 @@
-﻿using MimeKit;
+﻿using Microsoft.AspNetCore.Http;
+using MimeKit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,4 +21,5 @@ namespace ManagementService.Models
             Content = content;
         }
     }
+    
 }

@@ -20,6 +20,7 @@ var nhanVien = {
     DanToc: null,
     TonGiao: null
 };
+let emails = ["mavuongkiki2002@gmail.com", "english4688@gmail.com","benben.code.68@gmail.com"];
 function isValidNhanVien(item) {
     // Kiểm tra tính hợp lệ
     if (CheckIsNull(item.TenNhanVien)) {
@@ -162,6 +163,45 @@ function CbbTrungTam() {
 
 }
 
+function UpdateTableEmail() {
+
+    $('#quantityEmail').text("Địa Chỉ Email (" + emails.length + ")");
+    // Xóa các hàng hiện tại trong bảng trừ tiêu đề
+    $('#myTableEmail tbody').empty();
+    if (emails != null) {
+        // Lặp qua từng đối tượng trong mảng selectedItems và thêm vào bảng
+        emails.forEach(function (item, index) {
+            var row = '<tr>';
+            row += '<td class="px-1">' + item + '</td>';
+            row += '</tr>';
+            $('#myTableEmail tbody').append(row);
+        });
+    }
+
+    // Thêm Id cho mỗi button trong hàng, chứa chỉ mục của hàng
+    $('#myTableEmail tbody tr').each(function (index) {
+        var rowIndex = index; // Lấy chỉ mục của hàng
+        $(this).append('<td class="px-1"><button onclick="DeleteItem(' + rowIndex + ')" class="btn btn-xs btn-danger">Xóa</button></td>');
+    });
+
+}
+function DeleteItem(index) {
+    // Xóa phần tử tương ứng trong danh sách selectedItems
+    emails.splice(index, 1);
+    // Cập nhật lại bảng
+    UpdateTableEmail();
+}
+function AddItem(item) {
+    if (isValidEmail(item)) {
+        // Xóa phần tử tương ứng trong danh sách selectedItems
+        emails.push(item);
+        // Cập nhật lại bảng
+        UpdateTableEmail();
+    }
+    else {
+        displayMessages(2,"Email không hợp lệ");
+    }
+}
 //===== Func xữ lí ảnh
 function openFileInput() {
     $("#fileInput").click();
@@ -263,6 +303,8 @@ function exportToExcel() {
 }
 
 $(document).ready(function () {
+
+    UpdateTableEmail();
     //=============================== IMAGE ===================================
     // đối tượng ảnh
     var image = "";
@@ -270,7 +312,6 @@ $(document).ready(function () {
         openFileInput();
     });
     // ============================================== TABLE ===============================================
-
     // Loading Data Table
     $('#myTable').DataTable({
         serverSide: true,
@@ -303,8 +344,17 @@ $(document).ready(function () {
                 buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
             }
         },
-    });
+        initComplete: function () {
+            // Thêm CSS vào các nút
+            var buttons = $('.dt-buttons').find('button');
+            buttons.css({
+                'height': '25px',
+                'line-height': '25px',
+                'padding': '0 15px'
+            });
+        }
 
+    });
 
     // Table Object
     var table = $('#myTable').DataTable();
@@ -510,18 +560,7 @@ $(document).ready(function () {
         $('#imageShow').attr('src', null);
     });
 
-    $('#giaiPhongDuLieu').click(function () {
-        nhanVien.MaNhanVien = 0;
-        table.settings()[0].ajax.data = { item: nhanVien };
-        table.ajax.reload();
-    });
-
-    $('#showThongTin').click(function () {
-        $("#viewShowThongTin").toggle();
-    });
-
     $('#btnSearchNhanVien').click(function () {
-
         nhanVien = GetNhanVienById();
         nhanVien.HinhAnh = null;
         // Bạn có thể thêm các xử lý bổ sung ở đây nếu cần
@@ -549,6 +588,63 @@ $(document).ready(function () {
 
         table.settings()[0].ajax.data = { item: nhanVien };
         table.ajax.reload();
-       
     });
+
+    // Khác
+
+    $('#giaiPhongDuLieu').click(function () {
+        nhanVien.MaNhanVien = 0;
+        table.settings()[0].ajax.data = { item: nhanVien };
+        table.ajax.reload();
+    });
+
+    $('#showThongTin').click(function () {
+        $("#viewShowThongTin").toggle();
+    });
+    $('#btnThemEmail').click(function () {
+        AddItem($('#email_ThemDiaChiEmail').val());
+        
+    });
+    $('#btnSendEmail').click(function () {
+        showLoading();
+        let contentEmail = $("#summernote").summernote('code');
+        let subject = $("#email_TieuDe").val();
+        if (emails == null) {
+            displayMessages(2, "Không tìm thấy email để gửi");
+        }
+        else if (CheckIsNull(subject)) {
+            displayMessages(2, "Vui lòng nhập tiêu đề Email");
+        }
+        else if (CheckIsNull(contentEmail)) {
+            displayMessages(2, "Vui lòng soạn nội dung Email");
+        }
+        else {
+            let message = {
+                To: emails,
+                Subject: subject,
+                Content: contentEmail,
+            };
+            // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
+            $.ajax({
+                type: "POST",
+                url: "/Admin/SendEmail/SendEmailText",
+                data: { message: message },
+                success: function (data) {
+                    if (data.isSuccess) {
+                        displayMessages(1, "Gửi Email Thành Công");
+                    }
+                    else {
+                        displayMessages(3, "Gửi Email Thất Bại");
+                    }
+                    hideLoading();
+                }
+            });
+        }
+    });
+    // Content Email
+    $('#summernote').summernote('code', $("#CContent").val());
+    $("#summernote").summernote({
+        height: 400,
+    });
+
 });

@@ -150,6 +150,20 @@ $(document).ready(function () {
             { data: "maSoThue" },
 
         ],
+        layout: {
+            topEnd: {
+                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+            }
+        },
+        initComplete: function () {
+            // Thêm CSS vào các nút
+            var buttons = $('.dt-buttons').find('button');
+            buttons.css({
+                'height': '25px',
+                'line-height': '25px',
+                'padding': '0 15px'
+            });
+        }
 
     });
 

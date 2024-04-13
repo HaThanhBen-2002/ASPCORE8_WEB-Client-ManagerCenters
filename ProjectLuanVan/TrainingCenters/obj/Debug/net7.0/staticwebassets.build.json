@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NCu65+hVWV0l2c1flAVrp1Zt8L8Q1Gk0X3cuauwWrcA=",
+  "Hash": "ia/RliuqpyNXR3WqtCbUelCAF5nFgsIJCuycR+iAiYM=",
   "Source": "TrainingCenters",
   "BasePath": "_content/TrainingCenters",
   "Mode": "Default",
@@ -6931,6 +6931,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AdminAssets\\tasks\\prod.js"
+    },
+    {
+      "Identity": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\css\\loadding.css",
+      "SourceId": "TrainingCenters",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\",
+      "BasePath": "_content/TrainingCenters",
+      "RelativePath": "css/loadding.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\loadding.css"
     },
     {
       "Identity": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\css\\site.css",

@@ -20,7 +20,7 @@ namespace TrainingCenters.RepositoryApi
         public IHocSinh HocSinh { get; set; }
         public IDichVu DichVu { get; set; }
         public IChiTietThuChi ChiTietThuChi { get; set; }
-
+        public ISendEmail SendEmail { get; set; }
 
         private readonly HttpClient _httpClient;
         private readonly IOptions<TrainingCenters.ConnectApi.ConnectApi> _connectionStrings;
@@ -31,6 +31,7 @@ namespace TrainingCenters.RepositoryApi
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
 
             TrungTam = new TrungTamRepon(_httpClient,_connectionStrings);
+            SendEmail = new SendEmailRepon(_httpClient,_connectionStrings);
             SuDungDichVu = new SuDungDichVuRepon(_httpClient, _connectionStrings);
             SanPham = new SanPhamRepon(_httpClient, _connectionStrings);
             PhieuThuChi = new PhieuThuChiRepon(_httpClient, _connectionStrings);

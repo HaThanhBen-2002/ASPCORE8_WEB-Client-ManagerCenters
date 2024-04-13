@@ -3,7 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CBC99B4A-9372-4A26-B216-B2E32B42727F}|Data\\Data.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\webapi_managementcenters\\data\\models\\trungtam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C418963B-E9A8-470A-AB9A-E0D1045563BD}|Management.Api\\ManagementApi.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\webapi_managementcenters\\management.api\\controllers\\sendemailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C418963B-E9A8-470A-AB9A-E0D1045563BD}|Management.Api\\ManagementApi.csproj|solutionrelative:management.api\\controllers\\sendemailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAD6C595-0295-41A1-BE04-7DF4E3D61C1F}|ManagementService\\ManagementService.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\webapi_managementcenters\\managementservice\\services\\interfaces\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAD6C595-0295-41A1-BE04-7DF4E3D61C1F}|ManagementService\\ManagementService.csproj|solutionrelative:managementservice\\services\\interfaces\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C418963B-E9A8-470A-AB9A-E0D1045563BD}|Management.Api\\ManagementApi.csproj|C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\management.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C418963B-E9A8-470A-AB9A-E0D1045563BD}|Management.Api\\ManagementApi.csproj|solutionrelative:management.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBC99B4A-9372-4A26-B216-B2E32B42727F}|Data\\Data.csproj|C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\data\\models\\trungtam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CBC99B4A-9372-4A26-B216-B2E32B42727F}|Data\\Data.csproj|solutionrelative:data\\models\\trungtam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -14,8 +26,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\ManagementService\\Services\\Interfaces\\IEmailService.cs",
+              "RelativeDocumentMoniker": "ManagementService\\Services\\Interfaces\\IEmailService.cs",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\ManagementService\\Services\\Interfaces\\IEmailService.cs",
+              "RelativeToolTip": "ManagementService\\Services\\Interfaces\\IEmailService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T23:53:29.155Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -23,6 +48,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "SendEmailController.cs",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Management.Api\\Controllers\\SendEmailController.cs",
+              "RelativeDocumentMoniker": "Management.Api\\Controllers\\SendEmailController.cs",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Management.Api\\Controllers\\SendEmailController.cs",
+              "RelativeToolTip": "Management.Api\\Controllers\\SendEmailController.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAABoAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T23:05:42.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthenticationController.cs",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Management.Api\\Controllers\\AuthenticationController.cs",
+              "RelativeDocumentMoniker": "Management.Api\\Controllers\\AuthenticationController.cs",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Management.Api\\Controllers\\AuthenticationController.cs",
+              "RelativeToolTip": "Management.Api\\Controllers\\AuthenticationController.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAACkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T21:10:08.815Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "TrungTam.cs",
               "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\Models\\TrungTam.cs",
               "RelativeDocumentMoniker": "Data\\Models\\TrungTam.cs",
@@ -30,8 +80,17 @@
               "RelativeToolTip": "Data\\Models\\TrungTam.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T15:02:31.706Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T15:02:31.706Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }

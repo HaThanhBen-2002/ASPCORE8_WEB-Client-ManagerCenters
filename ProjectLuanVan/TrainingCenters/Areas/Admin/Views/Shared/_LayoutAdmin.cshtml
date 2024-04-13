@@ -44,19 +44,145 @@
     <script src="/AdminAssets/assets/vendor/js/helpers.js"></script>
 
     <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
-
-
-
+    <link href="~/css/loadding.css" rel="stylesheet" />
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/AdminAssets/assets/js/config.js"></script>
 </head>
 
 <body>
+    <!-- Màn hình loading -->
+    <div id="loadingScreen">
+        <div id="loadingAnimation"></div>
+        <div id="loadingText">Đang tải...</div>
+    </div>
+    <!-- Màn hình Trợ Giúp -->
+    <div class="modal fade" id="troGiup" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable  " role="document">
+            <div class="modal-content bg-body ">
+                <div class="modal-header mb-0  pb-0">
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body mt-0 pt-0 ">
+                    <div class="mt-0 pt-0 ">
+                        <div class="list-group list-group-horizontal-md text-md-center mt-0 pt-2">
+                            <a class="list-group-item list-group-item-action active"
+                               id="huongdan-list-item"
+                               data-bs-toggle="list"
+                               href="#horizontal-huongdan">Hướng dẫn</a>
+                            <a class="list-group-item list-group-item-action"
+                               id="baocaosuco-list-item"
+                               data-bs-toggle="list"
+                               href="#horizontal-baocaosuco">Báo cáo sự cố</a>
+                        </div>
+                        <div class="tab-content px-0 mt-0">
+                            @* Hướng dẫn *@
+                            <div class="tab-pane fade show active" id="horizontal-huongdan">
+                                <div class="col-md-12 m-0 p-0 accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button type="button"
+                                                class="accordion-button ps-3 text-primary"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#hd-Create"
+                                                aria-expanded="true"
+                                                aria-controls="hd-Create">
+                                            Thêm mới dữ liệu
+                                        </button>
+                                    </h2>
+
+                                    <div id="hd-Create"
+                                         class="accordion-collapse collapse  m-0 p-0"
+                                         data-bs-parent="#accordionExample">
+                                        <div class="accordion-body row m-0 p-0 ">
+                                            <p>1. Bạn cần (nhập/chọn) tối thiểu đầy đủ các thông tin có ký hiệu <span class="text-danger">(*)</span>.</p>
+                                            <div class="col-sm-12">
+                                                <p>
+                                                    2. Sau khi nhập dữ liệu, bạn hãy nhấn nút <span>
+                                                        <button type="button" class="btn btn-sm btn-primary ">
+                                                            Thêm
+                                                        </button>
+                                                    </span>
+                                                    để dữ liệu được lưu vào hệ thống.
+                                                </p>
+
+                                            </div>
+                                            <p>
+                                                3. Khi dữ liệu được thêm thành công bạn sẽ nhìn thấy thống báo <span>
+
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @* Liên hệ kỹ thuật viên *@
+                            <div class="tab-pane fade" id="horizontal-baocaosuco">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="form-label m-0 p-0">Tên của bạn<span class="text-danger">(*)</span></label>
+                                        <input class="form-control h-50" id="emailKyThuat_TenKhachHang" type="text" placeholder="" autofocus />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label m-0 p-0">Số điện thoại<span class="text-danger">(*)</span></label>
+                                        <input class="form-control h-50" id="emailKyThuat_SDT" type="text" placeholder="" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label  m-0 p-0">Sự cố mà bạn gặp phải <span class="text-danger">(*)</span></label>
+                                        <select name="nhanVien_NganHang" id="emailKyThuat_SuCo" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                            <option>Lỗi Khi Thêm Dữ Liệu</option>
+                                            <option>Lỗi Khi Xóa Dữ Liệu</option>
+                                            <option>Lỗi Khi Cập Nhật Dữ Liệu</option>
+                                            <option>Lỗi Khi Tìm Kiếm Dữ Liệu</option>
+                                            <option>Lỗi Khi Làm Mới</option>
+                                            <option>Lỗi Khi Xuất Excel Full</option>
+                                            <option>Lỗi Khi Xuất PDF</option>
+                                            <option>Lỗi Khi Print</option>
+                                            <option>Lỗi Khi Copy</option>
+                                            <option>Lỗi Khi Xuất CSV</option>
+                                            <option>Lỗi Khi Phân Trang</option>
+                                            <option>Lỗi Khi Chuyển Trang</option>
+                                            <option>Lỗi Khi Hiển Thị Dữ Liệu</option>
+                                            <option>Lỗi Khi Gửi Email</option>
+                                            <option>Lỗi Khác</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label m-0 p-0">Mô tả sự cố<span class="text-danger">(*)</span></label>
+                                        <textarea id="emailKyThuat_MoTaSuCo" class="form-control"
+                                                  placeholder="Mô tả sự cố mà bạn gặp phải"></textarea>
+                                    </div>
+                                    <div class="col-md-12 mt-2 ps-3 align-content-center row">
+                                        <button type="button" onclick="sendEmailKyThuatVien()" class="btn btn-primary ps-1 ms-2" data-bs-dismiss="modal">
+                                            Gửi Thông Báo Sự Cố Đến Kỹ Thuật Viên
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
 
         <div class="layout-container">
+
+
+
+
 
             @await Html.PartialAsync("_MenuMain")
             <!-- Layout container -->

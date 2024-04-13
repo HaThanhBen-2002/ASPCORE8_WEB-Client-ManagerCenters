@@ -2243,6 +2243,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ManagementApi.Controllers.SendEmailController",
+    "Method": "SendEmailText",
+    "RelativePath": "api/SendEmail/SendEmailText",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "message",
+        "Type": "ManagementService.Models.MessageText",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ManagementApi.Controllers.SuDungDichVuController",
     "Method": "CheckId",
     "RelativePath": "api/SuDungDichVu/CheckId",

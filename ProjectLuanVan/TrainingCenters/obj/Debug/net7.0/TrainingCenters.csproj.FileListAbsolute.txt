@@ -1536,3 +1536,10 @@ C:\Users\mavuo\OneDrive\Tài liệu\GitHub\ASPCORE8_WEB-Client-ManagerCenters\
 C:\Users\mavuo\OneDrive\Tài liệu\GitHub\ASPCORE8_WEB-Client-ManagerCenters\ASPCORE8_WEB-Client-ManagerCenters\ProjectLuanVan\TrainingCenters\obj\Debug\net7.0\TrainingCenters.pdb
 C:\Users\mavuo\OneDrive\Tài liệu\GitHub\ASPCORE8_WEB-Client-ManagerCenters\ASPCORE8_WEB-Client-ManagerCenters\ProjectLuanVan\TrainingCenters\obj\Debug\net7.0\TrainingCenters.genruntimeconfig.cache
 C:\Users\mavuo\OneDrive\Tài liệu\GitHub\ASPCORE8_WEB-Client-ManagerCenters\ASPCORE8_WEB-Client-ManagerCenters\ProjectLuanVan\TrainingCenters\obj\Debug\net7.0\ref\TrainingCenters.dll
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\ASPCORE8_WEB-Client-ManagerCenters\ASPCORE8_WEB-Client-ManagerCenters\ProjectLuanVan\TrainingCenters\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\ASPCORE8_WEB-Client-ManagerCenters\ASPCORE8_WEB-Client-ManagerCenters\ProjectLuanVan\TrainingCenters\bin\Debug\net7.0\MimeKit.dll
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\ASPCORE8_WEB-Client-ManagerCenters\ASPCORE8_WEB-Client-ManagerCenters\ProjectLuanVan\TrainingCenters\bin\Debug\net7.0\System.Formats.Asn1.dll
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\ASPCORE8_WEB-Client-ManagerCenters\ASPCORE8_WEB-Client-ManagerCenters\ProjectLuanVan\TrainingCenters\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\ASPCORE8_WEB-Client-ManagerCenters\ASPCORE8_WEB-Client-ManagerCenters\ProjectLuanVan\TrainingCenters\bin\Debug\net7.0\System.Text.Encoding.CodePages.dll
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\ASPCORE8_WEB-Client-ManagerCenters\ASPCORE8_WEB-Client-ManagerCenters\ProjectLuanVan\TrainingCenters\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\mavuo\OneDrive\Tài liệu\GitHub\ASPCORE8_WEB-Client-ManagerCenters\ASPCORE8_WEB-Client-ManagerCenters\ProjectLuanVan\TrainingCenters\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Text.Encoding.CodePages.dll

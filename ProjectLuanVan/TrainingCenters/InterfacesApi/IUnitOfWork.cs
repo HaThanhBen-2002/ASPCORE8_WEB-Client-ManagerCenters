@@ -15,5 +15,6 @@
         public IHocSinh HocSinh { get; set; }
         public IDichVu DichVu { get; set; }
         public IChiTietThuChi ChiTietThuChi { get; set; }
+        public ISendEmail SendEmail { get; set; }
     }
 }

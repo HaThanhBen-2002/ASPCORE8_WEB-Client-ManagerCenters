@@ -46,7 +46,19 @@ function displayMessages(status, mesg) {
         toastr.warning(warningData);
     }
 }
+function getTimeToday() {
+    let today = new Date();
 
+    let day = String(today.getDate()).padStart(2, '0');
+    let month = String(today.getMonth() + 1).padStart(2, '0'); // Tháng từ 0-11 nên cần +1
+    let year = today.getFullYear();
+
+    let hours = String(today.getHours()).padStart(2, '0');
+    let minutes = String(today.getMinutes()).padStart(2, '0');
+    let seconds = String(today.getSeconds()).padStart(2, '0');
+
+    return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+}
 // Func lấy ngày tháng năm hiện tại
 function GetToDay() {
     // Lấy ngày hiện tại
@@ -99,5 +111,82 @@ function CheckIsNull(value) {
         return true;
     } else {
         return false;
+    }
+}
+
+// Hiển thị màn hình loading
+function showLoading() {
+    $("#loadingScreen").show();
+}
+
+// Ẩn màn hình loading
+function hideLoading() {
+    $("#loadingScreen").hide();
+}
+
+function isValidEmail(email) {
+    if (email != null) {
+        // Sử dụng biểu thức chính quy để kiểm tra địa chỉ email
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        // Kiểm tra xem email có khớp với biểu thức chính quy hay không
+        return emailRegex.test(email);
+    }
+}
+
+function sendEmailKyThuatVien(viTriSuCo) {
+    showLoading();
+    // Chuyển trạng thái của button sang disabled
+    $('#sendEmailError').prop('disabled', true);
+
+    // Đặt một độ trễ để kích hoạt lại button sau 5 phút
+    setTimeout(function () {
+        $('#sendEmailError').prop('disabled', false);
+    }, 2 * 60 * 1000);  // 2 phút * 60 giây/phút * 1000 ms/giây
+    let name = $('#emailKyThuat_TenKhachHang').val();
+    let sdt = $('#emailKyThuat_SDT').val();
+    let suCo = $('#emailKyThuat_SuCo').val();
+    let moTa = $('#emailKyThuat_MoTaSuCo').val();
+    let ngayGui = getTimeToday();
+    if (CheckIsNull(name)) {
+        displayMessages(2, "Vui lòng nhập Tên của bạn");
+    }
+    else if (CheckIsNull(sdt)) {
+        displayMessages(2, "Vui lòng nhập Số điện thoại của bạn");
+    }
+    else if (CheckIsNull(suCo)) {
+        displayMessages(2, "Vui lòng chọn sự cố gặp phải");
+    }
+    else if (CheckIsNull(moTa)) {
+        displayMessages(2, "Vui lòng nhập mô tả cho sự cố trên");
+    }
+    else {
+        let emailContent = `
+            <strong>Thông Báo Lỗi Đến Từ: ${name}</strong><br>
+            <strong>Số điện thoại:</strong> ${sdt}<br>
+            <strong>Sự cố:</strong> ${suCo}<br>
+            <strong>Hệ thống nhận thấy tại:</strong> ${window.location.href}<br>
+            <strong>Thời gian:</strong> ${ngayGui}<br>
+            <strong>Mô tả từ khách hàng:</strong><br>
+            ${moTa}`;
+        let message = {
+            To: [],
+            Subject: "Hệ Thống BENBEN Thông Báo Sự Cố",
+            Content: emailContent
+        };
+        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
+        $.ajax({
+            type: "POST",
+            url: "/Admin/SendEmail/SendEmailKyThuat",
+            data: { message: message },
+            success: function (data) {
+                if (data.isSuccess) {
+                    displayMessages(1, "Đã gửi thông báo đến kỹ thuật viên");
+                }
+                else {
+                    displayMessages(3, "Gửi Thông Báo Thất Bại");
+                }
+                hideLoading();
+            }
+        });
     }
 }
