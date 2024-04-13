@@ -404,12 +404,16 @@ namespace Data.RepositoryData
             // Sử dụng biểu thức lambda để lọc dữ liệu từ DbContext và ánh xạ kết quả vào AcademicScore
             var data = await _context.HocSinhs.Where(lambda).OrderByDescending(n => n.MaHocSinh).Select(x => new {
                 MaHocSinh = x.MaHocSinh,
-                TenHocSinh = x.TenHocSinh
+                TenHocSinh = x.TenHocSinh,
+                EmailCha = x.EmailCha,
+                EmailMe = x.EmailMe
             }).ToListAsync();
 
             return data.Select(x => new {
                 maHocSinh = x.MaHocSinh,
-                tenHocSinh = x.TenHocSinh
+                tenHocSinh = x.TenHocSinh,
+                emailCha = x.EmailCha,
+                emailMe = x.EmailMe
             }).ToList<object>();
         }
 

@@ -6,69 +6,6 @@
 <!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
 
-    <div class="modal fade" id="viewSendEmail" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable  " role="document">
-            <div class="modal-content bg-body ">
-                <div class="modal-header mb-0  pb-0">
-                    <button type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                </div>
-                <div class="modal-body mt-0 pt-0 ">
-                    <div class="mt-0 pt-0">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label id="quantityEmail" class="form-label m-0 p-0">Địa chỉ Email</label>
-                                <input class="form-control h-50" id="email_ThemDiaChiEmail" type="text" placeholder="" />
-                            </div>
-                            <div class="col-md-6 pt-3">
-                                <button type="button" id="btnThemEmail" class="btn btn-sm btn-success mt-2">
-                                    Thêm Email
-                                </button>
-                            </div>
-                            <div class="col-md-12">
-                                <div class=" row card mx-0 mt-2">
-                                    <div class="table-responsive" style="max-height: 300px">
-                                        <table id="myTableEmail" class="table table-condensed nomargin">
-                                            <thead>
-                                                <tr>
-                                                    <th class="px-1">Email</th>
-                                                    <th class="px-1"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 mt-2">
-                                <label class="form-label m-0 p-0">Tiêu đề Email<span class="text-danger">(*)</span></label>
-                                <textarea id="email_TieuDe" class="form-control"
-                                          placeholder="Nhập tiêu đề Email"></textarea>
-                            </div>
-                            <div class="col-md-12">
-                                <label class="form-label m-0 p-0">Nội dung cần gửi<span class="text-danger">(*)</span></label>
-                                <textarea id="summernote" name="editordata"></textarea>
-                            </div>
-                            <div class="col-md-12 mt-2 ps-3 align-content-center row">
-                                <button type="button" id="btnSendEmail" class="btn btn-primary ps-1 ms-2" data-bs-dismiss="modal">
-                                    Gửi Email
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                        Close
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <h4 class="align-self-center">Thông Tin Nhân Viên</h4>
     <!-- FORM DATA -->
@@ -415,11 +352,8 @@
                 <button type="button" id="showThongTin" class="btn btn-outline-secondary btn-sm">
                     <i class='bx bx-show'></i>
                 </button>
-
-                <button type="button" class="btn btn-outline-secondary btn-sm">
-                    <i class="tf-icons bx bx-bulb"></i>
-                </button>
                 <button type="button"
+                        id="btnViewSendEmail"
                         class="btn btn-outline-secondary btn-sm w-px-25"
                         data-bs-toggle="modal"
                         data-bs-target="#viewSendEmail">
@@ -442,7 +376,6 @@
                 </div>
             </div>
         </div>
-
     </div>
    
     <!-- /FORM Button -->
@@ -470,6 +403,4 @@
 @section Scripts {
     <script src="/AdminAssets/module/support.js"></script>
     <script src="/AdminAssets/module/nhanVien.js"></script>
-    <link href="/AdminAssets/assets/summernote/summernote-lite.css" rel="stylesheet" />
-    <script src="/AdminAssets/assets/summernote/summernote-lite.js"></script>
 }

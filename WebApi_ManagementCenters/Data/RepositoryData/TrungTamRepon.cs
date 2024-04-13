@@ -204,12 +204,14 @@ namespace Data.RepositoryData
             var lambda = LambdaSearch(item);
             var data = await _context.TrungTams.Where(lambda).OrderByDescending(n => n.MaTrungTam).Select(x => new {
             MaTrungTam = x.MaTrungTam,
-            TenTrungTam = x.TenTrungTam
+            TenTrungTam = x.TenTrungTam,
+            Email = x.Email
             }).ToListAsync();
 
             return data.Select(x => new {
                 maTrungTam = x.MaTrungTam,
-                tenTrungTam = x.TenTrungTam
+                tenTrungTam = x.TenTrungTam,
+                email = x.Email
             }).ToList<object>();
         }
 

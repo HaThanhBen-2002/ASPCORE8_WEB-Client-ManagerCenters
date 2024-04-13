@@ -9,7 +9,7 @@
     <h4 class="align-self-center">Thông Tin Nhà Cung Cấp</h4>
     <!-- FORM DATA -->
     <div class="card mb-2">
-        <div class="card-body">
+        <div class="card-body" id="viewShowThongTin">
             <div class="row">
                 <div class="col-sm">
                     <div class="row ">
@@ -79,27 +79,70 @@
     </div>
     <!-- /FORM DATA -->
     <!-- FORM Button -->
-    <div class="pb-2 mt-2">
-        <button type="button" id="btnCreateNhaCungCap" class="btn btn-sm btn-primary ">
-            Thêm
-        </button>
-        <span class="p-1"></span>
-        <button type="button" id="btnDeleteNhaCungCap" class="btn btn-sm btn-primary ">
-            Xóa
-        </button>
-        <span class="p-1"></span>
-        <button type="button" id="btnResetNhaCungCap" class="btn btn-sm btn-primary ">
-            Làm mới
-        </button>
-        <span class="p-1"></span>
-        <button type="button" id="btnUpdateNhaCungCap" class="btn btn-sm btn-primary ">
-            Sửa
-        </button>
-        <span class="p-1"></span>
-        <button type="button" id="btnSearchNhaCungCap" class="btn btn-sm btn-primary ">
-            Tìm kiếm
-        </button>
+    <div class="row col-sm-12">
+        <div class="pb-2 mt-2  col-sm-6">
+            <button type="button" id="btnCreateNhaCungCap" class="btn btn-sm btn-primary ">
+                Thêm
+            </button>
+            <span class="p-1"></span>
+            <button type="button" id="btnDeleteNhaCungCap" class="btn btn-sm btn-primary ">
+                Xóa
+            </button>
+            <span class="p-1"></span>
+            <button type="button" id="btnResetNhaCungCap" class="btn btn-sm btn-primary ">
+                Làm mới
+            </button>
+            <span class="p-1"></span>
+            <button type="button" id="btnUpdateNhaCungCap" class="btn btn-sm btn-primary ">
+                Sửa
+            </button>
+            <span class="p-1"></span>
+            <button type="button" id="btnSearchNhaCungCap" class="btn btn-sm btn-primary ">
+                Tìm kiếm
+            </button>
+        </div>
+        <div class="pb-2 mt-2 col-sm-6">
+            <!-- Thay class justify-content-end thành justify-content-start -->
+            <div class="d-flex justify-content-end" role="group" aria-label="Button group with nested dropdown">
+                <button type="button"
+                        class="btn btn-outline-secondary btn-sm w-px-25"
+                        data-bs-toggle="modal"
+                        data-bs-target="#troGiup">
+                    <i class='bx bx-help-circle'></i>
+                </button>
+
+                <button type="button" id="giaiPhongDuLieu" class="btn btn-outline-secondary btn-sm">
+                    <i class="tf-icons bx bx-rocket"></i>
+                </button>
+                <button type="button" id="showThongTin" class="btn btn-outline-secondary btn-sm">
+                    <i class='bx bx-show'></i>
+                </button>
+                <button type="button"
+                        id="btnViewSendEmail"
+                        class="btn btn-outline-secondary btn-sm w-px-25"
+                        data-bs-toggle="modal"
+                        data-bs-target="#viewSendEmail">
+                    <i class='bx bx-envelope'></i>
+                </button>
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1"
+                            type="button"
+                            class="btn btn-outline-secondary dropdown-toggle btn-sm "
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                        Khác
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <a class="dropdown-item" href="javascript:void(0);" onclick="exportToExcel()">Xuất Excel Full</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Đang cập nhật</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Đang cập nhật</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+   
     <!-- /FORM Button -->
     <!-- Table-->
     <div class="card">

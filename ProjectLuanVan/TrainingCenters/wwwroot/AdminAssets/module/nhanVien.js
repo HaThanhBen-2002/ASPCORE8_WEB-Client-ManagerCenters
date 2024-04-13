@@ -20,7 +20,8 @@ var nhanVien = {
     DanToc: null,
     TonGiao: null
 };
-let emails = ["mavuongkiki2002@gmail.com", "english4688@gmail.com","benben.code.68@gmail.com"];
+var emails = [];
+var maNhanViens = [];
 function isValidNhanVien(item) {
     // Kiểm tra tính hợp lệ
     if (CheckIsNull(item.TenNhanVien)) {
@@ -50,19 +51,6 @@ function isValidNhanVien(item) {
     } else {
         return true;
     }
-}
-function createCellPos(n) {
-    var ordA = 'A'.charCodeAt(0);
-    var ordZ = 'Z'.charCodeAt(0);
-    var len = ordZ - ordA + 1;
-    var s = "";
-
-    while (n >= 0) {
-        s = String.fromCharCode(n % len + ordA) + s;
-        n = Math.floor(n / len) - 1;
-    }
-
-    return s;
 }
 function GetNhanVienById() {
     let item = {
@@ -162,7 +150,7 @@ function CbbTrungTam() {
     });
 
 }
-
+//============================== Send Email ===============================
 function UpdateTableEmail() {
 
     $('#quantityEmail').text("Địa Chỉ Email (" + emails.length + ")");
@@ -202,6 +190,7 @@ function AddItem(item) {
         displayMessages(2,"Email không hợp lệ");
     }
 }
+//============================== END Send Email ===============================
 //===== Func xữ lí ảnh
 function openFileInput() {
     $("#fileInput").click();
@@ -304,7 +293,7 @@ function exportToExcel() {
 
 $(document).ready(function () {
 
-    UpdateTableEmail();
+    
     //=============================== IMAGE ===================================
     // đối tượng ảnh
     var image = "";
@@ -590,7 +579,7 @@ $(document).ready(function () {
         table.ajax.reload();
     });
 
-    // Khác
+    // Khác==============================
 
     $('#giaiPhongDuLieu').click(function () {
         nhanVien.MaNhanVien = 0;
@@ -646,5 +635,38 @@ $(document).ready(function () {
     $("#summernote").summernote({
         height: 400,
     });
+    $('#btnViewSendEmail').click(function () {
+        emails = [];
+        maNhanViens = [];
+        //Get list maNhanVien có checkbox = true
+        // Lặp qua các checkbox để xác định đối tượng nào được chọn
+        $('input[type="checkbox"]:checked').each(function () {
+            let checkboxId = $(this).data("checkbox-id");
+            maNhanViens.push(parseInt(checkboxId));
+        });
+        console.log(maNhanViens);
+        //Lấy email nhân viên đang show chi tiết
+        if (isValidEmail($('#nhanVien_Email').val()) && maNhanViens.length <= 2) {
+            emails.push($('#nhanVien_Email').val());
+        }
 
+        //Lấy thông tin email dựa vào tham số object nhanVien
+        $.ajax({
+            type: "POST",
+            url: "/Admin/NhanVien/SearchName",
+            async: false,
+            data: { item: nhanVien },
+            success: function (data) {
+                $.each(data.$values, function (index, item) {
+                    $.each(maNhanViens, function (indexMa, ma) {
+                        if (item.maNhanVien === ma) {
+                            emails.push(item.email);
+                            maNhanViens.splice(indexMa, 1); // Xóa phần tử khớp từ mảng maNhanViens
+                        }
+                    });
+                });
+            }
+        });
+        UpdateTableEmail();
+    });
 });

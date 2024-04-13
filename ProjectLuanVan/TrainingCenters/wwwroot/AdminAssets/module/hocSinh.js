@@ -1,4 +1,175 @@
-﻿function isValidHocSinh(item) {
+﻿
+var hocSinh = {
+    MaHocSinh: null,
+    TenHocSinh: null,
+    NgaySinh: null,
+    GioiTinh: null,
+    MaLop: null,
+    MaTrungTam: null,
+    ThongTin: null,
+    HinhAnh: null,
+    DiaChi: null,
+    ChieuCao: null,
+    CanNang: null,
+    TinhTrangRang: null,
+    TinhTrangMat: null,
+    Bmi: null,
+    TinhTrangTamLy: null,
+    ChucNangCoThe: null,
+    DanhGiaSucKhoe: null,
+    Cccdcha: null,
+    Cccdme: null,
+    TenCha: null,
+    TenMe: null,
+    NgaySinhCha: null,
+    NgaySinhMe: null,
+    SoDienThoaiCha: null,
+    SoDienThoaiMe: null,
+    EmailCha: null,
+    EmailMe: null,
+    NgheNghiepCha: null,
+    NgheNghiepMe: null
+};
+var emails = [];
+var maHocSinhs = [];
+//============================== Send Email ===============================
+function UpdateTableEmail() {
+
+    $('#quantityEmail').text("Địa Chỉ Email (" + emails.length + ")");
+    // Xóa các hàng hiện tại trong bảng trừ tiêu đề
+    $('#myTableEmail tbody').empty();
+    if (emails != null) {
+        // Lặp qua từng đối tượng trong mảng selectedItems và thêm vào bảng
+        emails.forEach(function (item, index) {
+            var row = '<tr>';
+            row += '<td class="px-1">' + item + '</td>';
+            row += '</tr>';
+            $('#myTableEmail tbody').append(row);
+        });
+    }
+
+    // Thêm Id cho mỗi button trong hàng, chứa chỉ mục của hàng
+    $('#myTableEmail tbody tr').each(function (index) {
+        var rowIndex = index; // Lấy chỉ mục của hàng
+        $(this).append('<td class="px-1"><button onclick="DeleteItem(' + rowIndex + ')" class="btn btn-xs btn-danger">Xóa</button></td>');
+    });
+
+}
+function DeleteItem(index) {
+    // Xóa phần tử tương ứng trong danh sách selectedItems
+    emails.splice(index, 1);
+    // Cập nhật lại bảng
+    UpdateTableEmail();
+}
+function AddItem(item) {
+    if (isValidEmail(item)) {
+        // Xóa phần tử tương ứng trong danh sách selectedItems
+        emails.push(item);
+        // Cập nhật lại bảng
+        UpdateTableEmail();
+    }
+    else {
+        displayMessages(2, "Email không hợp lệ");
+    }
+}
+//============================== END Send Email ===============================
+function exportToExcel() {
+    var listHocSinh = [];
+    var listTrungTam = [];
+    var listLop = [];
+
+    $.ajax({
+        type: "POST",
+        url: "/Admin/HocSinh/Search",
+        async: false,
+        data: { item: hocSinh },
+        success: function (data) {
+            listHocSinh = data.$values.map(function (item) {
+                delete item.$id;
+                return {
+                    'Mã Học Sinh': item.maHocSinh,
+                    'Tên Học Sinh': item.tenHocSinh,
+                    'Ngày Sinh': item.ngaySinh,
+                    'Giới Tính': item.gioiTinh,
+                    'Mã Lớp': item.maLop,
+                    'Mã Trung Tâm': item.maTrungTam,
+                    'Thông Tin': item.thongTin,
+                    'Địa Chỉ': item.diaChi,
+                    'Chiều Cao': item.chieuCao,
+                    'Cân Nặng': item.canNang,
+                    'Tình Trạng Răng': item.tinhTrangRang,
+                    'Tình Trạng Mắt': item.tinhTrangMat,
+                    'BMI': item.bmi,
+                    'Tình Trạng Tâm Lý': item.tinhTrangTamLy,
+                    'Chức Năng Cơ Thể': item.chucNangCoThe,
+                    'Đánh Giá Sức Khỏe': item.danhGiaSucKhoe,
+                    'CCCD Cha': item.cccdcha,
+                    'CCCD Mẹ': item.cccdme,
+                    'Tên Cha': item.tenCha,
+                    'Tên Mẹ': item.tenMe,
+                    'Ngày Sinh Cha': item.ngaySinhCha,
+                    'Ngày Sinh Mẹ': item.ngaySinhMe,
+                    'Số Điện Thoại Cha': item.soDienThoaiCha,
+                    'Số Điện Thoại Mẹ': item.soDienThoaiMe,
+                    'Email Cha': item.emailCha,
+                    'Email Mẹ': item.emailMe,
+                    'Nghề Nghiệp Cha': item.ngheNghiepCha,
+                    'Nghề Nghiệp Mẹ': item.ngheNghiepMe
+                };
+            });
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/Admin/TrungTam/SearchName",
+        async: false,
+        success: function (data) {
+            listTrungTam = data.$values.map(function (item) {
+                delete item.$id;
+                return {
+                    'Mã Trung Tâm': item.maTrungTam,
+                    'Tên Trung Tâm': item.tenTrungTam
+                };
+            });
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/Admin/Lop/SearchName",
+        async: false,
+        success: function (data) {
+            listLop = data.$values.map(function (item) {
+                delete item.$id;
+                return {
+                    'Mã Lớp': item.maLop,
+                    'Tên Lớp': item.tenLop
+                };
+            });
+        }
+    });
+
+    var workbook = XLSX.utils.book_new();
+
+    var danhSachHocSinh = XLSX.utils.json_to_sheet(listHocSinh);
+    XLSX.utils.book_append_sheet(workbook, danhSachHocSinh, "Danh sách học sinh");
+
+    var danhSachTrungTam = XLSX.utils.json_to_sheet(listTrungTam);
+    XLSX.utils.book_append_sheet(workbook, danhSachTrungTam, "Thông tin trung tâm");
+
+    var danhSachLop = XLSX.utils.json_to_sheet(listLop);
+    XLSX.utils.book_append_sheet(workbook, danhSachLop, "Thông tin lớp");
+
+    XLSX.writeFile(workbook, "DanhSachHocSinh.xlsx");
+}
+
+
+
+
+
+
+function isValidHocSinh(item) {
     if (CheckIsNull(item.TenHocSinh)) {
         displayMessages(2, "Vui lòng nhập (Tên học sinh)");
         return false;
@@ -220,37 +391,7 @@ $(document).ready(function () {
         openFileInput();
     });
     // ============================================== TABLE ===============================================
-    var hocSinh = {
-        MaHocSinh: null,
-        TenHocSinh: null,
-        NgaySinh: null,
-        GioiTinh: null,
-        MaLop: null,
-        MaTrungTam: null,
-        ThongTin: null,
-        HinhAnh: null,
-        DiaChi: null,
-        ChieuCao: null,
-        CanNang: null,
-        TinhTrangRang: null,
-        TinhTrangMat: null,
-        Bmi: null,
-        TinhTrangTamLy: null,
-        ChucNangCoThe: null,
-        DanhGiaSucKhoe: null,
-        Cccdcha: null,
-        Cccdme: null,
-        TenCha: null,
-        TenMe: null,
-        NgaySinhCha: null,
-        NgaySinhMe: null,
-        SoDienThoaiCha: null,
-        SoDienThoaiMe: null,
-        EmailCha: null,
-        EmailMe: null,
-        NgheNghiepCha: null,
-        NgheNghiepMe: null
-    };
+
     // Loading Data Table
     $('#myTable').DataTable({
         serverSide: true,
@@ -541,4 +682,105 @@ $(document).ready(function () {
         table.ajax.reload();
        
     });
+
+
+    // Khác==============================
+
+    $('#giaiPhongDuLieu').click(function () {
+        hocSinh.MaHocSinh = 0;
+        table.settings()[0].ajax.data = { item: hocSinh };
+        table.ajax.reload();
+    });
+
+    $('#showThongTin').click(function () {
+        $("#viewShowThongTin").toggle();
+    });
+    $('#btnThemEmail').click(function () {
+        AddItem($('#email_ThemDiaChiEmail').val());
+    });
+    $('#btnSendEmail').click(function () {
+        showLoading();
+        let contentEmail = $("#summernote").summernote('code');
+        let subject = $("#email_TieuDe").val();
+        if (emails == null) {
+            displayMessages(2, "Không tìm thấy email để gửi");
+        }
+        else if (CheckIsNull(subject)) {
+            displayMessages(2, "Vui lòng nhập tiêu đề Email");
+        }
+        else if (CheckIsNull(contentEmail)) {
+            displayMessages(2, "Vui lòng soạn nội dung Email");
+        }
+        else {
+            let message = {
+                To: emails,
+                Subject: subject,
+                Content: contentEmail,
+            };
+            // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
+            $.ajax({
+                type: "POST",
+                url: "/Admin/SendEmail/SendEmailText",
+                data: { message: message },
+                success: function (data) {
+                    if (data.isSuccess) {
+                        displayMessages(1, "Gửi Email Thành Công");
+                    }
+                    else {
+                        displayMessages(3, "Gửi Email Thất Bại");
+                    }
+                    hideLoading();
+                }
+            });
+        }
+    });
+    // Content Email
+    $('#summernote').summernote('code', $("#CContent").val());
+    $("#summernote").summernote({
+        height: 400,
+    });
+    $('#btnViewSendEmail').click(function () {
+        emails = [];
+        maHocSinhs = [];
+        //Get list maHocSinh có checkbox = true
+        // Lặp qua các checkbox để xác định đối tượng nào được chọn
+        $('input[type="checkbox"]:checked').each(function () {
+            let checkboxId = $(this).data("checkbox-id");
+            maHocSinhs.push(parseInt(checkboxId));
+        });
+        //Lấy email nhân viên đang show chi tiết
+        if (isValidEmail($('#hocSinh_EmailCha').val()) && maHocSinhs.length <= 2) {
+            emails.push($('#hocSinh_EmailCha').val());
+        }
+
+        if (isValidEmail($('#hocSinh_EmailMe').val()) && maHocSinhs.length <= 2) {
+            emails.push($('#hocSinh_EmailMe').val());
+        }
+
+        //Lấy thông tin email dựa vào tham số object HocSinh
+        $.ajax({
+            type: "POST",
+            url: "/Admin/HocSinh/SearchName",
+            async: false,
+            data: { item: hocSinh },
+            success: function (data) {
+                $.each(data.$values, function (index, item) {
+                    $.each(maHocSinhs, function (indexMa, ma) {
+                        if (item.maHocSinh === ma) {
+                            if (isValidEmail(item.emailCha)) {
+                                emails.push(item.emailCha);
+                            }
+                            if (isValidEmail(item.emailMe)) {
+                                emails.push(item.emailMe);
+                                maHocSinhs.splice(indexMa, 1); // Xóa phần tử khớp từ mảng maHocSinhs
+                            }
+                        }
+                    });
+                });
+            }
+        });
+        UpdateTableEmail();
+    });
+
+
 });

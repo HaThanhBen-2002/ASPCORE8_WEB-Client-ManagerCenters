@@ -1,4 +1,113 @@
-﻿
+﻿var nhaCungCap = {
+    MaNhaCungCap: null,
+    TenNhaCungCap: null,
+    GioiThieu: null,
+    Email: null,
+    SoDienThoai: null,
+    NganHang: null,
+    SoTaiKhoan: null,
+    MaSoThue: null,
+    MaTrungTam: null
+};
+var emails = [];
+var maNhaCungCaps = [];
+//============================== Send Email ===============================
+function UpdateTableEmail() {
+
+    $('#quantityEmail').text("Địa Chỉ Email (" + emails.length + ")");
+    // Xóa các hàng hiện tại trong bảng trừ tiêu đề
+    $('#myTableEmail tbody').empty();
+    if (emails != null) {
+        // Lặp qua từng đối tượng trong mảng selectedItems và thêm vào bảng
+        emails.forEach(function (item, index) {
+            var row = '<tr>';
+            row += '<td class="px-1">' + item + '</td>';
+            row += '</tr>';
+            $('#myTableEmail tbody').append(row);
+        });
+    }
+
+    // Thêm Id cho mỗi button trong hàng, chứa chỉ mục của hàng
+    $('#myTableEmail tbody tr').each(function (index) {
+        var rowIndex = index; // Lấy chỉ mục của hàng
+        $(this).append('<td class="px-1"><button onclick="DeleteItem(' + rowIndex + ')" class="btn btn-xs btn-danger">Xóa</button></td>');
+    });
+
+}
+function DeleteItem(index) {
+    // Xóa phần tử tương ứng trong danh sách selectedItems
+    emails.splice(index, 1);
+    // Cập nhật lại bảng
+    UpdateTableEmail();
+}
+function AddItem(item) {
+    if (isValidEmail(item)) {
+        // Xóa phần tử tương ứng trong danh sách selectedItems
+        emails.push(item);
+        // Cập nhật lại bảng
+        UpdateTableEmail();
+    }
+    else {
+        displayMessages(2, "Email không hợp lệ");
+    }
+}
+//============================== END Send Email ===============================
+function exportToExcel() {
+    var listNhaCungCap = [];
+    var listTrungTam = [];
+
+    $.ajax({
+        type: "POST",
+        url: "/Admin/NhaCungCap/Search",
+        async: false,
+        data: { item: nhaCungCap },
+        success: function (data) {
+            listNhaCungCap = data.$values.map(function (item) {
+                delete item.$id;
+                return {
+                    'Mã Nhà Cung Cấp': item.maNhaCungCap,
+                    'Tên Nhà Cung Cấp': item.tenNhaCungCap,
+                    'Giới Thiệu': item.gioiThieu,
+                    'Email': item.email,
+                    'Số Điện Thoại': item.soDienThoai,
+                    'Ngân Hàng': item.nganHang,
+                    'Số Tài Khoản': item.soTaiKhoan,
+                    'Mã Số Thuế': item.maSoThue,
+                    'Mã Trung Tâm': item.maTrungTam
+                };
+            });
+        }
+    });
+
+    $.ajax({
+        type: "POST",
+        url: "/Admin/TrungTam/SearchName",
+        async: false,
+        success: function (data) {
+            listTrungTam = data.$values.map(function (item) {
+                delete item.$id;
+                return {
+                    'Mã Trung Tâm': item.maTrungTam,
+                    'Tên Trung Tâm': item.tenTrungTam
+                };
+            });
+        }
+    });
+
+    var workbook = XLSX.utils.book_new();
+
+    var danhSachNhaCungCap = XLSX.utils.json_to_sheet(listNhaCungCap);
+    XLSX.utils.book_append_sheet(workbook, danhSachNhaCungCap, "Danh sách nhà cung cấp");
+
+    var danhSachTrungTam = XLSX.utils.json_to_sheet(listTrungTam);
+    XLSX.utils.book_append_sheet(workbook, danhSachTrungTam, "Thông tin trung tâm");
+
+    XLSX.writeFile(workbook, "DanhSachNhaCungCap.xlsx");
+}
+
+
+
+
 
 function isValidNhaCungCap(item) {
     // Kiểm tra tính hợp lệ
@@ -107,17 +216,7 @@ function UpdateNhaCungCap() {
 
 $(document).ready(function () {
     // ============================================== TABLE ===============================================
-    let nhaCungCap = {
-        MaNhaCungCap: null,
-        TenNhaCungCap: null,
-        GioiThieu: null,
-        Email: null,
-        SoDienThoai: null,
-        NganHang: null,
-        SoTaiKhoan: null,
-        MaSoThue: null,
-        MaTrungTam: null
-    };
+
     // Loading Data Table
     $('#myTable').DataTable({
         serverSide: true,
@@ -363,5 +462,95 @@ $(document).ready(function () {
 
         table.settings()[0].ajax.data = { item: nhaCungCap };
         table.ajax.reload();
+    });
+
+    // Khác==============================
+
+    $('#giaiPhongDuLieu').click(function () {
+        nhaCungCap.MaNhaCungCap = 0;
+        table.settings()[0].ajax.data = { item: nhaCungCap };
+        table.ajax.reload();
+    });
+
+    $('#showThongTin').click(function () {
+        $("#viewShowThongTin").toggle();
+    });
+    $('#btnThemEmail').click(function () {
+        AddItem($('#email_ThemDiaChiEmail').val());
+
+    });
+    $('#btnSendEmail').click(function () {
+        showLoading();
+        let contentEmail = $("#summernote").summernote('code');
+        let subject = $("#email_TieuDe").val();
+        if (emails == null) {
+            displayMessages(2, "Không tìm thấy email để gửi");
+        }
+        else if (CheckIsNull(subject)) {
+            displayMessages(2, "Vui lòng nhập tiêu đề Email");
+        }
+        else if (CheckIsNull(contentEmail)) {
+            displayMessages(2, "Vui lòng soạn nội dung Email");
+        }
+        else {
+            let message = {
+                To: emails,
+                Subject: subject,
+                Content: contentEmail,
+            };
+            // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
+            $.ajax({
+                type: "POST",
+                url: "/Admin/SendEmail/SendEmailText",
+                data: { message: message },
+                success: function (data) {
+                    if (data.isSuccess) {
+                        displayMessages(1, "Gửi Email Thành Công");
+                    }
+                    else {
+                        displayMessages(3, "Gửi Email Thất Bại");
+                    }
+                    hideLoading();
+                }
+            });
+        }
+    });
+    // Content Email
+    $('#summernote').summernote('code', $("#CContent").val());
+    $("#summernote").summernote({
+        height: 400,
+    });
+    $('#btnViewSendEmail').click(function () {
+        emails = [];
+        maNhaCungCaps = [];
+        //Get list maNhaCungCap có checkbox = true
+        // Lặp qua các checkbox để xác định đối tượng nào được chọn
+        $('input[type="checkbox"]:checked').each(function () {
+            let checkboxId = $(this).data("checkbox-id");
+            maNhaCungCaps.push(parseInt(checkboxId));
+        });
+        //Lấy email nhân viên đang show chi tiết
+        if (isValidEmail($('#nhaCungCap_Email').val()) && maNhaCungCaps.length <= 2) {
+            emails.push($('#nhaCungCap_Email').val());
+        }
+
+        //Lấy thông tin email dựa vào tham số object nhaCungCap
+        $.ajax({
+            type: "POST",
+            url: "/Admin/NhaCungCap/SearchName",
+            async: false,
+            data: { item: nhaCungCap },
+            success: function (data) {
+                $.each(data.$values, function (index, item) {
+                    $.each(maNhaCungCaps, function (indexMa, ma) {
+                        if (item.maNhaCungCap === ma) {
+                            emails.push(item.email);
+                            maNhaCungCaps.splice(indexMa, 1); // Xóa phần tử khớp từ mảng maNhaCungCaps
+                        }
+                    });
+                });
+            }
+        });
+        UpdateTableEmail();
     });
 });
