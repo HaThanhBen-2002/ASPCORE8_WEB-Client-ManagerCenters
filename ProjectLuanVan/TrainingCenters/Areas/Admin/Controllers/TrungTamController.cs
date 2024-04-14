@@ -19,6 +19,11 @@ namespace TrainingCenters.Areas.Admin.Controllers
             TempData["menu"] = "TrungTam";
             return View();
         }
+        public IActionResult BaoCaoThongKe()
+        {
+            TempData["menu"] = "TrungTamBaoCaoThongKe";
+            return View();
+        }
 
         #region Api Data
         public async Task<IActionResult> GetAll()

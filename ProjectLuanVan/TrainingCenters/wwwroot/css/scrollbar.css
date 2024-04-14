@@ -1,0 +1,22 @@
+﻿.custom-scrollbar {
+    overflow-x: auto; /* Cuộn ngang khi nội dung vượt quá chiều rộng */
+    white-space: nowrap; /* Ngăn chặn trình bày xuống dòng */
+    display: flex; /* Sử dụng flexbox để giữ các thẻ con cạnh nhau */
+    flex-wrap: nowrap; /* Ngăn chặn trình bày các thẻ con xuống dòng */
+    scrollbar-width: thin; /* Chiều rộng của thanh cuộn */
+    scrollbar-color: #B4C3D1 #f5f5f5; /* Màu của thanh cuộn */
+    overflow-y: hidden; /* Ẩn thanh cuộn dọc */
+    height: auto; /* Cho phép `div` tự động điều chỉnh chiều cao */
+    cursor: grab; /* Đổi con trỏ chuột khi trỏ vào div */
+    user-select: none;
+}
+
+    .custom-scrollbar:active {
+        cursor: grabbing; /* Đổi con trỏ chuột khi giữ chuột trên div */
+    }
+
+    .custom-scrollbar > div {
+        flex: 0 0 auto; /* Không co giãn, không thu gọn, không tự động */
+        width: 180px; /* Chiều rộng cố định cho các thẻ con */
+        margin-right: 0px; /* Khoảng cách giữa các thẻ con */
+    }

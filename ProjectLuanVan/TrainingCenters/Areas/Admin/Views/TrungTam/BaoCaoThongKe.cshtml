@@ -1,0 +1,351 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    List<int> deletes = new List<int>();
+}
+
+<!-- Content -->
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="align-self-center">Thống Kê Báo Cáo Trung Tâm</h4>
+
+    <div class="row">
+        <div class="col-lg-12 col-md-12 order-1">
+            <div class="row custom-scrollbar flex-nowrap pb-2">
+                @* Chuỗi Trung Tâm *@
+                <div class="">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="/AdminAssets/assets/img/icons/unicons/trungtam.png"
+                                         alt="chart success"
+                                         class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt3"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">Xuất báo cáo</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="TrungTam" asp-action="Index">Danh sách trung tâm</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <span class="fw-semibold d-block mb-1">Chuỗi Trung Tâm</span>
+                            <h3 class="card-title mb-2">2</h3>
+                        </div>
+                    </div>
+                </div>
+
+                @* Các dịch vụ *@
+                <div class="">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="/AdminAssets/assets/img/icons/unicons/dichvu.png"
+                                         alt="chart success"
+                                         class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt3"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">Xuất báo cáo</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="DichVu" asp-action="Index">Danh sách dịch vụ</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="fw-semibold d-block mb-1">Các dịch vụ</span>
+                            <h3 class="card-title mb-2">3</h3>
+                        </div>
+                    </div>
+                </div>
+
+                @* Nhân viên *@
+                <div class="">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="/AdminAssets/assets/img/icons/unicons/nhanvien.png"
+                                         alt="chart success"
+                                         class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt3"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">Xuất báo cáo</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="NhanVien" asp-action="Index">Danh sách nhân viên</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="fw-semibold d-block mb-1">Nhân viên</span>
+                            <h3 class="card-title mb-2">3</h3>
+                        </div>
+                    </div>
+                </div>
+
+                @* Môn học *@
+                <div class="">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="/AdminAssets/assets/img/icons/unicons/monhoc.png"
+                                         alt="chart success"
+                                         class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt3"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">Xuất báo cáo</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="MonHoc" asp-action="Index">Danh sách môn học</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="fw-semibold d-block mb-1">Môn học</span>
+                            <h3 class="card-title mb-2">3</h3>
+                        </div>
+                    </div>
+                </div>
+
+                @* Sản phẩm *@
+                <div class="">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="/AdminAssets/assets/img/icons/unicons/sanpham.png"
+                                         alt="chart success"
+                                         class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt3"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">Xuất báo cáo</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="SanPham" asp-action="Index">Danh sách sản phẩm</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="fw-semibold d-block mb-1">Sản phẩm</span>
+                            <h3 class="card-title mb-2">3</h3>
+                        </div>
+                    </div>
+                </div>
+
+                @* Lớp *@
+                <div class="">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="/AdminAssets/assets/img/icons/unicons/lop.png"
+                                         alt="chart success"
+                                         class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt3"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">Xuất báo cáo</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Lop" asp-action="Index">Danh sách lớp học</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="fw-semibold d-block mb-1">Lớp học</span>
+                            <h3 class="card-title mb-2">3</h3>
+                        </div>
+                    </div>
+                </div>
+
+                @* Học sinh *@
+                <div class="">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="/AdminAssets/assets/img/icons/unicons/hocsinh.png"
+                                         alt="chart success"
+                                         class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt3"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">Xuất báo cáo</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="HocSinh" asp-action="Index">Danh sách học sinh</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="fw-semibold d-block mb-1">Học sinh</span>
+                            <h3 class="card-title mb-2">3</h3>
+                        </div>
+                    </div>
+                </div>
+
+                @* Kết quả *@
+                <div class="">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="/AdminAssets/assets/img/icons/unicons/ketqua.png"
+                                         alt="chart success"
+                                         class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt3"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">Xuất báo cáo</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="KetQua" asp-action="Index">Danh sách kết quả thi</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="fw-semibold d-block mb-1">Kêt quả thi</span>
+                            <h3 class="card-title mb-2">3</h3>
+                        </div>
+                    </div>
+                </div>
+
+                @* Hóa đơn *@
+                <div class="">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="/AdminAssets/assets/img/icons/unicons/hoadon.png"
+                                         alt="chart success"
+                                         class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt3"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">Xuất báo cáo</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="PhieuThuChi" asp-action="Index">Danh sách hóa đơn</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="fw-semibold d-block mb-1">Hóa đơn</span>
+                            <h3 class="card-title mb-2">3</h3>
+                        </div>
+                    </div>
+                </div>
+
+
+                @* Nhà cung cấp *@
+                <div class="">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex align-items-start justify-content-between">
+                                <div class="avatar flex-shrink-0">
+                                    <img src="/AdminAssets/assets/img/icons/unicons/nhacungcap.png"
+                                         alt="chart success"
+                                         class="rounded" />
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn p-0"
+                                            type="button"
+                                            id="cardOpt3"
+                                            data-bs-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                        <a class="dropdown-item" href="javascript:void(0);">Xuất báo cáo</a>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="NhaCungCap" asp-action="Index">Danh sách nhà cung cấp</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span class="fw-semibold d-block mb-1">Nhà cung cấp</span>
+                            <h3 class="card-title mb-2">3</h3>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- / Content -->
+@section Scripts {
+    <link href="~/css/scrollbar.css" rel="stylesheet" />
+    <script src="~/js/scrollbar.js"></script>
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="/AdminAssets/module/baocaothongke/trungTam.js"></script>
+}
+

@@ -19,7 +19,7 @@ namespace TrainingCenters.Areas.Admin.Controllers
 
         public IActionResult ChiTietHoaDon()
         {
-            TempData["menu"] = "PhieuThuChi";
+            TempData["menu"] = "TaoPhieuThuChi";
             return View();
         }
         public string GenerateInvoiceCode(string loaiHoaDon)

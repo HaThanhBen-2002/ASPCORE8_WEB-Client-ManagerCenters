@@ -1,7 +1,26 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\projectluanvan\\trainingcenters\\areas\\admin\\views\\trungtam\\baocaothongke.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\areas\\admin\\views\\trungtam\\baocaothongke.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\projectluanvan\\trainingcenters\\areas\\admin\\views\\shared\\_menumain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\areas\\admin\\views\\shared\\_menumain.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mavuo\\OneDrive\\M\u00E1y t\u00EDnh\\L\u01B0u tr\u1EEF Code\\Template web - Copy\\Template Web\\sneat-1.0.0\\html\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\mavuo\\OneDrive\\M\u00E1y t\u00EDnh\\L\u01B0u tr\u1EEF Code\\Template web - Copy\\Template Web\\sneat-1.0.0\\html\\extended-ui-perfect-scrollbar.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\projectluanvan\\trainingcenters\\areas\\admin\\controllers\\trungtamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\areas\\admin\\controllers\\trungtamcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,11 +28,77 @@
       "DocumentGroups": [
         {
           "DockedHeight": 337,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\M\u00E1y t\u00EDnh\\L\u01B0u tr\u1EEF Code\\Template web - Copy\\Template Web\\sneat-1.0.0\\html\\index.html",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\M\u00E1y t\u00EDnh\\L\u01B0u tr\u1EEF Code\\Template web - Copy\\Template Web\\sneat-1.0.0\\html\\index.html",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\M\u00E1y t\u00EDnh\\L\u01B0u tr\u1EEF Code\\Template web - Copy\\Template Web\\sneat-1.0.0\\html\\index.html",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\M\u00E1y t\u00EDnh\\L\u01B0u tr\u1EEF Code\\Template web - Copy\\Template Web\\sneat-1.0.0\\html\\index.html",
+              "ViewState": "AQIAANQBAAAAAAAAAAAAAEACAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-04-13T23:53:52.114Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "extended-ui-perfect-scrollbar.html",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\M\u00E1y t\u00EDnh\\L\u01B0u tr\u1EEF Code\\Template web - Copy\\Template Web\\sneat-1.0.0\\html\\extended-ui-perfect-scrollbar.html",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\M\u00E1y t\u00EDnh\\L\u01B0u tr\u1EEF Code\\Template web - Copy\\Template Web\\sneat-1.0.0\\html\\extended-ui-perfect-scrollbar.html",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\M\u00E1y t\u00EDnh\\L\u01B0u tr\u1EEF Code\\Template web - Copy\\Template Web\\sneat-1.0.0\\html\\extended-ui-perfect-scrollbar.html",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\M\u00E1y t\u00EDnh\\L\u01B0u tr\u1EEF Code\\Template web - Copy\\Template Web\\sneat-1.0.0\\html\\extended-ui-perfect-scrollbar.html",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAAAIsCAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2024-04-14T00:19:46.221Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BaoCaoThongKe.cshtml",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\TrungTam\\BaoCaoThongKe.cshtml",
+              "RelativeDocumentMoniker": "TrainingCenters\\Areas\\Admin\\Views\\TrungTam\\BaoCaoThongKe.cshtml",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\TrungTam\\BaoCaoThongKe.cshtml",
+              "RelativeToolTip": "TrainingCenters\\Areas\\Admin\\Views\\TrungTam\\BaoCaoThongKe.cshtml",
+              "ViewState": "AQIAAO4AAAAAAAAAAAAQwEMBAABsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-13T23:48:45.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_MenuMain.cshtml",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\Shared\\_MenuMain.cshtml",
+              "RelativeDocumentMoniker": "TrainingCenters\\Areas\\Admin\\Views\\Shared\\_MenuMain.cshtml",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\Shared\\_MenuMain.cshtml",
+              "RelativeToolTip": "TrainingCenters\\Areas\\Admin\\Views\\Shared\\_MenuMain.cshtml",
+              "ViewState": "AQIAAB4BAAAAAAAAAAAAAD8BAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-13T23:47:12.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TrungTamController.cs",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Controllers\\TrungTamController.cs",
+              "RelativeDocumentMoniker": "TrainingCenters\\Areas\\Admin\\Controllers\\TrungTamController.cs",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Controllers\\TrungTamController.cs",
+              "RelativeToolTip": "TrainingCenters\\Areas\\Admin\\Controllers\\TrungTamController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABUAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-13T23:46:41.154Z",
+              "EditorCaption": ""
             }
           ]
         },
