@@ -12,7 +12,7 @@ namespace ManagementService.Services.Interfaces
     {
         object LoadingDataTableView(PhieuThuChiDto item, int skip, int take);
         Task<ICollection<PhieuThuChiDto>> Search(PhieuThuChiDto item);
-        Task<int> SearchTongTien(PhieuThuChiDto item);
+        Task<double> SearchTongTien(PhieuThuChiDto item);
         Task<int> SearchCount(PhieuThuChiDto item);
         Task<ICollection<PhieuThuChiDto>> GetAll();
         Task<PhieuThuChiDto> GetById(int id);

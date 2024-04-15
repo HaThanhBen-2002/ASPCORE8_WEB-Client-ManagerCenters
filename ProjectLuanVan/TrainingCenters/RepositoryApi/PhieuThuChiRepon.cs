@@ -245,7 +245,7 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<int> SearchTongTien(PhieuThuChi item)
+        public async Task<double> SearchTongTien(PhieuThuChi item)
         {
             try
             {
@@ -258,7 +258,7 @@ namespace TrainingCenters.RepositoryApi
                 if (response.IsSuccessStatusCode)
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
-                    return Convert.ToInt32(content1);
+                    return Convert.ToDouble(content1);
                 }
                 else
                 {

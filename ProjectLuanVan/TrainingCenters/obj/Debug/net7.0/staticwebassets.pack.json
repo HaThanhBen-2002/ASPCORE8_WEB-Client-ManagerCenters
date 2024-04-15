@@ -161,8 +161,56 @@
       "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\chart.png"
     },
     {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\dichvu.png",
+      "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\dichvu.png"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\doanhthu.png",
+      "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\doanhthu.png"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\hoadon.png",
+      "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\hoadon.png"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\hocsinh.png",
+      "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\hocsinh.png"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\ketqua.png",
+      "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\ketqua.png"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\lop.png",
+      "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\lop.png"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\monhoc.png",
+      "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\monhoc.png"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\nhacungcap.png",
+      "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\nhacungcap.png"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\nhanvien.png",
+      "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\nhanvien.png"
+    },
+    {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\paypal.png",
       "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\paypal.png"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\sanpham.png",
+      "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\sanpham.png"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\trangchu.png",
+      "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\trangchu.png"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\trungtam.png",
+      "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\icons\\unicons\\trungtam.png"
     },
     {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\icons\\unicons\\wallet-info.png",
@@ -1041,16 +1089,16 @@
       "PackagePath": "staticwebassets\\AdminAssets\\libs\\popper\\popper.js"
     },
     {
-      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\baocaothongke\\trungTam.js",
-      "PackagePath": "staticwebassets\\AdminAssets\\module\\baocaothongke\\trungTam.js"
-    },
-    {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\chiTietHoaDon.js",
       "PackagePath": "staticwebassets\\AdminAssets\\module\\chiTietHoaDon.js"
     },
     {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\dichVu.js",
       "PackagePath": "staticwebassets\\AdminAssets\\module\\dichVu.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\func_baocaothongke\\func_baocaothongke.js",
+      "PackagePath": "staticwebassets\\AdminAssets\\module\\func_baocaothongke\\func_baocaothongke.js"
     },
     {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\hoaDon.js",
@@ -1095,6 +1143,10 @@
     {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\support.js",
       "PackagePath": "staticwebassets\\AdminAssets\\module\\support.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\trangChu.js",
+      "PackagePath": "staticwebassets\\AdminAssets\\module\\trangChu.js"
     },
     {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\trungTam.js",

@@ -17,31 +17,37 @@
         <div class="menu-inner-shadow"></div>
         <ul class="menu-inner py-1">
             <!-- Trang chủ-->
-            @if (TempData["menu"] == "Home")
+            @if (TempData["menu"] == "TrangChu")
             {
                 <li class="menu-item active open">
-                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                        <div data-i18n="Analytics">Trang chủ</div>
+                    <a asp-area="Admin" asp-controller="TrangChu" asp-action="TrangChu" class="menu-link">
+                        <img src="/AdminAssets/assets/img/icons/unicons/trangchu.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="Analytics" class="ms-2 ps-1">Trang chủ</div>
                     </a>
                 </li>
             }
             else
             {
                 <li class="menu-item">
-                    <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="menu-link">
-                        <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                        <div data-i18n="Analytics">Trang chủ</div>
+                    <a asp-area="Admin" asp-controller="TrangChu" asp-action="TrangChu" class="menu-link">
+                        <img src="/AdminAssets/assets/img/icons/unicons/trangchu.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="Analytics" class="ms-2 ps-1">Trang chủ</div>
                     </a>
                 </li>
             }
             <!-- Chuỗi các trung tâm -->
-            @if (TempData["menu"] == "TrungTam" || TempData["menu"] == "TrungTamBaoCaoThongKe")
+            @if (TempData["menu"] == "TrungTam")
             {
                 <li class="menu-item active open">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="TrungTam">Chuỗi trung tâm</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/trungtam.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="TrungTam" class="ms-2 ps-1">Chuỗi trung tâm</div>
                     </a>
                     <ul class="menu-sub">
                         @if (TempData["menu"] == "TrungTam")
@@ -51,25 +57,8 @@
                                     <div data-i18n="TrungTam">Thông tin trung tâm</div>
                                 </a>
                             </li>
-                            <li class="menu-item ">
-                                <a asp-area="Admin" asp-controller="TrungTam" asp-action="BaoCaoThongKe" class="menu-link">
-                                    <div data-i18n="TrungTam">Báo cáo thống kê</div>
-                                </a>
-                            </li>
                         }
-                        @if (TempData["menu"] == "TrungTamBaoCaoThongKe")
-                        {
-                            <li class="menu-item ">
-                                <a asp-area="Admin" asp-controller="TrungTam" asp-action="Index" class="menu-link">
-                                    <div data-i18n="TrungTam">Thông tin trung tâm</div>
-                                </a>
-                            </li>
-                            <li class="menu-item active ">
-                                <a asp-area="Admin" asp-controller="TrungTam" asp-action="BaoCaoThongKe" class="menu-link">
-                                    <div data-i18n="TrungTam">Báo cáo thống kê</div>
-                                </a>
-                            </li>
-                        }
+                        
                     </ul>
                 </li>
             }
@@ -77,18 +66,15 @@
             {
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="TrungTam">Chuỗi trung tâm</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/trungtam.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="TrungTam" class="ms-2 ps-1">Chuỗi trung tâm</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item ">
                             <a asp-area="Admin" asp-controller="TrungTam" asp-action="Index" class="menu-link">
                                 <div data-i18n="TrungTam">Thông tin trung tâm</div>
-                            </a>
-                        </li>
-                        <li class="menu-item ">
-                            <a asp-area="Admin" asp-controller="TrungTam" asp-action="BaoCaoThongKe" class="menu-link">
-                                <div data-i18n="TrungTam">Báo cáo thống kê</div>
                             </a>
                         </li>
                     </ul>
@@ -99,8 +85,10 @@
             {
                 <li class="menu-item active open">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="DichVu">Dịch vụ</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/dichvu.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="DichVu" class="ms-2 ps-1">Dịch Vụ</div>
                     </a>
                     <ul class="menu-sub">
                         @if (TempData["menu"] == "DichVu")
@@ -136,8 +124,10 @@
             {
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="DichVu">Dịch vụ</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/dichvu.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="DichVu" class="ms-2 ps-1">Dịch Vụ</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item ">
@@ -158,8 +148,10 @@
             {
                 <li class="menu-item active open">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="MonHoc">Môn học</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/monhoc.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="MonHoc" class="ms-2 ps-1">Môn Học</div>
                     </a>
                     <ul class="menu-sub">
                         @if (TempData["menu"] == "MonHoc")
@@ -178,8 +170,10 @@
             {
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="MonHoc">Môn học</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/monhoc.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="MonHoc" class="ms-2 ps-1">Môn Học</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item ">
@@ -190,13 +184,15 @@
                     </ul>
                 </li>
             }
-            <!-- Sản phẩm - Lô sản phẩm - Nhà cung cấp -->
+            <!-- Sản phẩm - Lô sản phẩm -->
             @if (TempData["menu"] == "SanPham" || TempData["menu"] == "LoSanPham")
             {
                 <li class="menu-item active open">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="SanPham">Sản phẩm</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/sanpham.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="SanPham" class="ms-2 ps-1">Sản phẩm</div>
                     </a>
                     <ul class="menu-sub">
                         @if (TempData["menu"] == "SanPham")
@@ -232,8 +228,10 @@
             {
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="SanPham">Sản phẩm</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/sanpham.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="SanPham" class="ms-2 ps-1">Sản phẩm</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item ">
@@ -254,8 +252,10 @@
             {
                 <li class="menu-item active open">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="NhanVien">Nhân viên</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/nhanvien.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="NhanVien" class="ms-2 ps-1">Nhân viên</div>
                     </a>
                     <ul class="menu-sub">
                         @if (TempData["menu"] == "NhanVien")
@@ -274,8 +274,10 @@
             {
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="NhanVien">Nhân viên</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/nhanvien.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="NhanVien" class="ms-2 ps-1">Nhân viên</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item ">
@@ -291,8 +293,10 @@
             {
                 <li class="menu-item active open">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="Lop">Lớp học</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/lop.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="Lop" class="ms-2 ps-1">Lớp học</div>
                     </a>
                     <ul class="menu-sub">
                         @if (TempData["menu"] == "Lop")
@@ -311,8 +315,10 @@
             {
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="Lop">Lớp học</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/lop.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="Lop" class="ms-2 ps-1">Lớp học</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item ">
@@ -328,8 +334,10 @@
             {
                 <li class="menu-item active open">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="HocSinh">Học sinh</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/hocsinh.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="HocSinh" class="ms-2 ps-1">Học sinh</div>
                     </a>
                     <ul class="menu-sub">
                         @if (TempData["menu"] == "HocSinh")
@@ -348,8 +356,10 @@
             {
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="HocSinh">Học sinh</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/hocsinh.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="HocSinh" class="ms-2 ps-1">Học sinh</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item ">
@@ -365,8 +375,10 @@
             {
                 <li class="menu-item active open">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="KetQua">Kết quả thi</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/ketqua.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="KetQua" class="ms-2 ps-1">Kết quả thi</div>
                     </a>
                     <ul class="menu-sub">
                         @if (TempData["menu"] == "KetQua")
@@ -385,8 +397,10 @@
             {
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="KetQua">Kết quả thi</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/ketqua.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="KetQua" class="ms-2 ps-1">Kết quả thi</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item ">
@@ -402,8 +416,10 @@
             {
                 <li class="menu-item active open">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="PhieuThuChi">Hóa đơn</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/hoadon.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="PhieuThuChi" class="ms-2 ps-1">Hóa đơn</div>
                     </a>
                     <ul class="menu-sub">
                         @if (TempData["menu"] == "PhieuThuChi")
@@ -439,8 +455,10 @@
             {
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="PhieuThuChi">Hóa đơn</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/hoadon.png"
+                     alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="PhieuThuChi" class="ms-2 ps-1">Hóa đơn</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item ">
@@ -461,8 +479,10 @@
             {
                 <li class="menu-item active open">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="NhaCungCap">Nhà cung cấp</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/nhacungcap.png"
+                            alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="NhaCungCap" class="ms-2 ps-1">Nhà cung cấp</div>
                     </a>
                     <ul class="menu-sub">
                         @if (TempData["menu"] == "NhaCungCap")
@@ -481,8 +501,10 @@
             {
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
-                        <i class="menu-icon tf-icons bx bxs-user"></i>
-                        <div data-i18n="NhaCungCap">Nhà cung cấp</div>
+                        <img src="/AdminAssets/assets/img/icons/unicons/nhacungcap.png"
+                             alt="chart success"
+                             class="rounded w-px-20 h-px-20" />
+                        <div data-i18n="NhaCungCap" class="ms-2 ps-1">Nhà cung cấp</div>
                     </a>
                     <ul class="menu-sub">
                         <li class="menu-item ">

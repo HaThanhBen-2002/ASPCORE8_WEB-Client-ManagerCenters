@@ -3,7 +3,31 @@
 //const { remove } = require("immutable");
 
 //<script src="/AdminAssets/module/academicScore.js"></script>
-
+function getCurrentYear() {
+    const currentDate = new Date();
+    return currentDate.getFullYear();
+}
+function getCurrentMonth() {
+    const currentDate = new Date();
+    const currentMonth = currentDate.getMonth() + 1; // Tháng trong JavaScript được đánh số từ 0 đến 11
+    return currentMonth;
+}
+function generateMonthList(currentMonth) {
+    let listMonth = [];
+    for (let i = 1; i <= currentMonth; i++) {
+        let month = i.toString().padStart(2, '0'); // Chuyển số thành chuỗi và thêm '0' ở trước nếu cần
+        listMonth.push('Tháng ' + month);
+    }
+    return listMonth;
+}
+function generateMonthYearList(currentMonth, currentYear) {
+    let listMonthYear = [];
+    for (let i = 1; i <= currentMonth; i++) {
+        let month = i.toString().padStart(2, '0'); // Chuyển số thành chuỗi và thêm '0' ở trước nếu cần
+        listMonthYear.push(month + '/' + currentYear);
+    }
+    return listMonthYear;
+}
 // Func chuyển đổi số thành số tiền
 function formatToVND(number) {
     if (number == null) {

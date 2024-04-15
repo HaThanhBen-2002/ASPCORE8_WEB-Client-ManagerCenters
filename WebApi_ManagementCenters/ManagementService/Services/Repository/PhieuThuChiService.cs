@@ -159,7 +159,7 @@ namespace ManagementService.Services.Repository
             }
         }
 
-        public async Task<int> SearchTongTien(PhieuThuChiDto item)
+        public async Task<double> SearchTongTien(PhieuThuChiDto item)
         {
             try
             {

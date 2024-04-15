@@ -100,22 +100,25 @@ namespace TrainingCenters.Areas.Admin.Controllers
             {
                 if(item.LoaiPhieu != null)
                 {
+                    item.NgayTao = GetDateNow();
+                    
                     item.CodeHoaDon = GenerateInvoiceCode(item.LoaiPhieu);
                     if (thanhToan == true)
                     {
                         item.TrangThai = "Đã thanh toán";
+                        item.NgayThanhToan = item.NgayTao;
                     }
                     else if(item.HinhThucThanhToan == "Trả góp")
                     {
                         item.TrangThai = "Đang trả góp";
+                        item.NgayThanhToan = null;
                     }
                     else
                     {
                         item.TrangThai = "Chưa thanh toán";
+                        item.NgayThanhToan = null;
                     }
 
-                    item.NgayTao = GetDateNow();
-                    item.NgayThanhToan = item.NgayTao;
                     var status = await _unit.PhieuThuChi.Create(item);
                     if (status)
                     {
@@ -140,6 +143,15 @@ namespace TrainingCenters.Areas.Admin.Controllers
 
         public async Task<IActionResult> Update(PhieuThuChi item)
         {
+            var status = await _unit.PhieuThuChi.Update(item);
+            return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
+        }
+
+        public async Task<IActionResult> UpdateThanhToan(string id)
+        {
+            var item = await _unit.PhieuThuChi.GetById(Convert.ToInt32(id));
+            item.TrangThai = "Đã thanh toán";
+            item.NgayThanhToan = GetDateNow();
             var status = await _unit.PhieuThuChi.Update(item);
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
@@ -171,6 +183,7 @@ namespace TrainingCenters.Areas.Admin.Controllers
         }
         public async Task<IActionResult> SearchTongTien(PhieuThuChi item)
         {
+            item.TrangThai = "Đã thanh toán";
             var data = await _unit.PhieuThuChi.SearchTongTien(item);
             return Ok(data);
         }
@@ -185,6 +198,29 @@ namespace TrainingCenters.Areas.Admin.Controllers
             var length = Request.Form["length"];
             var data = await _unit.PhieuThuChi.LoadingDataTableView(item, Convert.ToInt32(skip), Convert.ToInt32(length));
             return Ok(data);
+        }
+
+        public async Task<IActionResult> HoaDonThuThang(PhieuThuChi item)
+        {
+            item.LoaiPhieu = "Hóa đơn thu";
+            item.TrangThai = "Đã thanh toán";
+            var data = await _unit.PhieuThuChi.SearchTongTien(item);
+            return Ok(data);
+        }
+        public async Task<IActionResult> HoaDonChiThang(PhieuThuChi item)
+        {
+            item.TrangThai = "Đã thanh toán";
+            item.LoaiPhieu = "Hóa đơn chi";
+            var hoaDonChi = await _unit.PhieuThuChi.SearchTongTien(item);
+
+            item.LoaiPhieu = "Hóa đơn khác";
+            var hoaDonKhac = await _unit.PhieuThuChi.SearchTongTien(item);
+
+            item.LoaiPhieu = "Hóa đơn tạm ứng";
+            var hoaDonTamUng = await _unit.PhieuThuChi.SearchTongTien(item);
+
+            var tongChi = hoaDonChi + hoaDonKhac + hoaDonTamUng;
+            return Ok(tongChi);
         }
         #endregion
     }

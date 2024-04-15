@@ -6,10 +6,11 @@
 <!-- Content -->
 
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="align-self-center">Thống Kê Báo Cáo Trung Tâm</h4>
+    <h4 class="align-self-center">Trang Chủ</h4>
 
-    <div class="row">
+    <div class="row mx-1">
         <div class="col-lg-12 col-md-12 order-1">
+            @* Thống kê số lượng *@
             <div class="row custom-scrollbar flex-nowrap pb-2">
                 @* Chuỗi Trung Tâm *@
                 <div class="">
@@ -38,7 +39,7 @@
                             </div>
                             
                             <span class="fw-semibold d-block mb-1">Chuỗi Trung Tâm</span>
-                            <h3 class="card-title mb-2">2</h3>
+                            <h3 class="card-title mb-2" id="thongKe_TrungTam">0</h3>
                         </div>
                     </div>
                 </div>
@@ -70,7 +71,7 @@
                             </div>
 
                             <span class="fw-semibold d-block mb-1">Các dịch vụ</span>
-                            <h3 class="card-title mb-2">3</h3>
+                            <h3 class="card-title mb-2" id="thongKe_DichVu">0</h3>
                         </div>
                     </div>
                 </div>
@@ -102,7 +103,7 @@
                             </div>
 
                             <span class="fw-semibold d-block mb-1">Nhân viên</span>
-                            <h3 class="card-title mb-2">3</h3>
+                            <h3 class="card-title mb-2" id="thongKe_NhanVien">0</h3>
                         </div>
                     </div>
                 </div>
@@ -134,7 +135,7 @@
                             </div>
 
                             <span class="fw-semibold d-block mb-1">Môn học</span>
-                            <h3 class="card-title mb-2">3</h3>
+                            <h3 class="card-title mb-2" id="thongKe_MonHoc">0</h3>
                         </div>
                     </div>
                 </div>
@@ -166,7 +167,7 @@
                             </div>
 
                             <span class="fw-semibold d-block mb-1">Sản phẩm</span>
-                            <h3 class="card-title mb-2">3</h3>
+                            <h3 class="card-title mb-2" id="thongKe_SanPham"></h3>
                         </div>
                     </div>
                 </div>
@@ -198,7 +199,7 @@
                             </div>
 
                             <span class="fw-semibold d-block mb-1">Lớp học</span>
-                            <h3 class="card-title mb-2">3</h3>
+                            <h3 class="card-title mb-2" id="thongKe_Lop">0</h3>
                         </div>
                     </div>
                 </div>
@@ -230,7 +231,7 @@
                             </div>
 
                             <span class="fw-semibold d-block mb-1">Học sinh</span>
-                            <h3 class="card-title mb-2">3</h3>
+                            <h3 class="card-title mb-2" id="thongKe_HocSinh">0</h3>
                         </div>
                     </div>
                 </div>
@@ -262,7 +263,7 @@
                             </div>
 
                             <span class="fw-semibold d-block mb-1">Kêt quả thi</span>
-                            <h3 class="card-title mb-2">3</h3>
+                            <h3 class="card-title mb-2" id="thongKe_KetQua">0</h3>
                         </div>
                     </div>
                 </div>
@@ -294,7 +295,7 @@
                             </div>
 
                             <span class="fw-semibold d-block mb-1">Hóa đơn</span>
-                            <h3 class="card-title mb-2">3</h3>
+                            <h3 class="card-title mb-2" id="thongKe_HoaDon">0</h3>
                         </div>
                     </div>
                 </div>
@@ -327,17 +328,120 @@
                             </div>
 
                             <span class="fw-semibold d-block mb-1">Nhà cung cấp</span>
-                            <h3 class="card-title mb-2">3</h3>
+                            <h3 class="card-title mb-2" id="thongKe_NhaCungCap">0</h3>
                         </div>
                     </div>
                 </div>
+            </div>
+            @* Tỷ lệ hóa đơn / Doanh Thu Tất Cả Trung Tâm *@
+            <div class="row">
+                @* Tỷ Lệ Hóa Đơn *@
+                <div class="card col-sm-12 col-md-6 col-lg-5 ">
+                    <div class="row">
+                        <h5 class="mt-3 col">Tỷ lệ hóa đơn</h5>
+                        <div class="col-3 pt-2">
+                            <select name="tyLeHoaDon_Thang" id="tyLeHoaDon_Thang" style="line-height: 2;" class="form-control mt-1 py-0 px-2  h-px-30 ">
+                                <option value="0">Tất cả</option>
+                                <option value="01">Tháng 1</option>
+                                <option value="02">Tháng 2</option>
+                                <option value="03">Tháng 3</option>
+                                <option value="04">Tháng 4</option>
+                                <option value="05">Tháng 5</option>
+                                <option value="06">Tháng 6</option>
+                                <option value="07">Tháng 7</option>
+                                <option value="08">Tháng 8</option>
+                                <option value="09">Tháng 9</option>
+                                <option value="10">Tháng 10</option>
+                                <option value="11">Tháng 11</option>
+                                <option value="12">Tháng 12</option>
+                            </select>
+                        </div>
+                        <div class="w-px-100 pt-2 ps-0">
+                            <input name="tyLeHoaDon_Nam" id="tyLeHoaDon_Nam" value="" type="number" style="line-height: 2;" class="form-control mt-1 py-0 px-2  h-px-30 " />
+                        </div>
+                        <div class="col-1 pt-2 ps-0 me-2 pe-1">
+                            <button name="tyLeHoaDon_btnOk" id="tyLeHoaDon_btnOk" style="line-height: 2;" class="btn btn-sm btn-primary mt-1 py-0 px-2 h-px-30 ">Ok</button>
+                        </div>
+                    </div>
+                    <div id="chartTyLeHoaDon"></div>
+                    <div id="chartTyLeHoaDonDaThanhToan" ></div>
 
+                </div>
+                @* Tỷ Lệ Hóa Đơn *@
+                <div class="col-sm-12 col-md-6 col-lg-7">
+                    <div class="card ms-1">
+                        <div class="row">
+                            <h5 class="mt-3 ms-3 col">So Danh Doanh Thu Chuỗi Trung Tâm</h5>
+                            <div class="w-px-100 pt-2 ps-0">
+                                <input name="soSanhDoanhThuChuoiTrungTam_Nam" id="soSanhDoanhThuChuoiTrungTam_Nam" value="" type="number" style="line-height: 2;" class="form-control mt-1 py-0 px-2  h-px-30 " />
+                            </div>
+                            <div class="col-1 pt-2 ps-0 me-2 pe-1">
+                                <button name="SoSanhDoanhThuChuoiTrungTam_btnOk" id="SoSanhDoanhThuChuoiTrungTam_btnOk" style="line-height: 2;" class="btn btn-sm btn-primary mt-1 py-0 px-2 h-px-30 ">Ok</button>
+                            </div>
+                        </div>
+                        <div id="chartSoSanhDoanhThuChuoiTrungTam"></div>
+                    </div>
 
-
-
+                </div>
+            </div>
+            @* Doanh thu *@
+            <div class="row mt-3">
+                <div class="card col-sm-12">
+                    <div class="row">
+                        <h5 class="mt-3 col">Doanh thu</h5>
+                        <div class="w-px-100 pt-2 ps-0">
+                            <input name="doanhThuHoaDon_Nam" type="number" id="doanhThuHoaDon_Nam" value="" style="line-height: 2;" class="form-control mt-1 py-0 px-2  h-px-30 " />
+                        </div>
+                        <div class="w-px-30 pt-2 ps-0 me-3 pe-1">
+                            <button name="doanhThuHoaDon_btnOk" id="doanhThuHoaDon_btnOk" style="line-height: 2;" class="btn btn-sm btn-primary mt-1 py-0 px-2 h-px-30 ">Ok</button>
+                        </div>
+                    </div>
+                    <div id="chartDoanhThuHoaDon"></div>
+                </div>
+            </div>
+            @* Hình Thức Thanh Toán *@
+            <div class="row mt-3">
+                <div class="card col-sm-12">
+                    <div class="row">
+                        <h5 class="mt-3 col">Hình thức thanh toán</h5>
+                        <div class="w-px-200 mt-3">
+                            <label>
+                                <input type="checkbox" name="option" checked id="hinhThucThanhToan_Luot">
+                                Số lượt
+                            </label>
+                            <label class="ms-2">
+                                <input type="checkbox" name="option" id="hinhThucThanhToan_SoTien">
+                                Số tiền
+                            </label>
+                        </div>
+                        <div class="w-px-150 pt-2">
+                            <select name="hinhThucThanhToan_Thang" id="hinhThucThanhToan_Thang" style="line-height: 2;" class="form-control mt-1 py-0 px-2  h-px-30 ">
+                                <option value="0">Tất cả</option>
+                                <option value="01">Tháng 1</option>
+                                <option value="02">Tháng 2</option>
+                                <option value="03">Tháng 3</option>
+                                <option value="04">Tháng 4</option>
+                                <option value="05">Tháng 5</option>
+                                <option value="06">Tháng 6</option>
+                                <option value="07">Tháng 7</option>
+                                <option value="08">Tháng 8</option>
+                                <option value="09">Tháng 9</option>
+                                <option value="10">Tháng 10</option>
+                                <option value="11">Tháng 11</option>
+                                <option value="12">Tháng 12</option>
+                            </select>
+                        </div>
+                        <div class="w-px-100 pt-2 ps-0">
+                            <input name="hinhThucThanhToan_Nam" id="hinhThucThanhToan_Nam" value="" type="number" style="line-height: 2;" class="form-control mt-1 py-0 px-2  h-px-30 " />
+                        </div>
+                        <div class="w-px-30 pt-2 ps-0 me-3 pe-1">
+                            <button name="hinhThucThanhToan_btnOk" id="hinhThucThanhToan_btnOk" style="line-height: 2;" class="btn btn-sm btn-primary mt-1 py-0 px-2 h-px-30 ">Ok</button>
+                        </div>
+                    </div>
+                    <div id="chartHinhThucThanhToan"></div>
+                </div>
 
             </div>
-
         </div>
     </div>
 </div>
@@ -345,7 +449,12 @@
 @section Scripts {
     <link href="~/css/scrollbar.css" rel="stylesheet" />
     <script src="~/js/scrollbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
     <script src="/AdminAssets/module/support.js"></script>
-    <script src="/AdminAssets/module/baocaothongke/trungTam.js"></script>
+    <script src="/AdminAssets/module/func_baocaothongke/func_baocaothongke.js"></script>
+    <script src="/AdminAssets/module/trangChu.js"></script>
+   
+
 }
 

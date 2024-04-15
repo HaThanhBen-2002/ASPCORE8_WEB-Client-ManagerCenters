@@ -212,19 +212,19 @@ namespace Data.RepositoryData
             return _context.PhieuThuChis.Where(lambda).Count();
         }
 
-        public async Task<int> SearchTongTien(PhieuThuChi item)
+        public async Task<double> SearchTongTien(PhieuThuChi item)
         {
             var lambda = LambdaSearch(item);
 
             // Sử dụng biểu thức lambda để lọc dữ liệu từ DbContext và ánh xạ kết quả vào AcademicScore
-            var data = _context.PhieuThuChis.Where(lambda).OrderByDescending(n => n.MaPhieu).ToList().Select(async x => new
+            var data = _context.PhieuThuChis.Where(lambda).OrderByDescending(n => n.MaPhieu).Select(x => new
             {
                 x.TongTien
             }).ToList();
-            int tongTien = 0;
+            double tongTien = 0;
             foreach(var n in data)
             {
-                tongTien += Convert.ToInt32(n);
+                tongTien += Convert.ToDouble(n.TongTien);
             }
             return tongTien;
         }

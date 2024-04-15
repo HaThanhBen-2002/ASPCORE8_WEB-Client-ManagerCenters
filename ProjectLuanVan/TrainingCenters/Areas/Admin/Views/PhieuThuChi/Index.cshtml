@@ -105,7 +105,10 @@
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button type="button" id="prinHoaDon" class="btn btn-primary" data-bs-dismiss="modal">
+                    <button type="button" id="updateHoaDon" class="btn btn-primary" data-bs-dismiss="modal">
+                        Thanh Toán
+                    </button>
+                    <button type="button" id="prinHoaDon" class="btn btn-primary">
                         Print
                     </button>
                 </div>
@@ -177,7 +180,7 @@
                                             <label for="trangThaiTatCa">Tất cả</label><br>
                                             <input type="checkbox" id="trangThaiDaThanhToan" name="trangThai" value="Đã thanh toán">
                                             <label for="trangThaiDaThanhToan">Đã thanh toán</label><br>
-                                            <input type="checkbox" id="trangThaiChuaThanhToan" name="trangThai" value="Chưa thanh toán">
+                                            <input type="checkbox" id="trangThaiChuaThanhToan" name="trangThai" checked value="Chưa thanh toán">
                                             <label for="trangThaiChuaThanhToan">Chưa thanh toán</label><br>
                                             <input type="checkbox" id="trangThaiDangGhiNo" name="trangThai" value="Đang ghi nợ">
                                             <label for="trangThaiDangGhiNo">Đang ghi nợ</label><br>
@@ -282,7 +285,7 @@
                         <th>Ngày tạo</th>
                         <th>HTTT</th>
                         <th>Trạng thái</th>
-                        <th>Xem</th>
+                        <th></th>
                     </tr>
                 </thead>
             </table>

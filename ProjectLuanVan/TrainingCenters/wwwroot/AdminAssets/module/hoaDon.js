@@ -1,4 +1,8 @@
-﻿function PrintHoaDon(maPhieu) {
+﻿let updateThanhToan = 0;
+let trangThaiThanhToan = false;
+
+
+function PrintHoaDon(maPhieu) {
     let phieuThuChi = {
         MaPhieu: null,
         NgayTao: null,
@@ -97,6 +101,9 @@ function GetTrungTamById(id) {
 }
 
 function ViewHoaDon(maPhieu) {
+    updateThanhToan = maPhieu;
+    $('#updateHoaDon').hide();
+    $('#prinHoaDon').show();
     let phieuThuChi = {
         MaPhieu: null,
         NgayTao: null,
@@ -148,6 +155,12 @@ function ViewHoaDon(maPhieu) {
             }
         });
         if (selectedItems != null && phieuThuChi != null) {
+            if (CheckIsNull(phieuThuChi.NgayThanhToan)) {
+                trangThaiThanhToan = true;
+            }
+            else {
+                trangThaiThanhToan = false;
+            }
             $('#phieuThuChi_MaCodeHoaDon').text("Mã HD: " + phieuThuChi.CodeHoaDon);
             $('#phieuThuChi_NgayTao').text("Ngày tạo: " + phieuThuChi.NgayTao);
             $('#phieuThuChi_NgayThanhToan').text("Ngày thanh toán: " + phieuThuChi.NgayThanhToan);
@@ -157,6 +170,7 @@ function ViewHoaDon(maPhieu) {
             $('#phieuThuChi_GhiChu').text(phieuThuChi.GhiChu);
             $('#phieuThuChi_HinhThucThanhToan').text("Hình thức thanh toán: " + phieuThuChi.HinhThucThanhToan);
             $('#phieuThuChi_TrangThai').text("Trạng thái:  " + phieuThuChi.TrangThai);
+            $('#myTableHoaDon tbody').empty();
             selectedItems.forEach(function (item) {
                 var row = '<tr>';
                 row += '<td width="30%" class="px-1">' + item.ten + '</td>';
@@ -168,10 +182,56 @@ function ViewHoaDon(maPhieu) {
             });
 
             $("#showHoaDon").modal('show');
-            // Lặp qua từng đối tượng trong mảng selectedItems và thêm vào bảng
         }
         //$("#showHoaDon").modal('hide');
     }
+}
+
+function UpdateThanhToan(id) {
+    let table = $('#myTable').DataTable();
+    let status = false;
+    // Kiểm tra tính hợp lệ
+    if (id != null) {
+        $.ajax({
+            type: "POST",
+            url: "/Admin/PhieuThuChi/UpdateThanhToan",
+            async: false,
+            data: { id: id },
+            success: function (data) {
+                status = data.isSuccess;
+            }
+        });
+    }
+    if (status) {
+        displayMessages(1, "Cập nhật thanh toán thành công");
+        let itemView;
+        $.ajax({
+            type: "POST",
+            url: "/Admin/PhieuThuChi/GetByIdTable",
+            async: false,
+            data: { id: id },
+            success: function (data) {
+                itemView = data;
+            }
+        });
+        itemView.maPhieu = '<input data-checkbox-id="' + itemView.maPhieu + '" type="checkbox"/>';
+        if (itemView != null) {
+            table.rows('.selected').remove().draw(false);
+            table.row.add(itemView).draw(false);
+        }
+    }
+    else {
+        displayMessages(2, "Cập nhật thanh toán thất bại");
+    }
+
+}
+function EditHoaDon(maPhieu) {
+    
+    ViewHoaDon(maPhieu);
+    $('#updateHoaDon').show();
+    $('#prinHoaDon').hide();
+
+    
 }
 
 
@@ -187,7 +247,7 @@ $(document).ready(function () {
         TongTien: null,
         GhiChu: null,
         MaTrungTam: null,
-        TrangThai: null,
+        TrangThai: "Chưa thanh toán",
         HinhThucThanhToan: null,
         MaNhanVien: null
     };
@@ -225,7 +285,7 @@ $(document).ready(function () {
             {
                 data: 'maPhieu',
                 render: function (data, type, row) {
-                    return '<button onclick="ViewHoaDon(' + data + ')" class="btn btn-xs btn-primary">Xem</button> <button onclick="PrintHoaDon(' + data + ')" class="btn btn-xs btn-primary">Print</button>';
+                    return '<button onclick="ViewHoaDon(' + data + ')" class="btn btn-xs btn-secondary px-1"><i class="bx bx-show"></i></button> <button onclick="PrintHoaDon(' + data + ')" class="btn btn-xs btn-secondary px-1"><i class="bx bxs-printer"></i></button> <button onclick="EditHoaDon(' + data + ')" class="btn btn-xs btn-secondary px-1"><i class="bx bxs-message-square-edit"></i></button>';
                 }
             },
 
@@ -373,6 +433,19 @@ $(document).ready(function () {
         table.ajax.reload();
     });
 
+
+    $('#prinHoaDon').click(function () {
+        PrintHoaDon(updateThanhToan); 
+    });
+
+    $('#updateHoaDon').click(function () {
+        if (trangThaiThanhToan) {
+            UpdateThanhToan(updateThanhToan);
+        }
+        else {
+            displayMessages(2, "Hóa đơn đã thanh toán");
+        }
+    });
 
     //============================CB========================
     $('input[type="checkbox"]').change(function () {
