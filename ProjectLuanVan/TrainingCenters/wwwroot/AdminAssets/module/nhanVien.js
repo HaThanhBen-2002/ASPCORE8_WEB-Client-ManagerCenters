@@ -644,7 +644,6 @@ $(document).ready(function () {
             let checkboxId = $(this).data("checkbox-id");
             maNhanViens.push(parseInt(checkboxId));
         });
-        console.log(maNhanViens);
         //Lấy email nhân viên đang show chi tiết
         if (isValidEmail($('#nhanVien_Email').val()) && maNhanViens.length <= 2) {
             emails.push($('#nhanVien_Email').val());

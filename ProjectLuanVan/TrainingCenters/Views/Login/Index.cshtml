@@ -1,0 +1,96 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+<div class="container-xxl">
+
+    <div class="authentication-wrapper authentication-basic container-p-y">
+
+        <div class="authentication-inner justify-content-center d-flex">
+
+            <!-- Register -->
+            <div class="card" id="showContent">
+                <div class="card-body" >
+                    <!-- Logo -->
+                    <div class="app-brand justify-content-center">
+                        <a href="index.html" class="app-brand-link gap-2">
+                            <span class="app-brand-logo demo">
+                                <img class="rounded-circle w-px-50 h-px-50" src="~/adminassets/assets/img/trademark/logob.jpg" />
+                            </span>
+                            <span class="app-brand-text demo text-body fw-bolder text-uppercase">BENBEN</span>
+                        </a>
+                    </div>
+                    <!-- /Logo -->
+                    <h4 class="mb-2">Chào bạn👋</h4>
+                    <p class="mb-4">Vui lòng đăng nhập để sử dụng hệ thống</p>
+                    @* Tài khoản *@
+                    <div class="mb-3" id="showTaiKhoan">
+                        <label for="email" class="form-label">Tài khoản</label>
+                        <input type="text"
+                               class="form-control"
+                               id="login_TaiKhoan"
+                               name="email-username"
+                               placeholder="Nhập tài khoản của bạn"
+                               autofocus />
+                    </div>
+                    @* Mật khẩu *@
+                    <div class="mb-3 form-password-toggle" id="showMatKhau">
+                        <div class="d-flex justify-content-between">
+                            <label class="form-label" for="password">Mật khẩu</label>
+                            <a asp-controller="Login" asp-action="QuenMatKhau">
+                                <small>Quên mật khẩu?</small>
+                            </a>
+                        </div>
+                        <div class="input-group input-group-merge">
+                            <input type="password"
+                                   id="login_MatKhau"
+                                   class="form-control"
+                                   name="password"
+                                   placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                   aria-describedby="password" />
+                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                        </div>
+                    </div>
+                    @* Ghi nhớ Tài khoản *@
+                    <div class="mb-3" id="showGhiNho">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="login_GhiNhoTaiKhoan" />
+                            <label class="form-check-label" for="remember-me"> Ghi nhớ tài khoản </label>
+                        </div>
+                    </div>
+                    @* Tài khoản *@
+                    <div class="mb-3" id="showOTP">
+                        <label for="email" class="form-label">Mã OTP</label>
+                        <input type="text"
+                               class="form-control"
+                               id="login_OTP"
+                               name="email-username"
+                               placeholder="Nhập OTP"
+                               autofocus />
+                    </div>
+                    @* Button *@
+                    <div class="mb-3" id="showBtn">
+                        <button class="btn btn-primary d-grid w-100" id="btn_Login" type="submit">Đăng nhập</button>
+                    </div>
+                    <div class="mb-3" id="showBtnOTP">
+                        <button class="btn btn-primary d-grid w-100" id="btn_LoginOTP" type="submit">Đăng nhập với OTP</button>
+
+                    </div>
+
+                    <p class="text-center">
+                        <span>Đây là hệ thống nội bộ bạn không thể chủ động đăng ký tài khoản</span>
+                    </p>
+                </div>
+            </div>
+            <div class="justify-content-around d-flex" id="loadingScreen2">
+                <h4 id="loadingScreen0" class="mt-2 me-3">Đợi BenBen xử lý nhé...</h4>
+                <div id="loadingScreen1" class="spinner-border spinner-border-lg text-primary" role="status">
+                </div>
+            </div>
+            <!-- /Register -->
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="/Login/login.js"></script>
+}

@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using TrainingCenters.ConnectApi;
 using TrainingCenters.InterfacesApi;
@@ -25,6 +28,13 @@ builder.Services.AddHttpClient("ConnectApi", client =>
     }
 });
 
+ builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+builder.Services.AddScoped<IUrlHelper>(x =>
+{
+    var actionContext = x.GetRequiredService<IActionContextAccessor>().ActionContext;
+    return new UrlHelper(actionContext);
+});
 
 builder.Services.AddControllersWithViews().AddJsonOptions(options =>
 {
@@ -60,7 +70,7 @@ app.UseEndpoints(endpoints =>
     // Thêm định tuyến controller mặc định cho không có khu vực (global)
     endpoints.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}"
+        pattern: "{controller=Login}/{action=Index}/{id?}"
     );
 });
 

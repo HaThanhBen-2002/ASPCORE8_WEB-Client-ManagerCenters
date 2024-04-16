@@ -249,6 +249,10 @@
       "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\layouts\\layout-without-navbar-light.png"
     },
     {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\trademark\\logoB.jpg",
+      "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\trademark\\logoB.jpg"
+    },
+    {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\assets\\img\\trademark\\logoHD.png",
       "PackagePath": "staticwebassets\\AdminAssets\\assets\\img\\trademark\\logoHD.png"
     },
@@ -1507,6 +1511,18 @@
     {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\tasks\\prod.js",
       "PackagePath": "staticwebassets\\AdminAssets\\tasks\\prod.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\Login\\doiMatKhau.js",
+      "PackagePath": "staticwebassets\\Login\\doiMatKhau.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\Login\\login.js",
+      "PackagePath": "staticwebassets\\Login\\login.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\Login\\quenMatKhau.js",
+      "PackagePath": "staticwebassets\\Login\\quenMatKhau.js"
     },
     {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\css\\loadding.css",

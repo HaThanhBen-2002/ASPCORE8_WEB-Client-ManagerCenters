@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container-xxl bg-dark">
+    <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+            <!-- Register -->
+            <div class="card">
+                <div class="card-body">
+                    <!-- Logo -->
+                    <div class="app-brand justify-content-center">
+                        <a href="index.html" class="app-brand-link gap-2">
+                            <span class="app-brand-logo demo">
+                                <img class="rounded-circle w-px-50 h-px-50" src="~/adminassets/assets/img/trademark/logob.jpg" />
+                            </span>
+                            <span class="app-brand-text demo text-body fw-bolder text-uppercase">BENBEN</span>
+                        </a>
+                    </div>
+                    <!-- /Logo -->
+                    <h4 class="mb-2">Chào bạn👋</h4>
+                    <p class="mb-4">Vui lòng nhập email mà bạn đã đăng ký với hệ thống</p>
+                    
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Nhập tài khoản email</label>
+                        <input type="text"
+                               class="form-control"
+                               id="quenMatKhau_TaiKhoan"
+                               name="email-username"
+                               placeholder="Nhập tài khoản email của bạn"
+                               autofocus />
+                    </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary d-grid w-100" id="btn_quenMatKhau" type="submit">Quên Mật Khẩu</button>
+                        </div>
+
+                    <p class="text-center">
+                        <span>Đây là hệ thống nội bộ bạn không thể chủ động đăng ký tài khoản</span>
+                    </p>
+                </div>
+            </div>
+            <!-- /Register -->
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="/Login/quenMatKhau.js"></script>
+}

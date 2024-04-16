@@ -21,6 +21,7 @@ namespace TrainingCenters.RepositoryApi
         public IDichVu DichVu { get; set; }
         public IChiTietThuChi ChiTietThuChi { get; set; }
         public ISendEmail SendEmail { get; set; }
+        public IXacThuc XacThuc { get; set; }
 
         private readonly HttpClient _httpClient;
         private readonly IOptions<TrainingCenters.ConnectApi.ConnectApi> _connectionStrings;
@@ -44,6 +45,7 @@ namespace TrainingCenters.RepositoryApi
             HocSinh = new HocSinhRepon(_httpClient, _connectionStrings);
             DichVu = new DichVuRepon(_httpClient, _connectionStrings);
             ChiTietThuChi = new ChiTietThuChiRepon(_httpClient, _connectionStrings);
+            XacThuc = new XacThucRepon(_httpClient,_connectionStrings);
         }
     }
 }

@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Login";
+
+    var token =  ViewData["Token"];
+    var email = ViewData["Email"];
+}
+
+<div class="container-xxl bg-dark">
+    <div class="authentication-wrapper authentication-basic container-p-y">
+        <div class="authentication-inner">
+            <!-- Register -->
+            <div class="card">
+                <div class="card-body">
+                    <!-- Logo -->
+                    <div class="app-brand justify-content-center">
+                        <a href="index.html" class="app-brand-link gap-2">
+                            <span class="app-brand-logo demo">
+                                <img class="rounded-circle w-px-50 h-px-50" src="~/adminassets/assets/img/trademark/logob.jpg" />
+                            </span>
+                            <span class="app-brand-text demo text-body fw-bolder text-uppercase">BENBEN</span>
+                        </a>
+                    </div>
+                    <!-- /Logo -->
+                    <h4 class="mb-2">Chào bạn👋</h4>
+                    <p class="mb-4">Đổi mật khẩu</p>
+                    <div class="mb-3 form-password-toggle">
+                        <div class="d-flex justify-content-between">
+                            <label class="form-label" for="password">Mật khẩu Mới</label>
+                            <a href="auth-forgot-password-basic.html">
+                                <small>Quên mật khẩu?</small>
+                            </a>
+                        </div>
+                        <div class="input-group input-group-merge">
+                            <input type="password"
+                                   id="doiMatKhau_MatKhau"
+                                   class="form-control"
+                                   name="password"
+                                   placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                   aria-describedby="password" />
+                            <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                        </div>
+                    </div>
+                        <div class="mb-3 form-password-toggle">
+                            <div class="d-flex justify-content-between">
+                                <label class="form-label" for="password">Xác Nhận Mật khẩu</label>
+                                <a href="auth-forgot-password-basic.html">
+                                    <small>Quên mật khẩu?</small>
+                                </a>
+                            </div>
+                            <div class="input-group input-group-merge">
+                                <input type="password"
+                                       id="doiMatKhau_MatKhau1"
+                                       class="form-control"
+                                       name="password"
+                                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                       aria-describedby="password" />
+                                <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary d-grid w-100" id="btn_doiMatKhau" type="submit">Đăng nhập</button>
+                        </div>
+
+                    <p class="text-center">
+                        <span>Đây là hệ thống nội bộ bạn không thể chủ động đăng ký tài khoản</span>
+                        <input  type="hidden" id="token" value="@token" />
+                        <input  type="hidden" id="email" value="@email"/>
+                    </p>
+                </div>
+            </div>
+            <!-- /Register -->
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @* <script src="/AdminAssets/module/support.js"></script> *@
+    <script src="/Login/doiMatKhau.js"></script>
+}

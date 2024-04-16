@@ -30,7 +30,7 @@ namespace ManagementApi.Controllers
 
         [HttpPost]
         [Route("DangKy")]
-        public async Task<IActionResult> Register([FromBody] RegisterUser registerUser)
+        public async Task<IActionResult> Register([FromBody] RegisterUser registerUser, string linkReturn)
         {
 
             var tokenResponse = await _user.CreateUserWithTokenAsync(registerUser);
@@ -38,7 +38,7 @@ namespace ManagementApi.Controllers
             {
                 await _user.AssignRoleToUserAsync(registerUser.Roles, tokenResponse.Response.User);
 
-                var confirmationLink = Url.Action(nameof(ConfirmEmail), "Authentication", new { tokenResponse.Response.Token, email = registerUser.Email }, Request.Scheme);
+                var confirmationLink = Url.Action(nameof(ConfirmEmail), "Authentication", new { tokenResponse.Response.Token, email = registerUser.Email, linkReturn = linkReturn}, Request.Scheme);
 
                 var message = new ManagementService.Models.Message(new string[] { registerUser.Email! }, "Xác nhận email BENBEN", confirmationLink!);
                 var responseMsg = _emailService.SendEmail(message);
@@ -52,7 +52,7 @@ namespace ManagementApi.Controllers
         }
 
         [HttpGet("ConfirmEmail")]
-        public async Task<IActionResult> ConfirmEmail(string token, string email)
+        public async Task<IActionResult> ConfirmEmail(string token, string email, string linkReturn)
         {
             var user = await _userManager.FindByEmailAsync(email);
             //var user = await _userManager.FindByEmailAsync(email);
@@ -61,8 +61,7 @@ namespace ManagementApi.Controllers
                 var result = await _userManager.ConfirmEmailAsync(user, token);
                 if (result.Succeeded)
                 {
-                    return StatusCode(StatusCodes.Status200OK,
-                      new Response { Status = "Success", Message = "Email Verified Successfully" });
+                    return Redirect(linkReturn);
                 }
             }
             return StatusCode(StatusCodes.Status500InternalServerError,
@@ -73,31 +72,38 @@ namespace ManagementApi.Controllers
         [Route("DangNhap")]
         public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
         {
+
             var loginOtpResponse = await _user.GetOtpByLoginAsync(loginModel);
-            if (loginOtpResponse.Response != null)
+            if (loginOtpResponse.IsSuccess)
             {
-                var user = loginOtpResponse.Response.User;
-                if (user.TwoFactorEnabled)
+                if (loginOtpResponse.Response != null)
                 {
-                    var token = loginOtpResponse.Response.Token;
-                    var message = new Message(new string[] { user.Email! }, "Mã OTP BENBEN", token);
-                    _emailService.SendEmail(message);
+                    var user = loginOtpResponse.Response.User;
+                    if (user.TwoFactorEnabled)
+                    {
+                        var token = loginOtpResponse.Response.Token;
+                        var message = new Message(new string[] { user.Email! }, "Mã OTP BENBEN", token);
+                        _emailService.SendEmail(message);
 
-                    return StatusCode(StatusCodes.Status200OK,
-                     new Response { IsSuccess = loginOtpResponse.IsSuccess, Status = "Success", Message = $"We have sent an OTP to your Email {user.Email}" });
-                }
-                if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password))
-                {
-                    var serviceResponse = await _user.GetJwtTokenAsync(user);
-                    return Ok(serviceResponse);
+                        return StatusCode(StatusCodes.Status200OK,
+                         new Response { IsSuccess = loginOtpResponse.IsSuccess, Status = "Success", Message = loginOtpResponse.Message });
+                    }
+                    if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password))
+                    {
+                        var serviceResponse = await _user.GetJwtTokenAsync(user);
+                        return Ok(serviceResponse);
 
+                    }
                 }
+                return StatusCode(StatusCodes.Status200OK,
+                          new Response { IsSuccess = false, Status = "Success", Message = loginOtpResponse.Message });
             }
-            return Unauthorized();
+            return StatusCode(StatusCodes.Status200OK,
+                          new Response { IsSuccess = false, Status = "Success", Message = loginOtpResponse.Message });
 
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("DangNhap-2FA")]
         public async Task<IActionResult> LoginWithOTP(string code, string userName)
         {
@@ -106,8 +112,8 @@ namespace ManagementApi.Controllers
             {
                 return Ok(jwt);
             }
-            return StatusCode(StatusCodes.Status404NotFound,
-                new Response { Status = "Success", Message = $"Invalid Code" });
+            return StatusCode(StatusCodes.Status200OK,
+                new Response {IsSuccess= jwt.IsSuccess, Status = "Success", Message = jwt.Message });
         }
 
         [HttpPost]
@@ -123,24 +129,55 @@ namespace ManagementApi.Controllers
                 new Response { Status = "Success", Message = $"Invalid Code" });
         }
 
+        //[HttpPost]
+        //[Route("QuenMatKhau")]
+        //public async Task<IActionResult> ForgotPassword(string email, string action, string controller)
+        //{
+        //    var user = await _userManager.FindByEmailAsync(email);
+        //    if (user != null)
+        //    {
+        //        var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+        //        var forgotPasswordlink = Url.Action(nameof(action), controller, new { token= token, email = user.Email, }, Request.Scheme);
+        //        var message = new ManagementService.Models.Message(new string[] { user.Email }, "Quên mật khẩu BENBEN", forgotPasswordlink);
+        //        _emailService.SendEmail(message);
+
+        //        return StatusCode(StatusCodes.Status200OK,
+        //        new Response {IsSuccess= true, Status = "Success", Message = $"Hệ thống đã gửi đến Email {user.Email}" });;
+        //    }
+        //    return StatusCode(StatusCodes.Status400BadRequest,
+        //        new Response {IsSuccess=false, Status = "Error", Message = $"Hệ thống không thể gửi thông tin đến Email của bạn" });
+        //}
+
         [HttpPost]
         [Route("QuenMatKhau")]
-        public async Task<IActionResult> ForgotPassword(string email, string action, string controller)
+        public async Task<IActionResult> ForgotPassword(string email, string linkReturn)
         {
             var user = await _userManager.FindByEmailAsync(email);
+
             if (user != null)
             {
                 var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                var forgotPasswordlink = Url.Action(nameof(action), controller, new { token= token, email = user.Email, }, Request.Scheme);
+
+                // Sử dụng UriBuilder để tạo đường dẫn URL mới
+                var uriBuilder = new UriBuilder(linkReturn)
+                {
+                    Query = $"token={Uri.EscapeDataString(token)}&email={Uri.EscapeDataString(user.Email)}"
+                };
+
+                var forgotPasswordlink = uriBuilder.ToString();
+
                 var message = new ManagementService.Models.Message(new string[] { user.Email }, "Quên mật khẩu BENBEN", forgotPasswordlink);
                 _emailService.SendEmail(message);
 
                 return StatusCode(StatusCodes.Status200OK,
-                new Response {IsSuccess= true, Status = "Success", Message = $"Hệ thống đã gửi đến Email {user.Email}" });;
+                    new Response { IsSuccess = true, Status = "Success", Message = $"Hệ thống đã gửi đến Email {user.Email}" });
             }
+
             return StatusCode(StatusCodes.Status400BadRequest,
-                new Response {IsSuccess=false, Status = "Error", Message = $"Hệ thống không thể gửi thông tin đến Email của bạn" });
+                new Response { IsSuccess = false, Status = "Error", Message = $"Hệ thống không thể gửi thông tin đến Email của bạn" });
         }
+
+
 
         [HttpPost]
         [Route("DoiMatKhau")]
@@ -172,5 +209,41 @@ namespace ManagementApi.Controllers
                 Message = "Đổi mật khẩu thất bại"
             });
         }
+
+        [HttpPost]
+        [Route("MoKhoaTaiKhoan")]
+        public async Task<IActionResult> UnlockAccount(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user != null)
+            {
+                // Đặt ngày khóa về null để mở khóa tài khoản
+                var unlockResult = await _userManager.SetLockoutEndDateAsync(user, null);
+
+                if (!unlockResult.Succeeded)
+                {
+                    foreach (var error in unlockResult.Errors)
+                    {
+                        ModelState.AddModelError(error.Code, error.Description);
+                    }
+                    return Ok(ModelState);
+                }
+
+                return StatusCode(StatusCodes.Status200OK, new Response
+                {
+                    IsSuccess = true,
+                    Status = "Success",
+                    Message = "Mở khóa tài khoản thành công"
+                });
+            }
+
+            return StatusCode(StatusCodes.Status400BadRequest, new Response
+            {
+                IsSuccess = false,
+                Status = "Error",
+                Message = "Mở khóa tài khoản thất bại"
+            });
+        }
+
     }
 }

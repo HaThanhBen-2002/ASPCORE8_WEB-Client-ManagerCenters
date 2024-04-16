@@ -7,8 +7,9 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     display: none; /* Ẩn màn hình loading khi trang được tải */
-    z-index: 9999; /* Đảm bảo màn hình loading luôn hiển thị phía trên cùng */
+    z-index: 999999; /* Đảm bảo màn hình loading luôn hiển thị phía trên cùng */
 }
+
 
 /* Động cơ loading */
 #loadingAnimation {
