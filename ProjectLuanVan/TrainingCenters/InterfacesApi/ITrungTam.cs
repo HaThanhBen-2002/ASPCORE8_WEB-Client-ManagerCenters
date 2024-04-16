@@ -4,16 +4,16 @@ namespace TrainingCenters.InterfacesApi
 {
     public interface ITrungTam
     {
-        Task<object> LoadingDataTableView(TrungTam item, int skip, int take);
-        Task<ICollection<TrungTam>> Search(TrungTam item);
-        Task<List<TrungTamMN>> SearchName(TrungTam item);
-        Task<int> SearchCount(TrungTam item);
-        Task<ICollection<TrungTam>> GetAll();
-        Task<TrungTam> GetById(int id);
-        Task<bool> Create(TrungTam item);
-        Task<bool> Update(TrungTam item);
-        Task<bool> Delete(int id, string nguoiXoa);
-        Task<bool> CheckId(int id);
+        Task<object> LoadingDataTableView(TrungTam item, int skip, int take, string tk);
+        Task<ICollection<TrungTam>> Search(TrungTam item, string tk);
+        Task<List<TrungTamMN>> SearchName(TrungTam item, string tk);
+        Task<int> SearchCount(TrungTam item, string tk);
+        Task<ICollection<TrungTam>> GetAll(string tk);
+        Task<TrungTam> GetById(int id, string tk);
+        Task<bool> Create(TrungTam item, string tk);
+        Task<bool> Update(TrungTam item, string tk);
+        Task<bool> Delete(int id, string nguoiXoa, string tk);
+        Task<bool> CheckId(int id, string tk);
         
     }
 }

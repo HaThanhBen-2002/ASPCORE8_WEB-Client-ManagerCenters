@@ -1157,6 +1157,10 @@
       "PackagePath": "staticwebassets\\AdminAssets\\module\\trungTam.js"
     },
     {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\xacNhan.js",
+      "PackagePath": "staticwebassets\\AdminAssets\\module\\xacNhan.js"
+    },
+    {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\scss\\_bootstrap-extended.scss",
       "PackagePath": "staticwebassets\\AdminAssets\\scss\\_bootstrap-extended.scss"
     },

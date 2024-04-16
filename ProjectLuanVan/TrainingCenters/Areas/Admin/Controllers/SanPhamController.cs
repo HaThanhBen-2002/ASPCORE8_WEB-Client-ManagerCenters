@@ -17,28 +17,32 @@ namespace TrainingCenters.Areas.Admin.Controllers
         }
 
         #region Api Data
+        private string GetXacThuc()
+        {
+            return HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+        }
         public async Task<IActionResult> GetAll()
         {
-            var data = await _unit.SanPham.GetAll();
+            var data = await _unit.SanPham.GetAll(GetXacThuc());
             return Ok(data);
         }
 
         public async Task<IActionResult> GetById(string id)
         {
-            var data = await _unit.SanPham.GetById(Convert.ToInt32(id));
+            var data = await _unit.SanPham.GetById(Convert.ToInt32(id), GetXacThuc());
             return Ok(data);
         }
 
         public async Task<IActionResult> GetById2(string id)
         {
-            var data = await _unit.SanPham.GetById(Convert.ToInt32(id));
+            var data = await _unit.SanPham.GetById(Convert.ToInt32(id), GetXacThuc());
             return Ok(data);
         }
 
         public async Task<IActionResult> GetByIdTable(string id)
         {
-            var data = await _unit.SanPham.GetById(Convert.ToInt32(id));
-            NhaCungCap item1 = await _unit.NhaCungCap.GetById(Convert.ToInt32(data.MaNhaCungCap));
+            var data = await _unit.SanPham.GetById(Convert.ToInt32(id), GetXacThuc());
+            NhaCungCap item1 = await _unit.NhaCungCap.GetById(Convert.ToInt32(data.MaNhaCungCap), GetXacThuc());
             var rTable = new
             {
                 maSanPham = data.MaSanPham,
@@ -54,13 +58,13 @@ namespace TrainingCenters.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create(SanPham item)
         {
-            var status = await _unit.SanPham.Create(item);
+            var status = await _unit.SanPham.Create(item, GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
         public async Task<IActionResult> Update(SanPham item)
         {
-            var status = await _unit.SanPham.Update(item);
+            var status = await _unit.SanPham.Update(item, GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
@@ -71,7 +75,7 @@ namespace TrainingCenters.Areas.Admin.Controllers
                 bool dl = false;
                 foreach (int id in ids)
                 {
-                    dl = await _unit.SanPham.Delete(Convert.ToInt32(id), nguoiXoa);
+                    dl = await _unit.SanPham.Delete(Convert.ToInt32(id), nguoiXoa, GetXacThuc());
                 }
                 return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = dl });
             }
@@ -80,30 +84,30 @@ namespace TrainingCenters.Areas.Admin.Controllers
 
         public async Task<IActionResult> CheckId(string id)
         {
-            var status = await _unit.SanPham.CheckId(Convert.ToInt32(id));
+            var status = await _unit.SanPham.CheckId(Convert.ToInt32(id), GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
         public async Task<IActionResult> Search(SanPham item)
         {
-            var data = await _unit.SanPham.Search(item);
+            var data = await _unit.SanPham.Search(item, GetXacThuc());
             return Ok(data);
         }
         public async Task<IActionResult> SearchName(SanPham item)
         {
-            var data = await _unit.SanPham.SearchName(item);
+            var data = await _unit.SanPham.SearchName(item, GetXacThuc());
             return Json(data);
         }
         public async Task<IActionResult> SearchCount(SanPham item)
         {
-            var data = await _unit.SanPham.SearchCount(item);
+            var data = await _unit.SanPham.SearchCount(item, GetXacThuc());
             return Ok(data);
         }
         public async Task<IActionResult> LoadingDataTableView(SanPham item)
         {
             var skip = Request.Form["start"];
             var length = Request.Form["length"];
-            var data = await _unit.SanPham.LoadingDataTableView(item, Convert.ToInt32(skip), Convert.ToInt32(length));
+            var data = await _unit.SanPham.LoadingDataTableView(item, Convert.ToInt32(skip), Convert.ToInt32(length), GetXacThuc());
             return Ok(data);
         }
         #endregion

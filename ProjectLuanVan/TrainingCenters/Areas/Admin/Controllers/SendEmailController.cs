@@ -16,9 +16,13 @@ namespace TrainingCenters.Areas.Admin.Controllers
 
 
         #region Api Data
+        private string GetXacThuc()
+        {
+            return HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+        }
         public async Task<IActionResult> SendEmailText(Message message)
         {
-            var status = await _unit.SendEmail.SendEmailText(message);
+            var status = await _unit.SendEmail.SendEmailText(message, GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
@@ -27,13 +31,13 @@ namespace TrainingCenters.Areas.Admin.Controllers
         public async Task<IActionResult> SendEmailKyThuat(Message message)
         {
             message.To = new List<string> {"english4688@gmail.com"};
-            var status = await _unit.SendEmail.SendEmailText(message);
+            var status = await _unit.SendEmail.SendEmailText(message, GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
         public async Task<IActionResult> SendEmailTextDemo()
         {
             var message = new Message(new List<string> { "mavuongkiki2002@gmail.com","english4688@gmail.com" }, "Email Demo BENBEN lần 2", "Đây là nội dung demo"!);
-            var status = await _unit.SendEmail.SendEmailText(message);
+            var status = await _unit.SendEmail.SendEmailText(message, GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
         #endregion

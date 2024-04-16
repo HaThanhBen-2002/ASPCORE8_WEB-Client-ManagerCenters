@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Azure.Core;
+using Microsoft.Extensions.Options;
 using TrainingCenters.ConnectApi;
 using TrainingCenters.InterfacesApi;
 using TrainingCenters.Models;
@@ -27,7 +28,7 @@ namespace TrainingCenters.RepositoryApi
         private readonly IOptions<TrainingCenters.ConnectApi.ConnectApi> _connectionStrings;
         public UnitOfWorkRepon(HttpClient httpClient, IOptions<TrainingCenters.ConnectApi.ConnectApi> connectionStrings)
         {
-            _httpClient = httpClient = new HttpClient();
+            _httpClient = httpClient;
             _connectionStrings = connectionStrings;
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
 

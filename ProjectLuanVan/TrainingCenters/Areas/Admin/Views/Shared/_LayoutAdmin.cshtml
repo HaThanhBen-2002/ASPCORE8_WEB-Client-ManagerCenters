@@ -42,12 +42,13 @@
     <!-- Page CSS -->
     <!-- Helpers -->
     <script src="/AdminAssets/assets/vendor/js/helpers.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
     <link href="~/css/loadding.css" rel="stylesheet" />
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/AdminAssets/assets/js/config.js"></script>
+    <script src="~/adminassets/module/xacnhan.js"></script>
 </head>
 
 <body>
@@ -430,6 +431,8 @@
     <script src="/AdminAssets/assets/js/ui-toasts.js"></script>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
     <script>
         function deleteCookie(cookieName) {
             document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";

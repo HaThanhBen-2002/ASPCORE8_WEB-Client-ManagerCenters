@@ -3,6 +3,7 @@ using TrainingCenters.Models;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Text;
+using System.Net.Http.Headers;
 namespace TrainingCenters.RepositoryApi
 {
     public class ChiTietThuChiRepon : IChiTietThuChi
@@ -12,17 +13,21 @@ namespace TrainingCenters.RepositoryApi
 
         public ChiTietThuChiRepon(HttpClient httpClient, IOptions<TrainingCenters.ConnectApi.ConnectApi> connectionStrings)
         {
-            _httpClient = httpClient = new HttpClient();
+            _httpClient = httpClient;
             _apiUrl = connectionStrings?.Value?.StringConnectAPI ?? throw new ArgumentNullException(nameof(connectionStrings));
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
         }
         
-        public async Task<bool> CheckId(int id)
+        public async Task<bool> CheckId(int id, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/ChiTietThuChi/CheckId?id={id}";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var response = await _httpClient.GetAsync(apiUrl);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
@@ -43,12 +48,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> Create(ChiTietThuChi item)
+        public async Task<bool> Create(ChiTietThuChi item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/ChiTietThuChi/Create";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
@@ -70,11 +79,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> Delete(int id, string nguoiXoa)
+        public async Task<bool> Delete(int id, string nguoiXoa, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/ChiTietThuChi/Delete?id={id}&nguoiXoa={nguoiXoa}"; // Điền đường dẫn API tại đây
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 var response = await _httpClient.DeleteAsync(apiUrl);
                 if (response.IsSuccessStatusCode)
                 {
@@ -94,12 +108,16 @@ namespace TrainingCenters.RepositoryApi
             
         }
 
-        public async Task<ICollection<ChiTietThuChi>> Search(ChiTietThuChi item)
+        public async Task<ICollection<ChiTietThuChi>> Search(ChiTietThuChi item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/ChiTietThuChi/Search";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
@@ -125,11 +143,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
          
-        public async Task<ICollection<ChiTietThuChi>> SearchByPhieuThuChiId(int id)
+        public async Task<ICollection<ChiTietThuChi>> SearchByPhieuThuChiId(int id, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/ChiTietThuChi/SearchByPhieuThuChiId?id={id}";
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 var content = new StringContent(JsonConvert.SerializeObject(id), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl,content);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
@@ -154,12 +177,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> Update(ChiTietThuChi item)
+        public async Task<bool> Update(ChiTietThuChi item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/ChiTietThuChi/Update";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PutAsync(apiUrl, content);

@@ -6,17 +6,17 @@ namespace TrainingCenters.InterfacesApi
 {
     public interface IHocSinh
     {
-        Task<ICollection<HocSinh>> GetAll();
-        Task<HocSinh> GetById(int id);
-        Task<HocSinhView> GetHocSinhView(int id);
-        Task<object> LoadingDataTableView(HocSinh item, int skip, int take);
-        Task<ICollection<HocSinh>> Search(HocSinh item);
-        Task<List<HocSinhMN>> SearchName(HocSinh item);
-        Task<int> SearchCount(HocSinh item);
-        Task<bool> Create(HocSinh item);
-        Task<bool> Update(HocSinh item);
-        Task<bool> Delete(int id, string nguoiXoa);
-        Task<bool> CheckId(int id);
+        Task<ICollection<HocSinh>> GetAll(string tk);
+        Task<HocSinh> GetById(int id, string tk);
+        Task<HocSinhView> GetHocSinhView(int id, string tk);
+        Task<object> LoadingDataTableView(HocSinh item, int skip, int take, string tk);
+        Task<ICollection<HocSinh>> Search(HocSinh item, string tk);
+        Task<List<HocSinhMN>> SearchName(HocSinh item, string tk);
+        Task<int> SearchCount(HocSinh item, string tk);
+        Task<bool> Create(HocSinh item, string tk);
+        Task<bool> Update(HocSinh item, string tk);
+        Task<bool> Delete(int id, string nguoiXoa, string tk);
+        Task<bool> CheckId(int id, string tk);
         
     }
 }

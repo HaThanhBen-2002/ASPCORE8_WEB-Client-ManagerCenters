@@ -12,6 +12,7 @@ using System.Net.Http;
 using Microsoft.Extensions.Options;
 using TrainingCenters.ConnectApi;
 using TrainingCenters.Models.ModelMN;
+using System.Net.Http.Headers;
 namespace TrainingCenters.RepositoryApi
 {
     public class TrungTamRepon : ITrungTam
@@ -21,17 +22,21 @@ namespace TrainingCenters.RepositoryApi
 
         public TrungTamRepon(HttpClient httpClient, IOptions<TrainingCenters.ConnectApi.ConnectApi> connectionStrings)
         {
-            _httpClient = httpClient = new HttpClient();
+            _httpClient = httpClient;
             _apiUrl = connectionStrings?.Value?.StringConnectAPI ?? throw new ArgumentNullException(nameof(connectionStrings));
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
         }
         
-        public async Task<bool> CheckId(int id)
+        public async Task<bool> CheckId(int id, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/CheckId?id={id}";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var response = await _httpClient.GetAsync(apiUrl);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
@@ -56,11 +61,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> Create(TrungTam item)
+        public async Task<bool> Create(TrungTam item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/Create";
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 item.MaTrungTam = null;
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
@@ -83,11 +93,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> Delete(int id, string nguoiXoa)
+        public async Task<bool> Delete(int id, string nguoiXoa, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/Delete?id={id}&nguoiXoa={nguoiXoa}"; // Điền đường dẫn API tại đây
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 var response = await _httpClient.DeleteAsync(apiUrl);
                 if (response.IsSuccessStatusCode)
                 {
@@ -107,12 +122,16 @@ namespace TrainingCenters.RepositoryApi
 
         }
 
-        public async Task<ICollection<TrungTam>> Search(TrungTam item)
+        public async Task<ICollection<TrungTam>> Search(TrungTam item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/Search";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
@@ -138,12 +157,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> Update(TrungTam item)
+        public async Task<bool> Update(TrungTam item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/Update";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PutAsync(apiUrl, content);
@@ -165,12 +188,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public  async Task<ICollection<TrungTam>> GetAll()
+        public  async Task<ICollection<TrungTam>> GetAll(string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/GetAll";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var response = await _httpClient.GetAsync(apiUrl);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
@@ -195,12 +222,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<TrungTam> GetById(int id)
+        public async Task<TrungTam> GetById(int id, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/GetById?id={id}";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var response = await _httpClient.GetAsync(apiUrl);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
@@ -225,11 +256,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<object> LoadingDataTableView(TrungTam item, int skip, int take)
+        public async Task<object> LoadingDataTableView(TrungTam item, int skip, int take, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/LoadingDataTableView?skip={skip}&take={take}";
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Tạo đối tượng chứa các tham số cần truyền vào API
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
@@ -251,11 +287,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<List<TrungTamMN>> SearchName(TrungTam item)
+        public async Task<List<TrungTamMN>> SearchName(TrungTam item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/SearchName";
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
@@ -281,12 +322,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<int> SearchCount(TrungTam item)
+        public async Task<int> SearchCount(TrungTam item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/SearchCount";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);

@@ -61,21 +61,25 @@ namespace TrainingCenters.Areas.Admin.Controllers
             return invoiceCode;
         }
         #region Api Data
+        private string GetXacThuc()
+        {
+            return HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+        }
         public async Task<IActionResult> GetAll()
         {
-            var data = await _unit.PhieuThuChi.GetAll();
+            var data = await _unit.PhieuThuChi.GetAll(GetXacThuc());
             return Ok(data);
         }
 
         public async Task<IActionResult> GetById(string id)
         {
-            var data = await _unit.PhieuThuChi.GetById(Convert.ToInt32(id));
+            var data = await _unit.PhieuThuChi.GetById(Convert.ToInt32(id), GetXacThuc());
             return Ok(data);
         }
 
         public async Task<IActionResult> GetByIdTable(string id)
         {
-            var data = await _unit.PhieuThuChi.GetById(Convert.ToInt32(id));
+            var data = await _unit.PhieuThuChi.GetById(Convert.ToInt32(id), GetXacThuc());
             var rTable = new
             {
                 maPhieu = data.MaPhieu,
@@ -119,16 +123,16 @@ namespace TrainingCenters.Areas.Admin.Controllers
                         item.NgayThanhToan = null;
                     }
 
-                    var status = await _unit.PhieuThuChi.Create(item);
+                    var status = await _unit.PhieuThuChi.Create(item, GetXacThuc());
                     if (status)
                     {
-                        var phieuThuChiNew = await _unit.PhieuThuChi.Search(item) as List<PhieuThuChi>;
+                        var phieuThuChiNew = await _unit.PhieuThuChi.Search(item, GetXacThuc()) as List<PhieuThuChi>;
                         if(phieuThuChiNew != null)
                         {
                             foreach (var ct in chiTietThuChis)
                             {
                                 ct.MaPhieu = phieuThuChiNew[0].MaPhieu;
-                                statusCreate = await _unit.ChiTietThuChi.Create(ct);
+                                statusCreate = await _unit.ChiTietThuChi.Create(ct, GetXacThuc());
                             }
                         }
                     }
@@ -143,16 +147,16 @@ namespace TrainingCenters.Areas.Admin.Controllers
 
         public async Task<IActionResult> Update(PhieuThuChi item)
         {
-            var status = await _unit.PhieuThuChi.Update(item);
+            var status = await _unit.PhieuThuChi.Update(item, GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
         public async Task<IActionResult> UpdateThanhToan(string id)
         {
-            var item = await _unit.PhieuThuChi.GetById(Convert.ToInt32(id));
+            var item = await _unit.PhieuThuChi.GetById(Convert.ToInt32(id), GetXacThuc());
             item.TrangThai = "Đã thanh toán";
             item.NgayThanhToan = GetDateNow();
-            var status = await _unit.PhieuThuChi.Update(item);
+            var status = await _unit.PhieuThuChi.Update(item, GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
@@ -163,7 +167,7 @@ namespace TrainingCenters.Areas.Admin.Controllers
                 bool dl = false;
                 foreach (int id in ids)
                 {
-                    dl = await _unit.PhieuThuChi.Delete(Convert.ToInt32(id), nguoiXoa);
+                    dl = await _unit.PhieuThuChi.Delete(Convert.ToInt32(id), nguoiXoa, GetXacThuc());
                 }
                 return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = dl });
             }
@@ -172,31 +176,31 @@ namespace TrainingCenters.Areas.Admin.Controllers
 
         public async Task<IActionResult> CheckId(string id)
         {
-            var status = await _unit.PhieuThuChi.CheckId(Convert.ToInt32(id));
+            var status = await _unit.PhieuThuChi.CheckId(Convert.ToInt32(id), GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
         public async Task<IActionResult> Search(PhieuThuChi item)
         {
-            var data = await _unit.PhieuThuChi.Search(item);
+            var data = await _unit.PhieuThuChi.Search(item, GetXacThuc());
             return Ok(data);
         }
         public async Task<IActionResult> SearchTongTien(PhieuThuChi item)
         {
             item.TrangThai = "Đã thanh toán";
-            var data = await _unit.PhieuThuChi.SearchTongTien(item);
+            var data = await _unit.PhieuThuChi.SearchTongTien(item, GetXacThuc());
             return Ok(data);
         }
         public async Task<IActionResult> SearchCount(PhieuThuChi item)
         {
-            var data = await _unit.PhieuThuChi.SearchCount(item);
+            var data = await _unit.PhieuThuChi.SearchCount(item, GetXacThuc());
             return Ok(data);
         }
         public async Task<IActionResult> LoadingDataTableView(PhieuThuChi item)
         {
             var skip = Request.Form["start"];
             var length = Request.Form["length"];
-            var data = await _unit.PhieuThuChi.LoadingDataTableView(item, Convert.ToInt32(skip), Convert.ToInt32(length));
+            var data = await _unit.PhieuThuChi.LoadingDataTableView(item, Convert.ToInt32(skip), Convert.ToInt32(length), GetXacThuc());
             return Ok(data);
         }
 
@@ -204,20 +208,20 @@ namespace TrainingCenters.Areas.Admin.Controllers
         {
             item.LoaiPhieu = "Hóa đơn thu";
             item.TrangThai = "Đã thanh toán";
-            var data = await _unit.PhieuThuChi.SearchTongTien(item);
+            var data = await _unit.PhieuThuChi.SearchTongTien(item, GetXacThuc());
             return Ok(data);
         }
         public async Task<IActionResult> HoaDonChiThang(PhieuThuChi item)
         {
             item.TrangThai = "Đã thanh toán";
             item.LoaiPhieu = "Hóa đơn chi";
-            var hoaDonChi = await _unit.PhieuThuChi.SearchTongTien(item);
+            var hoaDonChi = await _unit.PhieuThuChi.SearchTongTien(item, GetXacThuc());
 
             item.LoaiPhieu = "Hóa đơn khác";
-            var hoaDonKhac = await _unit.PhieuThuChi.SearchTongTien(item);
+            var hoaDonKhac = await _unit.PhieuThuChi.SearchTongTien(item, GetXacThuc());
 
             item.LoaiPhieu = "Hóa đơn tạm ứng";
-            var hoaDonTamUng = await _unit.PhieuThuChi.SearchTongTien(item);
+            var hoaDonTamUng = await _unit.PhieuThuChi.SearchTongTien(item, GetXacThuc());
 
             var tongChi = hoaDonChi + hoaDonKhac + hoaDonTamUng;
             return Ok(tongChi);

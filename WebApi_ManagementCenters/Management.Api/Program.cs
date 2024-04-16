@@ -21,32 +21,22 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 });
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("AllowOrigin", builder =>
-//    {
-//        builder
-//            .WithOrigins("https://localhost:7206") // Update with your Angular app's URL
-//            .AllowAnyHeader()
-//            .AllowAnyMethod();
-//    });
-//});
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins", builder =>
+    options.AddPolicy("AllowOrigin", builder =>
     {
         builder
-            .AllowAnyOrigin() // Chấp nhận tất cả các nguồn
+            .WithOrigins("https://localhost:7206", "http://localhost:5062", "https://localhost:44361") // Update with your Angular app's URL
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
 });
+
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // For Identity
 //builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 //    .AddEntityFrameworkStores<ApplicationDbContext>()
 //    .AddDefaultTokenProviders();
-
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {

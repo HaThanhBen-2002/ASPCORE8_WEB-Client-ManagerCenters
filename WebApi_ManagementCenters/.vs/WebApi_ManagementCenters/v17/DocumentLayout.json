@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C418963B-E9A8-470A-AB9A-E0D1045563BD}|Management.Api\\ManagementApi.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\webapi_managementcenters\\management.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C418963B-E9A8-470A-AB9A-E0D1045563BD}|Management.Api\\ManagementApi.csproj|C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\management.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C418963B-E9A8-470A-AB9A-E0D1045563BD}|Management.Api\\ManagementApi.csproj|solutionrelative:management.api\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C418963B-E9A8-470A-AB9A-E0D1045563BD}|Management.Api\\ManagementApi.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\webapi_managementcenters\\management.api\\controllers\\dichvucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C418963B-E9A8-470A-AB9A-E0D1045563BD}|Management.Api\\ManagementApi.csproj|solutionrelative:management.api\\controllers\\dichvucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C418963B-E9A8-470A-AB9A-E0D1045563BD}|Management.Api\\ManagementApi.csproj|C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\management.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C418963B-E9A8-470A-AB9A-E0D1045563BD}|Management.Api\\ManagementApi.csproj|solutionrelative:management.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAD6C595-0295-41A1-BE04-7DF4E3D61C1F}|ManagementService\\ManagementService.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\webapi_managementcenters\\managementservice\\models\\authentication\\user\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAD6C595-0295-41A1-BE04-7DF4E3D61C1F}|ManagementService\\ManagementService.csproj|solutionrelative:managementservice\\models\\authentication\\user\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CBC99B4A-9372-4A26-B216-B2E32B42727F}|Data\\Data.csproj|C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\data\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CBC99B4A-9372-4A26-B216-B2E32B42727F}|Data\\Data.csproj|solutionrelative:data\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C418963B-E9A8-470A-AB9A-E0D1045563BD}|Management.Api\\ManagementApi.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\webapi_managementcenters\\management.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C418963B-E9A8-470A-AB9A-E0D1045563BD}|Management.Api\\ManagementApi.csproj|solutionrelative:management.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CBC99B4A-9372-4A26-B216-B2E32B42727F}|Data\\Data.csproj|C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\data\\migrations\\20240326213021_magration1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,11 +34,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginResponse.cs",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\ManagementService\\Models\\Authentication\\User\\LoginResponse.cs",
+              "RelativeDocumentMoniker": "ManagementService\\Models\\Authentication\\User\\LoginResponse.cs",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\ManagementService\\Models\\Authentication\\User\\LoginResponse.cs",
+              "RelativeToolTip": "ManagementService\\Models\\Authentication\\User\\LoginResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-16T14:56:58.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DichVuController.cs",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Management.Api\\Controllers\\DichVuController.cs",
+              "RelativeDocumentMoniker": "Management.Api\\Controllers\\DichVuController.cs",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Management.Api\\Controllers\\DichVuController.cs",
+              "RelativeToolTip": "Management.Api\\Controllers\\DichVuController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAH8AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-16T11:54:53.993Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -40,20 +74,20 @@
               "RelativeDocumentMoniker": "Management.Api\\Program.cs",
               "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Management.Api\\Program.cs",
               "RelativeToolTip": "Management.Api\\Program.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAuwCAAAAAFAAAA",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAEUAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-15T22:49:29.071Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "ApplicationDbContextModelSnapshot.cs",
               "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
               "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
               "RelativeToolTip": "Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "ViewState": "AQIAAF0GAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAEsGAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-15T12:35:44.88Z",
               "EditorCaption": ""
@@ -66,20 +100,20 @@
               "RelativeDocumentMoniker": "Management.Api\\Controllers\\AuthenticationController.cs",
               "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Management.Api\\Controllers\\AuthenticationController.cs",
               "RelativeToolTip": "Management.Api\\Controllers\\AuthenticationController.cs",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAAAGoAAAAZAAAA",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAwJIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-15T12:35:10.364Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "20240326213021_Magration1.cs",
               "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\Migrations\\20240326213021_Magration1.cs",
               "RelativeDocumentMoniker": "Data\\Migrations\\20240326213021_Magration1.cs",
               "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\WebApi_ManagementCenters\\Data\\Migrations\\20240326213021_Magration1.cs",
               "RelativeToolTip": "Data\\Migrations\\20240326213021_Magration1.cs",
-              "ViewState": "AQIAAEsAAAAAAAAAAAAAAFgCAABEAAAA",
+              "ViewState": "AQIAAFoAAAAAAAAAAAAAAFgCAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-15T12:36:02.927Z"
             }

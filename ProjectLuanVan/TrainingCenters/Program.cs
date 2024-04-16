@@ -28,13 +28,13 @@ builder.Services.AddHttpClient("ConnectApi", client =>
     }
 });
 
- builder.Services.AddHttpContextAccessor();
-builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
-builder.Services.AddScoped<IUrlHelper>(x =>
-{
-    var actionContext = x.GetRequiredService<IActionContextAccessor>().ActionContext;
-    return new UrlHelper(actionContext);
-});
+// builder.Services.AddHttpContextAccessor();
+//builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+//builder.Services.AddScoped<IUrlHelper>(x =>
+//{
+//    var actionContext = x.GetRequiredService<IActionContextAccessor>().ActionContext;
+//    return new UrlHelper(actionContext);
+//});
 
 builder.Services.AddControllersWithViews().AddJsonOptions(options =>
 {
@@ -42,7 +42,7 @@ builder.Services.AddControllersWithViews().AddJsonOptions(options =>
 });
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWorkRepon>();
-
+builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

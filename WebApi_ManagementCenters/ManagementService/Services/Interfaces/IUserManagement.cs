@@ -12,9 +12,9 @@ namespace ManagementService.Services.Interfaces
     {
         Task<ApiResponse<CreateUserResponse>> CreateUserWithTokenAsync(RegisterUser registerUser);
         Task<ApiResponse<List<string>>> AssignRoleToUserAsync(List<string> roles, ApplicationUser user);
-        Task<ApiResponse<LoginOtpResponse>> GetOtpByLoginAsync(LoginModel loginModel);
+        Task<ApiResponse<LoginOtpResponse>> GetOtpByLoginAsync(LoginModel loginModel, SignInResult n);
         Task<ApiResponse<LoginResponse>> GetJwtTokenAsync(ApplicationUser user);
-        Task<ApiResponse<LoginResponse>> LoginUserWithJWTokenAsync(string otp, string userName);
+        Task<ApiResponse<LoginResponse>> LoginUserWithJWTokenAsync(string userName, SignInResult signIn);
         Task<ApiResponse<LoginResponse>> RenewAccessTokenAsync(LoginResponse tokens);
     }
 }

@@ -9,9 +9,8 @@ namespace TrainingCenters.InterfacesApi
     public interface IXacThuc
     {
         Task<bool> DangKy(RegisterUser item, string linkReturn);
-        Task<ApiResponse> DangNhap(LoginModel item);
-        Task<ApiResponse> DangNhapOtp(string code, string userName);
-        Task<bool> CapNhatToken(LoginResponse tokens);
+        Task<ApiResponsePro<LoginResponse>> DangNhap(LoginModel item);
+        Task<ApiResponsePro<LoginResponse>> CapNhatToken(LoginResponse tokens);
         Task<bool> QuenMatKhau(string email, string linkReturn);
         Task<bool> DoiMatKhau(ResetPassword resetPassword);
     }

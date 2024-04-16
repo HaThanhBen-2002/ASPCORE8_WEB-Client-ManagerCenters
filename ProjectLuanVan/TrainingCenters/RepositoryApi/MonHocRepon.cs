@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using TrainingCenters.ConnectApi;
 using TrainingCenters.Models.ModelMN;
+using System.Net.Http.Headers;
 namespace TrainingCenters.RepositoryApi
 {
     public class MonHocRepon: IMonHoc
@@ -20,17 +21,21 @@ namespace TrainingCenters.RepositoryApi
 
         public MonHocRepon(HttpClient httpClient, IOptions<TrainingCenters.ConnectApi.ConnectApi> connectionStrings)
         {
-            _httpClient = httpClient = new HttpClient();
+            _httpClient = httpClient;
             _apiUrl = connectionStrings?.Value?.StringConnectAPI ?? throw new ArgumentNullException(nameof(connectionStrings));
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
         }
 
-        public async Task<bool> CheckId(int id)
+        public async Task<bool> CheckId(int id, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/MonHoc/CheckId?id={id}";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var response = await _httpClient.GetAsync(apiUrl);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
@@ -51,12 +56,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> Create(MonHoc item)
+        public async Task<bool> Create(MonHoc item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/MonHoc/Create";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
@@ -78,11 +87,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> Delete(int id, string nguoiXoa)
+        public async Task<bool> Delete(int id, string nguoiXoa, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/MonHoc/Delete?id={id}&nguoiXoa={nguoiXoa}"; // Điền đường dẫn API tại đây
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 var response = await _httpClient.DeleteAsync(apiUrl);
                 if (response.IsSuccessStatusCode)
                 {
@@ -102,12 +116,16 @@ namespace TrainingCenters.RepositoryApi
 
         }
 
-        public async Task<ICollection<MonHoc>> Search(MonHoc item)
+        public async Task<ICollection<MonHoc>> Search(MonHoc item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/MonHoc/Search";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
@@ -133,12 +151,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> Update(MonHoc item)
+        public async Task<bool> Update(MonHoc item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/MonHoc/Update";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PutAsync(apiUrl, content);
@@ -160,12 +182,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<ICollection<MonHoc>> GetAll()
+        public async Task<ICollection<MonHoc>> GetAll(string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/MonHoc/GetAll";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var response = await _httpClient.GetAsync(apiUrl);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
@@ -189,12 +215,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<MonHoc> GetById(int id)
+        public async Task<MonHoc> GetById(int id, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/MonHoc/GetById?id={id}";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var response = await _httpClient.GetAsync(apiUrl);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
@@ -219,12 +249,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<object> LoadingDataTableView(MonHoc item, int skip, int take)
+        public async Task<object> LoadingDataTableView(MonHoc item, int skip, int take, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/MonHoc/LoadingDataTableView?skip={skip}&take={take}";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
@@ -244,12 +278,16 @@ namespace TrainingCenters.RepositoryApi
                 return new object();
             }
         }
-        public async Task<List<MonHocMN>> SearchName(MonHoc item)
+        public async Task<List<MonHocMN>> SearchName(MonHoc item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/MonHoc/SearchName";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
@@ -275,12 +313,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<int> SearchCount(MonHoc item)
+        public async Task<int> SearchCount(MonHoc item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/MonHoc/SearchCount";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);

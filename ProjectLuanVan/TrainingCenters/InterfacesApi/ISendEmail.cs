@@ -5,6 +5,6 @@ namespace TrainingCenters.InterfacesApi
 {
     public interface ISendEmail
     {
-        Task<bool> SendEmailText(Message message);
+        Task<bool> SendEmailText(Message message, string tk);
     }
 }

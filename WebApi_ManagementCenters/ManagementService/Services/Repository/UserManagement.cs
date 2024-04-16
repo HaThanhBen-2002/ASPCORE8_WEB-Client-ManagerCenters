@@ -19,6 +19,7 @@ using System.Text;
 using static Org.BouncyCastle.Crypto.Engines.SM2Engine;
 using static ManagementService.Support.Support;
 using ManagementService.Services.Interfaces;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace ManagementService.Services.Repository
 {
@@ -82,7 +83,7 @@ namespace ManagementService.Services.Repository
                 NgayTao = GetCurrentDateTime(),
                 NgayCapNhat = GetCurrentDateTime(),
                 MaTrungTam = registerUser.MaTrungTam,
-                TwoFactorEnabled = true
+                TwoFactorEnabled = false
             };
 
             var result = await _userManager.CreateAsync(user, registerUser.Password);
@@ -158,13 +159,12 @@ namespace ManagementService.Services.Repository
         //        };
         //    }
         //}
-        public async Task<ApiResponse<LoginOtpResponse>> GetOtpByLoginAsync(LoginModel loginModel)
+        public async Task<ApiResponse<LoginOtpResponse>> GetOtpByLoginAsync(LoginModel loginModel, SignInResult n)
         {
             var user = await _userManager.FindByNameAsync(loginModel.Username);
             if (user != null)
             {
-                await _signInManager.SignOutAsync();
-                var n = await _signInManager.PasswordSignInAsync(user, loginModel.Password, false, true);
+                
                 if (n.IsLockedOut)
                 {
                     return new ApiResponse<LoginOtpResponse>
@@ -174,24 +174,30 @@ namespace ManagementService.Services.Repository
                         Message = $"Tài khoản của bạn đã bị khóa 5 phút"
                     };
                 }
-                if (n.RequiresTwoFactor != true)
+                if (n.Succeeded == true)
                 {
-                    return new ApiResponse<LoginOtpResponse>
-                    {
-                        IsSuccess = false,
-                        StatusCode = 404,
-                        Message = $"Mật khẩu không đúng"
-                    };
-                }
-                if (user.TwoFactorEnabled)
-                {
-                    var token = await _userManager.GenerateTwoFactorTokenAsync(user, "Email");
                     return new ApiResponse<LoginOtpResponse>
                     {
                         Response = new LoginOtpResponse()
                         {
                             User = user,
-                            Token = token,
+                            Token = string.Empty,
+                            IsTwoFactorEnable = user.TwoFactorEnabled
+                        },
+                        IsSuccess = true,
+                        StatusCode = 200,
+                        Message = $"Đăng nhập thành công"
+                    };
+                }
+                if (user.TwoFactorEnabled)
+                {
+                   
+                    return new ApiResponse<LoginOtpResponse>
+                    {
+                        Response = new LoginOtpResponse()
+                        {
+                            User = user,
+                            Token = "",
                             IsTwoFactorEnable = user.TwoFactorEnabled
                         },
                         IsSuccess = true,
@@ -209,9 +215,9 @@ namespace ManagementService.Services.Repository
                             Token = string.Empty,
                             IsTwoFactorEnable = user.TwoFactorEnabled
                         },
-                        IsSuccess = true,
+                        IsSuccess = false,
                         StatusCode = 200,
-                        Message = $"2FA is not enabled"
+                        Message = $"Sai mật khẩu"
                     };
                 }
             }
@@ -262,18 +268,18 @@ namespace ManagementService.Services.Repository
                     {
                         Token = user.RefreshToken,
                         ExpiryTokenDate = (DateTime)user.RefreshTokenExpiry
-                    }
+                    },
+                    Role = userRoles[0]
                 },
 
                 IsSuccess = true,
                 StatusCode = 200,
-                Message = $"Token created"
+                Message = $"Đăng nhập thành công"
             };
         }
-        public async Task<ApiResponse<LoginResponse>> LoginUserWithJWTokenAsync(string otp, string userName)
+        public async Task<ApiResponse<LoginResponse>> LoginUserWithJWTokenAsync(string userName, SignInResult signIn)
         {
             var user = await _userManager.FindByNameAsync(userName);
-            var signIn = await _signInManager.TwoFactorSignInAsync("Email", otp, false, false);
             if (signIn.Succeeded)
             {
                 if (user != null)
@@ -289,7 +295,7 @@ namespace ManagementService.Services.Repository
                 },
                 IsSuccess = false,
                 StatusCode = 400,
-                Message = $"OTP không đúng"
+                Message = $"Mật khẩu không đúng"
             };
         }
         public async Task<ApiResponse<LoginResponse>> RenewAccessTokenAsync(LoginResponse tokens)
@@ -305,7 +311,7 @@ namespace ManagementService.Services.Repository
 
                     IsSuccess = false,
                     StatusCode = 400,
-                    Message = $"Token invalid or expired"
+                    Message = $"Token không hợp lệ"
                 };
             }
             var response = await GetJwtTokenAsync(user);

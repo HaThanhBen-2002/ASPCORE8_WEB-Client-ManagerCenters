@@ -26,11 +26,11 @@ namespace TrainingCenters.RepositoryApi
 
         public XacThucRepon(HttpClient httpClient, IOptions<TrainingCenters.ConnectApi.ConnectApi> connectionStrings)
         {
-            _httpClient = httpClient = new HttpClient();
+            _httpClient = httpClient;
             _apiUrl = connectionStrings?.Value?.StringConnectAPI ?? throw new ArgumentNullException(nameof(connectionStrings));
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
         }
-        public async Task<bool> CapNhatToken(LoginResponse tokens)
+        public async Task<ApiResponsePro<LoginResponse>> CapNhatToken(LoginResponse tokens)
         {
             try
             {
@@ -39,25 +39,40 @@ namespace TrainingCenters.RepositoryApi
                 var content = new StringContent(JsonConvert.SerializeObject(tokens), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
+                // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
-                    var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
+                    var responseObject = JsonConvert.DeserializeObject<ApiResponsePro<LoginResponse>>(jsonResponse);
                     if (responseObject != null)
                     {
-                        if (responseObject != null) { return responseObject.IsSuccess; }
-                        return false;
+                        return responseObject;
                     }
-                    return false;
+                    return new ApiResponsePro<LoginResponse>()
+                    {
+                        IsSuccess = false,
+                        Message = "Lỗi Dăng Nhập Null"
+
+                    };
                 }
                 else
                 {
-                    return false;
+                    return new ApiResponsePro<LoginResponse>()
+                    {
+                        IsSuccess = false,
+                        Message = "Lỗi Gọi Api"
+
+                    };
                 }
             }
             catch
             {
-                return false;
+                return new ApiResponsePro<LoginResponse>()
+                {
+                    IsSuccess = false,
+                    Message = "Lỗi Cập Nhật Token"
+
+                };
             }
         }
 
@@ -92,43 +107,38 @@ namespace TrainingCenters.RepositoryApi
             }
         }
         // xông
-        public async Task<ApiResponse> DangNhap(LoginModel item)
+        public async Task<ApiResponsePro<LoginResponse>> DangNhap(LoginModel item)
         {
             try
             {
                 item.Username = item.Username.Trim();
                 item.Password = item.Password.Trim();
 
-
                 var apiUrl = $"{_apiUrl}/api/Authentication/DangNhap";
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
-
-
 
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
-                    var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
+                    var responseObject = JsonConvert.DeserializeObject<ApiResponsePro<LoginResponse>>(jsonResponse);
                     if (responseObject != null)
                     {
                         return responseObject;
                     }
-                    return new ApiResponse()
+                    return new ApiResponsePro<LoginResponse>()
                     {
                         IsSuccess = false,
-                        Status = "Success",
                         Message = "Lỗi Dăng Nhập Null"
 
                     };
                 }
                 else
                 {
-                    return new ApiResponse()
+                    return new ApiResponsePro<LoginResponse>()
                     {
                         IsSuccess = false,
-                        Status = "Error",
                         Message = "Lỗi Gọi Api"
 
                     };
@@ -136,59 +146,9 @@ namespace TrainingCenters.RepositoryApi
             }
             catch
             {
-                return new ApiResponse() {
-                    IsSuccess = false,
-                    Status = "Error",
-                    Message = "Lỗi Đăng Nhập"
-
-                };
-            }
-        }
-
-        public async Task<ApiResponse> DangNhapOtp(string code, string userName)
-        {
-            try
-            {
-                code = code.Trim();
-                userName = userName.Trim();
-                string userNameEncoded = HttpUtility.UrlEncode(userName);
-                string apiUrl = $"{_apiUrl}/api/Authentication/DangNhap-2FA?code={code}&userName={userNameEncoded}";
-                var response = await _httpClient.GetAsync(apiUrl);
-
-                // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
-                if (response.IsSuccessStatusCode)
-                {
-                    var jsonResponse = response.Content.ReadAsStringAsync();
-                    //var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    //if (responseObject != null)
-                    //{
-                    //    return responseObject;
-                    //}
-                    return new ApiResponse()
-                    {
-                        IsSuccess = false,
-                        Status = "Success",
-                        Message = "Lỗi Dăng Nhập Null"
-
-                    };
-                }
-                else
-                {
-                    return new ApiResponse()
-                    {
-                        IsSuccess = false,
-                        Status = "Error",
-                        Message = "Lỗi Gọi Api"
-
-                    };
-                }
-            }
-            catch
-            {
-                return new ApiResponse()
+                return new ApiResponsePro<LoginResponse>()
                 {
                     IsSuccess = false,
-                    Status = "Error",
                     Message = "Lỗi Đăng Nhập"
 
                 };

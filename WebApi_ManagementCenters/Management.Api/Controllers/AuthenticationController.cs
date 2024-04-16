@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 using ManagementService.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using ManagementService.Models.Authentication.ResetPassword;
+using static System.Net.WebRequestMethods;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 namespace ManagementApi.Controllers
 {
     [Route("api/[controller]")]
@@ -18,15 +21,17 @@ namespace ManagementApi.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IEmailService _emailService;
         private readonly IUserManagement _user;
-
-        public AuthenticationController(UserManager<ApplicationUser> userManager,
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        public AuthenticationController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
             IEmailService emailService,
             IUserManagement user)
         {
             _userManager = userManager;
             _emailService = emailService;
             _user = user;
+            _signInManager = signInManager;
         }
+
 
         [HttpPost]
         [Route("DangKy")]
@@ -72,49 +77,73 @@ namespace ManagementApi.Controllers
         [Route("DangNhap")]
         public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
         {
-
-            var loginOtpResponse = await _user.GetOtpByLoginAsync(loginModel);
-            if (loginOtpResponse.IsSuccess)
+            // Lưu thông tin vào Claims
+            var user1 = await _userManager.FindByNameAsync(loginModel.Username);
+            if (user1 != null)
             {
-                if (loginOtpResponse.Response != null)
+                await _signInManager.SignOutAsync();
+                var n = await _signInManager.PasswordSignInAsync(user1, loginModel.Password, false, true);
+                var loginOtpResponse = await _user.GetOtpByLoginAsync(loginModel, n);
+                if (loginOtpResponse.IsSuccess)
                 {
-                    var user = loginOtpResponse.Response.User;
-                    if (user.TwoFactorEnabled)
+                    var jwt = await _user.LoginUserWithJWTokenAsync(loginModel.Username, n);
+                    if (jwt.IsSuccess)
                     {
-                        var token = loginOtpResponse.Response.Token;
-                        var message = new Message(new string[] { user.Email! }, "Mã OTP BENBEN", token);
-                        _emailService.SendEmail(message);
-
-                        return StatusCode(StatusCodes.Status200OK,
-                         new Response { IsSuccess = loginOtpResponse.IsSuccess, Status = "Success", Message = loginOtpResponse.Message });
+                        return Ok(jwt);
                     }
-                    if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password))
-                    {
-                        var serviceResponse = await _user.GetJwtTokenAsync(user);
-                        return Ok(serviceResponse);
 
-                    }
+                    #region 2FA
+                    // var token = await _userManager.GenerateTwoFactorTokenAsync(user1, "Email");
+                    // loginOtpResponse.Response.Token = token;
+                    //if (loginOtpResponse.Response != null)
+                    //{
+                    //    var user = loginOtpResponse.Response.User;
+                    //    // Login 2 bước
+                    //    if (user.TwoFactorEnabled)
+                    //    {
+                    //        var message = new Message(new string[] { user.Email! }, "Mã OTP BENBEN", token);
+                    //        _emailService.SendEmail(message);
+
+                    //        return StatusCode(StatusCodes.Status200OK,
+                    //         new Response { IsSuccess = loginOtpResponse.IsSuccess, Status = "Success", Message = loginOtpResponse.Message });
+                    //    }
+                    //    // Login bằng mật khẩu
+                    //    if (user != null && await _userManager.CheckPasswordAsync(user, loginModel.Password))
+                    //    {
+                    //        var serviceResponse = await _user.GetJwtTokenAsync(user);
+                    //        return Ok(serviceResponse);
+
+                    //    }
+                    //}
+                    //return StatusCode(StatusCodes.Status200OK,
+                    //          new Response { IsSuccess = false, Status = "Success", Message = loginOtpResponse.Message });
+                    #endregion
                 }
                 return StatusCode(StatusCodes.Status200OK,
-                          new Response { IsSuccess = false, Status = "Success", Message = loginOtpResponse.Message });
+                              new Response { IsSuccess = false, Status = "Success", Message = loginOtpResponse.Message });
+
             }
-            return StatusCode(StatusCodes.Status200OK,
-                          new Response { IsSuccess = false, Status = "Success", Message = loginOtpResponse.Message });
-
-        }
-
-        [HttpGet]
-        [Route("DangNhap-2FA")]
-        public async Task<IActionResult> LoginWithOTP(string code, string userName)
-        {
-            var jwt = await _user.LoginUserWithJWTokenAsync(code, userName);
-            if (jwt.IsSuccess)
+            else
             {
-                return Ok(jwt);
+                return StatusCode(StatusCodes.Status200OK,
+                      new Response { IsSuccess = false, Status = "404", Message = "Tài khoản không tồn tại" });
+
             }
-            return StatusCode(StatusCodes.Status200OK,
-                new Response {IsSuccess= jwt.IsSuccess, Status = "Success", Message = jwt.Message });
         }
+
+        //[HttpGet]
+        //[Route("DangNhap-2FA")]
+        //public async Task<IActionResult> LoginWithOTP(string code, string userName)
+        //{
+        //    var signIn = await _signInManager.TwoFactorSignInAsync("Email", code, false, false);
+        //    var jwt = await _user.LoginUserWithJWTokenAsync(userName, signIn);
+        //    if (jwt.IsSuccess)
+        //    {
+        //        return Ok(jwt);
+        //    }
+        //    return StatusCode(StatusCodes.Status200OK,
+        //        new Response {IsSuccess= jwt.IsSuccess, Status = "Success", Message = jwt.Message });
+        //}
 
         [HttpPost]
         [Route("CapNhat-Token")]
@@ -126,7 +155,7 @@ namespace ManagementApi.Controllers
                 return Ok(jwt);
             }
             return StatusCode(StatusCodes.Status404NotFound,
-                new Response { Status = "Success", Message = $"Invalid Code" });
+                new Response { IsSuccess=false, Status = "Success", Message = $"Không thể cập nhật Token" });
         }
 
         //[HttpPost]

@@ -57,25 +57,16 @@
                             <label class="form-check-label" for="remember-me"> Ghi nhớ tài khoản </label>
                         </div>
                     </div>
-                    @* Tài khoản *@
-                    <div class="mb-3" id="showOTP">
-                        <label for="email" class="form-label">Mã OTP</label>
-                        <input type="text"
-                               class="form-control"
-                               id="login_OTP"
-                               name="email-username"
-                               placeholder="Nhập OTP"
-                               autofocus />
-                    </div>
                     @* Button *@
                     <div class="mb-3" id="showBtn">
                         <button class="btn btn-primary d-grid w-100" id="btn_Login" type="submit">Đăng nhập</button>
                     </div>
-                    <div class="mb-3" id="showBtnOTP">
-                        <button class="btn btn-primary d-grid w-100" id="btn_LoginOTP" type="submit">Đăng nhập với OTP</button>
-
+                    <div class="mb-3" id="showBtn">
+                        <button class="btn btn-primary d-grid w-100" id="btn_Token" type="submit">Cập nhật token</button>
                     </div>
-
+                    <div class="mb-3" id="showBtn">
+                        <button class="btn btn-primary d-grid w-100" id="btn_XacThuc" type="submit">Test Xác thực</button>
+                    </div>
                     <p class="text-center">
                         <span>Đây là hệ thống nội bộ bạn không thể chủ động đăng ký tài khoản</span>
                     </p>
@@ -91,6 +82,7 @@
     </div>
 </div>
 @section Scripts {
+    
     <script src="/AdminAssets/module/support.js"></script>
     <script src="/Login/login.js"></script>
 }

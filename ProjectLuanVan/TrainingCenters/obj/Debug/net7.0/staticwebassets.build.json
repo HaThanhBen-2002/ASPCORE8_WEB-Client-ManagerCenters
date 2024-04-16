@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hGFc0wdfFGzTHysMMFlPM7g9i70CeMyaTn4nFvr8DHE=",
+  "Hash": "WaXsu0g0zrKyg2+8868R27Mf8iO7FnWWnkPr6vW8g7M=",
   "Source": "TrainingCenters",
   "BasePath": "_content/TrainingCenters",
   "Mode": "Default",
@@ -5525,6 +5525,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AdminAssets\\module\\trungTam.js"
+    },
+    {
+      "Identity": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\xacNhan.js",
+      "SourceId": "TrainingCenters",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\",
+      "BasePath": "_content/TrainingCenters",
+      "RelativePath": "AdminAssets/module/xacNhan.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssets\\module\\xacNhan.js"
     },
     {
       "Identity": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\scss\\_bootstrap.scss",

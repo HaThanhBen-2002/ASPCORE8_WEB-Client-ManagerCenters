@@ -16,15 +16,19 @@ namespace TrainingCenters.Areas.Admin.Controllers
         }
 
         #region Api Data
+        private string GetXacThuc()
+        {
+            return HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+        }
         public async Task<IActionResult> Create(ChiTietThuChi item)
         {
-            var status = await _unit.ChiTietThuChi.Create(item);
+            var status = await _unit.ChiTietThuChi.Create(item, GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
         public async Task<IActionResult> Update(ChiTietThuChi item)
         {
-            var status = await _unit.ChiTietThuChi.Update(item);
+            var status = await _unit.ChiTietThuChi.Update(item, GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
@@ -35,7 +39,7 @@ namespace TrainingCenters.Areas.Admin.Controllers
                 bool dl = false;
                 foreach (int id in ids)
                 {
-                    dl = await _unit.ChiTietThuChi.Delete(Convert.ToInt32(id), nguoiXoa);
+                    dl = await _unit.ChiTietThuChi.Delete(Convert.ToInt32(id), nguoiXoa, GetXacThuc());
                 }
                 return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = dl });
             }
@@ -44,19 +48,19 @@ namespace TrainingCenters.Areas.Admin.Controllers
 
         public async Task<IActionResult> CheckId(string id)
         {
-            var status = await _unit.ChiTietThuChi.CheckId(Convert.ToInt32(id));
+            var status = await _unit.ChiTietThuChi.CheckId(Convert.ToInt32(id), GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
         public async Task<IActionResult> Search(ChiTietThuChi item)
         {
-            var data = await _unit.ChiTietThuChi.Search(item);
+            var data = await _unit.ChiTietThuChi.Search(item, GetXacThuc());
             return Ok(data);
         }
 
         public async Task<IActionResult> SearchByPhieuThuChiId(string id)
         {
-            var data = await _unit.ChiTietThuChi.SearchByPhieuThuChiId(Convert.ToInt32(id));
+            var data = await _unit.ChiTietThuChi.SearchByPhieuThuChiId(Convert.ToInt32(id), GetXacThuc());
             return Ok(data);
         }
         #endregion

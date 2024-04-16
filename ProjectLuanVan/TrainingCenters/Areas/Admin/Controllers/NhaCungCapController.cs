@@ -17,21 +17,25 @@ namespace TrainingCenters.Areas.Admin.Controllers
         }
 
         #region Api Data
+        private string GetXacThuc()
+        {
+            return HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+        }
         public async Task<IActionResult> GetAll()
         {
-            var data = await _unit.NhaCungCap.GetAll();
+            var data = await _unit.NhaCungCap.GetAll(GetXacThuc());
             return Ok(data);
         }
 
         public async Task<IActionResult> GetById(string id)
         {
-            var data = await _unit.NhaCungCap.GetById(Convert.ToInt32(id));
+            var data = await _unit.NhaCungCap.GetById(Convert.ToInt32(id), GetXacThuc());
             return Ok(data);
         }
 
         public async Task<IActionResult> GetByIdTable(string id)
         {
-            var data = await _unit.NhaCungCap.GetById(Convert.ToInt32(id));
+            var data = await _unit.NhaCungCap.GetById(Convert.ToInt32(id), GetXacThuc());
             var rTable = new
             {
                 maNhaCungCap = data.MaNhaCungCap,
@@ -46,13 +50,13 @@ namespace TrainingCenters.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create(NhaCungCap item)
         {
-            var status = await _unit.NhaCungCap.Create(item);
+            var status = await _unit.NhaCungCap.Create(item, GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
         public async Task<IActionResult> Update(NhaCungCap item)
         {
-            var status = await _unit.NhaCungCap.Update(item);
+            var status = await _unit.NhaCungCap.Update(item, GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
@@ -63,7 +67,7 @@ namespace TrainingCenters.Areas.Admin.Controllers
                 bool dl = false;
                 foreach (int id in ids)
                 {
-                    dl = await _unit.NhaCungCap.Delete(Convert.ToInt32(id), nguoiXoa);
+                    dl = await _unit.NhaCungCap.Delete(Convert.ToInt32(id), nguoiXoa, GetXacThuc());
                 }
                 return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = dl });
             }
@@ -72,30 +76,30 @@ namespace TrainingCenters.Areas.Admin.Controllers
 
         public async Task<IActionResult> CheckId(string id)
         {
-            var status = await _unit.NhaCungCap.CheckId(Convert.ToInt32(id));
+            var status = await _unit.NhaCungCap.CheckId(Convert.ToInt32(id), GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
         public async Task<IActionResult> Search(NhaCungCap item)
         {
-            var data = await _unit.NhaCungCap.Search(item);
+            var data = await _unit.NhaCungCap.Search(item, GetXacThuc());
             return Ok(data);
         }
         public async Task<IActionResult> SearchName(NhaCungCap item)
         {
-            var data = await _unit.NhaCungCap.SearchName(item);
+            var data = await _unit.NhaCungCap.SearchName(item, GetXacThuc());
             return Json(data);
         }
         public async Task<IActionResult> SearchCount(NhaCungCap item)
         {
-            var data = await _unit.NhaCungCap.SearchCount(item);
+            var data = await _unit.NhaCungCap.SearchCount(item, GetXacThuc());
             return Ok(data);
         }
         public async Task<IActionResult> LoadingDataTableView(NhaCungCap item)
         {
             var skip = Request.Form["start"];
             var length = Request.Form["length"];
-            var data = await _unit.NhaCungCap.LoadingDataTableView(item, Convert.ToInt32(skip), Convert.ToInt32(length));
+            var data = await _unit.NhaCungCap.LoadingDataTableView(item, Convert.ToInt32(skip), Convert.ToInt32(length), GetXacThuc());
             return Ok(data);
         }
         #endregion

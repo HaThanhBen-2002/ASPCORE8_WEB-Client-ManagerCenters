@@ -80,27 +80,6 @@
   },
   {
     "ContainingType": "ManagementApi.Controllers.AuthenticationController",
-    "Method": "LoginWithOTP",
-    "RelativePath": "api/Authentication/DangNhap-2FA",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "code",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "userName",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ManagementApi.Controllers.AuthenticationController",
     "Method": "ResetPassword",
     "RelativePath": "api/Authentication/DoiMatKhau",
     "HttpMethod": "POST",

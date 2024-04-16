@@ -17,22 +17,26 @@ namespace TrainingCenters.Areas.Admin.Controllers
         }
 
         #region Api Data
+        private string GetXacThuc()
+        {
+            return HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+        }
         public async Task<IActionResult> GetAll()
         {
-            var data = await _unit.LoSanPham.GetAll();
+            var data = await _unit.LoSanPham.GetAll(GetXacThuc());
             return Ok(data);
         }
 
         public async Task<IActionResult> GetById(string id)
         {
-            var data = await _unit.LoSanPham.GetById(Convert.ToInt32(id));
+            var data = await _unit.LoSanPham.GetById(Convert.ToInt32(id), GetXacThuc());
             return Ok(data);
         }
 
         public async Task<IActionResult> GetByIdTable(string id)
         {
-            var data = await _unit.LoSanPham.GetById(Convert.ToInt32(id));
-            SanPham item1 = await _unit.SanPham.GetById(Convert.ToInt32(data.MaSanPham));
+            var data = await _unit.LoSanPham.GetById(Convert.ToInt32(id), GetXacThuc());
+            SanPham item1 = await _unit.SanPham.GetById(Convert.ToInt32(data.MaSanPham), GetXacThuc());
             var rTable = new
             {
                 maLoSanPham = data.MaLoSanPham,
@@ -47,13 +51,13 @@ namespace TrainingCenters.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create(LoSanPham item)
         {
-            var status = await _unit.LoSanPham.Create(item);
+            var status = await _unit.LoSanPham.Create(item, GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
         public async Task<IActionResult> Update(LoSanPham item)
         {
-            var status = await _unit.LoSanPham.Update(item);
+            var status = await _unit.LoSanPham.Update(item, GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
@@ -64,7 +68,7 @@ namespace TrainingCenters.Areas.Admin.Controllers
                 bool dl = false;
                 foreach (int id in ids)
                 {
-                    dl = await _unit.LoSanPham.Delete(Convert.ToInt32(id), nguoiXoa);
+                    dl = await _unit.LoSanPham.Delete(Convert.ToInt32(id), nguoiXoa, GetXacThuc());
                 }
                 return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = dl });
             }
@@ -73,30 +77,30 @@ namespace TrainingCenters.Areas.Admin.Controllers
 
         public async Task<IActionResult> CheckId(string id)
         {
-            var status = await _unit.LoSanPham.CheckId(Convert.ToInt32(id));
+            var status = await _unit.LoSanPham.CheckId(Convert.ToInt32(id), GetXacThuc());
             return StatusCode(StatusCodes.Status200OK, new ApiResponse { IsSuccess = status });
         }
 
         public async Task<IActionResult> Search(LoSanPham item)
         {
-            var data = await _unit.LoSanPham.Search(item);
+            var data = await _unit.LoSanPham.Search(item, GetXacThuc());
             return Ok(data);
         }
         public async Task<IActionResult> SearchName(LoSanPham item)
         {
-            var data = await _unit.LoSanPham.SearchName(item);
+            var data = await _unit.LoSanPham.SearchName(item, GetXacThuc());
             return Json(data);
         }
         public async Task<IActionResult> SearchCount(LoSanPham item)
         {
-            var data = await _unit.LoSanPham.SearchCount(item);
+            var data = await _unit.LoSanPham.SearchCount(item, GetXacThuc());
             return Ok(data);
         }
         public async Task<IActionResult> LoadingDataTableView(LoSanPham item)
         {
             var skip = Request.Form["start"];
             var length = Request.Form["length"];
-            var data = await _unit.LoSanPham.LoadingDataTableView(item, Convert.ToInt32(skip), Convert.ToInt32(length));
+            var data = await _unit.LoSanPham.LoadingDataTableView(item, Convert.ToInt32(skip), Convert.ToInt32(length), GetXacThuc());
             return Ok(data);
         }
         #endregion

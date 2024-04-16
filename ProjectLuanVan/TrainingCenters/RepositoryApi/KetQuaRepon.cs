@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using TrainingCenters.ConnectApi;
 using TrainingCenters.Models.ModelMN;
+using System.Net.Http.Headers;
 namespace TrainingCenters.RepositoryApi
 {
     public class KetQuaRepon: IKetQua
@@ -20,17 +21,21 @@ namespace TrainingCenters.RepositoryApi
 
         public KetQuaRepon(HttpClient httpClient, IOptions<TrainingCenters.ConnectApi.ConnectApi> connectionStrings)
         {
-            _httpClient = httpClient = new HttpClient();
+            _httpClient = httpClient;
             _apiUrl = connectionStrings?.Value?.StringConnectAPI ?? throw new ArgumentNullException(nameof(connectionStrings));
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
         }
 
-        public async Task<bool> CheckId(int id)
+        public async Task<bool> CheckId(int id, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/CheckId?id={id}";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var response = await _httpClient.GetAsync(apiUrl);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
@@ -51,12 +56,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> Create(KetQua item)
+        public async Task<bool> Create(KetQua item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/Create";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
@@ -78,11 +87,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> Delete(int id, string nguoiXoa)
+        public async Task<bool> Delete(int id, string nguoiXoa, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/Delete?id={id}&nguoiXoa={nguoiXoa}"; // Điền đường dẫn API tại đây
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 var response = await _httpClient.DeleteAsync(apiUrl);
                 if (response.IsSuccessStatusCode)
                 {
@@ -102,12 +116,16 @@ namespace TrainingCenters.RepositoryApi
 
         }
 
-        public async Task<ICollection<KetQua>> Search(KetQua item)
+        public async Task<ICollection<KetQua>> Search(KetQua item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/Search";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
@@ -133,12 +151,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> Update(KetQua item)
+        public async Task<bool> Update(KetQua item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/Update";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PutAsync(apiUrl, content);
@@ -160,12 +182,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<ICollection<KetQua>> GetAll()
+        public async Task<ICollection<KetQua>> GetAll(string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/GetAll";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var response = await _httpClient.GetAsync(apiUrl);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
@@ -190,12 +216,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<KetQua> GetById(int id)
+        public async Task<KetQua> GetById(int id, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/GetById?id={id}";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var response = await _httpClient.GetAsync(apiUrl);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
@@ -220,12 +250,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<object> LoadingDataTableView(KetQua item, int skip, int take)
+        public async Task<object> LoadingDataTableView(KetQua item, int skip, int take, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/LoadingDataTableView?skip={skip}&take={take}";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
@@ -245,12 +279,16 @@ namespace TrainingCenters.RepositoryApi
                 return new object();
             }
         }
-        public async Task<List<KetQuaMN>> SearchName(KetQua item)
+        public async Task<List<KetQuaMN>> SearchName(KetQua item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/SearchName";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
@@ -272,12 +310,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<int> SearchCount(KetQua item)
+        public async Task<int> SearchCount(KetQua item, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/SearchCount";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
