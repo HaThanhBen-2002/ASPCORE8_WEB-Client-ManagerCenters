@@ -20,56 +20,24 @@ function GetDichVuById() {
     };
     return item;
 }
-function CreateDichVu() {
+async function CreateDichVu() {
     let item = GetDichVuById();
-    // Kiểm tra tính hợp lệ
     if (isValidDichVu(item)) {
-        let status = false;
         item.MaDichVu = null;
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/DichVu/Create",
-            headers: {
-                "Authorization": `Bearer ${JSON.parse(Cookies.get('accessToken'))}`
-            },
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-                if (data == []) {
-                    // gọi hàm cập nhật token
-                }
-            }
-        });
+        let status = await DichVu_Create(item)
         return status;
     }
 }
-
-function UpdateDichVu() {
+async function UpdateDichVu() {
     let item = GetDichVuById();
-
-    // Kiểm tra tính hợp lệ
-    if (isValidDichVu(item) && CheckIsNull(item.MaDichVu)!=true) {
-        let status = false;
-        // Gửi dữ liệu thông qua AJAX để cập nhật vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/DichVu/Update",
-            headers: {
-                "Authorization": `Bearer ${JSON.parse(Cookies.get('accessToken'))}`
-            },
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+    if (isValidDichVu(item) && CheckIsNull(item.MaDichVu) != true) {
+        let status = await DichVu_Update(item)
         return status;
     }
 }
 
-$(document).ready(function () {
+$(document).ready(async function () {
+    await CapNhatToken();
    // ============================================== TABLE ===============================================
     var dichVu = {
         MaDichVu: null,
@@ -86,13 +54,13 @@ $(document).ready(function () {
         ordering: false,
         ajax: {
             type: "POST",
-            url: "/Admin/DichVu/LoadingDataTableView",
+            url: "/DichVu/LoadingDataTableView",
             headers: {
-                "Authorization": `Bearer ${JSON.parse(Cookies.get('accessToken'))}`
+                "Authorization": `Bearer ${getToken()}`
             },
             dataType: "json",
             data: { item: dichVu },
-            dataSrc: 'data'
+            dataSrc: 'data',
         },
         columns: [
             {
@@ -122,6 +90,14 @@ $(document).ready(function () {
                 'line-height': '25px',
                 'padding': '0 15px'
             });
+            // Thêm sự kiện cho việc thay đổi số lượng row trên trang
+            $('#myTable').on('length.dt', function (e, settings, len) {
+                // Gọi hàm CapNhatToken() khi có sự thay đổi
+                CapNhatToken().then(() => {
+                }).catch(error => {
+                    console.error("Cập nhật token thất bại:", error);
+                });
+            });
         }
 
     });
@@ -136,7 +112,7 @@ $(document).ready(function () {
     });
 
     // Event selectItem "myTable"
-    $('#myTable tbody').on('click', 'tr', function () {
+    $('#myTable tbody').on('click', 'tr',async function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected')
         } else {
@@ -145,22 +121,11 @@ $(document).ready(function () {
             // xử lý ở đây
             const rowId = table.row(this).data().maDichVu;
             // Thực hiện get giá trị của Academic với rowId
-            $.ajax({
-                type: "POST",
-                url: "/Admin/DichVu/GetById",
-                headers: {
-                    "Authorization": `Bearer ${JSON.parse(Cookies.get('accessToken'))}`
-                },
-                //contentType: "application/json",
-                data: { id: rowId },
-                success: function (data) {
-                    $('#dichVu_MaDichVu').val(data.maDichVu);
-                    $('#dichVu_TenDichVu').val(data.tenDichVu);
-                    $('#dichVu_ThongTin').val(data.thongTin);
-                    $('#dichVu_Gia').val(data.gia);
-                }
-            });
-
+            let data = await DichVu_GetById(rowId);
+            $('#dichVu_MaDichVu').val(data.maDichVu);
+            $('#dichVu_TenDichVu').val(data.tenDichVu);
+            $('#dichVu_ThongTin').val(data.thongTin);
+            $('#dichVu_Gia').val(data.gia);
         }
     });
 
@@ -184,23 +149,11 @@ $(document).ready(function () {
         }
     });
     // ============================================== BUTTON ===============================================
-    $('#btnCreateDichVu').click(function () {
+    $('#btnCreateDichVu').click(async function () {
         //If Status Create = True => Update Row Table
-        if (CreateDichVu() == true) {
+        if (await CreateDichVu() == true) {
             displayMessages(1, "Thêm thông tin thành công");
-            let itemView;
-            $.ajax({
-                headers: {
-                    "Authorization": `Bearer ${JSON.parse(Cookies.get('accessToken'))}`
-                },
-                type: "POST",
-                url: "/Admin/DichVu/GetByIdTable",
-                async: false,
-                data: { id: $('#dichVu_MaDichVu').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await DichVu_GetByIdTable($('#dichVu_MaDichVu').val());
             itemView.maDichVu = '<input data-checkbox-id="' + itemView.maDichVu + '" type="checkbox"/>';
             if (itemView != null) {
                 table.row.add(itemView).draw(false);
@@ -211,23 +164,11 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnUpdateDichVu').click(function () {
+    $('#btnUpdateDichVu').click(async function () {
         //If Status Create = True => Update Row Table
-        if (UpdateDichVu() == true) {
+        if (await UpdateDichVu() == true) {
             displayMessages(1, "Cập nhật thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/DichVu/GetByIdTable",
-                headers: {
-                    "Authorization": `Bearer ${JSON.parse(Cookies.get('accessToken'))}`
-                },
-                async: false,
-                data: { id: $('#dichVu_MaDichVu').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView =await DichVu_GetByIdTable($('#dichVu_MaDichVu').val());
             itemView.maDichVu = '<input data-checkbox-id="' + itemView.maDichVu + '" type="checkbox"/>';
             if (itemView != null) {
                 table.rows('.selected').remove().draw(false);
@@ -251,7 +192,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnDelete').click(function () {
+    $('#btnDelete').click(async function () {
         // Tạo một mảng để lưu trữ ID của các đối tượng được chọn
         let selectedIds = [];
         // Lặp qua các checkbox để xác định đối tượng nào được chọn
@@ -261,29 +202,10 @@ $(document).ready(function () {
         });
 
         if (selectedIds.length >= 1 && $('#accountActivation').is(':checked')) {
-            let statusDelete = false;
-            // Gửi danh sách ID được chọn đến action bằng Ajax
-            $.ajax({ 
-                type: "POST",
-                url: "/Admin/DichVu/Delete",
-                headers: {
-                    "Authorization": `Bearer ${JSON.parse(Cookies.get('accessToken'))}`
-                },
-                async: false,
-                data: { ids: selectedIds, nguoiXoa:"Nhân viên TEST" }, // Truyền danh sách ID đến action
-                success: function (data) {
-                    if (data.isSuccess == true) {
-                        displayMessages(1, "Xóa thành công");
-                        $("#DeleteModal").modal("hide");
-                        statusDelete = true;
-                    }
-                    else {
-                        statusDelete = false;
-                        displayMessages(2, "Xóa thất bại");
-                    }
-                }
-            });
-            if (statusDelete) {
+            let statusDelete = await DichVu_Delete(selectedIds,"Nhân viên Test");
+            if (statusDelete == true) {
+                displayMessages(1, "Xóa thành công");
+                $("#DeleteModal").modal("hide");
                 // Lặp qua từng hàng
                 table.rows().every(function () {
                     var rowData = this.data();
@@ -299,6 +221,9 @@ $(document).ready(function () {
                 // Vẽ lại DataTables sau khi xóa các hàng
                 table.draw();
             }
+            else {
+                displayMessages(2, "Xóa thất bại");
+            }
         }
     });
 
@@ -307,10 +232,10 @@ $(document).ready(function () {
         $('#dichVu_TenDichVu').val(null);
         $('#dichVu_ThongTin').val(null);
         $('#dichVu_Gia').val(null);
-
     });
 
-    $('#btnSearchDichVu').click(function () {
+    $('#btnSearchDichVu').click(async function () {
+        await CapNhatToken();
         dichVu = GetDichVuById();
         table.settings()[0].ajax.data = { item: dichVu };
         table.ajax.reload();

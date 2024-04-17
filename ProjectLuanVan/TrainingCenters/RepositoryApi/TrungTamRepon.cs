@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using TrainingCenters.ConnectApi;
 using TrainingCenters.Models.ModelMN;
 using System.Net.Http.Headers;
+using TrainingCenters.Models.ModeIMN;
 namespace TrainingCenters.RepositoryApi
 {
     public class TrungTamRepon : ITrungTam
@@ -26,9 +27,10 @@ namespace TrainingCenters.RepositoryApi
             _apiUrl = connectionStrings?.Value?.StringConnectAPI ?? throw new ArgumentNullException(nameof(connectionStrings));
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
         }
-        
-        public async Task<bool> CheckId(int id, string accessToken)
+
+        public async Task<ResponseDI<bool>> CheckId(int id, string accessToken)
         {
+            var responseModel = new ResponseDI<bool>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/CheckId?id={id}";
@@ -46,23 +48,34 @@ namespace TrainingCenters.RepositoryApi
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
                     if (responseObject != null)
                     {
-                        if(responseObject != null){ return responseObject.IsSuccess;} return false;
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject.IsSuccess;
                     }
-                    return false;
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return false;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return false;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<bool> Create(TrungTam item, string accessToken)
+        public async Task<ResponseDI<bool>> Create(TrungTam item, string accessToken)
         {
+            var responseModel = new ResponseDI<bool>();
+
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/Create";
@@ -71,7 +84,6 @@ namespace TrainingCenters.RepositoryApi
                     // Thêm accessToken vào header của HttpClient
                     _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                 }
-                item.MaTrungTam = null;
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
@@ -80,21 +92,35 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
+                    if (responseObject != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject.IsSuccess;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return false;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return false;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<bool> Delete(int id, string nguoiXoa, string accessToken)
+        public async Task<ResponseDI<bool>> Delete(int id, string nguoiXoa, string accessToken)
         {
+            var responseModel = new ResponseDI<bool>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/Delete?id={id}&nguoiXoa={nguoiXoa}"; // Điền đường dẫn API tại đây
@@ -108,22 +134,36 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    if(responseObject != null){ if(responseObject != null){ return responseObject.IsSuccess;} return false;} return false;
+                    if (responseObject != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject.IsSuccess;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return false;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
             catch
             {
-                return false;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
-
+            return responseModel;
         }
 
-        public async Task<ICollection<TrungTam>> Search(TrungTam item, string accessToken)
+        public async Task<ResponseDI<ICollection<TrungTam>>> Search(TrungTam item, string accessToken)
         {
+            var responseModel = new ResponseDI<ICollection<TrungTam>>();
+
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/Search";
@@ -142,23 +182,33 @@ namespace TrainingCenters.RepositoryApi
                     var values = JsonConvert.DeserializeObject<ICollection<TrungTam>>(content1);
                     if (values != null)
                     {
-                        return values;
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = values;
                     }
-                    return [];
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return new List<TrungTam>();
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return new List<TrungTam>();
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<bool> Update(TrungTam item, string accessToken)
+        public async Task<ResponseDI<bool>> Update(TrungTam item, string accessToken)
         {
+            var responseModel = new ResponseDI<bool>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/Update";
@@ -175,24 +225,39 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
+                    if (responseObject != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject.IsSuccess;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return false;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return false;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public  async Task<ICollection<TrungTam>> GetAll(string accessToken)
+        public async Task<ResponseDI<ICollection<TrungTam>>> GetAll(string accessToken)
         {
+            var responseModel = new ResponseDI<ICollection<TrungTam>>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/GetAll";
+                // Đọc accessToken từ HttpContext.Items
                 if (!string.IsNullOrEmpty(accessToken))
                 {
                     // Thêm accessToken vào header của HttpClient
@@ -200,6 +265,8 @@ namespace TrainingCenters.RepositoryApi
                 }
                 // Chuyển dữ liệu thành JSON
                 var response = await _httpClient.GetAsync(apiUrl);
+
+
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
                 if (response.IsSuccessStatusCode)
                 {
@@ -207,23 +274,33 @@ namespace TrainingCenters.RepositoryApi
                     var values = JsonConvert.DeserializeObject<ICollection<TrungTam>>(content1);
                     if (values != null)
                     {
-                        return values;
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = values;
                     }
-                    return [];
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return [];
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return [];
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<TrungTam> GetById(int id, string accessToken)
+        public async Task<ResponseDI<TrungTam>> GetById(int id, string accessToken)
         {
+            var responseModel = new ResponseDI<TrungTam>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/GetById?id={id}";
@@ -241,23 +318,33 @@ namespace TrainingCenters.RepositoryApi
                     var responseObject = JsonConvert.DeserializeObject<TrungTam>(jsonResponse);
                     if (responseObject != null)
                     {
-                        return responseObject;
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject;
                     }
-                    return new TrungTam();
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return new TrungTam();
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return new TrungTam();
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<object> LoadingDataTableView(TrungTam item, int skip, int take, string accessToken)
+        public async Task<ResponseDI<object>> LoadingDataTableView(TrungTam item, int skip, int take, string accessToken)
         {
+            var responseModel = new ResponseDI<object>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/LoadingDataTableView?skip={skip}&take={take}";
@@ -266,29 +353,42 @@ namespace TrainingCenters.RepositoryApi
                     // Thêm accessToken vào header của HttpClient
                     _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                 }
-                // Tạo đối tượng chứa các tham số cần truyền vào API
                 // Chuyển dữ liệu thành JSON
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    return responseContent;
+                    var content1 = await response.Content.ReadAsStringAsync();
+                    if (content1 != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = content1;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return new object();
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return new object();
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<List<TrungTamMN>> SearchName(TrungTam item, string accessToken)
+        public async Task<ResponseDI<List<TrungTamMN>>> SearchName(TrungTam item, string accessToken)
         {
+            var responseModel = new ResponseDI<List<TrungTamMN>>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/SearchName";
@@ -304,26 +404,37 @@ namespace TrainingCenters.RepositoryApi
                 if (response.IsSuccessStatusCode)
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
+                    // Deserialize JSON thành một danh sách các đối tượng
                     var objects = JsonConvert.DeserializeObject<List<TrungTamMN>>(content1);
-                    if(objects != null)
+                    if (objects != null)
                     {
-                        return objects;
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = objects;
                     }
-                    return [];
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return [];
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return [];
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<int> SearchCount(TrungTam item, string accessToken)
+        public async Task<ResponseDI<int>> SearchCount(TrungTam item, string accessToken)
         {
+            var responseModel = new ResponseDI<int>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/TrungTam/SearchCount";
@@ -339,17 +450,30 @@ namespace TrainingCenters.RepositoryApi
                 if (response.IsSuccessStatusCode)
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
-                    return Convert.ToInt32(content1);
+                    if (content1 != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = Convert.ToInt32(content1);
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return 0;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return 0;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
     }
 }

@@ -14,14 +14,6 @@ function hideLoading1() {
     $("#loadingScreen0").hide();
     $("#showContent").show();
 }
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-}
-let token = "";
-let token1 = "";
-
 
 $(document).ready(function () {
     hideLoading1();
@@ -56,7 +48,7 @@ $(document).ready(function () {
                     Cookies.set('refreshToken', JSON.stringify(cleanedResponse.response.refreshToken.token));
                     Cookies.set('accessToken_expiryTokenDate', JSON.stringify(cleanedResponse.response.accessToken.expiryTokenDate));
                     Cookies.set('refreshToken_expiryTokenDate', JSON.stringify(cleanedResponse.response.refreshToken.expiryTokenDate));
-                    //XacDinhRole(cleanedResponse.response.role);
+                    XacDinhRole(cleanedResponse.response.role);
                    
                 }
                 else {
@@ -78,37 +70,25 @@ $(document).ready(function () {
 
         hideLoading1();
     });
+
     $('#btn_Token').click(async function () {
         showLoading1();
         CapNhatToken();
         hideLoading1();
     });
+
     $('#btn_XacThuc').click(async function () {
-        try {
-            showLoading1();
+        showLoading1();
+        let data = await DichVu_GetAll();
+        console.log(data); // Dữ liệu đã được giải quyết từ Promise
+        hideLoading1();
+    });
 
-            let response = await $.ajax({
-                type: "POST",
-                url: "Admin/DichVu/GetAll",
-                headers: {
-                    "Authorization": `Bearer ${JSON.parse(Cookies.get('accessToken')) }`
-                },
-            });
-
-            let response1 = await $.ajax({
-                type: "POST",
-                url: "Admin/DichVu/GetById",
-                data: {id:1},
-                headers: {
-                    "Authorization": `Bearer ${JSON.parse(Cookies.get('accessToken'))}`
-                },
-            });
-            hideLoading1();
-        } catch (error) {
-            // Xử lý lỗi AJAX
-            console.error("Lỗi AJAX:", error);
-            hideLoading1(); // Ẩn loading sau khi xử lý lỗi
-        }
+    $('#btn_XacThuc1').click(async function () {
+        showLoading1();
+        let item2 = await DichVu_GetById(2);
+        alert(item2.tenDichVu);
+        hideLoading1();
     });
 
 });

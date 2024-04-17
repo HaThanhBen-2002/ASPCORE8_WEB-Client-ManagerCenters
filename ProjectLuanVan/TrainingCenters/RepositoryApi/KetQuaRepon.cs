@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using TrainingCenters.ConnectApi;
 using TrainingCenters.Models.ModelMN;
 using System.Net.Http.Headers;
+using TrainingCenters.Models.ModeIMN;
 namespace TrainingCenters.RepositoryApi
 {
     public class KetQuaRepon: IKetQua
@@ -26,8 +27,9 @@ namespace TrainingCenters.RepositoryApi
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
         }
 
-        public async Task<bool> CheckId(int id, string accessToken)
+        public async Task<ResponseDI<bool>> CheckId(int id, string accessToken)
         {
+            var responseModel = new ResponseDI<bool>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/CheckId?id={id}";
@@ -43,21 +45,36 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
+                    if (responseObject != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject.IsSuccess;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return false;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return false;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<bool> Create(KetQua item, string accessToken)
+        public async Task<ResponseDI<bool>> Create(KetQua item, string accessToken)
         {
+            var responseModel = new ResponseDI<bool>();
+
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/Create";
@@ -74,21 +91,35 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
+                    if (responseObject != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject.IsSuccess;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return false;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return false;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<bool> Delete(int id, string nguoiXoa, string accessToken)
+        public async Task<ResponseDI<bool>> Delete(int id, string nguoiXoa, string accessToken)
         {
+            var responseModel = new ResponseDI<bool>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/Delete?id={id}&nguoiXoa={nguoiXoa}"; // Điền đường dẫn API tại đây
@@ -102,22 +133,36 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
+                    if (responseObject != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject.IsSuccess;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return false;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
             catch
             {
-                return false;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
-
+            return responseModel;
         }
 
-        public async Task<ICollection<KetQua>> Search(KetQua item, string accessToken)
+        public async Task<ResponseDI<ICollection<KetQua>>> Search(KetQua item, string accessToken)
         {
+            var responseModel = new ResponseDI<ICollection<KetQua>>();
+
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/Search";
@@ -136,23 +181,33 @@ namespace TrainingCenters.RepositoryApi
                     var values = JsonConvert.DeserializeObject<ICollection<KetQua>>(content1);
                     if (values != null)
                     {
-                        return values;
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = values;
                     }
-                    return [];
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return new List<KetQua>();
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return new List<KetQua>();
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<bool> Update(KetQua item, string accessToken)
+        public async Task<ResponseDI<bool>> Update(KetQua item, string accessToken)
         {
+            var responseModel = new ResponseDI<bool>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/Update";
@@ -169,24 +224,39 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
+                    if (responseObject != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject.IsSuccess;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return false;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return false;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<ICollection<KetQua>> GetAll(string accessToken)
+        public async Task<ResponseDI<ICollection<KetQua>>> GetAll(string accessToken)
         {
+            var responseModel = new ResponseDI<ICollection<KetQua>>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/GetAll";
+                // Đọc accessToken từ HttpContext.Items
                 if (!string.IsNullOrEmpty(accessToken))
                 {
                     // Thêm accessToken vào header của HttpClient
@@ -194,6 +264,8 @@ namespace TrainingCenters.RepositoryApi
                 }
                 // Chuyển dữ liệu thành JSON
                 var response = await _httpClient.GetAsync(apiUrl);
+
+
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
                 if (response.IsSuccessStatusCode)
                 {
@@ -201,23 +273,33 @@ namespace TrainingCenters.RepositoryApi
                     var values = JsonConvert.DeserializeObject<ICollection<KetQua>>(content1);
                     if (values != null)
                     {
-                        return values;
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = values;
                     }
-                    return [];
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return new List<KetQua>();
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return new List<KetQua>();
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<KetQua> GetById(int id, string accessToken)
+        public async Task<ResponseDI<KetQua>> GetById(int id, string accessToken)
         {
+            var responseModel = new ResponseDI<KetQua>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/GetById?id={id}";
@@ -235,23 +317,33 @@ namespace TrainingCenters.RepositoryApi
                     var responseObject = JsonConvert.DeserializeObject<KetQua>(jsonResponse);
                     if (responseObject != null)
                     {
-                        return responseObject;
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject;
                     }
-                    return new KetQua();
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return new KetQua();
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return new KetQua();
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<object> LoadingDataTableView(KetQua item, int skip, int take, string accessToken)
+        public async Task<ResponseDI<object>> LoadingDataTableView(KetQua item, int skip, int take, string accessToken)
         {
+            var responseModel = new ResponseDI<object>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/LoadingDataTableView?skip={skip}&take={take}";
@@ -267,20 +359,35 @@ namespace TrainingCenters.RepositoryApi
                 if (response.IsSuccessStatusCode)
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
-                    return content1;
+                    if (content1 != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = content1;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return new object();
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return new object();
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
-        public async Task<List<KetQuaMN>> SearchName(KetQua item, string accessToken)
+
+        public async Task<ResponseDI<List<KetQuaMN>>> SearchName(KetQua item, string accessToken)
         {
+            var responseModel = new ResponseDI<List<KetQuaMN>>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/SearchName";
@@ -296,22 +403,37 @@ namespace TrainingCenters.RepositoryApi
                 if (response.IsSuccessStatusCode)
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
+                    // Deserialize JSON thành một danh sách các đối tượng
                     var objects = JsonConvert.DeserializeObject<List<KetQuaMN>>(content1);
-                    if (objects != null) { return objects; } return [];
+                    if (objects != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = objects;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return [];
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return [];
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<int> SearchCount(KetQua item, string accessToken)
+        public async Task<ResponseDI<int>> SearchCount(KetQua item, string accessToken)
         {
+            var responseModel = new ResponseDI<int>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/KetQua/SearchCount";
@@ -327,17 +449,30 @@ namespace TrainingCenters.RepositoryApi
                 if (response.IsSuccessStatusCode)
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
-                    return Convert.ToInt32(content1);
+                    if (content1 != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = Convert.ToInt32(content1);
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return 0;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return 0;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
     }
 }

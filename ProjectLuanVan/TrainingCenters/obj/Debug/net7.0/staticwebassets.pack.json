@@ -1157,10 +1157,6 @@
       "PackagePath": "staticwebassets\\AdminAssets\\module\\trungTam.js"
     },
     {
-      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\xacNhan.js",
-      "PackagePath": "staticwebassets\\AdminAssets\\module\\xacNhan.js"
-    },
-    {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\scss\\_bootstrap-extended.scss",
       "PackagePath": "staticwebassets\\AdminAssets\\scss\\_bootstrap-extended.scss"
     },
@@ -1515,6 +1511,14 @@
     {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\tasks\\prod.js",
       "PackagePath": "staticwebassets\\AdminAssets\\tasks\\prod.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\FuncData\\funcDichVu.js",
+      "PackagePath": "staticwebassets\\FuncData\\funcDichVu.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\FuncData\\funcXacNhan.js",
+      "PackagePath": "staticwebassets\\FuncData\\funcXacNhan.js"
     },
     {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\Login\\doiMatKhau.js",

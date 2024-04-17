@@ -11,6 +11,7 @@ using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using TrainingCenters.Models.ModelMN;
 using System.Net.Http.Headers;
+using TrainingCenters.Models.ModeIMN;
 namespace TrainingCenters.RepositoryApi
 {
     public class HocSinhRepon: IHocSinh
@@ -25,12 +26,12 @@ namespace TrainingCenters.RepositoryApi
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
         }
 
-        public async Task<bool> CheckId(int id, string accessToken)
+        public async Task<ResponseDI<bool>> CheckId(int id, string accessToken)
         {
+            var responseModel = new ResponseDI<bool>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/HocSinh/CheckId?id={id}";
-
                 if (!string.IsNullOrEmpty(accessToken))
                 {
                     // Thêm accessToken vào header của HttpClient
@@ -43,21 +44,36 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
+                    if (responseObject != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject.IsSuccess;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return false;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return false;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<bool> Create(HocSinh item, string accessToken)
+        public async Task<ResponseDI<bool>> Create(HocSinh item, string accessToken)
         {
+            var responseModel = new ResponseDI<bool>();
+
             try
             {
                 var apiUrl = $"{_apiUrl}/api/HocSinh/Create";
@@ -74,21 +90,35 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
+                    if (responseObject != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject.IsSuccess;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return false;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return false;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<bool> Delete(int id, string nguoiXoa, string accessToken)
+        public async Task<ResponseDI<bool>> Delete(int id, string nguoiXoa, string accessToken)
         {
+            var responseModel = new ResponseDI<bool>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/HocSinh/Delete?id={id}&nguoiXoa={nguoiXoa}"; // Điền đường dẫn API tại đây
@@ -102,22 +132,36 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
+                    if (responseObject != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject.IsSuccess;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return false;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
             catch
             {
-                return false;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
-
+            return responseModel;
         }
 
-        public async Task<ICollection<HocSinh>> Search(HocSinh item, string accessToken)
+        public async Task<ResponseDI<ICollection<HocSinh>>> Search(HocSinh item, string accessToken)
         {
+            var responseModel = new ResponseDI<ICollection<HocSinh>>();
+
             try
             {
                 var apiUrl = $"{_apiUrl}/api/HocSinh/Search";
@@ -136,23 +180,33 @@ namespace TrainingCenters.RepositoryApi
                     var values = JsonConvert.DeserializeObject<ICollection<HocSinh>>(content1);
                     if (values != null)
                     {
-                        return values;
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = values;
                     }
-                    return [];
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return new List<HocSinh>();
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return new List<HocSinh>();
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<bool> Update(HocSinh item, string accessToken)
+        public async Task<ResponseDI<bool>> Update(HocSinh item, string accessToken)
         {
+            var responseModel = new ResponseDI<bool>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/HocSinh/Update";
@@ -169,24 +223,39 @@ namespace TrainingCenters.RepositoryApi
                 {
                     var jsonResponse = await response.Content.ReadAsStringAsync();
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
-                    if(responseObject != null){ return responseObject.IsSuccess;} return false;
+                    if (responseObject != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject.IsSuccess;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return false;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return false;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<ICollection<HocSinh>> GetAll(string accessToken)
+        public async Task<ResponseDI<ICollection<HocSinh>>> GetAll(string accessToken)
         {
+            var responseModel = new ResponseDI<ICollection<HocSinh>>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/HocSinh/GetAll";
+                // Đọc accessToken từ HttpContext.Items
                 if (!string.IsNullOrEmpty(accessToken))
                 {
                     // Thêm accessToken vào header của HttpClient
@@ -194,6 +263,8 @@ namespace TrainingCenters.RepositoryApi
                 }
                 // Chuyển dữ liệu thành JSON
                 var response = await _httpClient.GetAsync(apiUrl);
+
+
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
                 if (response.IsSuccessStatusCode)
                 {
@@ -201,23 +272,33 @@ namespace TrainingCenters.RepositoryApi
                     var values = JsonConvert.DeserializeObject<ICollection<HocSinh>>(content1);
                     if (values != null)
                     {
-                        return values;
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = values;
                     }
-                    return [];
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return new List<HocSinh>();
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return new List<HocSinh>();
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<HocSinh> GetById(int id, string accessToken)
+        public async Task<ResponseDI<HocSinh>> GetById(int id, string accessToken)
         {
+            var responseModel = new ResponseDI<HocSinh>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/HocSinh/GetById?id={id}";
@@ -235,23 +316,33 @@ namespace TrainingCenters.RepositoryApi
                     var responseObject = JsonConvert.DeserializeObject<HocSinh>(jsonResponse);
                     if (responseObject != null)
                     {
-                        return responseObject;
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject;
                     }
-                    return new HocSinh();
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return new HocSinh();
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return new HocSinh();
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<object> LoadingDataTableView(HocSinh item, int skip, int take, string accessToken)
+        public async Task<ResponseDI<object>> LoadingDataTableView(HocSinh item, int skip, int take, string accessToken)
         {
+            var responseModel = new ResponseDI<object>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/HocSinh/LoadingDataTableView?skip={skip}&take={take}";
@@ -267,21 +358,125 @@ namespace TrainingCenters.RepositoryApi
                 if (response.IsSuccessStatusCode)
                 {
                     var content1 = await response.Content.ReadAsStringAsync();
-                    return content1;
+                    if (content1 != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = content1;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return new object();
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return new object();
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<HocSinhView> GetHocSinhView(int id, string accessToken)
+        public async Task<ResponseDI<List<HocSinhMN>>> SearchName(HocSinh item, string accessToken)
         {
+            var responseModel = new ResponseDI<List<HocSinhMN>>();
+            try
+            {
+                var apiUrl = $"{_apiUrl}/api/HocSinh/SearchName";
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
+                // Chuyển dữ liệu thành JSON
+                var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync(apiUrl, content);
+                // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
+                if (response.IsSuccessStatusCode)
+                {
+                    var content1 = await response.Content.ReadAsStringAsync();
+                    // Deserialize JSON thành một danh sách các đối tượng
+                    var objects = JsonConvert.DeserializeObject<List<HocSinhMN>>(content1);
+                    if (objects != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = objects;
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
+                }
+                else
+                {
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
+                }
+            }
+            catch
+            {
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
+            }
+            return responseModel;
+        }
+
+        public async Task<ResponseDI<int>> SearchCount(HocSinh item, string accessToken)
+        {
+            var responseModel = new ResponseDI<int>();
+            try
+            {
+                var apiUrl = $"{_apiUrl}/api/HocSinh/SearchCount";
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
+                // Chuyển dữ liệu thành JSON
+                var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync(apiUrl, content);
+                // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
+                if (response.IsSuccessStatusCode)
+                {
+                    var content1 = await response.Content.ReadAsStringAsync();
+                    if (content1 != null)
+                    {
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = Convert.ToInt32(content1);
+                    }
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
+                }
+                else
+                {
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
+                }
+            }
+            catch
+            {
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
+            }
+            return responseModel;
+        }
+
+        public async Task<ResponseDI<HocSinhView>> GetHocSinhView(int id, string accessToken)
+        {
+            var responseModel = new ResponseDI<HocSinhView>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/HocSinh/GetHocSinhView?id={id}";
@@ -299,84 +494,30 @@ namespace TrainingCenters.RepositoryApi
                     var responseObject = JsonConvert.DeserializeObject<HocSinhView>(jsonResponse);
                     if (responseObject != null)
                     {
-                        return responseObject;
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject;
                     }
-                    return new HocSinhView();
-                }
-                else
-                {
-                    return new HocSinhView();
-                }
-            }
-            catch 
-            {
-                return new HocSinhView();
-            }
-        }
-        public async Task<List<HocSinhMN>> SearchName(HocSinh item, string accessToken)
-        {
-            try
-            {
-                var apiUrl = $"{_apiUrl}/api/HocSinh/SearchName";
-                if (!string.IsNullOrEmpty(accessToken))
-                {
-                    // Thêm accessToken vào header của HttpClient
-                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                }
-                // Chuyển dữ liệu thành JSON
-                var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
-                var response = await _httpClient.PostAsync(apiUrl, content);
-                // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
-                if (response.IsSuccessStatusCode)
-                {
-                    var content1 = await response.Content.ReadAsStringAsync();
-                    var objects = JsonConvert.DeserializeObject<List<HocSinhMN>>(content1);
-                    if(objects != null)
+                    else
                     {
-                        return objects;
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
                     }
-                    return [];
                 }
                 else
                 {
-                    return [];
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
-            catch 
+            catch
             {
-                return [];
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
 
-        public async Task<int> SearchCount(HocSinh item, string accessToken)
-        {
-            try
-            {
-                var apiUrl = $"{_apiUrl}/api/HocSinh/SearchCount";
-                if (!string.IsNullOrEmpty(accessToken))
-                {
-                    // Thêm accessToken vào header của HttpClient
-                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                }
-                // Chuyển dữ liệu thành JSON
-                var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
-                var response = await _httpClient.PostAsync(apiUrl, content);
-                // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
-                if (response.IsSuccessStatusCode)
-                {
-                    var content1 = await response.Content.ReadAsStringAsync();
-                    return Convert.ToInt32(content1);
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            catch 
-            {
-                return 0;
-            }
-        }
     }
 }
 
