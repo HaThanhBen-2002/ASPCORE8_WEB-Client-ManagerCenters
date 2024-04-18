@@ -1,8 +1,5 @@
-﻿// <reference path="student.js" />
-
-//const { remove } = require("immutable");
-
-//<script src="/AdminAssets/module/academicScore.js"></script>
+﻿
+/*<script src="/AdminAssets/module/academicScore.js"></script>*/
 function getCurrentYear() {
     const currentDate = new Date();
     return currentDate.getFullYear();
@@ -157,7 +154,7 @@ function isValidEmail(email) {
     }
 }
 
-function sendEmailKyThuatVien(viTriSuCo) {
+async function sendEmailKyThuatVien(viTriSuCo) {
     showLoading();
     // Chuyển trạng thái của button sang disabled
     $('#sendEmailError').prop('disabled', true);
@@ -197,20 +194,13 @@ function sendEmailKyThuatVien(viTriSuCo) {
             Subject: "Hệ Thống BENBEN Thông Báo Sự Cố",
             Content: emailContent
         };
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/SendEmail/SendEmailKyThuat",
-            data: { message: message },
-            success: function (data) {
-                if (data.isSuccess) {
-                    displayMessages(1, "Đã gửi thông báo đến kỹ thuật viên");
-                }
-                else {
-                    displayMessages(3, "Gửi Thông Báo Thất Bại");
-                }
-                hideLoading();
-            }
-        });
+        let stratusSend = await SendEmailKyThuat(message);
+        if (stratusSend) {
+            displayMessages(1, "Đã gửi thông báo đến kỹ thuật viên");
+        }
+        else {
+            displayMessages(3, "Gửi Thông Báo Thất Bại");
+        }
+        hideLoading();
     }
 }

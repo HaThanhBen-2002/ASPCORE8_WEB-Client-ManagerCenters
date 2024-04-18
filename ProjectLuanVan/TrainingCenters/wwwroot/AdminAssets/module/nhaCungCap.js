@@ -52,48 +52,30 @@ function AddItem(item) {
     }
 }
 //============================== END Send Email ===============================
-function exportToExcel() {
-    var listNhaCungCap = [];
-    var listTrungTam = [];
-
-    $.ajax({
-        type: "POST",
-        url: "/Admin/NhaCungCap/Search",
-        async: false,
-        data: { item: nhaCungCap },
-        success: function (data) {
-            listNhaCungCap = data.$values.map(function (item) {
-                delete item.$id;
-                return {
-                    'Mã Nhà Cung Cấp': item.maNhaCungCap,
-                    'Tên Nhà Cung Cấp': item.tenNhaCungCap,
-                    'Giới Thiệu': item.gioiThieu,
-                    'Email': item.email,
-                    'Số Điện Thoại': item.soDienThoai,
-                    'Ngân Hàng': item.nganHang,
-                    'Số Tài Khoản': item.soTaiKhoan,
-                    'Mã Số Thuế': item.maSoThue,
-                    'Mã Trung Tâm': item.maTrungTam
-                };
-            });
-        }
+async function exportToExcel() {
+    var listNhaCungCap = await NhaCungCap_Search(nhaCungCap);
+    var listTrungTam = await TrungTam_Search();
+    listNhaCungCap = listNhaCungCap.map(function (item) {
+        delete item.$id;
+        return {
+            'Mã Nhà Cung Cấp': item.maNhaCungCap,
+            'Tên Nhà Cung Cấp': item.tenNhaCungCap,
+            'Giới Thiệu': item.gioiThieu,
+            'Email': item.email,
+            'Số Điện Thoại': item.soDienThoai,
+            'Ngân Hàng': item.nganHang,
+            'Số Tài Khoản': item.soTaiKhoan,
+            'Mã Số Thuế': item.maSoThue,
+            'Mã Trung Tâm': item.maTrungTam
+        };
     });
-
-    $.ajax({
-        type: "POST",
-        url: "/Admin/TrungTam/SearchName",
-        async: false,
-        success: function (data) {
-            listTrungTam = data.$values.map(function (item) {
-                delete item.$id;
-                return {
-                    'Mã Trung Tâm': item.maTrungTam,
-                    'Tên Trung Tâm': item.tenTrungTam
-                };
-            });
-        }
+    listTrungTam = listTrungTam.map(function (item) {
+        delete item.$id;
+        return {
+            'Mã Trung Tâm': item.maTrungTam,
+            'Tên Trung Tâm': item.tenTrungTam
+        };
     });
-
     var workbook = XLSX.utils.book_new();
 
     var danhSachNhaCungCap = XLSX.utils.json_to_sheet(listNhaCungCap);
@@ -139,28 +121,17 @@ function GetNhaCungCapById() {
     return item;
 }
 
-function CreateNhaCungCap() {
+async function CreateNhaCungCap() {
     let item = GetNhaCungCapById();
-
     // Kiểm tra tính hợp lệ
-    if (isValidNhaCungCap(item)){
-        let status = false;
+    if (isValidNhaCungCap(item)) {
         item.MaNhaCungCap = null;
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/NhaCungCap/Create",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+        let status = await NhaCungCap_Create(item);
         return status;
     }
 }
 
-function CbbTrungTam() {
+async function CbbTrungTam() {
     var trungTam = {
         MaTrungTam: null,
         TenTrungTam: null,
@@ -172,49 +143,32 @@ function CbbTrungTam() {
         NganHang: null,
         SoTaiKhoan: null,
     };
-    $.ajax({
-        type: "POST",
-        url: "/Admin/TrungTam/SearchName",
-        data: { item: trungTam },
-        success: function (data) {
-            $('#nhaCungCap_MaTrungTam').empty();
-            $('#nhaCungCap_MaTrungTam').append($('<option>', {
-                value: 0,
-                text: "Tất cả"
-            }));
-            // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-            $.each(data.$values, function (index, item) {
-                $('#nhaCungCap_MaTrungTam').append($('<option>', {
-                    value: item.maTrungTam,
-                    text: item.tenTrungTam
-                }));
-            });
-        }
+    let trungTams = await TrungTam_SearchName(trungTam);
+    $('#nhaCungCap_MaTrungTam').empty();
+    $('#nhaCungCap_MaTrungTam').append($('<option>', {
+        value: 0,
+        text: "Tất cả"
+    }));
+    $.each(trungTams, function (index, item) {
+        $('#nhaCungCap_MaTrungTam').append($('<option>', {
+            value: item.maTrungTam,
+            text: item.tenTrungTam
+        }));
     });
-
 }
 
-function UpdateNhaCungCap() {
+async function UpdateNhaCungCap() {
 
     let item = GetNhaCungCapById();
     // Kiểm tra tính hợp lệ
     if (isValidNhaCungCap(item) && CheckIsNull(item.MaNhaCungCap)!=true){
-        let status = false;
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/NhaCungCap/Update",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+        let status = await NhaCungCap_Update(item);
         return status;
     }
 }
 
-$(document).ready(function () {
+$(document).ready(async function () {
+    await CapNhatToken();
     // ============================================== TABLE ===============================================
 
     // Loading Data Table
@@ -226,10 +180,16 @@ $(document).ready(function () {
         ordering: false,
         ajax: {
             type: "POST",
-            url: "/Admin/NhaCungCap/LoadingDataTableView",
+            url: "/NhaCungCap/LoadingDataTableView",
             dataType: "json",
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            },
             data: { item: nhaCungCap },
-            dataSrc: 'data'
+            dataSrc: 'data',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+            }
         },
         columns: [
             {
@@ -262,6 +222,15 @@ $(document).ready(function () {
                 'line-height': '25px',
                 'padding': '0 15px'
             });
+            // Thêm sự kiện cho việc thay đổi số lượng row trên trang
+            $('#myTable').on('length.dt', function (e, settings, len) {
+                // Gọi hàm CapNhatToken() khi có sự thay đổi
+                CapNhatToken().then(() => {
+                }).catch(error => {
+                    console.error("Cập nhật token thất bại:", error);
+                });
+            });
+
         }
 
     });
@@ -276,7 +245,7 @@ $(document).ready(function () {
     });
 
     // Event selectItem "myTable"
-    $('#myTable tbody').on('click', 'tr', function () {
+    $('#myTable tbody').on('click', 'tr', async function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected')
         } else {
@@ -285,24 +254,16 @@ $(document).ready(function () {
             // xử lý ở đây
             const rowId = table.row(this).data().maNhaCungCap;
             // Thực hiện get giá trị của Academic với rowId
-            $.ajax({
-                type: "POST",
-                url: "/Admin/NhaCungCap/GetById",
-                //contentType: "application/json",
-                data: { id: rowId },
-                success: function (data) {
-                    $('#nhaCungCap_MaNhaCungCap').val(data.maNhaCungCap);
-                    $('#nhaCungCap_TenNhaCungCap').val(data.tenNhaCungCap);
-                    $('#nhaCungCap_GioiThieu').val(data.gioiThieu);
-                    $('#nhaCungCap_Email').val(data.email);
-                    $('#nhaCungCap_SoDienThoai').val(data.soDienThoai);
-                    $('#nhaCungCap_NganHang').val(data.nganHang);
-                    $('#nhaCungCap_SoTaiKhoan').val(data.soTaiKhoan);
-                    $('#nhaCungCap_MaSoThue').val(data.maSoThue);
-                    $('#nhaCungCap_MaTrungTam').val(data.maTrungTam)
-                }
-            });
-
+            let data = await NhaCungCap_GetById(rowId);
+            $('#nhaCungCap_MaNhaCungCap').val(data.maNhaCungCap);
+            $('#nhaCungCap_TenNhaCungCap').val(data.tenNhaCungCap);
+            $('#nhaCungCap_GioiThieu').val(data.gioiThieu);
+            $('#nhaCungCap_Email').val(data.email);
+            $('#nhaCungCap_SoDienThoai').val(data.soDienThoai);
+            $('#nhaCungCap_NganHang').val(data.nganHang);
+            $('#nhaCungCap_SoTaiKhoan').val(data.soTaiKhoan);
+            $('#nhaCungCap_MaSoThue').val(data.maSoThue);
+            $('#nhaCungCap_MaTrungTam').val(data.maTrungTam)
         }
     });
 
@@ -328,52 +289,41 @@ $(document).ready(function () {
 
     CbbTrungTam();
     // ============================================== BUTTON ===============================================
-    $('#btnCreateNhaCungCap').click(function () {
-        //If Status Create = True => Update Row Table
-        if (CreateNhaCungCap() == true) {
-            displayMessages(1, "Thêm thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/NhaCungCap/GetByIdTable",
-                async: false,
-                data: { id: $('#nhaCungCap_MaNhaCungCap').val() },
-                success: function (data) {
-                    itemView = data;
+    $('#btnCreateNhaCungCap').click(async function () {
+        try {
+            if (await CreateNhaCungCap() == true) {
+                displayMessages(1, "Thêm thông tin thành công");
+                let itemView = await NhaCungCap_GetByIdTable($('#nhaCungCap_MaNhaCungCap').val());
+                itemView.maNhaCungCap = '<input data-checkbox-id="' + itemView.maNhaCungCap + '" type="checkbox"/>';
+                if (itemView != null) {
+                    table.row.add(itemView).draw(false);
                 }
-            });
-            itemView.maNhaCungCap = '<input data-checkbox-id="' + itemView.maNhaCungCap + '" type="checkbox"/>';
-            if (itemView != null) {
-                table.row.add(itemView).draw(false);
+            } else {
+                displayMessages(2, "Thêm thông tin thất bại");
             }
-        }
-        else {
-            displayMessages(2, "Thêm thông tin thất bại")
+        } catch (error) {
+            console.error("Error:", error);
         }
     });
 
-    $('#btnUpdateNhaCungCap').click(function () {
-        //If Status Create = True => Update Row Table
-        if (UpdateNhaCungCap() == true) {
+
+    $('#btnUpdateNhaCungCap').click(async function () {
+        // If Status Update = True => Update Row Table
+        if (await UpdateNhaCungCap() == true) {
             displayMessages(1, "Cập nhật thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/NhaCungCap/GetByIdTable",
-                async: false,
-                data: { id: $('#nhaCungCap_MaNhaCungCap').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await NhaCungCap_GetByIdTable($('#nhaCungCap_MaNhaCungCap').val());
             itemView.maNhaCungCap = '<input data-checkbox-id="' + itemView.maNhaCungCap + '" type="checkbox"/>';
             if (itemView != null) {
-                table.rows('.selected').remove().draw(false);
-                table.row.add(itemView).draw(false);
+                // Xóa các hàng được chọn
+                table.rows('.selected').remove();
+                // Thêm hàng mới vào table
+                table.row.add(itemView);
+                // Vẽ lại table một lần
+                table.draw(false);
             }
         }
         else {
-            displayMessages(2, "Cập nhật thông tin thất bại")
+            displayMessages(2, "Cập nhật thông tin thất bại");
         }
     });
 
@@ -389,7 +339,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnDelete').click(function () {
+    $('#btnDelete').click(async function () {
         // Tạo một mảng để lưu trữ ID của các đối tượng được chọn
         let selectedIds = [];
         // Lặp qua các checkbox để xác định đối tượng nào được chọn
@@ -399,26 +349,10 @@ $(document).ready(function () {
         });
 
         if (selectedIds.length >= 1 && $('#accountActivation').is(':checked')) {
-            let statusDelete = false;
-            // Gửi danh sách ID được chọn đến action bằng Ajax
-            $.ajax({
-                type: "POST",
-                url: "/Admin/NhaCungCap/Delete",
-                async: false,
-                data: { ids: selectedIds, nguoiXoa: "Nhân viên TEST" }, // Truyền danh sách ID đến action
-                success: function (data) {
-                    if (data.isSuccess == true) {
-                        displayMessages(1, "Xóa thành công");
-                        $("#DeleteModal").modal("hide");
-                        statusDelete = true;
-                    }
-                    else {
-                        statusDelete = false;
-                        displayMessages(2, "Xóa thất bại");
-                    }
-                }
-            });
+            let statusDelete = await NhaCungCap_Delete(selectedIds, "Nhân viên TEST");
             if (statusDelete) {
+                displayMessages(1, "Xóa thành công");
+                $("#DeleteModal").modal("hide");
                 // Lặp qua từng hàng
                 table.rows().every(function () {
                     var rowData = this.data();
@@ -433,6 +367,9 @@ $(document).ready(function () {
                 });
                 // Vẽ lại DataTables sau khi xóa các hàng
                 table.draw();
+            }
+            else {
+                displayMessages(3, "Xóa thất bại");
             }
         }
     });
@@ -450,8 +387,8 @@ $(document).ready(function () {
 
     });
 
-    $('#btnSearchNhaCungCap').click(function () {
-
+    $('#btnSearchNhaCungCap').click(async function () {
+        await CapNhatToken();
         nhaCungCap = GetNhaCungCapById();
         if (nhaCungCap.NganHang == "Tất cả") {
             nhaCungCap.NganHang = null;
@@ -479,7 +416,7 @@ $(document).ready(function () {
         AddItem($('#email_ThemDiaChiEmail').val());
 
     });
-    $('#btnSendEmail').click(function () {
+    $('#btnSendEmail').click(async function () {
         showLoading();
         let contentEmail = $("#summernote").summernote('code');
         let subject = $("#email_TieuDe").val();
@@ -498,21 +435,15 @@ $(document).ready(function () {
                 Subject: subject,
                 Content: contentEmail,
             };
-            // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-            $.ajax({
-                type: "POST",
-                url: "/Admin/SendEmail/SendEmailText",
-                data: { message: message },
-                success: function (data) {
-                    if (data.isSuccess) {
-                        displayMessages(1, "Gửi Email Thành Công");
-                    }
-                    else {
-                        displayMessages(3, "Gửi Email Thất Bại");
-                    }
-                    hideLoading();
-                }
-            });
+            let statusSend = await SendEmailText(message);
+            if (statusSend) {
+                displayMessages(1, "Gửi Email Thành Công");
+            }
+            else {
+                displayMessages(3, "Gửi Email Thất Bại");
+            }
+            hideLoading();
+
         }
     });
     // Content Email
@@ -520,7 +451,7 @@ $(document).ready(function () {
     $("#summernote").summernote({
         height: 400,
     });
-    $('#btnViewSendEmail').click(function () {
+    $('#btnViewSendEmail').click( async function () {
         emails = [];
         maNhaCungCaps = [];
         //Get list maNhaCungCap có checkbox = true
@@ -535,21 +466,14 @@ $(document).ready(function () {
         }
 
         //Lấy thông tin email dựa vào tham số object nhaCungCap
-        $.ajax({
-            type: "POST",
-            url: "/Admin/NhaCungCap/SearchName",
-            async: false,
-            data: { item: nhaCungCap },
-            success: function (data) {
-                $.each(data.$values, function (index, item) {
-                    $.each(maNhaCungCaps, function (indexMa, ma) {
-                        if (item.maNhaCungCap === ma) {
-                            emails.push(item.email);
-                            maNhaCungCaps.splice(indexMa, 1); // Xóa phần tử khớp từ mảng maNhaCungCaps
-                        }
-                    });
-                });
-            }
+        let nhaCungCapNames = await NhaCungCap_SearchName(nhaCungCap);
+        $.each(nhaCungCapNames, function (index, item) {
+            $.each(maNhaCungCaps, function (indexMa, ma) {
+                if (item.maNhaCungCap === ma) {
+                    emails.push(item.email);
+                    maNhaCungCaps.splice(indexMa, 1); // Xóa phần tử khớp từ mảng maNhaCungCaps
+                }
+            });
         });
         UpdateTableEmail();
     });

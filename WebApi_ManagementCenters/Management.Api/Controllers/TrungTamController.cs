@@ -4,11 +4,13 @@ using Data.Models;
 using ManagementApi.Models;
 using ManagementService.Models.Authentication.User;
 using ManagementService.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Protocol;
 
 namespace ManagementApi.Controllers
 {
+    [Authorize(Roles = "Giáo viên,Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class TrungTamController : ControllerBase

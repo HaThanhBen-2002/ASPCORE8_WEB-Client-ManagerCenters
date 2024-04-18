@@ -40,46 +40,27 @@ function isValidTrungTam(item) {
     }
 }
 
-function CreateTrungTam() {
+async function CreateTrungTam() {
     let item = GetTrungTamById();
     //Check Valid
     if (isValidTrungTam(item)){
         item.MaTrungTam = null;
-        var status = false;
-        // Gọi ajax thêm dữ liệu vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/TrungTam/Create",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+        let status = await TrungTam_Create(item);
         return status;
     }
 }
 
-function UpdateTrungTam() {
+async function UpdateTrungTam() {
     let item = GetTrungTamById();
     //Check Valid
     if (isValidTrungTam(item)&& CheckIsNull(item.MaTrungTam)!=true){
-        let status = false;
-        // Gọi ajax thêm dữ liệu vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/TrungTam/Update",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+        let status = await TrungTam_Update(item);
         return status;
     }
 }
 
-$(document).ready(function () {
+$(document).ready(async function () {
+    await CapNhatToken();
    // ============================================== TABLE ===============================================
     var trungTam = {
         MaTrungTam: null,
@@ -101,10 +82,16 @@ $(document).ready(function () {
         ordering: false,
         ajax: {
             type: "POST",
-            url: "/Admin/TrungTam/LoadingDataTableView",
+            url: "/TrungTam/LoadingDataTableView",
             dataType: "json",
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            },
             data: { item: trungTam },
-            dataSrc: 'data'
+            dataSrc: 'data',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+            }
         },
         columns: [
             {
@@ -137,6 +124,14 @@ $(document).ready(function () {
                 'line-height': '25px',
                 'padding': '0 15px'
             });
+            // Thêm sự kiện cho việc thay đổi số lượng row trên trang
+            $('#myTable').on('length.dt', function (e, settings, len) {
+                // Gọi hàm CapNhatToken() khi có sự thay đổi
+                CapNhatToken().then(() => {
+                }).catch(error => {
+                    console.error("Cập nhật token thất bại:", error);
+                });
+            });
         }
     });
 
@@ -150,33 +145,23 @@ $(document).ready(function () {
     });
 
     // Event selectItem "myTable"
-    $('#myTable tbody').on('click', 'tr', function () {
+    $('#myTable tbody').on('click', 'tr',async function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected')
         } else {
             table.$('tr.selected').removeClass('selected')
             $(this).addClass('selected')
-            // xử lý ở đây
             const rowId = table.row(this).data().maTrungTam;
-            // Thực hiện get giá trị của Academic với rowId
-            $.ajax({
-                type: "POST",
-                url: "/Admin/TrungTam/GetById",
-                //contentType: "application/json",
-                data: { id: rowId },
-                success: function (data) {
-                    $('#trungTam_MaTrungTam').val(data.maTrungTam);
-                    $('#trungTam_TenTrungTam').val(data.tenTrungTam);
-                    $('#trungTam_Email').val(data.email);
-                    $('#trungTam_SoDienThoai').val(data.soDienThoai);
-                    $('#trungTam_DienTich').val(data.dienTich);
-                    $('#trungTam_MaSoThue').val(data.maSoThue);
-                    $('#trungTam_NganHang').val(data.nganHang);
-                    $('#trungTam_SoTaiKhoan').val(data.soTaiKhoan);
-                    $('#trungTam_DiaChi').val(data.diaChi);
-                }
-            });
-
+            let data = await TrungTam_GetById(rowId);
+            $('#trungTam_MaTrungTam').val(data.maTrungTam);
+            $('#trungTam_TenTrungTam').val(data.tenTrungTam);
+            $('#trungTam_Email').val(data.email);
+            $('#trungTam_SoDienThoai').val(data.soDienThoai);
+            $('#trungTam_DienTich').val(data.dienTich);
+            $('#trungTam_MaSoThue').val(data.maSoThue);
+            $('#trungTam_NganHang').val(data.nganHang);
+            $('#trungTam_SoTaiKhoan').val(data.soTaiKhoan);
+            $('#trungTam_DiaChi').val(data.diaChi);
         }
     });
 
@@ -200,20 +185,11 @@ $(document).ready(function () {
         }
     });
     // ============================================== BUTTON ===============================================
-    $('#btnCreateTrungTam').click(function () {
+    $('#btnCreateTrungTam').click(async function () {
         //If Status Create = True => Update Row Table
-        if (CreateTrungTam() == true) {
+        if (await CreateTrungTam() == true) {
             displayMessages(1, "Thêm thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/TrungTam/GetByIdTable",
-                async: false,
-                data: { id: $('#trungTam_MaTrungTam').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await TrungTam_GetByIdTable($('#trungTam_MaTrungTam').val());
             itemView.maTrungTam = '<input data-checkbox-id="' + itemView.maTrungTam + '" type="checkbox"/>';
             if (itemView != null) {
                 table.row.add(itemView).draw(false);
@@ -224,24 +200,19 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnUpdateTrungTam').click(function () {
+    $('#btnUpdateTrungTam').click(async function () {
         //If Status Create = True => Update Row Table
-        if (UpdateTrungTam() == true) {
+        if (await UpdateTrungTam() == true) {
             displayMessages(1, "Cập nhật thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/TrungTam/GetByIdTable",
-                async: false,
-                data: { id: $('#trungTam_MaTrungTam').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await TrungTam_GetByIdTable($('#trungTam_MaTrungTam').val());
             itemView.maTrungTam = '<input data-checkbox-id="' + itemView.maTrungTam + '" type="checkbox"/>';
             if (itemView != null) {
-                table.rows('.selected').remove().draw(false);
-                table.row.add(itemView).draw(false);
+                // Xóa các hàng được chọn
+                table.rows('.selected').remove();
+                // Thêm hàng mới vào table
+                table.row.add(itemView);
+                // Vẽ lại table một lần
+                table.draw(false);
             }
         }
         else {
@@ -261,7 +232,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnDelete').click(function () {
+    $('#btnDelete').click(async function () {
         // Tạo một mảng để lưu trữ ID của các đối tượng được chọn
         let selectedIds = [];
         // Lặp qua các checkbox để xác định đối tượng nào được chọn
@@ -271,26 +242,10 @@ $(document).ready(function () {
         });
 
         if (selectedIds.length >= 1 && $('#accountActivation').is(':checked')) {
-            let statusDelete = false;
-            // Gửi danh sách ID được chọn đến action bằng Ajax
-            $.ajax({
-                type: "POST",
-                url: "/Admin/TrungTam/Delete",
-                async: false,
-                data: { ids: selectedIds, nguoiXoa:"Nhân viên TEST" }, // Truyền danh sách ID đến action
-                success: function (data) {
-                    if (data.isSuccess == true) {
-                        displayMessages(1, "Xóa thành công");
-                        $("#DeleteModal").modal("hide");
-                        statusDelete = true;
-                    }
-                    else {
-                        statusDelete = false;
-                        displayMessages(2, "Xóa thất bại");
-                    }
-                }
-            });
-            if (statusDelete) {
+            let statusDelete = await TrungTam_Delete(selectedIds, "Nhân viên Test");
+            if (statusDelete == true) {
+                displayMessages(1, "Xóa thành công");
+                $("#DeleteModal").modal("hide");
                 // Lặp qua từng hàng
                 table.rows().every(function () {
                     var rowData = this.data();
@@ -306,10 +261,13 @@ $(document).ready(function () {
                 // Vẽ lại DataTables sau khi xóa các hàng
                 table.draw();
             }
+            else {
+                displayMessages(3, "Xóa thất bại");
+            }
         }
     });
 
-    $('#btnResetTrungTam').click(function () {
+    $('#btnResetTrungTam').click( function () {
         $('#trungTam_MaTrungTam').val(null);
         $('#trungTam_TenTrungTam').val(null);
         $('#trungTam_Email').val(null);
@@ -321,7 +279,8 @@ $(document).ready(function () {
         $('#trungTam_DiaChi').val(null); 
     });
 
-    $('#btnSearchTrungTam').click(function () {
+    $('#btnSearchTrungTam').click(async function () {
+        await CapNhatToken();
         trungTam.MaTrungTam = $('#trungTam_MaTrungTam').val() || null;
         trungTam.TenTrungTam = $('#trungTam_TenTrungTam').val() || null;
         trungTam.DiaChi = $('#trungTam_DiaChi').val() || null;

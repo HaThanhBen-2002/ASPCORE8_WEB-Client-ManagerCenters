@@ -19,47 +19,24 @@ function GetMonHocData() {
     };
 }
 
-function CreateMonHoc() {
+async function CreateMonHoc() {
     let item = GetMonHocData();
-    // Kiểm tra tính hợp lệ
     if (isValidMonHoc(item)) {
-        let status = false;
         item.MaMonHoc = null;
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/MonHoc/Create",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+        let status = await MonHoc_Create(item)
         return status;
     }
 }
-
-function UpdateMonHoc() {
+async function UpdateMonHoc() {
     let item = GetMonHocData();
-    // Kiểm tra tính hợp lệ
-    if (isValidMonHoc(item) && CheckIsNull(item.MaMonHoc)!=true) {
-        let status = false;
-        // Gửi dữ liệu thông qua AJAX để cập nhật vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/MonHoc/Update",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+    if (isValidMonHoc(item) && CheckIsNull(item.MaMonHoc) != true) {
+        let status = await MonHoc_Update(item)
         return status;
     }
 }
 
-
-$(document).ready(function () {
+$(document).ready(async function () {
+    await CapNhatToken();
    // ============================================== TABLE ===============================================
     let monHoc = {
         MaMonHoc: null,
@@ -76,10 +53,16 @@ $(document).ready(function () {
         ordering: false,
         ajax: {
             type: "POST",
-            url: "/Admin/MonHoc/LoadingDataTableView",
+            url: "/MonHoc/LoadingDataTableView",
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            },
             dataType: "json",
             data: { item: monHoc },
-            dataSrc: 'data'
+            dataSrc: 'data',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+            }
         },
         columns: [
             {
@@ -110,6 +93,14 @@ $(document).ready(function () {
                 'line-height': '25px',
                 'padding': '0 15px'
             });
+            // Thêm sự kiện cho việc thay đổi số lượng row trên trang
+            $('#myTable').on('length.dt', function (e, settings, len) {
+                // Gọi hàm CapNhatToken() khi có sự thay đổi
+                CapNhatToken().then(() => {
+                }).catch(error => {
+                    console.error("Cập nhật token thất bại:", error);
+                });
+            });
         }
 
     });
@@ -124,7 +115,7 @@ $(document).ready(function () {
     });
 
     // Event selectItem "myTable"
-    $('#myTable tbody').on('click', 'tr', function () {
+    $('#myTable tbody').on('click', 'tr', async function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected')
         } else {
@@ -132,28 +123,19 @@ $(document).ready(function () {
             $(this).addClass('selected')
             // xử lý ở đây
             const rowId = table.row(this).data().maMonHoc;
-            // Thực hiện get giá trị của Academic với rowId
-            $.ajax({
-                type: "POST",
-                url: "/Admin/MonHoc/GetById",
-                //contentType: "application/json",
-                data: { id: rowId },
-                success: function (data) {
-                    $('#monHoc_MaMonHoc').val(data.maMonHoc);
-                    $('#monHoc_TenMonHoc').val(data.tenMonHoc);
-                    $('#monHoc_ThongTin').val(data.thongTin);
-                    $('#monHoc_Gia').val(data.gia);
-                }
-            });
-
+            let data = await MonHoc_GetById(rowId);
+            $('#monHoc_MaMonHoc').val(data.maMonHoc);
+            $('#monHoc_TenMonHoc').val(data.tenMonHoc);
+            $('#monHoc_ThongTin').val(data.thongTin);
+            $('#monHoc_Gia').val(data.gia);
         }
     });
 
     // Event checkbox "Check All"
-    $('#checkAll').change(function () {
+    $('#checkAll').change( function () {
         var isChecked = $(this).prop('checked');
         if (isChecked) {
-            $('input[type="checkbox"]').each(function () {
+            $('input[type="checkbox"]').each( function () {
                 if ($(this).hasClass('form-check-input') != true) {
                     // Thực hiện hành động cho checkbox có class "form-check-input" ở đây
                     $(this).prop('checked', true);
@@ -169,20 +151,11 @@ $(document).ready(function () {
         }
     });
     // ============================================== BUTTON ===============================================
-    $('#btnCreateMonHoc').click(function () {
+    $('#btnCreateMonHoc').click(async function () {
         //If Status Create = True => Update Row Table
-        if (CreateMonHoc() == true) {
+        if (await CreateMonHoc() == true) {
             displayMessages(1, "Thêm thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/MonHoc/GetByIdTable",
-                async: false,
-                data: { id: $('#monHoc_MaMonHoc').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await MonHoc_GetByIdTable($('#monHoc_MaMonHoc').val());
             itemView.maMonHoc = '<input data-checkbox-id="' + itemView.maMonHoc + '" type="checkbox"/>';
             if (itemView != null) {
                 table.row.add(itemView).draw(false);
@@ -193,24 +166,19 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnUpdateMonHoc').click(function () {
+    $('#btnUpdateMonHoc').click(async function () {
         //If Status Create = True => Update Row Table
-        if (UpdateMonHoc() == true) {
+        if (await UpdateMonHoc() == true) {
             displayMessages(1, "Cập nhật thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/MonHoc/GetByIdTable",
-                async: false,
-                data: { id: $('#monHoc_MaMonHoc').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await MonHoc_GetByIdTable($('#monHoc_MaMonHoc').val());
             itemView.maMonHoc = '<input data-checkbox-id="' + itemView.maMonHoc + '" type="checkbox"/>';
             if (itemView != null) {
-                table.rows('.selected').remove().draw(false);
-                table.row.add(itemView).draw(false);
+                // Xóa các hàng được chọn
+                table.rows('.selected').remove();
+                // Thêm hàng mới vào table
+                table.row.add(itemView);
+                // Vẽ lại table một lần
+                table.draw(false);
             }
         }
         else {
@@ -230,7 +198,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnDelete').click(function () {
+    $('#btnDelete').click(async function () {
         // Tạo một mảng để lưu trữ ID của các đối tượng được chọn
         let selectedIds = [];
         // Lặp qua các checkbox để xác định đối tượng nào được chọn
@@ -240,27 +208,10 @@ $(document).ready(function () {
         });
 
         if (selectedIds.length >= 1 && $('#accountActivation').is(':checked')) {
-            let statusDelete = false;
-            // Gửi danh sách ID được chọn đến action bằng Ajax
-            $.ajax({
-                type: "POST",
-                url: "/Admin/MonHoc/Delete",
-                async: false,
-                data: { ids: selectedIds, nguoiXoa:"Nhân viên TEST" }, // Truyền danh sách ID đến action
-                success: function (data) {
-                    if (data.isSuccess == true) {
-                        displayMessages(1, "Xóa thành công");
-                        $("#DeleteModal").modal("hide");
-                        statusDelete = true;
-                    }
-                    else {
-                        statusDelete = false;
-                        displayMessages(2, "Xóa thất bại");
-                    }
-                }
-            });
-            if (statusDelete) {
-                // Lặp qua từng hàng
+            let statusDelete = await MonHoc_Delete(selectedIds, "Nhân viên Test");
+            if (statusDelete == true) {
+                displayMessages(1, "Xóa thành công");
+                $("#DeleteModal").modal("hide");
                 table.rows().every(function () {
                     var rowData = this.data();
                     // Kiểm tra xem rowData có tồn tại không trước khi truy cập thuộc tính
@@ -275,6 +226,9 @@ $(document).ready(function () {
                 // Vẽ lại DataTables sau khi xóa các hàng
                 table.draw();
             }
+            else {
+                displayMessages(3, "Xóa thất bại");
+            }
         }
     });
 
@@ -285,9 +239,9 @@ $(document).ready(function () {
         $('#monHoc_Gia').val(null);
     });
 
-    $('#btnSearchMonHoc').click(function () {
+    $('#btnSearchMonHoc').click(async function () {
+        await CapNhatToken();
         monHoc = GetMonHocData();
-        
         table.settings()[0].ajax.data = { item: monHoc };
         table.ajax.reload();
     });

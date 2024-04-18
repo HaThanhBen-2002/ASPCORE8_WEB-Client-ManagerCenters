@@ -17,12 +17,12 @@ namespace TrainingCenters.Controllers
         {
             return HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
         }
+
         public async Task<IActionResult> SendEmailText(Message message)
         {
             var data = await _unit.SendEmail.SendEmailText(message, GetXacThuc());
             return Ok(data);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> SendEmailKyThuat(Message message)
@@ -31,12 +31,7 @@ namespace TrainingCenters.Controllers
             var data = await _unit.SendEmail.SendEmailText(message, GetXacThuc());
             return Ok(data);
         }
-        public async Task<IActionResult> SendEmailTextDemo()
-        {
-            var message = new Message(new List<string> { "mavuongkiki2002@gmail.com","english4688@gmail.com" }, "Email Demo BENBEN lần 2", "Đây là nội dung demo"!);
-            var data = await _unit.SendEmail.SendEmailText(message, GetXacThuc());
-            return Ok(data);
-        }
+
         #endregion
     }
 }

@@ -81,7 +81,6 @@ namespace TrainingCenters.Controllers
 
         public async Task<IActionResult> Search(DichVu item)
         {
-            
             var data = await _unit.DichVu.Search(item, GetXacThuc());
             return Ok(data);
         }

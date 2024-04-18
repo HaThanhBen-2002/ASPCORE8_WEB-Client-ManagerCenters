@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ManagementApi.Controllers
 {
-    [Authorize(Roles = "Giáo viên")]
+    [Authorize(Roles = "Giáo viên,Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class DichVuController : Controller

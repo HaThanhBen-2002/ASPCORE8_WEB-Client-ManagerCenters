@@ -30,16 +30,20 @@ namespace TrainingCenters.Controllers
 
         public async Task<IActionResult> GetByIdTable(string id)
         {
-            var data = await _unit.TrungTam.GetById(Convert.ToInt32(id), GetXacThuc());
+            var data1 = await _unit.TrungTam.GetById(Convert.ToInt32(id), GetXacThuc());
             var rTable =new { 
-                maTrungTam=data.Data.MaTrungTam, 
-                tenTrungTam =data.Data.TenTrungTam, 
-                email =data.Data.Email, 
-                soDienThoai =data.Data.SoDienThoai, 
-                dienTich =data.Data.DienTich, 
-                diaChi =data.Data.DiaChi
+                maTrungTam= data1.Data.MaTrungTam, 
+                tenTrungTam = data1.Data.TenTrungTam, 
+                email = data1.Data.Email, 
+                soDienThoai = data1.Data.SoDienThoai, 
+                dienTich = data1.Data.DienTich, 
+                diaChi = data1.Data.DiaChi
             };
-            return Ok(rTable);
+            var data = new ResponseDI<object>();
+            data.Data = rTable;
+            data.IsSuccess = data1.IsSuccess;
+            data.Message = data1.Message;
+            return Ok(data);
 
         }
 
@@ -98,7 +102,7 @@ namespace TrainingCenters.Controllers
             var skip = Request.Form["start"];
             var length = Request.Form["length"];
             var data = await _unit.TrungTam.LoadingDataTableView(item, Convert.ToInt32(skip), Convert.ToInt32(length), GetXacThuc());
-            return Ok(data);
+            return Ok(data.Data);
         }
         #endregion
     }

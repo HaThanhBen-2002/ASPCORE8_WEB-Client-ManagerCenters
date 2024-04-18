@@ -61,6 +61,9 @@ $(document).ready(async function () {
             dataType: "json",
             data: { item: dichVu },
             dataSrc: 'data',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+            }
         },
         columns: [
             {
@@ -118,9 +121,7 @@ $(document).ready(async function () {
         } else {
             table.$('tr.selected').removeClass('selected')
             $(this).addClass('selected')
-            // xử lý ở đây
             const rowId = table.row(this).data().maDichVu;
-            // Thực hiện get giá trị của Academic với rowId
             let data = await DichVu_GetById(rowId);
             $('#dichVu_MaDichVu').val(data.maDichVu);
             $('#dichVu_TenDichVu').val(data.tenDichVu);
@@ -171,8 +172,12 @@ $(document).ready(async function () {
             let itemView =await DichVu_GetByIdTable($('#dichVu_MaDichVu').val());
             itemView.maDichVu = '<input data-checkbox-id="' + itemView.maDichVu + '" type="checkbox"/>';
             if (itemView != null) {
-                table.rows('.selected').remove().draw(false);
-                table.row.add(itemView).draw(false);
+                // Xóa các hàng được chọn
+                table.rows('.selected').remove();
+                // Thêm hàng mới vào table
+                table.row.add(itemView);
+                // Vẽ lại table một lần
+                table.draw(false);
             }
         }
         else {
@@ -222,7 +227,7 @@ $(document).ready(async function () {
                 table.draw();
             }
             else {
-                displayMessages(2, "Xóa thất bại");
+                displayMessages(3, "Xóa thất bại");
             }
         }
     });

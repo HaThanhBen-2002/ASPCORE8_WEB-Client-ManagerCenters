@@ -1517,6 +1517,30 @@
       "PackagePath": "staticwebassets\\FuncData\\funcDichVu.js"
     },
     {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\FuncData\\funcMonHoc.js",
+      "PackagePath": "staticwebassets\\FuncData\\funcMonHoc.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\FuncData\\funcNhaCungCap.js",
+      "PackagePath": "staticwebassets\\FuncData\\funcNhaCungCap.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\FuncData\\funcSanPham.js",
+      "PackagePath": "staticwebassets\\FuncData\\funcSanPham.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\FuncData\\funcSendEmail.js",
+      "PackagePath": "staticwebassets\\FuncData\\funcSendEmail.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\FuncData\\funcSuDungDichVu.js",
+      "PackagePath": "staticwebassets\\FuncData\\funcSuDungDichVu.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\FuncData\\funcTrungTam.js",
+      "PackagePath": "staticwebassets\\FuncData\\funcTrungTam.js"
+    },
+    {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\FuncData\\funcXacNhan.js",
       "PackagePath": "staticwebassets\\FuncData\\funcXacNhan.js"
     },

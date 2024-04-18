@@ -3,12 +3,14 @@ using ManagementApi.Models;
 using ManagementService.Models;
 using ManagementService.Models.Authentication.SignUp;
 using ManagementService.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 
 namespace ManagementApi.Controllers
 {
+    [Authorize(Roles = "Giáo viên,Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class SendEmailController : Controller

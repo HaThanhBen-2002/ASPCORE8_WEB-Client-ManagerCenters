@@ -213,7 +213,7 @@ namespace TrainingCenters.Controllers
             var skip = Request.Form["start"];
             var length = Request.Form["length"];
             var data = await _unit.PhieuThuChi.LoadingDataTableView(item, Convert.ToInt32(skip), Convert.ToInt32(length), GetXacThuc());
-            return Ok(data);
+            return Ok(data.Data);
         }
 
         public async Task<IActionResult> HoaDonThuThang(PhieuThuChi item)

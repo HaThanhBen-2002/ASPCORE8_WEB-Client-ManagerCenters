@@ -1,10 +1,12 @@
 ﻿using Data.Dtos;
 using ManagementApi.Models;
 using ManagementService.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ManagementApi.Controllers
 {
+    [Authorize(Roles = "Giáo viên,Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class MonHocController : Controller

@@ -44,6 +44,27 @@ async function DichVu_GetById(id) {
     }
 }
 
+async function DichVu_CheckId(id) {
+    try {
+        const response = await $.ajax({
+            type: "POST", url: "/DichVu/CheckId",
+            headers: { "Authorization": `Bearer ${getToken()}` },
+            data: { id: id }
+        });
+        if (response.isSuccess === false && response.message === "Authorization") {
+            await CapNhatToken();
+            return await DichVu_CheckId(id);
+        }
+        else if (response.isSuccess === true) {
+            return response.data;
+        }
+        return null;
+    } catch (error) {
+        console.log("Lỗi Try_Ca:", error);
+        throw error;
+    }
+}
+
 async function DichVu_GetByIdTable(id) {
     try {
         const response = await $.ajax({
@@ -92,6 +113,60 @@ async function DichVu_Update(item) {
             return await DichVu_Update(item);
         }
         return response.data;
+    } catch (error) {
+        console.error("Lỗi Try_Ca:", error);
+        throw error;
+    }
+}
+
+async function DichVu_Search(item) {
+    try {
+        const response = await $.ajax({
+            type: "POST", url: "/DichVu/Search",
+            headers: { "Authorization": `Bearer ${getToken()}` },
+            data: { item: item },
+        });
+        if (response.isSuccess === false && response.message === "Authorization") {
+            await CapNhatToken();
+            return await DichVu_Search(item);
+        }
+        return response.data.$values;
+    } catch (error) {
+        console.error("Lỗi Try_Ca:", error);
+        throw error;
+    }
+}
+
+async function DichVu_SearchName(item) {
+    try {
+        const response = await $.ajax({
+            type: "POST", url: "/DichVu/SearchName",
+            headers: { "Authorization": `Bearer ${getToken()}` },
+            data: { item: item },
+        });
+        if (response.isSuccess === false && response.message === "Authorization") {
+            await CapNhatToken();
+            return await DichVu_SearchName(item);
+        }
+        return response.data.$values;
+    } catch (error) {
+        console.error("Lỗi Try_Ca:", error);
+        throw error;
+    }
+}
+
+async function DichVu_SearchCount(item) {
+    try {
+        const response = await $.ajax({
+            type: "POST", url: "/DichVu/SearchCount",
+            headers: { "Authorization": `Bearer ${getToken()}` },
+            data: { item: item },
+        });
+        if (response.isSuccess === false && response.message === "Authorization") {
+            await CapNhatToken();
+            return await DichVu_SearchCount(item);
+        }
+        return response.data.$values;
     } catch (error) {
         console.error("Lỗi Try_Ca:", error);
         throw error;
