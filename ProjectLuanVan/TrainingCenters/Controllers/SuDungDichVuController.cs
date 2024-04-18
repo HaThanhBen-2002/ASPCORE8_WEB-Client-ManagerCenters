@@ -41,8 +41,11 @@ namespace TrainingCenters.Controllers
                 ngayKetThuc = data1.Data.NgayKetThuc,
                 tenHocSinh = item2.Data.TenHocSinh
             };
-            return Ok(rTable);
-
+            var data = new ResponseDI<object>();
+            data.Data = rTable;
+            data.IsSuccess = data1.IsSuccess;
+            data.Message = data1.Message;
+            return Ok(data);
         }
 
         public async Task<IActionResult> Create(SuDungDichVu item)

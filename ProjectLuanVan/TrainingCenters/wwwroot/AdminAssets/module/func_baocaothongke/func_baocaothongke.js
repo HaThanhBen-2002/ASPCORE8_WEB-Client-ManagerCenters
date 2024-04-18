@@ -1,26 +1,11 @@
 ﻿//===== Thống kê số lượng ALL ===== Return number
 async function TKSL_TrungTam() {
-    let trungTam = 0;
-
-    try {
-        let data = await $.ajax({
-            type: "POST",
-            url: "/Admin/TrungTam/SearchCount"
-        });
-        trungTam = data;
-    } catch (error) {
-        console.error("Lỗi khi lấy dữ liệu:", error);
-    }
-
+    let trungTam = await TrungTam_SearchCount();
     return trungTam;
 }
 async function TKSL_DichVu() {
     try {
-        let dichVu = await $.ajax({
-            type: "POST",
-            url: "/Admin/DichVu/SearchCount"
-        });
-
+        let dichVu = await DichVu_SearchCount();
         return dichVu;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
@@ -40,12 +25,7 @@ async function TKSL_SanPham(maTrungTam) {
             Gia: null
         };
 
-        let sanPham = await $.ajax({
-            type: "POST",
-            url: "/Admin/SanPham/SearchCount",
-            data: { item: sp }
-        });
-
+        let sanPham = await SanPham_SearchCount(sp);
         return sanPham;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
@@ -68,12 +48,7 @@ async function TKSL_HoaDon(maTrungTam) {
             MaNhanVien: null
         };
 
-        let hoaDon = await $.ajax({
-            type: "POST",
-            url: "/Admin/PhieuThuChi/SearchCount",
-            data: { item: hd }
-        });
-
+        let hoaDon = await PhieuThuChi_SearchCount(hd);
         return hoaDon;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
@@ -103,13 +78,7 @@ async function TKSL_NhanVien(maTrungTam) {
             DanToc: null,
             TonGiao: null
         };
-
-        let nhanVien = await $.ajax({
-            type: "POST",
-            url: "/Admin/NhanVien/SearchCount",
-            data: { item: nv }
-        });
-
+        let nhanVien = await NhanVien_SearchCount(nv);
         return nhanVien;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
@@ -129,13 +98,7 @@ async function TKSL_NhaCungCap(maTrungTam) {
             MaSoThue: null,
             MaTrungTam: maTrungTam
         };
-
-        let nhaCungCap = await $.ajax({
-            type: "POST",
-            url: "/Admin/NhaCungCap/SearchCount",
-            data: { item: ncc }
-        });
-
+        let nhaCungCap = await NhaCungCap_SearchCount(ncc);
         return nhaCungCap;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
@@ -144,11 +107,7 @@ async function TKSL_NhaCungCap(maTrungTam) {
 }
 async function TKSL_MonHoc() {
     try {
-        let monHoc = await $.ajax({
-            type: "POST",
-            url: "/Admin/MonHoc/SearchCount"
-        });
-
+        let monHoc = await MonHoc_SearchCount();
         return monHoc;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
@@ -169,13 +128,7 @@ async function TKSL_Lop(maTrungTam) {
             NgayBatDau: null,
             NgayKetThuc: null
         };
-
-        let lop = await $.ajax({
-            type: "POST",
-            url: "/Admin/Lop/SearchCount",
-            data: { item: l }
-        });
-
+        let lop = await Lop_SearchCount(l);
         return lop;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
@@ -197,12 +150,7 @@ async function TKSL_KetQua(maTrungTam) {
             MaTrungTam: maTrungTam
         };
 
-        let ketQua = await $.ajax({
-            type: "POST",
-            url: "/Admin/KetQua/SearchCount",
-            data: { item: kq }
-        });
-
+        let ketQua = await KetQua_SearchCount(kq);
         return ketQua;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
@@ -243,12 +191,7 @@ async function TKSL_HocSinh(maTrungTam) {
             NgheNghiepMe: null
         };
 
-        let hocSinh = await $.ajax({
-            type: "POST",
-            url: "/Admin/HocSinh/SearchCount",
-            data: { item: hs }
-        });
-
+        let hocSinh = await HocSinh_SearchCount(hs);
         return hocSinh;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
@@ -271,13 +214,7 @@ async function TKT_HoaDon(maTrungTam, thangNam) {
             HinhThucThanhToan: null,
             MaNhanVien: null
         };
-
-        let thu = await $.ajax({
-            type: "POST",
-            url: "/Admin/PhieuThuChi/HoaDonThuThang",
-            data: { item: phieuThuChiDoanhThu }
-        });
-
+        let thu = await PhieuThuChi_HoaDonThuThang(phieuThuChiDoanhThu);
         return thu;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
@@ -301,12 +238,7 @@ async function TKC_HoaDon(maTrungTam, thangNam) {
             MaNhanVien: null
         };
 
-        let chi = await $.ajax({
-            type: "POST",
-            url: "/Admin/PhieuThuChi/HoaDonChiThang",
-            data: { item: phieuThuChiDoanhThu }
-        });
-
+        let chi = await PhieuThuChi_HoaDonChiThang(phieuThuChiDoanhThu);
         return chi;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
@@ -324,17 +256,10 @@ async function TKDT_HoaDon(maTrungTam, thangNam) {
     }
 }
 
-
-
-
 //===== Thống kê số lượng By Object ===== Return number
 async function TKSL_TrungTam_Search(trungTam) {
     try {
-        let trungTamCount = await $.ajax({
-            type: "POST",
-            url: "/Admin/TrungTam/SearchCount",
-            data: { item: trungTam }
-        });
+        let trungTamCount = await TrungTam_SearchCount(trungTam);
         return trungTamCount;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu TrungTam:", error);
@@ -343,11 +268,7 @@ async function TKSL_TrungTam_Search(trungTam) {
 }
 async function TKSL_DichVu_Search(dichVu) {
     try {
-        let dichVuCount = await $.ajax({
-            type: "POST",
-            url: "/Admin/DichVu/SearchCount",
-            data: { item: dichVu }
-        });
+        let dichVuCount = await DichVu_SearchCount(dichVu);
         return dichVuCount;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu DichVu:", error);
@@ -356,11 +277,7 @@ async function TKSL_DichVu_Search(dichVu) {
 }
 async function TKSL_SanPham_Search(sanPham) {
     try {
-        let sanPhamCount = await $.ajax({
-            type: "POST",
-            url: "/Admin/SanPham/SearchCount",
-            data: { item: sanPham }
-        });
+        let sanPhamCount =  await SanPham_SearchCount(sanPham);
         return sanPhamCount;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu SanPham:", error);
@@ -369,11 +286,7 @@ async function TKSL_SanPham_Search(sanPham) {
 }
 async function TKSL_HoaDon_Search(hoaDon) {
     try {
-        let hoaDonCount = await $.ajax({
-            type: "POST",
-            url: "/Admin/PhieuThuChi/SearchCount",
-            data: { item: hoaDon }
-        });
+        let hoaDonCount = await PhieuThuChi_SearchCount(hoaDon);
         return hoaDonCount;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu HoaDon:", error);
@@ -382,11 +295,7 @@ async function TKSL_HoaDon_Search(hoaDon) {
 }
 async function TKSL_NhanVien_Search(nhanVien) {
     try {
-        let nhanVienCount = await $.ajax({
-            type: "POST",
-            url: "/Admin/NhanVien/SearchCount",
-            data: { item: nhanVien }
-        });
+        let nhanVienCount = await NhanVien_SearchCount(nhanVien);
         return nhanVienCount;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu NhanVien:", error);
@@ -395,11 +304,7 @@ async function TKSL_NhanVien_Search(nhanVien) {
 }
 async function TKSL_NhaCungCap_Search(nhaCungCap) {
     try {
-        let nhaCungCapCount = await $.ajax({
-            type: "POST",
-            url: "/Admin/NhaCungCap/SearchCount",
-            data: { item: nhaCungCap }
-        });
+        let nhaCungCapCount = await NhaCungCap_SearchCount(nhaCungCap);
         return nhaCungCapCount;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu NhaCungCap:", error);
@@ -408,11 +313,7 @@ async function TKSL_NhaCungCap_Search(nhaCungCap) {
 }
 async function TKSL_MonHoc_Search(monHoc) {
     try {
-        let monHocCount = await $.ajax({
-            type: "POST",
-            url: "/Admin/MonHoc/SearchCount",
-            data: { item: monHoc }
-        });
+        let monHocCount = await MonHoc_SearchCount(monHoc);
         return monHocCount;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu MonHoc:", error);
@@ -421,11 +322,7 @@ async function TKSL_MonHoc_Search(monHoc) {
 }
 async function TKSL_Lop_Search(lop) {
     try {
-        let lopCount = await $.ajax({
-            type: "POST",
-            url: "/Admin/Lop/SearchCount",
-            data: { item: lop }
-        });
+        let lopCount = await Lop_SearchCount(lop);
         return lopCount;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu Lop:", error);
@@ -434,11 +331,7 @@ async function TKSL_Lop_Search(lop) {
 }
 async function TKSL_KetQua_Search(ketQua) {
     try {
-        let ketQuaCount = await $.ajax({
-            type: "POST",
-            url: "/Admin/KetQua/SearchCount",
-            data: { item: ketQua }
-        });
+        let ketQuaCount = await KetQua_SearchCount(ketQua);
         return ketQuaCount;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu KetQua:", error);
@@ -447,11 +340,7 @@ async function TKSL_KetQua_Search(ketQua) {
 }
 async function TKSL_HocSinh_Search(hocSinh) {
     try {
-        let hocSinhCount = await $.ajax({
-            type: "POST",
-            url: "/Admin/HocSinh/SearchCount",
-            data: { item: hocSinh }
-        });
+        let hocSinhCount = await HocSinh_SearchCount(hocSinh);
         return hocSinhCount;
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu HocSinh:", error);
@@ -491,11 +380,7 @@ async function GetOptions_TyLeHoaDon(maTrungTam, thang, nam) {
     await Promise.all(loaiHoaDons.map(async (item) => {
         let phieuThuChi = { ...phieuThuChiBase, MaTrungTam: maTrungTam, LoaiPhieu: item, NgayTao: thangNamTaoHoaDon };
         try {
-            let data = await $.ajax({
-                type: "POST",
-                url: "/Admin/PhieuThuChi/SearchCount",
-                data: { item: phieuThuChi }
-            });
+            let data = await PhieuThuChi_SearchCount(phieuThuChi);
             countLoaiHoaDons.push(data);
         } catch (error) {
             console.error(`Lỗi khi lấy dữ liệu cho loại ${item}:`, error);
@@ -551,11 +436,7 @@ async function GetOptions_DoanhThuHoaDon(maTrungTam, nam) {
     let thuPromises = listMonthYear.map(async (item) => {
         let phieuThuChi = { ...phieuThuChiBase, MaTrungTam: maTrungTam, NgayTao: item };
         try {
-            return await $.ajax({
-                type: "POST",
-                url: "/Admin/PhieuThuChi/HoaDonThuThang",
-                data: { item: phieuThuChi }
-            });
+            return await PhieuThuChi_HoaDonThuThang(phieuThuChi);
         } catch (error) {
             console.error(`Lỗi khi lấy dữ liệu thu cho tháng ${item}:`, error);
             return 0;
@@ -565,11 +446,7 @@ async function GetOptions_DoanhThuHoaDon(maTrungTam, nam) {
     let chiPromises = listMonthYear.map(async (item) => {
         let phieuThuChi = { ...phieuThuChiBase, MaTrungTam: maTrungTam, NgayTao: item };
         try {
-            return await $.ajax({
-                type: "POST",
-                url: "/Admin/PhieuThuChi/HoaDonChiThang",
-                data: { item: phieuThuChi }
-            });
+            return await PhieuThuChi_HoaDonChiThang(phieuThuChi);
         } catch (error) {
             console.error(`Lỗi khi lấy dữ liệu chi cho tháng ${item}:`, error);
             return 0;
@@ -656,18 +533,10 @@ async function GetOptions_HinhThucThanhToan(maTrungTam, thang, nam, theoluot) {
 
         try {
             if (theoluot) {
-                let data = await $.ajax({
-                    type: "POST",
-                    url: "/Admin/PhieuThuChi/SearchCount",
-                    data: { item: phieuThuChi }
-                });
+                let data = await PhieuThuChi_SearchCount(phieuThuChi);
                 return data;
             } else {
-                let data = await $.ajax({
-                    type: "POST",
-                    url: "/Admin/PhieuThuChi/SearchTongTien",
-                    data: { item: phieuThuChi }
-                });
+                let data = await PhieuThuChi_SearchTongTien(phieuThuChi);
                 return data;
             }
         } catch (error) {
@@ -758,24 +627,16 @@ async function GetOptions_DoanhThuTatCaTrungTam(nam) {
     return options;
 }
 async function fetchTrungTams() {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         let trungTams = [];
-        $.ajax({
-            type: "POST",
-            url: "/Admin/TrungTam/SearchName",
-            success: function (data) {
-                $.each(data.$values, function (index, item) {
-                    trungTams.push({
-                        maTrungTam: item.maTrungTam,
-                        tenTrungTam: item.tenTrungTam
-                    });
-                });
-                resolve(trungTams);
-            },
-            error: function (error) {
-                reject(error);
-            }
+        let dataAjax = await TrungTam_SearchName();
+        $.each(dataAjax, function (index, item) {
+            trungTams.push({
+                maTrungTam: item.maTrungTam,
+                tenTrungTam: item.tenTrungTam
+            });
         });
+        resolve(trungTams);
     });
 }
 async function GetOptions_TyLeHoaDonDaThanhToan(maTrungTam, thang, nam) {
@@ -896,11 +757,7 @@ async function GetOptions_TyLeHoaDonDaThanhToan(maTrungTam, thang, nam) {
 }
 async function fetchCount(phieuThuChi) {
     try {
-        let data = await $.ajax({
-            type: "POST",
-            url: "/Admin/PhieuThuChi/SearchCount",
-            data: { item: phieuThuChi }
-        });
+        let data = await PhieuThuChi_SearchCount(phieuThuChi);
         return data;
     } catch (error) {
         console.error("Error fetching count:", error);

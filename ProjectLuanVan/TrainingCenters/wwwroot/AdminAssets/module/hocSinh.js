@@ -73,81 +73,56 @@ function AddItem(item) {
     }
 }
 //============================== END Send Email ===============================
-function exportToExcel() {
-    var listHocSinh = [];
-    var listTrungTam = [];
-    var listLop = [];
-
-    $.ajax({
-        type: "POST",
-        url: "/Admin/HocSinh/Search",
-        async: false,
-        data: { item: hocSinh },
-        success: function (data) {
-            listHocSinh = data.$values.map(function (item) {
-                delete item.$id;
-                return {
-                    'Mã Học Sinh': item.maHocSinh,
-                    'Tên Học Sinh': item.tenHocSinh,
-                    'Ngày Sinh': item.ngaySinh,
-                    'Giới Tính': item.gioiTinh,
-                    'Mã Lớp': item.maLop,
-                    'Mã Trung Tâm': item.maTrungTam,
-                    'Thông Tin': item.thongTin,
-                    'Địa Chỉ': item.diaChi,
-                    'Chiều Cao': item.chieuCao,
-                    'Cân Nặng': item.canNang,
-                    'Tình Trạng Răng': item.tinhTrangRang,
-                    'Tình Trạng Mắt': item.tinhTrangMat,
-                    'BMI': item.bmi,
-                    'Tình Trạng Tâm Lý': item.tinhTrangTamLy,
-                    'Chức Năng Cơ Thể': item.chucNangCoThe,
-                    'Đánh Giá Sức Khỏe': item.danhGiaSucKhoe,
-                    'CCCD Cha': item.cccdcha,
-                    'CCCD Mẹ': item.cccdme,
-                    'Tên Cha': item.tenCha,
-                    'Tên Mẹ': item.tenMe,
-                    'Ngày Sinh Cha': item.ngaySinhCha,
-                    'Ngày Sinh Mẹ': item.ngaySinhMe,
-                    'Số Điện Thoại Cha': item.soDienThoaiCha,
-                    'Số Điện Thoại Mẹ': item.soDienThoaiMe,
-                    'Email Cha': item.emailCha,
-                    'Email Mẹ': item.emailMe,
-                    'Nghề Nghiệp Cha': item.ngheNghiepCha,
-                    'Nghề Nghiệp Mẹ': item.ngheNghiepMe
-                };
-            });
-        }
+async function exportToExcel() {
+    var listHocSinh = await HocSinh_SearchName(hocSinh);
+    var listTrungTam = await TrungTam_SearchName();
+    var listLop = await Lop_SearchName();
+    listHocSinh = listHocSinh.map(function (item) {
+        delete item.$id;
+        return {
+            'Mã Học Sinh': item.maHocSinh,
+            'Tên Học Sinh': item.tenHocSinh,
+            'Ngày Sinh': item.ngaySinh,
+            'Giới Tính': item.gioiTinh,
+            'Mã Lớp': item.maLop,
+            'Mã Trung Tâm': item.maTrungTam,
+            'Thông Tin': item.thongTin,
+            'Địa Chỉ': item.diaChi,
+            'Chiều Cao': item.chieuCao,
+            'Cân Nặng': item.canNang,
+            'Tình Trạng Răng': item.tinhTrangRang,
+            'Tình Trạng Mắt': item.tinhTrangMat,
+            'BMI': item.bmi,
+            'Tình Trạng Tâm Lý': item.tinhTrangTamLy,
+            'Chức Năng Cơ Thể': item.chucNangCoThe,
+            'Đánh Giá Sức Khỏe': item.danhGiaSucKhoe,
+            'CCCD Cha': item.cccdcha,
+            'CCCD Mẹ': item.cccdme,
+            'Tên Cha': item.tenCha,
+            'Tên Mẹ': item.tenMe,
+            'Ngày Sinh Cha': item.ngaySinhCha,
+            'Ngày Sinh Mẹ': item.ngaySinhMe,
+            'Số Điện Thoại Cha': item.soDienThoaiCha,
+            'Số Điện Thoại Mẹ': item.soDienThoaiMe,
+            'Email Cha': item.emailCha,
+            'Email Mẹ': item.emailMe,
+            'Nghề Nghiệp Cha': item.ngheNghiepCha,
+            'Nghề Nghiệp Mẹ': item.ngheNghiepMe
+        };
     });
-
-    $.ajax({
-        type: "POST",
-        url: "/Admin/TrungTam/SearchName",
-        async: false,
-        success: function (data) {
-            listTrungTam = data.$values.map(function (item) {
-                delete item.$id;
-                return {
-                    'Mã Trung Tâm': item.maTrungTam,
-                    'Tên Trung Tâm': item.tenTrungTam
-                };
-            });
-        }
+    listTrungTam = listTrungTam.map(function (item) {
+        delete item.$id;
+        return {
+            'Mã Trung Tâm': item.maTrungTam,
+            'Tên Trung Tâm': item.tenTrungTam
+        };
     });
-
-    $.ajax({
-        type: "POST",
-        url: "/Admin/Lop/SearchName",
-        async: false,
-        success: function (data) {
-            listLop = data.$values.map(function (item) {
-                delete item.$id;
-                return {
-                    'Mã Lớp': item.maLop,
-                    'Tên Lớp': item.tenLop
-                };
-            });
-        }
+    listLop = listLop.map(function (item) {
+        delete item.$id;
+        return {
+            'Mã Lớp': item.maLop,
+            'Tên Lớp': item.tenLop
+        };
     });
 
     var workbook = XLSX.utils.book_new();
@@ -163,11 +138,6 @@ function exportToExcel() {
 
     XLSX.writeFile(workbook, "DanhSachHocSinh.xlsx");
 }
-
-
-
-
-
 
 function isValidHocSinh(item) {
     if (CheckIsNull(item.TenHocSinh)) {
@@ -223,48 +193,26 @@ function GetHocSinhData() {
     };
 }
 
-
-function CreateHocSinh() {
+async function CreateHocSinh() {
     let item = GetHocSinhData();
     // Kiểm tra tính hợp lệ
     if (isValidHocSinh(item)) {
-        let status = false;
         item.MaHocSinh = null;
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/HocSinh/Create",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+        let status = await HocSinh_Create(item);
         return status;
     }
 }
 
-function UpdateHocSinh() {
+async function UpdateHocSinh() {
     let item = GetHocSinhData();
     // Kiểm tra tính hợp lệ
     if (isValidHocSinh(item) && !CheckIsNull(item.MaHocSinh)) {
-        let status = false;
-        // Gửi dữ liệu thông qua AJAX để cập nhật vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/HocSinh/Update",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+        let status = await HocSinh_Update(item);
         return status;
     }
 }
 
-
-function CbbTrungTam() {
+async function CbbTrungTam() {
     var trungTam = {
         MaTrungTam: null,
         TenTrungTam: null,
@@ -276,30 +224,21 @@ function CbbTrungTam() {
         NganHang: null,
         SoTaiKhoan: null,
     };
-    $.ajax({
-        type: "POST",
-        url: "/Admin/TrungTam/SearchName",
-        data: { item: trungTam },
-        success: function (data) {
-            $('#hocSinh_MaTrungTam').empty();
-            $('#hocSinh_MaTrungTam').append($('<option>', {
-                value: 0,
-                text: "Tất cả"
-            }));
-            // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-            $.each(data.$values, function (index, item) {
-                $('#hocSinh_MaTrungTam').append($('<option>', {
-                    value: item.maTrungTam,
-                    text: item.tenTrungTam
-                }));
-            });
-        }
+    let trungTams = await TrungTam_SearchName(trungTam);
+    $('#hocSinh_MaTrungTam').empty();
+    $('#hocSinh_MaTrungTam').append($('<option>', {
+        value: 0,
+        text: "Tất cả"
+    }));
+    $.each(trungTams, function (index, item) {
+        $('#hocSinh_MaTrungTam').append($('<option>', {
+            value: item.maTrungTam,
+            text: item.tenTrungTam
+        }));
     });
-
 }
 
-
-function CbbLopByMaTrungTam() {
+async function CbbLopByMaTrungTam() {
     let trungTam = $('#hocSinh_MaTrungTam').val();
     if (!CheckIsNull(trungTam)) {
         var lop = {
@@ -314,26 +253,17 @@ function CbbLopByMaTrungTam() {
             NgayBatDau: null,
             NgayKetThuc: null
         };
-
-        $.ajax({
-            type: "POST",
-            url: "/Admin/Lop/SearchName",
-            async: false,
-            data: { item: lop },
-            success: function (data) {
-                $('#hocSinh_MaLop').empty();
-                $('#hocSinh_MaLop').append($('<option>', {
-                    value: 0,
-                    text: "Tất cả"
-                }));
-                // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-                $.each(data.$values, function (index, item) {
-                    $('#hocSinh_MaLop').append($('<option>', {
-                        value: item.maLop,
-                        text: item.tenLop
-                    }));
-                });
-            }
+        let lops = await Lop_SearchName(lop);
+        $('#hocSinh_MaLop').empty();
+        $('#hocSinh_MaLop').append($('<option>', {
+            value: 0,
+            text: "Tất cả"
+        }));
+        $.each(lops, function (index, item) {
+            $('#hocSinh_MaLop').append($('<option>', {
+                value: item.maLop,
+                text: item.tenLop
+            }));
         });
     }
     else {
@@ -383,7 +313,8 @@ function deleteImage() {
     updateCarousel();
 }
 
-$(document).ready(function () {
+$(document).ready(async function () {
+    await CapNhatToken();
     //=============================== IMAGE ===================================
     // đối tượng ảnh
     var image = "";
@@ -401,10 +332,16 @@ $(document).ready(function () {
         ordering: false,
         ajax: {
             type: "POST",
-            url: "/Admin/HocSinh/LoadingDataTableView",
+            url: "/HocSinh/LoadingDataTableView",
             dataType: "json",
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            },
             data: { item: hocSinh },
-            dataSrc: 'data'
+            dataSrc: 'data',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+            }
         },
         columns: [
             {
@@ -431,6 +368,14 @@ $(document).ready(function () {
                 'line-height': '25px',
                 'padding': '0 15px'
             });
+            // Thêm sự kiện cho việc thay đổi số lượng row trên trang
+            $('#myTable').on('length.dt', function (e, settings, len) {
+                // Gọi hàm CapNhatToken() khi có sự thay đổi
+                CapNhatToken().then(() => {
+                }).catch(error => {
+                    console.error("Cập nhật token thất bại:", error);
+                });
+            });
         }
 
     });
@@ -445,7 +390,7 @@ $(document).ready(function () {
     });
 
     // Event selectItem "myTable"
-    $('#myTable tbody').on('click', 'tr', function () {
+    $('#myTable tbody').on('click', 'tr', async function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected')
         } else {
@@ -453,47 +398,37 @@ $(document).ready(function () {
             $(this).addClass('selected')
             // xử lý ở đây
             const rowId = table.row(this).data().maHocSinh;
-            // Thực hiện get giá trị của Academic với rowId
-            $.ajax({
-                type: "POST",
-                url: "/Admin/HocSinh/GetById",
-                //contentType: "application/json",
-                data: { id: rowId },
-                success: function (data) {
-
-
-                    $('#hocSinh_MaHocSinh').val(data.maHocSinh);
-                    $('#hocSinh_TenHocSinh').val(data.tenHocSinh);
-                    $('#hocSinh_NgaySinh').val(data.ngaySinh);
-                    $('#hocSinh_GioiTinh').val(data.gioiTinh);
-                    $('#hocSinh_MaTrungTam').val(data.maTrungTam);
-                    CbbLopByMaTrungTam();
-                    $('#hocSinh_MaLop').val(data.maLop);
-                    $('#hocSinh_ThongTin').val(data.thongTin);
-                    $('#hocSinh_DiaChi').val(data.diaChi);
-                    $('#hocSinh_ChieuCao').val(data.chieuCao);
-                    $('#hocSinh_CanNang').val(data.canNang);
-                    $('#hocSinh_TinhTrangRang').val(data.tinhTrangRang);
-                    $('#hocSinh_TinhTrangMat').val(data.tinhTrangMat);
-                    $('#hocSinh_Bmi').val(data.bmi);
-                    $('#hocSinh_TinhTrangTamLy').val(data.tinhTrangTamLy);
-                    $('#hocSinh_ChucNangCoThe').val(data.chucNangCoThe);
-                    $('#hocSinh_DanhGiaSucKhoe').val(data.danhGiaSucKhoe);
-                    $('#hocSinh_Cccdcha').val(data.cccdCha);
-                    $('#hocSinh_Cccdme').val(data.cccdMe);
-                    $('#hocSinh_TenCha').val(data.tenCha);
-                    $('#hocSinh_TenMe').val(data.tenMe);
-                    $('#hocSinh_NgaySinhCha').val(data.ngaySinhCha);
-                    $('#hocSinh_NgaySinhMe').val(data.ngaySinhMe);
-                    $('#hocSinh_SoDienThoaiCha').val(data.soDienThoaiCha);
-                    $('#hocSinh_SoDienThoaiMe').val(data.soDienThoaiMe);
-                    $('#hocSinh_EmailCha').val(data.emailCha);
-                    $('#hocSinh_EmailMe').val(data.emailMe);
-                    $('#hocSinh_NgheNghiepCha').val(data.ngheNghiepCha);
-                    $('#hocSinh_NgheNghiepMe').val(data.ngheNghiepMe);
-                    $('#imageShow').attr('src', data.hinhAnh);
-                }
-            });
+            let data = await HocSinh_GetById(rowId);
+            $('#hocSinh_MaHocSinh').val(data.maHocSinh);
+            $('#hocSinh_TenHocSinh').val(data.tenHocSinh);
+            $('#hocSinh_NgaySinh').val(data.ngaySinh);
+            $('#hocSinh_GioiTinh').val(data.gioiTinh);
+            $('#hocSinh_MaTrungTam').val(data.maTrungTam);
+            await CbbLopByMaTrungTam();
+            $('#hocSinh_MaLop').val(data.maLop);
+            $('#hocSinh_ThongTin').val(data.thongTin);
+            $('#hocSinh_DiaChi').val(data.diaChi);
+            $('#hocSinh_ChieuCao').val(data.chieuCao);
+            $('#hocSinh_CanNang').val(data.canNang);
+            $('#hocSinh_TinhTrangRang').val(data.tinhTrangRang);
+            $('#hocSinh_TinhTrangMat').val(data.tinhTrangMat);
+            $('#hocSinh_Bmi').val(data.bmi);
+            $('#hocSinh_TinhTrangTamLy').val(data.tinhTrangTamLy);
+            $('#hocSinh_ChucNangCoThe').val(data.chucNangCoThe);
+            $('#hocSinh_DanhGiaSucKhoe').val(data.danhGiaSucKhoe);
+            $('#hocSinh_Cccdcha').val(data.cccdCha);
+            $('#hocSinh_Cccdme').val(data.cccdMe);
+            $('#hocSinh_TenCha').val(data.tenCha);
+            $('#hocSinh_TenMe').val(data.tenMe);
+            $('#hocSinh_NgaySinhCha').val(data.ngaySinhCha);
+            $('#hocSinh_NgaySinhMe').val(data.ngaySinhMe);
+            $('#hocSinh_SoDienThoaiCha').val(data.soDienThoaiCha);
+            $('#hocSinh_SoDienThoaiMe').val(data.soDienThoaiMe);
+            $('#hocSinh_EmailCha').val(data.emailCha);
+            $('#hocSinh_EmailMe').val(data.emailMe);
+            $('#hocSinh_NgheNghiepCha').val(data.ngheNghiepCha);
+            $('#hocSinh_NgheNghiepMe').val(data.ngheNghiepMe);
+            $('#imageShow').attr('src', data.hinhAnh);
         }
     });
 
@@ -522,52 +457,38 @@ $(document).ready(function () {
         CbbLopByMaTrungTam();
     });
     // ============================================== BUTTON ===============================================
-    $('#btnCreateHocSinh').click(function () {
+    $('#btnCreateHocSinh').click(async function () {
         //If Status Create = True => Update Row Table
-        if (CreateHocSinh() == true) {
+        if (await CreateHocSinh() == true) {
             displayMessages(1, "Thêm thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/HocSinh/GetByIdTable",
-                async: false,
-                data: { id: $('#hocSinh_MaHocSinh').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await HocSinh_GetByIdTable($('#hocSinh_MaHocSinh').val());
             itemView.maHocSinh = '<input data-checkbox-id="' + itemView.maHocSinh + '" type="checkbox"/>';
             if (itemView != null) {
                 table.row.add(itemView).draw(false);
             }
         }
         else {
-            displayMessages(2, "Thêm thông tin thất bại")
+            displayMessages(3, "Thêm thông tin thất bại")
         }
     });
 
-    $('#btnUpdateHocSinh').click(function () {
+    $('#btnUpdateHocSinh').click(async function () {
         //If Status Create = True => Update Row Table
-        if (UpdateHocSinh() == true) {
+        if (await UpdateHocSinh() == true) {
             displayMessages(1, "Cập nhật thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/HocSinh/GetByIdTable",
-                async: false,
-                data: { id: $('#hocSinh_MaHocSinh').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await HocSinh_GetByIdTable($('#hocSinh_MaHocSinh').val());
             itemView.maHocSinh = '<input data-checkbox-id="' + itemView.maHocSinh + '" type="checkbox"/>';
             if (itemView != null) {
-                table.rows('.selected').remove().draw(false);
-                table.row.add(itemView).draw(false);
+                // Xóa các hàng được chọn
+                table.rows('.selected').remove();
+                // Thêm hàng mới vào table
+                table.row.add(itemView);
+                // Vẽ lại table một lần
+                table.draw(false);
             }
         }
         else {
-            displayMessages(2, "Cập nhật thông tin thất bại")
+            displayMessages(3, "Cập nhật thông tin thất bại")
         }
     });
 
@@ -583,7 +504,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnDelete').click(function () {
+    $('#btnDelete').click(async function () {
         // Tạo một mảng để lưu trữ ID của các đối tượng được chọn
         let selectedIds = [];
         // Lặp qua các checkbox để xác định đối tượng nào được chọn
@@ -593,26 +514,10 @@ $(document).ready(function () {
         });
 
         if (selectedIds.length >= 1 && $('#accountActivation').is(':checked')) {
-            let statusDelete = false;
-            // Gửi danh sách ID được chọn đến action bằng Ajax
-            $.ajax({
-                type: "POST",
-                url: "/Admin/HocSinh/Delete",
-                async: false,
-                data: { ids: selectedIds, nguoiXoa: "Nhân viên TEST" }, // Truyền danh sách ID đến action
-                success: function (data) {
-                    if (data.isSuccess == true) {
-                        displayMessages(1, "Xóa thành công");
-                        $("#DeleteModal").modal("hide");
-                        statusDelete = true;
-                    }
-                    else {
-                        statusDelete = false;
-                        displayMessages(2, "Xóa thất bại");
-                    }
-                }
-            });
+            let statusDelete = await HocSinh_Delete(selectedIds, "Nhân viên Test");
             if (statusDelete) {
+                displayMessages(1, "Xóa thành công");
+                $("#DeleteModal").modal("hide");
                 // Lặp qua từng hàng
                 table.rows().every(function () {
                     var rowData = this.data();
@@ -628,17 +533,19 @@ $(document).ready(function () {
                 // Vẽ lại DataTables sau khi xóa các hàng
                 table.draw();
             }
+            else {
+                displayMessages(3, "Xóa thất bại");
+            }
         }
     });
 
-    $('#btnResetHocSinh').click(function () {
-
+    $('#btnResetHocSinh').click(async function () {
         $('#hocSinh_MaHocSinh').val(null);
         $('#hocSinh_TenHocSinh').val(null);
         $('#hocSinh_NgaySinh').val(null);
         $('#hocSinh_GioiTinh').val(null);
         $('#hocSinh_MaTrungTam').val(null);
-        CbbLopByMaTrungTam();
+        await CbbLopByMaTrungTam();
         $('#hocSinh_MaLop').val(null);
         $('#hocSinh_ThongTin').val(null);
         $('#hocSinh_DiaChi').val(null);
@@ -665,8 +572,8 @@ $(document).ready(function () {
         $('#imageShow').attr('src', null);
     });
 
-    $('#btnSearchHocSinh').click(function () {
-
+    $('#btnSearchHocSinh').click(async function () {
+        await CapNhatToken();
         hocSinh = GetHocSinhData();
         hocSinh.HinhAnh = null;
         // Bạn có thể thêm các xử lý bổ sung ở đây nếu cần
@@ -686,7 +593,8 @@ $(document).ready(function () {
 
     // Khác==============================
 
-    $('#giaiPhongDuLieu').click(function () {
+    $('#giaiPhongDuLieu').click(async function () {
+        await CapNhatToken();
         hocSinh.MaHocSinh = 0;
         table.settings()[0].ajax.data = { item: hocSinh };
         table.ajax.reload();
@@ -698,7 +606,7 @@ $(document).ready(function () {
     $('#btnThemEmail').click(function () {
         AddItem($('#email_ThemDiaChiEmail').val());
     });
-    $('#btnSendEmail').click(function () {
+    $('#btnSendEmail').click(async  function () {
         showLoading();
         let contentEmail = $("#summernote").summernote('code');
         let subject = $("#email_TieuDe").val();
@@ -717,21 +625,14 @@ $(document).ready(function () {
                 Subject: subject,
                 Content: contentEmail,
             };
-            // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-            $.ajax({
-                type: "POST",
-                url: "/Admin/SendEmail/SendEmailText",
-                data: { message: message },
-                success: function (data) {
-                    if (data.isSuccess) {
-                        displayMessages(1, "Gửi Email Thành Công");
-                    }
-                    else {
-                        displayMessages(3, "Gửi Email Thất Bại");
-                    }
-                    hideLoading();
-                }
-            });
+            let statusSend = await SendEmailText(message);
+            if (statusSend) {
+                displayMessages(1, "Gửi Email Thành Công");
+            }
+            else {
+                displayMessages(3, "Gửi Email Thất Bại");
+            }
+            hideLoading();
         }
     });
     // Content Email
@@ -739,7 +640,7 @@ $(document).ready(function () {
     $("#summernote").summernote({
         height: 400,
     });
-    $('#btnViewSendEmail').click(function () {
+    $('#btnViewSendEmail').click(async function () {
         emails = [];
         maHocSinhs = [];
         //Get list maHocSinh có checkbox = true
@@ -756,28 +657,21 @@ $(document).ready(function () {
         if (isValidEmail($('#hocSinh_EmailMe').val()) && maHocSinhs.length <= 2) {
             emails.push($('#hocSinh_EmailMe').val());
         }
+        //Lấy thông tin email dựa vào tham số object nhanVien
+        let maHocSinhNames = await HocSinh_SearchName(hocSinh);
+        $.each(maHocSinhNames, function (index, item) {
+            $.each(maHocSinhs, function (indexMa, ma) {
+                if (item.maHocSinh === ma) {
+                    if (isValidEmail(item.emailCha)) {
+                        emails.push(item.emailCha);
 
-        //Lấy thông tin email dựa vào tham số object HocSinh
-        $.ajax({
-            type: "POST",
-            url: "/Admin/HocSinh/SearchName",
-            async: false,
-            data: { item: hocSinh },
-            success: function (data) {
-                $.each(data.$values, function (index, item) {
-                    $.each(maHocSinhs, function (indexMa, ma) {
-                        if (item.maHocSinh === ma) {
-                            if (isValidEmail(item.emailCha)) {
-                                emails.push(item.emailCha);
-                            }
-                            if (isValidEmail(item.emailMe)) {
-                                emails.push(item.emailMe);
-                                maHocSinhs.splice(indexMa, 1); // Xóa phần tử khớp từ mảng maHocSinhs
-                            }
-                        }
-                    });
-                });
-            }
+                    }
+                    if (isValidEmail(item.emailMe)) {
+                        emails.push(item.emailMe);
+                        maHocSinhs.splice(indexMa, 1); // Xóa phần tử khớp từ mảng maHocSinhs
+                    }
+                }
+            });
         });
         UpdateTableEmail();
     });

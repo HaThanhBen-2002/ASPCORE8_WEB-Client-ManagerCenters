@@ -166,7 +166,7 @@ async function SanPham_SearchCount(item) {
             await CapNhatToken();
             return await SanPham_SearchCount(item);
         }
-        return response.data.$values;
+        return response.data;
     } catch (error) {
         console.error("Lỗi Try_Ca:", error);
         throw error;

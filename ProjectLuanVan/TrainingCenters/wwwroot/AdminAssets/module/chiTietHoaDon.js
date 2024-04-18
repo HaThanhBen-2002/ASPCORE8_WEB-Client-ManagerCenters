@@ -74,7 +74,8 @@ function DeleteItem(index) {
     // Cập nhật lại bảng
     updateTable();
 }
-function CbbTrungTam() {
+
+async function CbbTrungTam() {
     var trungTam = {
         MaTrungTam: null,
         TenTrungTam: null,
@@ -86,28 +87,21 @@ function CbbTrungTam() {
         NganHang: null,
         SoTaiKhoan: null,
     };
-    $.ajax({
-        type: "POST",
-        url: "/Admin/TrungTam/SearchName",
-        data: { item: trungTam },
-        success: function (data) {
-            $('#phieuThuChi_MaTrungTam').empty();
-            $('#phieuThuChi_MaTrungTam').append($('<option>', {
-                value: 0,
-                text: "Tất cả"
-            }));
-            // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-            $.each(data.$values, function (index, item) {
-                $('#phieuThuChi_MaTrungTam').append($('<option>', {
-                    value: item.maTrungTam,
-                    text: item.tenTrungTam
-                }));
-            });
-        }
+    let trungTams = await TrungTam_SearchName(trungTam);
+    $('#phieuThuChi_MaTrungTam').empty();
+    $('#phieuThuChi_MaTrungTam').append($('<option>', {
+        value: 0,
+        text: "Tất cả"
+    }));
+    $.each(trungTams, function (index, item) {
+        $('#phieuThuChi_MaTrungTam').append($('<option>', {
+            value: item.maTrungTam,
+            text: item.tenTrungTam
+        }));
     });
-
 }
-function CbbNhaCungCapByMaTrungTam() {
+
+async function CbbNhaCungCapByMaTrungTam() {
     let trungTam = $('#phieuThuChi_MaTrungTam').val();
     if (trungTam != 0 && trungTam != null) {
 
@@ -122,26 +116,18 @@ function CbbNhaCungCapByMaTrungTam() {
             MaSoThue: null,
             MaTrungTam: trungTam
         };
-
-        $.ajax({
-            type: "POST",
-            url: "/Admin/NhaCungCap/SearchName",
-            async: false,
-            data: { item: nhaCungCap },
-            success: function (data) {
-                $('#sanPham_MaNhaCungCap').empty();
-                $('#sanPham_MaNhaCungCap').append($('<option>', {
-                    value: 0,
-                    text: "Tất cả"
-                }));
-                // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-                $.each(data.$values, function (index, item) {
-                    $('#sanPham_MaNhaCungCap').append($('<option>', {
-                        value: item.maNhaCungCap,
-                        text: item.tenNhaCungCap
-                    }));
-                });
-            }
+        let nhaCungCaps = await NhaCungCap_SearchName(nhaCungCap);
+        $('#sanPham_MaNhaCungCap').empty();
+        $('#sanPham_MaNhaCungCap').append($('<option>', {
+            value: 0,
+            text: "Tất cả"
+        }));
+        // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
+        $.each(nhaCungCaps, function (index, item) {
+            $('#sanPham_MaNhaCungCap').append($('<option>', {
+                value: item.maNhaCungCap,
+                text: item.tenNhaCungCap
+            }));
         });
     }
     else {
@@ -152,7 +138,7 @@ function CbbNhaCungCapByMaTrungTam() {
         }));
     }
 }
-function CbbNhanVienByMaTrungTam() {
+async function CbbNhanVienByMaTrungTam() {
     let trungTam = $('#phieuThuChi_MaTrungTam').val();
     if (CheckIsNull(trungTam)!=true) {
 
@@ -177,25 +163,17 @@ function CbbNhanVienByMaTrungTam() {
             DanToc: null,
             TonGiao: null
         };
-        $.ajax({
-            type: "POST",
-            url: "/Admin/NhanVien/SearchName",
-            async: false,
-            data: { item: nhanVien },
-            success: function (data) {
-                $('#lop_MaNhanVien').empty();
-                $('#lop_MaNhanVien').append($('<option>', {
-                    value: 0,
-                    text: "Tất cả"
-                }));
-                // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-                $.each(data.$values, function (index, item) {
-                    $('#lop_MaNhanVien').append($('<option>', {
-                        value: item.maNhanVien,
-                        text: item.tenNhanVien
-                    }));
-                });
-            }
+        let nhanViens = await NhanVien_SearchName(nhanVien);
+        $('#lop_MaNhanVien').empty();
+        $('#lop_MaNhanVien').append($('<option>', {
+            value: 0,
+            text: "Tất cả"
+        }));
+        $.each(nhanViens, function (index, item) {
+            $('#lop_MaNhanVien').append($('<option>', {
+                value: item.maNhanVien,
+                text: item.tenNhanVien
+            }));
         });
     }
     else {
@@ -207,7 +185,8 @@ function CbbNhanVienByMaTrungTam() {
     }
 }
 
-$(document).ready(function () {
+$(document).ready(async function () {
+    await CapNhatToken();
     let thanhToan = false;
 
     // ============================================== TABLE ===============================================
@@ -276,8 +255,8 @@ $(document).ready(function () {
         });
         updateTable();
     });
-    $("#btnSearchChiTietPhieuThuChiSanPham").click(function () {
-
+    $("#btnSearchChiTietPhieuThuChiSanPham").click(async function () {
+        await CapNhatToken();
         let sanPham = {
             MaSanPham: $('#sanPham_MaSanPham').val(),
             TenSanPham: $('#sanPham_TenSanPham').val(),
@@ -313,10 +292,16 @@ $(document).ready(function () {
             ordering: false,
             ajax: {
                 type: "POST",
-                url: "/Admin/SanPham/LoadingDataTableView",
+                url: "/SanPham/LoadingDataTableView",
                 dataType: "json",
+                headers: {
+                    "Authorization": `Bearer ${getToken()}`
+                },
                 data: { item: sanPham },
-                dataSrc: 'data'
+                dataSrc: 'data',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+                }
             },
             columns: [
                 {
@@ -340,7 +325,17 @@ $(document).ready(function () {
                         return '<input type="number" class="quantity-input w-100 rounded-1" value="1" min="1" />';
                     }
                 }
-            ]
+            ],
+            initComplete: function () {
+                // Thêm sự kiện cho việc thay đổi số lượng row trên trang
+                $('#myTableSanPham').on('length.dt', function (e, settings, len) {
+                    // Gọi hàm CapNhatToken() khi có sự thay đổi
+                    CapNhatToken().then(() => {
+                    }).catch(error => {
+                        console.error("Cập nhật token thất bại:", error);
+                    });
+                });
+            }
         });
         // Event pageChange"myTable"
         $('#myTableSanPham').on('page.dt', function () {
@@ -409,7 +404,8 @@ $(document).ready(function () {
         });
         updateTable();
     });
-    $("#btnSearchChiTietPhieuThuChiDichVu").click(function () {
+    $("#btnSearchChiTietPhieuThuChiDichVu").click(async function () {
+        await CapNhatToken();
 
         let dichVu = {
             MaDichVu: $('#dichVu_MaDichVu').val(),
@@ -431,10 +427,16 @@ $(document).ready(function () {
             ordering: false,
             ajax: {
                 type: "POST",
-                url: "/Admin/DichVu/LoadingDataTableView",
+                url: "/DichVu/LoadingDataTableView",
                 dataType: "json",
+                headers: {
+                    "Authorization": `Bearer ${getToken()}`
+                },
                 data: { item: dichVu },
-                dataSrc: 'data'
+                dataSrc: 'data',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+                }
             },
             columns: [
                 {
@@ -458,7 +460,17 @@ $(document).ready(function () {
                         return '<input type="number" class="quantity-input w-100 rounded-1" value="1" min="1" />';
                     }
                 }
-            ]
+            ],
+            initComplete: function () {
+                // Thêm sự kiện cho việc thay đổi số lượng row trên trang
+                $('#myTable').on('length.dt', function (e, settings, len) {
+                    // Gọi hàm CapNhatToken() khi có sự thay đổi
+                    CapNhatToken().then(() => {
+                    }).catch(error => {
+                        console.error("Cập nhật token thất bại:", error);
+                    });
+                });
+            }
         });
         // Event pageChange"myTable"
         $('#myTableDichVu').on('page.dt', function () {
@@ -510,7 +522,7 @@ $(document).ready(function () {
     });
 
     // Học phi
-    $("#btnResetChiTietPhieuThuChiLop").click(function () {
+    $("#btnResetChiTietPhieuThuChiLop").click(async function () {
 
         $('#lop_MaLop').val(null);
         $('#lop_TenLop').val(null);
@@ -520,7 +532,7 @@ $(document).ready(function () {
         $('#lop_ThongTin').val(null);
         $('#lop_NgayBatDau').val(null);
         $('#lop_NgayKetThuc').val(null);
-        CbbNhanVienByMaTrungTam();
+        await CbbNhanVienByMaTrungTam();
         $('#lop_MaNhanVien').val(0);
 
         $('#checkAllLop').prop('checked', false);
@@ -557,7 +569,8 @@ $(document).ready(function () {
         });
         updateTable();
     });
-    $("#btnSearchChiTietPhieuThuChiLop").click(function () {
+    $("#btnSearchChiTietPhieuThuChiLop").click(async function () {
+        await CapNhatToken();
 
         let lop = {
             MaLop: $('#lop_MaLop').val(),
@@ -589,10 +602,16 @@ $(document).ready(function () {
             ordering: false,
             ajax: {
                 type: "POST",
-                url: "/Admin/Lop/LoadingDataTableView",
+                url: "/Lop/LoadingDataTableView",
                 dataType: "json",
+                headers: {
+                    "Authorization": `Bearer ${getToken()}`
+                },
                 data: { item: lop },
-                dataSrc: 'data'
+                dataSrc: 'data',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+                }
             },
             columns: [
                 {
@@ -616,7 +635,17 @@ $(document).ready(function () {
                         return '<input type="number" class="quantity-input w-100 rounded-1" value="1" min="1" />';
                     }
                 }
-            ]
+            ],
+            initComplete: function () {
+                // Thêm sự kiện cho việc thay đổi số lượng row trên trang
+                $('#myTable').on('length.dt', function (e, settings, len) {
+                    // Gọi hàm CapNhatToken() khi có sự thay đổi
+                    CapNhatToken().then(() => {
+                    }).catch(error => {
+                        console.error("Cập nhật token thất bại:", error);
+                    });
+                });
+            }
         });
         // Event pageChange"myTable"
         $('#myTableLop').on('page.dt', function () {
@@ -644,7 +673,7 @@ $(document).ready(function () {
     });
 
     // Create Hóa Đơn
-    $("#btnCreatePhieuThuChi").click(function () {
+    $("#btnCreatePhieuThuChi").click(async function () {
         let phieuThuChi = {
             MaPhieu: null,
             NgayTao: null,
@@ -675,17 +704,7 @@ $(document).ready(function () {
                     });
                 });
                 // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-                $.ajax({
-                    type: "POST",
-                    url: "/Admin/PhieuThuChi/Create",
-                    async: false,
-                    data: { item: phieuThuChi, chiTietThuChis: listChiTietHoaDon, thanhToan: thanhToan },
-                    success: function (data) {
-                        phieuThuChi.NgayTao = data.ngayTao;
-                        phieuThuChi.CodeHoaDon = data.codeHoaDon;
-                        phieuThuChi.NgayThanhToan = data.ngayThanhToan;
-                    }
-                });
+                phieuThuChi = await PhieuThuChi_Create(phieuThuChi, listChiTietHoaDon, thanhToan);
                 if (phieuThuChi != null) {
                     
                     $('#phieuThuChi_MaCodeHoaDon').text("Mã HD: " + phieuThuChi.CodeHoaDon);
@@ -730,7 +749,7 @@ $(document).ready(function () {
                     
                 }
                 else {
-                    displayMessages(2, "Tạo hóa đơn thất bại");
+                    displayMessages(3, "Tạo hóa đơn thất bại");
 
                 }
 

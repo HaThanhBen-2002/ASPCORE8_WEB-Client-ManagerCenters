@@ -78,46 +78,7 @@ function GetNhanVienById() {
     return item;
 }
 
-function CreateNhanVien() {
-    let item = GetNhanVienById();
-    if (isValidNhanVien(item)) {
-        item.MaNhanVien = null;
-        let status = false;
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/NhanVien/Create",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
-        return status;
-    }
-}
-
-function UpdateNhanVien() {
-
-    let item = GetNhanVienById();
-
-    if (isValidNhanVien(item) && CheckIsNull(item.MaNhanVien)!=true){
-        let status = false;
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/NhanVien/Update",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
-        return status;
-    }
-}
-
-function CbbTrungTam() {
+async function CbbTrungTam() {
     var trungTam = {
         MaTrungTam: null,
         TenTrungTam: null,
@@ -129,27 +90,39 @@ function CbbTrungTam() {
         NganHang: null,
         SoTaiKhoan: null,
     };
-    $.ajax({
-        type: "POST",
-        url: "/Admin/TrungTam/SearchName",
-        data: { item: trungTam },
-        success: function (data) {
-            $('#nhanVien_MaTrungTam').empty();
-            $('#nhanVien_MaTrungTam').append($('<option>', {
-                value: 0,
-                text: "Tất cả"
-            }));
-            // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-            $.each(data.$values, function (index, item) {
-                $('#nhanVien_MaTrungTam').append($('<option>', {
-                    value: item.maTrungTam,
-                    text: item.tenTrungTam
-                }));
-            });
-        }
+    let trungTams = await TrungTam_SearchName(trungTam);
+    $('#nhanVien_MaTrungTam').empty();
+    $('#nhanVien_MaTrungTam').append($('<option>', {
+        value: 0,
+        text: "Tất cả"
+    }));
+    $.each(trungTams, function (index, item) {
+        $('#nhanVien_MaTrungTam').append($('<option>', {
+            value: item.maTrungTam,
+            text: item.tenTrungTam
+        }));
     });
-
 }
+
+async  function CreateNhanVien() {
+    let item = GetNhanVienById();
+    if (isValidNhanVien(item)) {
+        item.MaNhanVien = null;
+        let status = await NhanVien_Create(item);
+        return status;
+    }
+}
+
+async function UpdateNhanVien() {
+
+    let item = GetNhanVienById();
+
+    if (isValidNhanVien(item) && CheckIsNull(item.MaNhanVien)!=true){
+        let status = await NhanVien_Update(item);
+        return status;
+    }
+}
+
 //============================== Send Email ===============================
 function UpdateTableEmail() {
 
@@ -229,55 +202,39 @@ function deleteImage() {
     updateCarousel();
 }
 
-function exportToExcel() {
-    var listNhanVien = [];
-    var listTrungTam = [];
+async function exportToExcel() {
+    var listNhanVien = await NhanVien_SearchName(nhanVien);
+    var listTrungTam = await TrungTam_SearchName();
 
-    $.ajax({
-        type: "POST",
-        url: "/Admin/NhanVien/Search",
-        async: false,
-        data: { item: nhanVien },
-        success: function (data) {
-            listNhanVien = data.$values.map(function (item) {
-                delete item.$id;
-                return {
-                    'Mã Nhân Viên': item.maNhanVien,
-                    'Tên Nhân Viên': item.tenNhanVien,
-                    'CCCD': item.cccd,
-                    'Ngày Sinh': item.ngaySinh,
-                    'Giới Tính': item.gioiTinh,
-                    'Địa Chỉ': item.diaChi,
-                    'Số Điện Thoại': item.soDienThoai,
-                    'Email': item.email,
-                    'Thông Tin': item.thongTin,
-                    'Mã Trung Tâm': item.maTrungTam,
-                    'Mã Tài Khoản': item.maTaiKhoan,
-                    'Loại Nhân Viên': item.loaiNhanVien,
-                    'Phòng Ban': item.phongBan,
-                    'Lương': item.luong,
-                    'Tên Ngân Hàng': item.nganHang,
-                    'Số Tài Khoản': item.soTaiKhoan,
-                    'Dân Tộc': item.danToc,
-                    'Tôn Giáo': item.tonGiao
-                };
-            });
-        }
+    listNhanVien = listNhanVien.map(function (item) {
+        delete item.$id;
+        return {
+            'Mã Nhân Viên': item.maNhanVien,
+            'Tên Nhân Viên': item.tenNhanVien,
+            'CCCD': item.cccd,
+            'Ngày Sinh': item.ngaySinh,
+            'Giới Tính': item.gioiTinh,
+            'Địa Chỉ': item.diaChi,
+            'Số Điện Thoại': item.soDienThoai,
+            'Email': item.email,
+            'Thông Tin': item.thongTin,
+            'Mã Trung Tâm': item.maTrungTam,
+            'Mã Tài Khoản': item.maTaiKhoan,
+            'Loại Nhân Viên': item.loaiNhanVien,
+            'Phòng Ban': item.phongBan,
+            'Lương': item.luong,
+            'Tên Ngân Hàng': item.nganHang,
+            'Số Tài Khoản': item.soTaiKhoan,
+            'Dân Tộc': item.danToc,
+            'Tôn Giáo': item.tonGiao
+        };
     });
-
-    $.ajax({
-        type: "POST",
-        url: "/Admin/TrungTam/SearchName",
-        async: false,
-        success: function (data) {
-            listTrungTam = data.$values.map(function (item) {
-                delete item.$id;
-                return {
-                    'Mã Trung Tâm': item.maTrungTam,
-                    'Tên Trung Tâm': item.tenTrungTam
-                };
-            });
-        }
+    listTrungTam = listTrungTam.map(function (item) {
+        delete item.$id;
+        return {
+            'Mã Trung Tâm': item.maTrungTam,
+            'Tên Trung Tâm': item.tenTrungTam
+        };
     });
 
     var workbook = XLSX.utils.book_new();
@@ -291,8 +248,8 @@ function exportToExcel() {
     XLSX.writeFile(workbook, "DanhSachNhanVien.xlsx");
 }
 
-$(document).ready(function () {
-
+$(document).ready(async function () {
+    await CapNhatToken();
     
     //=============================== IMAGE ===================================
     // đối tượng ảnh
@@ -310,10 +267,16 @@ $(document).ready(function () {
         ordering: false,
         ajax: {
             type: "POST",
-            url: "/Admin/NhanVien/LoadingDataTableView",
+            url: "/NhanVien/LoadingDataTableView",
             dataType: "json",
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            },
             data: { item: nhanVien },
-            dataSrc: 'data'
+            dataSrc: 'data',
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+            }
         },
         columns: [
             {
@@ -341,6 +304,14 @@ $(document).ready(function () {
                 'line-height': '25px',
                 'padding': '0 15px'
             });
+            // Thêm sự kiện cho việc thay đổi số lượng row trên trang
+            $('#myTable').on('length.dt', function (e, settings, len) {
+                // Gọi hàm CapNhatToken() khi có sự thay đổi
+                CapNhatToken().then(() => {
+                }).catch(error => {
+                    console.error("Cập nhật token thất bại:", error);
+                });
+            });
         }
 
     });
@@ -355,7 +326,7 @@ $(document).ready(function () {
     });
 
     // Event selectItem "myTable"
-    $('#myTable tbody').on('click', 'tr', function () {
+    $('#myTable tbody').on('click', 'tr', async function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected')
         } else {
@@ -363,34 +334,26 @@ $(document).ready(function () {
             $(this).addClass('selected')
             // xử lý ở đây
             const rowId = table.row(this).data().maNhanVien;
-            // Thực hiện get giá trị của Academic với rowId
-            $.ajax({
-                type: "POST",
-                url: "/Admin/NhanVien/GetById",
-                //contentType: "application/json",
-                data: { id: rowId },
-                success: function (data) {
-                    $('#nhanVien_MaNhanVien').val(data.maNhanVien);
-                    $('#nhanVien_TenNhanVien').val(data.tenNhanVien);
-                    $('#nhanVien_Cccd').val(data.cccd);
-                    $('#nhanVien_NgaySinh').val(data.ngaySinh);
-                    $('#nhanVien_DiaChi').val(data.diaChi);
-                    $('#nhanVien_SoDienThoai').val(data.soDienThoai);
-                    $('#nhanVien_Email').val(data.email);
-                    $('#nhanVien_ThongTin').val(data.thongTin);
-                    $('#nhanVien_Luong').val(data.luong);
-                    $('#nhanVien_MaTaiKhoan').val(data.maTaiKhoan);
-                    $('#nhanVien_NganHang').val(data.nganHang);
-                    $('#nhanVien_SoTaiKhoan').val(data.soTaiKhoan);
-                    $('#nhanVien_GioiTinh').val(data.gioiTinh);
-                    $('#nhanVien_MaTrungTam').val(data.maTrungTam);
-                    $('#nhanVien_LoaiNhanVien').val(data.loaiNhanVien);
-                    $('#nhanVien_PhongBan').val(data.phongBan);
-                    $('#nhanVien_DanToc').val(data.danToc);
-                    $('#nhanVien_TonGiao').val(data.tonGiao);
-                    $('#imageShow').attr('src', data.hinhAnh);
-                }
-            });
+            let data = await NhanVien_GetById(rowId);
+            $('#nhanVien_MaNhanVien').val(data.maNhanVien);
+            $('#nhanVien_TenNhanVien').val(data.tenNhanVien);
+            $('#nhanVien_Cccd').val(data.cccd);
+            $('#nhanVien_NgaySinh').val(data.ngaySinh);
+            $('#nhanVien_DiaChi').val(data.diaChi);
+            $('#nhanVien_SoDienThoai').val(data.soDienThoai);
+            $('#nhanVien_Email').val(data.email);
+            $('#nhanVien_ThongTin').val(data.thongTin);
+            $('#nhanVien_Luong').val(data.luong);
+            $('#nhanVien_MaTaiKhoan').val(data.maTaiKhoan);
+            $('#nhanVien_NganHang').val(data.nganHang);
+            $('#nhanVien_SoTaiKhoan').val(data.soTaiKhoan);
+            $('#nhanVien_GioiTinh').val(data.gioiTinh);
+            $('#nhanVien_MaTrungTam').val(data.maTrungTam);
+            $('#nhanVien_LoaiNhanVien').val(data.loaiNhanVien);
+            $('#nhanVien_PhongBan').val(data.phongBan);
+            $('#nhanVien_DanToc').val(data.danToc);
+            $('#nhanVien_TonGiao').val(data.tonGiao);
+            $('#imageShow').attr('src', data.hinhAnh);
             
         }
     });
@@ -418,52 +381,38 @@ $(document).ready(function () {
     CbbTrungTam();
     
     // ============================================== BUTTON ===============================================
-    $('#btnCreateNhanVien').click(function () {
+    $('#btnCreateNhanVien').click(async function () {
         //If Status Create = True => Update Row Table
-        if (CreateNhanVien() == true) {
+        if (await CreateNhanVien() == true) {
             displayMessages(1, "Thêm thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/NhanVien/GetByIdTable",
-                async: false,
-                data: { id: $('#nhanVien_MaNhanVien').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await NhanVien_GetByIdTable($('#nhanVien_MaNhanVien').val());
             itemView.maNhanVien = '<input data-checkbox-id="' + itemView.maNhanVien + '" type="checkbox"/>';
             if (itemView != null) {
                 table.row.add(itemView).draw(false);
             }
         }
         else {
-            displayMessages(2, "Thêm thông tin thất bại")
+            displayMessages(3, "Thêm thông tin thất bại")
         }
     });
 
-    $('#btnUpdateNhanVien').click(function () {
+    $('#btnUpdateNhanVien').click(async function () {
         //If Status Create = True => Update Row Table
-        if (UpdateNhanVien() == true) {
+        if (await UpdateNhanVien() == true) {
             displayMessages(1, "Cập nhật thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/NhanVien/GetByIdTable",
-                async: false,
-                data: { id: $('#nhanVien_MaNhanVien').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await NhanVien_GetByIdTable($('#loSanPham_MaLoSanPham').val());
             itemView.maNhanVien = '<input data-checkbox-id="' + itemView.maNhanVien + '" type="checkbox"/>';
             if (itemView != null) {
-                table.rows('.selected').remove().draw(false);
-                table.row.add(itemView).draw(false);
+                // Xóa các hàng được chọn
+                table.rows('.selected').remove();
+                // Thêm hàng mới vào table
+                table.row.add(itemView);
+                // Vẽ lại table một lần
+                table.draw(false);
             }
         }
         else {
-            displayMessages(2, "Cập nhật thông tin thất bại")
+            displayMessages(3, "Cập nhật thông tin thất bại")
         }
     });
 
@@ -479,7 +428,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnDelete').click(function () {
+    $('#btnDelete').click(async function () {
         // Tạo một mảng để lưu trữ ID của các đối tượng được chọn
         let selectedIds = [];
         // Lặp qua các checkbox để xác định đối tượng nào được chọn
@@ -489,26 +438,10 @@ $(document).ready(function () {
         });
 
         if (selectedIds.length >= 1 && $('#accountActivation').is(':checked')) {
-            let statusDelete = false;
-            // Gửi danh sách ID được chọn đến action bằng Ajax
-            $.ajax({
-                type: "POST",
-                url: "/Admin/NhanVien/Delete",
-                async: false,
-                data: { ids: selectedIds, nguoiXoa: "Nhân viên TEST" }, // Truyền danh sách ID đến action
-                success: function (data) {
-                    if (data.isSuccess == true) {
-                        displayMessages(1, "Xóa thành công");
-                        $("#DeleteModal").modal("hide");
-                        statusDelete = true;
-                    }
-                    else {
-                        statusDelete = false;
-                        displayMessages(2, "Xóa thất bại");
-                    }
-                }
-            });
+            let statusDelete = await NhanVien_Delete(selectedIds, "Nhân viên Test");
             if (statusDelete) {
+                displayMessages(1, "Xóa thành công");
+                $("#DeleteModal").modal("hide");
                 // Lặp qua từng hàng
                 table.rows().every(function () {
                     var rowData = this.data();
@@ -523,6 +456,9 @@ $(document).ready(function () {
                 });
                 // Vẽ lại DataTables sau khi xóa các hàng
                 table.draw();
+            }
+            else {
+                displayMessages(3, "Xóa thất bại");
             }
         }
     });
@@ -549,7 +485,8 @@ $(document).ready(function () {
         $('#imageShow').attr('src', null);
     });
 
-    $('#btnSearchNhanVien').click(function () {
+    $('#btnSearchNhanVien').click(async function () {
+        await CapNhatToken();
         nhanVien = GetNhanVienById();
         nhanVien.HinhAnh = null;
         // Bạn có thể thêm các xử lý bổ sung ở đây nếu cần
@@ -594,7 +531,7 @@ $(document).ready(function () {
         AddItem($('#email_ThemDiaChiEmail').val());
         
     });
-    $('#btnSendEmail').click(function () {
+    $('#btnSendEmail').click(async function () {
         showLoading();
         let contentEmail = $("#summernote").summernote('code');
         let subject = $("#email_TieuDe").val();
@@ -613,21 +550,14 @@ $(document).ready(function () {
                 Subject: subject,
                 Content: contentEmail,
             };
-            // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-            $.ajax({
-                type: "POST",
-                url: "/Admin/SendEmail/SendEmailText",
-                data: { message: message },
-                success: function (data) {
-                    if (data.isSuccess) {
-                        displayMessages(1, "Gửi Email Thành Công");
-                    }
-                    else {
-                        displayMessages(3, "Gửi Email Thất Bại");
-                    }
-                    hideLoading();
-                }
-            });
+            let statusSend = await SendEmailText(message);
+            if (statusSend) {
+                displayMessages(1, "Gửi Email Thành Công");
+            }
+            else {
+                displayMessages(3, "Gửi Email Thất Bại");
+            }
+            hideLoading();
         }
     });
     // Content Email
@@ -635,7 +565,7 @@ $(document).ready(function () {
     $("#summernote").summernote({
         height: 400,
     });
-    $('#btnViewSendEmail').click(function () {
+    $('#btnViewSendEmail').click(async function () {
         emails = [];
         maNhanViens = [];
         //Get list maNhanVien có checkbox = true
@@ -648,23 +578,15 @@ $(document).ready(function () {
         if (isValidEmail($('#nhanVien_Email').val()) && maNhanViens.length <= 2) {
             emails.push($('#nhanVien_Email').val());
         }
-
         //Lấy thông tin email dựa vào tham số object nhanVien
-        $.ajax({
-            type: "POST",
-            url: "/Admin/NhanVien/SearchName",
-            async: false,
-            data: { item: nhanVien },
-            success: function (data) {
-                $.each(data.$values, function (index, item) {
-                    $.each(maNhanViens, function (indexMa, ma) {
-                        if (item.maNhanVien === ma) {
-                            emails.push(item.email);
-                            maNhanViens.splice(indexMa, 1); // Xóa phần tử khớp từ mảng maNhanViens
-                        }
-                    });
-                });
-            }
+        let maNhanVienNames = await NhanVien_SearchName(nhanVien);
+        $.each(maNhanVienNames, function (index, item) {
+            $.each(maNhanViens, function (indexMa, ma) {
+                if (item.maNhanVien === ma) {
+                    emails.push(item.email);
+                    maNhanViens.splice(indexMa, 1);
+                }
+            });
         });
         UpdateTableEmail();
     });

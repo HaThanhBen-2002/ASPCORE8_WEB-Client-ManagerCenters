@@ -42,7 +42,7 @@ function GetLoSanPhamById() {
     return item;
 }
 
-function CbbTrungTam() {
+async function CbbTrungTam() {
     var trungTam = {
         MaTrungTam: null,
         TenTrungTam: null,
@@ -54,29 +54,42 @@ function CbbTrungTam() {
         NganHang: null,
         SoTaiKhoan: null,
     };
-    $.ajax({
-        type: "POST",
-        url: "/Admin/TrungTam/SearchName",
-        data: { item: trungTam },
-        success: function (data) {
-            $('#loSanPham_MaTrungTam').empty();
-            $('#loSanPham_MaTrungTam').append($('<option>', {
-                value: 0,
-                text: "Tất cả"
-            }));
-            // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-            $.each(data.$values, function (index, item) {
-                $('#loSanPham_MaTrungTam').append($('<option>', {
-                    value: item.maTrungTam,
-                    text: item.tenTrungTam
-                }));
-            });
-        }
-    });
 
+    let trungTams = await TrungTam_SearchName(trungTam);
+    $('#loSanPham_MaTrungTam').empty();
+    $('#loSanPham_MaTrungTam').append($('<option>', {
+        value: 0,
+        text: "Tất cả"
+    }));
+    $.each(trungTams, function (index, item) {
+        $('#loSanPham_MaTrungTam').append($('<option>', {
+            value: item.maTrungTam,
+            text: item.tenTrungTam
+        }));
+    });
 }
 
-function CbbNhanVienByMaTrungTam() {
+async function CreateLoSanPham() {
+    let item = GetLoSanPhamById();
+    // Kiểm tra tính hợp lệ
+    if (isValidLoSanPham(item)) {
+        item.MaLoSanPham = null;
+        let status = await LoSanPham_Create(item);
+        return status;
+    }
+}
+
+async function UpdateLoSanPham() {
+
+    let item = GetLoSanPhamById();
+    // Kiểm tra tính hợp lệ
+    if (isValidLoSanPham(item) && CheckIsNull(item.MaLoSanPham) != true) {
+        let status = await LoSanPham_Update(item);
+        return status;
+    }
+}
+
+async function CbbNhanVienByMaTrungTam() {
     let trungTam = $('#loSanPham_MaTrungTam').val();
     if (trungTam != 0 && trungTam != null) {
 
@@ -101,25 +114,18 @@ function CbbNhanVienByMaTrungTam() {
             DanToc: null,
             TonGiao: null
         };
-        $.ajax({
-            type: "POST",
-            url: "/Admin/NhanVien/SearchName",
-            async: false,
-            data: { item: nhanVien },
-            success: function (data) {
-                $('#loSanPham_MaNhanVien').empty();
-                $('#loSanPham_MaNhanVien').append($('<option>', {
-                    value: 0,
-                    text: "Tất cả"
-                }));
-                // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-                $.each(data.$values, function (index, item) {
-                    $('#loSanPham_MaNhanVien').append($('<option>', {
-                        value: item.maNhanVien,
-                        text: item.tenNhanVien
-                    }));
-                });
-            }
+        let nhanViens = await NhanVien_SearchName(nhanVien);
+        $('#loSanPham_MaNhanVien').empty();
+        $('#loSanPham_MaNhanVien').append($('<option>', {
+            value: 0,
+            text: "Tất cả"
+        }));
+        // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
+        $.each(nhanViens, function (index, item) {
+            $('#loSanPham_MaNhanVien').append($('<option>', {
+                value: item.maNhanVien,
+                text: item.tenNhanVien
+            }));
         });
     }
     else {
@@ -131,7 +137,7 @@ function CbbNhanVienByMaTrungTam() {
     }
 }
 
-function CbbSanPhamByMaTrungTamByLoaiSanPham() {
+async function CbbSanPhamByMaTrungTamByLoaiSanPham() {
     let trungTam = $('#loSanPham_MaTrungTam').val();
     let loaiSanPham = $('#sanPham_LoaiSanPham').val();
     if (loaiSanPham == "Tất cả") {
@@ -149,26 +155,17 @@ function CbbSanPhamByMaTrungTamByLoaiSanPham() {
             MaTrungTam: trungTam,
             Gia: null
         };
-
-        $.ajax({
-            type: "POST",
-            url: "/Admin/SanPham/SearchName",
-            async: false,
-            data: { item: sanPham },
-            success: function (data) {
-                $('#loSanPham_MaSanPham').empty();
-                $('#loSanPham_MaSanPham').append($('<option>', {
-                    value: 0,
-                    text: "Tất cả"
-                }));
-                // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-                $.each(data.$values, function (index, item) {
-                    $('#loSanPham_MaSanPham').append($('<option>', {
-                        value: item.maSanPham,
-                        text: item.tenSanPham
-                    }));
-                });
-            }
+        let sanPhams = await SanPham_SearchName(sanPham);
+        $('#loSanPham_MaSanPham').empty();
+        $('#loSanPham_MaSanPham').append($('<option>', {
+            value: 0,
+            text: "Tất cả"
+        }));
+        $.each(sanPhams, function (index, item) {
+            $('#loSanPham_MaSanPham').append($('<option>', {
+                value: item.maSanPham,
+                text: item.tenSanPham
+            }));
         });
     }
     else {
@@ -180,47 +177,10 @@ function CbbSanPhamByMaTrungTamByLoaiSanPham() {
     }
 }
 
-function CreateLoSanPham() {
-    let item = GetLoSanPhamById();
-    // Kiểm tra tính hợp lệ
-    if (isValidLoSanPham(item)){
-        let status = false;
-        item.MaLoSanPham = null;
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/LoSanPham/Create",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
-        return status;
-    }
-}
 
-function UpdateLoSanPham() {
-    
-    let item = GetLoSanPhamById();
-    // Kiểm tra tính hợp lệ
-    if (isValidLoSanPham(item) && CheckIsNull(item.MaLoSanPham)!=true) {
-        let status = false;
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/LoSanPham/Update",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
-        return status;
-    }
-}
 
-$(document).ready(function () {
+$(document).ready(async function () {
+    await CapNhatToken();
    // ============================================== TABLE ===============================================
     var loSanPham = {
         MaLoSanPham: null,
@@ -244,10 +204,16 @@ $(document).ready(function () {
         ordering: false,
         ajax: {
             type: "POST",
-            url: "/Admin/LoSanPham/LoadingDataTableView",
+            url: "/LoSanPham/LoadingDataTableView",
             dataType: "json",
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            },
             data: { item: loSanPham },
-            dataSrc: 'data'
+            dataSrc: 'data',
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+            }
         },
         columns: [
             {
@@ -275,6 +241,14 @@ $(document).ready(function () {
                 'line-height': '25px',
                 'padding': '0 15px'
             });
+            // Thêm sự kiện cho việc thay đổi số lượng row trên trang
+            $('#myTable').on('length.dt', function (e, settings, len) {
+                // Gọi hàm CapNhatToken() khi có sự thay đổi
+                CapNhatToken().then(() => {
+                }).catch(error => {
+                    console.error("Cập nhật token thất bại:", error);
+                });
+            });
         }
 
     });
@@ -289,7 +263,7 @@ $(document).ready(function () {
     });
 
     // Event selectItem "myTable"
-    $('#myTable tbody').on('click', 'tr', function () {
+    $('#myTable tbody').on('click', 'tr', async function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected')
         } else {
@@ -297,29 +271,21 @@ $(document).ready(function () {
             $(this).addClass('selected')
             // xử lý ở đây
             const rowId = table.row(this).data().maLoSanPham;
-            // Thực hiện get giá trị của Academic với rowId
-            $.ajax({
-                type: "POST",
-                url: "/Admin/LoSanPham/GetById",
-                //contentType: "application/json",
-                data: { id: rowId },
-                success: function (data) {
-                    $('#sanPham_LoaiSanPham').val("Tất cả");
-                    $('#loSanPham_MaLoSanPham').val(data.maLoSanPham);
-                    $('#loSanPham_TenLoSanPham').val(data.tenLoSanPham);
-                    $('#loSanPham_SoLuong').val(data.soLuong);
-                    $('#loSanPham_DonVi').val(data.donVi);
-                    $('#loSanPham_NgayNhap').val(data.ngayNhap);
-                    $('#loSanPham_NgayHetHan').val(data.ngayHetHan);
-                    $('#loSanPham_GhiChu').val(data.ghiChu);
-                    $('#loSanPham_MaTrungTam').val(data.maTrungTam);
-                    CbbNhanVienByMaTrungTam();
-                    CbbSanPhamByMaTrungTamByLoaiSanPham();
-                    $('#loSanPham_MaSanPham').val(data.maSanPham);
-                    $('#loSanPham_TrangThai').val(data.trangThai);
-                    $('#loSanPham_MaNhanVien').val(data.maNhanVien);
-                }
-            });
+            let data = await LoSanPham_GetById(rowId);
+            $('#sanPham_LoaiSanPham').val("Tất cả");
+            $('#loSanPham_MaLoSanPham').val(data.maLoSanPham);
+            $('#loSanPham_TenLoSanPham').val(data.tenLoSanPham);
+            $('#loSanPham_SoLuong').val(data.soLuong);
+            $('#loSanPham_DonVi').val(data.donVi);
+            $('#loSanPham_NgayNhap').val(data.ngayNhap);
+            $('#loSanPham_NgayHetHan').val(data.ngayHetHan);
+            $('#loSanPham_GhiChu').val(data.ghiChu);
+            $('#loSanPham_MaTrungTam').val(data.maTrungTam);
+            await CbbNhanVienByMaTrungTam();
+            await CbbSanPhamByMaTrungTamByLoaiSanPham();
+            $('#loSanPham_MaSanPham').val(data.maSanPham);
+            $('#loSanPham_TrangThai').val(data.trangThai);
+            $('#loSanPham_MaNhanVien').val(data.maNhanVien);
 
         }
     });
@@ -348,60 +314,46 @@ $(document).ready(function () {
     CbbTrungTam();
     CbbNhanVienByMaTrungTam();
     CbbSanPhamByMaTrungTamByLoaiSanPham();
-    $('#loSanPham_MaTrungTam').change(function () {
+    $('#loSanPham_MaTrungTam').change(async function () {
         CbbNhanVienByMaTrungTam();
         CbbSanPhamByMaTrungTamByLoaiSanPham();
     });
-    $('#sanPham_LoaiSanPham').change(function () {
+    $('#sanPham_LoaiSanPham').change(async function () {
         CbbSanPhamByMaTrungTamByLoaiSanPham();
     });
     // ============================================== BUTTON ===============================================
-    $('#btnCreateLoSanPham').click(function () {
+    $('#btnCreateLoSanPham').click(async function () {
         //If Status Create = True => Update Row Table
-        if (CreateLoSanPham() == true) {
+        if (await CreateLoSanPham() == true) {
             displayMessages(1, "Thêm thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/LoSanPham/GetByIdTable",
-                async: false,
-                data: { id: $('#loSanPham_MaLoSanPham').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await LoSanPham_GetByIdTable($('#loSanPham_MaLoSanPham').val());
             itemView.maLoSanPham = '<input data-checkbox-id="' + itemView.maLoSanPham + '" type="checkbox"/>';
             if (itemView != null) {
                 table.row.add(itemView).draw(false);
             }
         }
         else {
-            displayMessages(2, "Thêm thông tin thất bại")
+            displayMessages(3, "Thêm thông tin thất bại")
         }
     });
 
-    $('#btnUpdateLoSanPham').click(function () {
+    $('#btnUpdateLoSanPham').click(async function () {
         //If Status Create = True => Update Row Table
-        if (UpdateLoSanPham() == true) {
+        if (await UpdateLoSanPham() == true) {
             displayMessages(1, "Cập nhật thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/LoSanPham/GetByIdTable",
-                async: false,
-                data: { id: $('#loSanPham_MaLoSanPham').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await LoSanPham_GetByIdTable($('#loSanPham_MaLoSanPham').val());
             itemView.maLoSanPham = '<input data-checkbox-id="' + itemView.maLoSanPham + '" type="checkbox"/>';
             if (itemView != null) {
-                table.rows('.selected').remove().draw(false);
-                table.row.add(itemView).draw(false);
+                // Xóa các hàng được chọn
+                table.rows('.selected').remove();
+                // Thêm hàng mới vào table
+                table.row.add(itemView);
+                // Vẽ lại table một lần
+                table.draw(false);
             }
         }
         else {
-            displayMessages(2, "Cập nhật thông tin thất bại")
+            displayMessages(3, "Cập nhật thông tin thất bại")
         }
     });
 
@@ -417,7 +369,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnDelete').click(function () {
+    $('#btnDelete').click(async function () {
         // Tạo một mảng để lưu trữ ID của các đối tượng được chọn
         let selectedIds = [];
         // Lặp qua các checkbox để xác định đối tượng nào được chọn
@@ -427,26 +379,10 @@ $(document).ready(function () {
         });
 
         if (selectedIds.length >= 1 && $('#accountActivation').is(':checked')) {
-            let statusDelete = false;
-            // Gửi danh sách ID được chọn đến action bằng Ajax
-            $.ajax({
-                type: "POST",
-                url: "/Admin/LoSanPham/Delete",
-                async: false,
-                data: { ids: selectedIds, nguoiXoa:"Nhân viên TEST" }, // Truyền danh sách ID đến action
-                success: function (data) {
-                    if (data.isSuccess == true) {
-                        displayMessages(1, "Xóa thành công");
-                        $("#DeleteModal").modal("hide");
-                        statusDelete = true;
-                    }
-                    else {
-                        statusDelete = false;
-                        displayMessages(2, "Xóa thất bại");
-                    }
-                }
-            });
+            let statusDelete = await LoSanPham_Delete(selectedIds, "Nhân viên Test");
             if (statusDelete) {
+                displayMessages(1, "Xóa thành công");
+                $("#DeleteModal").modal("hide");
                 // Lặp qua từng hàng
                 table.rows().every(function () {
                     var rowData = this.data();
@@ -461,6 +397,9 @@ $(document).ready(function () {
                 });
                 // Vẽ lại DataTables sau khi xóa các hàng
                 table.draw();
+            }
+            else {
+                displayMessages(3, "Xóa thất bại");
             }
         }
     });
@@ -483,7 +422,9 @@ $(document).ready(function () {
 
     });
 
-    $('#btnSearchLoSanPham').click(function () {
+    $('#btnSearchLoSanPham').click(async function () {
+
+        await CapNhatToken();
         loSanPham = GetLoSanPhamById();
         // Bạn có thể thêm các xử lý bổ sung ở đây nếu cần
         if (loSanPham.MaTrungTam == 0) {

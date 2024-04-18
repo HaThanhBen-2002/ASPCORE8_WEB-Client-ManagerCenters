@@ -44,46 +44,26 @@ function GetLopData() {
     };
 }
 
-function CreateLop() {
+async function CreateLop() {
     let item = GetLopData();
     // Kiểm tra tính hợp lệ
     if (isValidLop(item)) {
-        let status = false;
         item.MaLop = null;
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/Lop/Create",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+        let status = await Lop_Create(item);
         return status;
     }
 }
 
-function UpdateLop() {
+async function UpdateLop() {
     let item = GetLopData();
     // Kiểm tra tính hợp lệ
-    if (isValidLop(item) && CheckIsNull(item.MaLop)!=true) {
-        let status = false;
-        // Gửi dữ liệu thông qua AJAX để cập nhật vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/Lop/Update",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+    if (isValidLop(item) && CheckIsNull(item.MaLop) != true) {
+        let status = await Lop_Update(item);
         return status;
     }
 }
 
-function CbbTrungTam() {
+async function CbbTrungTam() {
     var trungTam = {
         MaTrungTam: null,
         TenTrungTam: null,
@@ -95,29 +75,21 @@ function CbbTrungTam() {
         NganHang: null,
         SoTaiKhoan: null,
     };
-    $.ajax({
-        type: "POST",
-        url: "/Admin/TrungTam/SearchName",
-        data: { item: trungTam },
-        success: function (data) {
-            $('#lop_MaTrungTam').empty();
-            $('#lop_MaTrungTam').append($('<option>', {
-                value: 0,
-                text: "Tất cả"
-            }));
-            // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-            $.each(data.$values, function (index, item) {
-                $('#lop_MaTrungTam').append($('<option>', {
-                    value: item.maTrungTam,
-                    text: item.tenTrungTam
-                }));
-            });
-        }
+    let trungTams = await TrungTam_SearchName(trungTam);
+    $('#lop_MaTrungTam').empty();
+    $('#lop_MaTrungTam').append($('<option>', {
+        value: 0,
+        text: "Tất cả"
+    }));
+    $.each(trungTams, function (index, item) {
+        $('#lop_MaTrungTam').append($('<option>', {
+            value: item.maTrungTam,
+            text: item.tenTrungTam
+        }));
     });
-
 }
 
-function CbbNhanVienByMaTrungTam() {
+async function CbbNhanVienByMaTrungTam() {
     let trungTam = $('#lop_MaTrungTam').val();
     if (CheckIsNull(trungTam)!=true) {
 
@@ -142,25 +114,17 @@ function CbbNhanVienByMaTrungTam() {
             DanToc: null,
             TonGiao: null
         };
-        $.ajax({
-            type: "POST",
-            url: "/Admin/NhanVien/SearchName",
-            async: false,
-            data: { item: nhanVien },
-            success: function (data) {
-                $('#lop_MaNhanVien').empty();
-                $('#lop_MaNhanVien').append($('<option>', {
-                    value: 0,
-                    text: "Tất cả"
-                }));
-                // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-                $.each(data.$values, function (index, item) {
-                    $('#lop_MaNhanVien').append($('<option>', {
-                        value: item.maNhanVien,
-                        text: item.tenNhanVien
-                    }));
-                });
-            }
+        let nhanViens = await NhanVien_SearchName(nhanVien);
+        $('#lop_MaNhanVien').empty();
+        $('#lop_MaNhanVien').append($('<option>', {
+            value: 0,
+            text: "Tất cả"
+        }));
+        $.each(nhanViens, function (index, item) {
+            $('#lop_MaNhanVien').append($('<option>', {
+                value: item.maNhanVien,
+                text: item.tenNhanVien
+            }));
         });
     }
     else {
@@ -172,7 +136,8 @@ function CbbNhanVienByMaTrungTam() {
     }
 }
 
-$(document).ready(function () {
+$(document).ready(async function () {
+    await CapNhatToken();
     // ============================================== TABLE ===============================================
     var lop = {
         MaLop: null,
@@ -195,10 +160,16 @@ $(document).ready(function () {
         ordering: false,
         ajax: {
             type: "POST",
-            url: "/Admin/Lop/LoadingDataTableView",
+            url: "/Lop/LoadingDataTableView",
             dataType: "json",
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            },
             data: { item: lop },
-            dataSrc: 'data'
+            dataSrc: 'data',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+            }
         },
         columns: [
             {
@@ -231,6 +202,14 @@ $(document).ready(function () {
                 'line-height': '25px',
                 'padding': '0 15px'
             });
+            // Thêm sự kiện cho việc thay đổi số lượng row trên trang
+            $('#myTable').on('length.dt', function (e, settings, len) {
+                // Gọi hàm CapNhatToken() khi có sự thay đổi
+                CapNhatToken().then(() => {
+                }).catch(error => {
+                    console.error("Cập nhật token thất bại:", error);
+                });
+            });
         }
 
     });
@@ -245,7 +224,7 @@ $(document).ready(function () {
     });
 
     // Event selectItem "myTable"
-    $('#myTable tbody').on('click', 'tr', function () {
+    $('#myTable tbody').on('click', 'tr', async function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected')
         } else {
@@ -253,26 +232,18 @@ $(document).ready(function () {
             $(this).addClass('selected')
             // xử lý ở đây
             const rowId = table.row(this).data().maLop;
-            // Thực hiện get giá trị của Academic với rowId
-            $.ajax({
-                type: "POST",
-                url: "/Admin/Lop/GetById",
-                //contentType: "application/json",
-                data: { id: rowId },
-                success: function (data) {
-                    $('#lop_MaLop').val(data.maLop);
-                    $('#lop_TenLop').val(data.tenLop);
-                    $('#lop_NamHoc').val(data.namHoc);
-                    $('#lop_HocPhi').val(data.hocPhi);
-                    $('#lop_LichHoc').val(data.lichHoc);
-                    $('#lop_ThongTin').val(data.thongTin);
-                    $('#lop_NgayBatDau').val(data.ngayBatDau);
-                    $('#lop_NgayKetThuc').val(data.ngayKetThuc);
-                    $('#lop_MaTrungTam').val(data.maTrungTam);
-                    CbbNhanVienByMaTrungTam();
-                    $('#lop_MaNhanVien').val(data.maNhanVien);
-                }
-            });
+            let data = await Lop_GetById(rowId);
+            $('#lop_MaLop').val(data.maLop);
+            $('#lop_TenLop').val(data.tenLop);
+            $('#lop_NamHoc').val(data.namHoc);
+            $('#lop_HocPhi').val(data.hocPhi);
+            $('#lop_LichHoc').val(data.lichHoc);
+            $('#lop_ThongTin').val(data.thongTin);
+            $('#lop_NgayBatDau').val(data.ngayBatDau);
+            $('#lop_NgayKetThuc').val(data.ngayKetThuc);
+            $('#lop_MaTrungTam').val(data.maTrungTam);
+            await CbbNhanVienByMaTrungTam();
+            $('#lop_MaNhanVien').val(data.maNhanVien);
 
         }
     });
@@ -302,52 +273,38 @@ $(document).ready(function () {
         CbbNhanVienByMaTrungTam();
     });
     // ============================================== BUTTON ===============================================
-    $('#btnCreateLop').click(function () {
+    $('#btnCreateLop').click(async function () {
         //If Status Create = True => Update Row Table
-        if (CreateLop() == true) {
+        if (await CreateLop() == true) {
             displayMessages(1, "Thêm thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/Lop/GetByIdTable",
-                async: false,
-                data: { id: $('#lop_MaLop').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await Lop_GetByIdTable($('#lop_MaLop').val());
             itemView.maLop = '<input data-checkbox-id="' + itemView.maLop + '" type="checkbox"/>';
             if (itemView != null) {
                 table.row.add(itemView).draw(false);
             }
         }
         else {
-            displayMessages(2, "Thêm thông tin thất bại")
+            displayMessages(3, "Thêm thông tin thất bại")
         }
     });
 
-    $('#btnUpdateLop').click(function () {
+    $('#btnUpdateLop').click(async function () {
         //If Status Create = True => Update Row Table
-        if (UpdateLop() == true) {
+        if (await UpdateLop() == true) {
             displayMessages(1, "Cập nhật thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/Lop/GetByIdTable",
-                async: false,
-                data: { id: $('#lop_MaLop').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await Lop_GetByIdTable($('#lop_MaLop').val());
             itemView.maLop = '<input data-checkbox-id="' + itemView.maLop + '" type="checkbox"/>';
             if (itemView != null) {
-                table.rows('.selected').remove().draw(false);
-                table.row.add(itemView).draw(false);
+                // Xóa các hàng được chọn
+                table.rows('.selected').remove();
+                // Thêm hàng mới vào table
+                table.row.add(itemView);
+                // Vẽ lại table một lần
+                table.draw(false);
             }
         }
         else {
-            displayMessages(2, "Cập nhật thông tin thất bại")
+            displayMessages(3, "Cập nhật thông tin thất bại")
         }
     });
 
@@ -363,7 +320,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnDelete').click(function () {
+    $('#btnDelete').click(async function () {
         // Tạo một mảng để lưu trữ ID của các đối tượng được chọn
         let selectedIds = [];
         // Lặp qua các checkbox để xác định đối tượng nào được chọn
@@ -373,26 +330,10 @@ $(document).ready(function () {
         });
 
         if (selectedIds.length >= 1 && $('#accountActivation').is(':checked')) {
-            let statusDelete = false;
-            // Gửi danh sách ID được chọn đến action bằng Ajax
-            $.ajax({
-                type: "POST",
-                url: "/Admin/Lop/Delete",
-                async: false,
-                data: { ids: selectedIds, nguoiXoa: "Nhân viên TEST" }, // Truyền danh sách ID đến action
-                success: function (data) {
-                    if (data.isSuccess == true) {
-                        displayMessages(1, "Xóa thành công");
-                        $("#DeleteModal").modal("hide");
-                        statusDelete = true;
-                    }
-                    else {
-                        statusDelete = false;
-                        displayMessages(2, "Xóa thất bại");
-                    }
-                }
-            });
+            let statusDelete = await Lop_Delete(selectedIds, "Nhân viên Test");
             if (statusDelete) {
+                displayMessages(1, "Xóa thành công");
+                $("#DeleteModal").modal("hide");
                 // Lặp qua từng hàng
                 table.rows().every(function () {
                     var rowData = this.data();
@@ -408,10 +349,13 @@ $(document).ready(function () {
                 // Vẽ lại DataTables sau khi xóa các hàng
                 table.draw();
             }
+            else {
+                displayMessages(3, "Xóa thất bại");
+            }
         }
     });
 
-    $('#btnResetLop').click(function () {
+    $('#btnResetLop').click(async function () {
         $('#lop_MaLop').val(null);
         $('#lop_TenLop').val(null);
         $('#lop_NamHoc').val(null);
@@ -421,12 +365,12 @@ $(document).ready(function () {
         $('#lop_NgayBatDau').val(null);
         $('#lop_NgayKetThuc').val(null);
         $('#lop_MaTrungTam').val(0);
-        CbbNhanVienByMaTrungTam();
+        await CbbNhanVienByMaTrungTam();
         $('#lop_MaNhanVien').val(0);
     });
 
-    $('#btnSearchLop').click(function () {
-
+    $('#btnSearchLop').click(async function () {
+        await CapNhatToken();
         lop = GetLopById();
         if (lop.MaNhanVien == 0) {
             lop.MaNhanVien = null;

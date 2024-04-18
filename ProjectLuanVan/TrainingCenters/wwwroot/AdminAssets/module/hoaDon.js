@@ -2,7 +2,7 @@
 let trangThaiThanhToan = false;
 
 
-function PrintHoaDon(maPhieu) {
+async function PrintHoaDon(maPhieu) {
     let phieuThuChi = {
         MaPhieu: null,
         NgayTao: null,
@@ -17,41 +17,27 @@ function PrintHoaDon(maPhieu) {
         MaNhanVien: null
     };
     if (maPhieu > 0) {
-        $.ajax({
-            type: "POST",
-            url: "/Admin/PhieuThuChi/GetById",
-            async: false,
-            data: { id: maPhieu },
-            success: function (data) {
-                phieuThuChi.MaPhieu = data.maPhieu;
-                phieuThuChi.NgayTao = data.ngayTao;
-                phieuThuChi.CodeHoaDon = data.codeHoaDon;
-                phieuThuChi.NgayThanhToan = data.ngayThanhToan;
-                phieuThuChi.LoaiPhieu = data.loaiPhieu;
-                phieuThuChi.TongTien = data.tongTien;
-                phieuThuChi.MaTrungTam = data.maTrungTam;
-                phieuThuChi.TrangThai = data.trangThai;
-                phieuThuChi.HinhThucThanhToan = data.hinhThucThanhToan;
-                phieuThuChi.MaNhanVien = data.maNhanVien;
-            }
-        });
+        let dataPTC = await PhieuThuChi_GetById(maPhieu);
+        phieuThuChi.MaPhieu = dataPTC.maPhieu;
+        phieuThuChi.NgayTao = dataPTC.ngayTao;
+        phieuThuChi.CodeHoaDon = dataPTC.codeHoaDon;
+        phieuThuChi.NgayThanhToan = dataPTC.ngayThanhToan;
+        phieuThuChi.LoaiPhieu = dataPTC.loaiPhieu;
+        phieuThuChi.TongTien = dataPTC.tongTien;
+        phieuThuChi.MaTrungTam = dataPTC.maTrungTam;
+        phieuThuChi.TrangThai = dataPTC.trangThai;
+        phieuThuChi.HinhThucThanhToan = dataPTC.hinhThucThanhToan;
+        phieuThuChi.MaNhanVien = dataPTC.maNhanVien;
         var selectedItems = [];
-        $.ajax({
-            type: "POST",
-            url: "/Admin/ChiTietThuChi/SearchByPhieuThuChiId",
-            async: false,
-            data: { id: maPhieu },
-            success: function (data) {
-                data.$values.forEach(function (item) {
-                    selectedItems.push({
-                        ten: item.tenChiTiet,
-                        gia: formatToVND(item.tongTien / item.soLuong),
-                        soLuong: item.soLuong,
-                        donViTinh: item.donVi,
-                        tongGia: formatToVND(item.tongTien)
-                    });
-                });
-            }
+        let dataPTCSearch = await ChiTietThuChi_SearchByPhieuThuChiId(maPhieu);
+        $.each(dataPTCSearch, function (index, item) {
+            selectedItems.push({
+                ten: item.tenChiTiet,
+                gia: formatToVND(item.tongTien / item.soLuong),
+                soLuong: item.soLuong,
+                donViTinh: item.donVi,
+                tongGia: formatToVND(item.tongTien)
+            });
         });
         if (selectedItems != null && phieuThuChi != null) {
             $('#phieuThuChi_MaCodeHoaDon').text("Mã HD: " + phieuThuChi.CodeHoaDon);
@@ -83,24 +69,17 @@ function PrintHoaDon(maPhieu) {
     }
 }
 
-function GetTrungTamById(id) {
+async function GetTrungTamById(id) {
     let tenTrungTam = "";
     // Kiểm tra tính hợp lệ
     if (id != null) {
-        $.ajax({
-            type: "POST",
-            url: "/Admin/TrungTam/GetById",
-            async: false,
-            data: { id: id },
-            success: function (data) {
-                tenTrungTam = data.tenTrungTam;
-            }
-        });
+        let trungTam1 = await TrungTam_GetById(id);
+        tenTrungTam = trungTam1.tenTrungTam;
     }
     return tenTrungTam;
 }
 
-function ViewHoaDon(maPhieu) {
+async function ViewHoaDon(maPhieu) {
     updateThanhToan = maPhieu;
     $('#updateHoaDon').hide();
     $('#prinHoaDon').show();
@@ -118,41 +97,27 @@ function ViewHoaDon(maPhieu) {
         MaNhanVien: null
     };
     if (maPhieu > 0) {
-        $.ajax({
-            type: "POST",
-            url: "/Admin/PhieuThuChi/GetById",
-            async: false,
-            data: { id: maPhieu },
-            success: function (data) {
-                phieuThuChi.MaPhieu = data.maPhieu;
-                phieuThuChi.NgayTao = data.ngayTao;
-                phieuThuChi.CodeHoaDon = data.codeHoaDon;
-                phieuThuChi.NgayThanhToan = data.ngayThanhToan;
-                phieuThuChi.LoaiPhieu = data.loaiPhieu;
-                phieuThuChi.TongTien = data.tongTien;
-                phieuThuChi.MaTrungTam = data.maTrungTam;
-                phieuThuChi.TrangThai = data.trangThai;
-                phieuThuChi.HinhThucThanhToan = data.hinhThucThanhToan;
-                phieuThuChi.MaNhanVien = data.maNhanVien;
-            }
-        });
+        let dataPT = await PhieuThuChi_GetById(maPhieu);
+        phieuThuChi.MaPhieu = dataPT.maPhieu;
+        phieuThuChi.NgayTao = dataPT.ngayTao;
+        phieuThuChi.CodeHoaDon = dataPT.codeHoaDon;
+        phieuThuChi.NgayThanhToan = dataPT.ngayThanhToan;
+        phieuThuChi.LoaiPhieu = dataPT.loaiPhieu;
+        phieuThuChi.TongTien = dataPT.tongTien;
+        phieuThuChi.MaTrungTam = dataPT.maTrungTam;
+        phieuThuChi.TrangThai = dataPT.trangThai;
+        phieuThuChi.HinhThucThanhToan = dataPT.hinhThucThanhToan;
+        phieuThuChi.MaNhanVien = dataPT.maNhanVien;
         var selectedItems = [];
-        $.ajax({
-            type: "POST",
-            url: "/Admin/ChiTietThuChi/SearchByPhieuThuChiId",
-            async: false,
-            data: { id: maPhieu },
-            success: function (data) {
-                data.$values.forEach(function (item) {
-                    selectedItems.push({
-                        ten: item.tenChiTiet,
-                        gia: formatToVND(item.tongTien / item.soLuong),
-                        soLuong: item.soLuong,
-                        donViTinh: item.donVi,
-                        tongGia: formatToVND(item.tongTien)
-                    });
-                });
-            }
+        let datas = await ChiTietThuChi_SearchByPhieuThuChiId(maPhieu);
+        datas.forEach(function (item) {
+            selectedItems.push({
+                ten: item.tenChiTiet,
+                gia: formatToVND(item.tongTien / item.soLuong),
+                soLuong: item.soLuong,
+                donViTinh: item.donVi,
+                tongGia: formatToVND(item.tongTien)
+            });
         });
         if (selectedItems != null && phieuThuChi != null) {
             if (CheckIsNull(phieuThuChi.NgayThanhToan)) {
@@ -165,7 +130,7 @@ function ViewHoaDon(maPhieu) {
             $('#phieuThuChi_NgayTao').text("Ngày tạo: " + phieuThuChi.NgayTao);
             $('#phieuThuChi_NgayThanhToan').text("Ngày thanh toán: " + phieuThuChi.NgayThanhToan);
             $('#phieuThuChiTongTien').text(formatToVND(phieuThuChi.TongTien));
-            $('#phieuThuChi_TrungTam').text("Trung tâm:  " + GetTrungTamById(phieuThuChi.MaTrungTam));
+            $('#phieuThuChi_TrungTam').text("Trung tâm:  " + await GetTrungTamById(phieuThuChi.MaTrungTam));
             $('#phieuThuChi_LoaiPhieu').text("Loại hóa đơn: " + phieuThuChi.LoaiPhieu);
             $('#phieuThuChi_GhiChu').text(phieuThuChi.GhiChu);
             $('#phieuThuChi_HinhThucThanhToan').text("Hình thức thanh toán: " + phieuThuChi.HinhThucThanhToan);
@@ -187,33 +152,17 @@ function ViewHoaDon(maPhieu) {
     }
 }
 
-function UpdateThanhToan(id) {
+async function UpdateThanhToan(id) {
     let table = $('#myTable').DataTable();
     let status = false;
     // Kiểm tra tính hợp lệ
     if (id != null) {
-        $.ajax({
-            type: "POST",
-            url: "/Admin/PhieuThuChi/UpdateThanhToan",
-            async: false,
-            data: { id: id },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+        let statusUpdate = await PhieuThuChi_UpdateThanhToan(id);
+        status = statusUpdate;
     }
     if (status) {
         displayMessages(1, "Cập nhật thanh toán thành công");
-        let itemView;
-        $.ajax({
-            type: "POST",
-            url: "/Admin/PhieuThuChi/GetByIdTable",
-            async: false,
-            data: { id: id },
-            success: function (data) {
-                itemView = data;
-            }
-        });
+        let itemView = await PhieuThuChi_GetByIdTable(id);
         itemView.maPhieu = '<input data-checkbox-id="' + itemView.maPhieu + '" type="checkbox"/>';
         if (itemView != null) {
             table.rows('.selected').remove().draw(false);
@@ -236,7 +185,8 @@ function EditHoaDon(maPhieu) {
 
 
 
-$(document).ready(function () {
+$(document).ready(async function () {
+    await CapNhatToken();
     // ============================================== TABLE ===============================================
     let phieuThuChi = {
         MaPhieu: null,
@@ -260,10 +210,16 @@ $(document).ready(function () {
         ordering: false,
         ajax: {
             type: "POST",
-            url: "/Admin/PhieuThuChi/LoadingDataTableView",
+            url: "/PhieuThuChi/LoadingDataTableView",
             dataType: "json",
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            },
             data: { item: phieuThuChi },
-            dataSrc: 'data'
+            dataSrc: 'data',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+            }
         },
         columns: [
             {
@@ -288,9 +244,6 @@ $(document).ready(function () {
                     return '<button onclick="ViewHoaDon(' + data + ')" class="btn btn-xs btn-secondary px-1"><i class="bx bx-show"></i></button> <button onclick="PrintHoaDon(' + data + ')" class="btn btn-xs btn-secondary px-1"><i class="bx bxs-printer"></i></button> <button onclick="EditHoaDon(' + data + ')" class="btn btn-xs btn-secondary px-1"><i class="bx bxs-message-square-edit"></i></button>';
                 }
             },
-
-
-
         ],
         layout: {
             topEnd: {
@@ -304,6 +257,14 @@ $(document).ready(function () {
                 'height': '25px',
                 'line-height': '25px',
                 'padding': '0 15px'
+            });
+            // Thêm sự kiện cho việc thay đổi số lượng row trên trang
+            $('#myTable').on('length.dt', function (e, settings, len) {
+                // Gọi hàm CapNhatToken() khi có sự thay đổi
+                CapNhatToken().then(() => {
+                }).catch(error => {
+                    console.error("Cập nhật token thất bại:", error);
+                });
             });
         }
 
@@ -340,67 +301,55 @@ $(document).ready(function () {
 
     // ============================================== BUTTON ===============================================
 
-    $('#btnDeletePhieuThuChi').click(function () {
-        let selectedIds = [];
-        // Lặp qua các checkbox để xác định đối tượng nào được chọn
-        $('input[type="checkbox"]:checked').each(function () {
-            let checkboxId = $(this).data("checkbox-id");
-            selectedIds.push(parseInt(checkboxId));
-        });
-        if (selectedIds.length >= 1 && selectedIds != null) {
-            $("#DeleteModal").modal("show");
-        }
-    });
+    //$('#btnDeletePhieuThuChi').click(function () {
+    //    let selectedIds = [];
+    //    // Lặp qua các checkbox để xác định đối tượng nào được chọn
+    //    $('input[type="checkbox"]:checked').each(function () {
+    //        let checkboxId = $(this).data("checkbox-id");
+    //        selectedIds.push(parseInt(checkboxId));
+    //    });
+    //    if (selectedIds.length >= 1 && selectedIds != null) {
+    //        $("#DeleteModal").modal("show");
+    //    }
+    //});
 
-    $('#btnDelete').click(function () {
-        // Tạo một mảng để lưu trữ ID của các đối tượng được chọn
-        let selectedIds = [];
-        // Lặp qua các checkbox để xác định đối tượng nào được chọn
-        $('input[type="checkbox"]:checked').each(function () {
-            let checkboxId = $(this).data("checkbox-id");
-            selectedIds.push(parseInt(checkboxId));
-        });
+    //$('#btnDelete').click(async function () {
+    //    // Tạo một mảng để lưu trữ ID của các đối tượng được chọn
+    //    let selectedIds = [];
+    //    // Lặp qua các checkbox để xác định đối tượng nào được chọn
+    //    $('input[type="checkbox"]:checked').each(function () {
+    //        let checkboxId = $(this).data("checkbox-id");
+    //        selectedIds.push(parseInt(checkboxId));
+    //    });
 
-        if (selectedIds.length >= 1 && $('#accountActivation').is(':checked')) {
-            let statusDelete = false;
-            // Gửi danh sách ID được chọn đến action bằng Ajax
-            $.ajax({
-                type: "POST",
-                url: "/Admin/PhieuThuChi/Delete",
-                async: false,
-                data: { ids: selectedIds, nguoiXoa: "Nhân viên TEST" }, // Truyền danh sách ID đến action
-                success: function (data) {
-                    if (data.isSuccess == true) {
-                        displayMessages(1, "Xóa thành công");
-                        $("#DeleteModal").modal("hide");
-                        statusDelete = true;
-                    }
-                    else {
-                        statusDelete = false;
-                        displayMessages(2, "Xóa thất bại");
-                    }
-                }
-            });
-            if (statusDelete) {
-                // Lặp qua từng hàng
-                table.rows().every(function () {
-                    var rowData = this.data();
-                    // Kiểm tra xem rowData có tồn tại không trước khi truy cập thuộc tính
-                    if (rowData && rowData.maPhieuThuChi) {
-                        var checkbox = $('input[data-checkbox-id="' + rowData.maPhieuThuChi + '"]');
-                        if (checkbox.prop('checked')) {
-                            // Xóa hàng nếu checkbox được kiểm tra
-                            this.remove();
-                        }
-                    }
-                });
-                // Vẽ lại DataTables sau khi xóa các hàng
-                table.draw();
-            }
-        }
-    });
+    //    if (selectedIds.length >= 1 && $('#accountActivation').is(':checked')) {
+    //        let statusDelete = await PhieuThuChi_Delete(selectedIds,"Nhân viên Test");
+    //        if (statusDelete) {
+    //            displayMessages(1, "Xóa thành công");
+    //            $("#DeleteModal").modal("hide");
+    //            // Lặp qua từng hàng
+    //            table.rows().every(function () {
+    //                var rowData = this.data();
+    //                // Kiểm tra xem rowData có tồn tại không trước khi truy cập thuộc tính
+    //                if (rowData && rowData.maPhieuThuChi) {
+    //                    var checkbox = $('input[data-checkbox-id="' + rowData.maPhieuThuChi + '"]');
+    //                    if (checkbox.prop('checked')) {
+    //                        // Xóa hàng nếu checkbox được kiểm tra
+    //                        this.remove();
+    //                    }
+    //                }
+    //            });
+    //            // Vẽ lại DataTables sau khi xóa các hàng
+    //            table.draw();
+    //        }
+    //        else {
+    //            displayMessages(3, "Xóa thất bại");
+    //        }
+    //    }
+    //});
 
-    $('#btnPhieuThuChi_TimKiem').click(function () {
+    $('#btnPhieuThuChi_TimKiem').click(async function () {
+        await CapNhatToken();
         var loaiHoaDonValues = $('#loaiHoaDonForm input:checked').map(function () {
             return $(this).val();
         }).get();
@@ -451,7 +400,6 @@ $(document).ready(function () {
     $('input[type="checkbox"]').change(function () {
         var groupName = $(this).attr('name');
         var checkedBox = $(this);
-
         $('input[name="' + groupName + '"]').not(checkedBox).prop('checked', false);
     });
 });

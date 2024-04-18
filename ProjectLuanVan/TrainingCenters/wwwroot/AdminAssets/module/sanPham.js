@@ -251,8 +251,8 @@ $(document).ready(async function () {
     });
 
     // ============================================== CBB ===============================================
-    await CbbTrungTam();
-    await CbbNhaCungCapByMaTrungTam();
+    CbbTrungTam();
+    CbbNhaCungCapByMaTrungTam();
     $('#sanPham_MaTrungTam').change(async function () {
         await CbbNhaCungCapByMaTrungTam();
     });

@@ -45,8 +45,7 @@ function GetKetQuaById() {
     };
 }
 
-
-function CbbTrungTam() {
+async function CbbTrungTam() {
     var trungTam = {
         MaTrungTam: null,
         TenTrungTam: null,
@@ -58,58 +57,43 @@ function CbbTrungTam() {
         NganHang: null,
         SoTaiKhoan: null,
     };
-    $.ajax({
-        type: "POST",
-        url: "/Admin/TrungTam/SearchName",
-        data: { item: trungTam },
-        success: function (data) {
-            $('#ketQua_MaTrungTam').empty();
-            $('#ketQua_MaTrungTam').append($('<option>', {
-                value: 0,
-                text: "Tất cả"
-            }));
-            // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-            $.each(data.$values, function (index, item) {
-                $('#ketQua_MaTrungTam').append($('<option>', {
-                    value: item.maTrungTam,
-                    text: item.tenTrungTam
-                }));
-            });
-        }
+    let trungTams = await TrungTam_SearchName(trungTam);
+    $('#ketQua_MaTrungTam').empty();
+    $('#ketQua_MaTrungTam').append($('<option>', {
+        value: 0,
+        text: "Tất cả"
+    }));
+    $.each(trungTams, function (index, item) {
+        $('#ketQua_MaTrungTam').append($('<option>', {
+            value: item.maTrungTam,
+            text: item.tenTrungTam
+        }));
     });
-
 }
 
-function CbbMonHoc() {
+async function CbbMonHoc() {
     let monHoc = {
         MaMonHoc: null,
         TenMonHoc: null,
         Gia: null,
         ThongTin: null
     };
-    $.ajax({
-        type: "POST",
-        url: "/Admin/MonHoc/SearchName",
-        data: { item: monHoc },
-        success: function (data) {
-            $('#ketQua_MaMonHoc').empty();
-            $('#ketQua_MaMonHoc').append($('<option>', {
-                value: 0,
-                text: "Tất cả"
-            }));
-            // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-            $.each(data.$values, function (index, item) {
-                $('#ketQua_MaMonHoc').append($('<option>', {
-                    value: item.maMonHoc,
-                    text: item.tenMonHoc
-                }));
-            });
-        }
+    let monHocs = await MonHoc_SearchName(monHoc);
+    $('#ketQua_MaMonHoc').empty();
+    $('#ketQua_MaMonHoc').append($('<option>', {
+        value: 0,
+        text: "Tất cả"
+    }));
+    $.each(monHocs, function (index, item) {
+        $('#ketQua_MaMonHoc').append($('<option>', {
+            value: item.maMonHoc,
+            text: item.tenMonHoc
+        }));
     });
 
 }
 
-function CbbNhanVienByMaTrungTam() {
+async function CbbNhanVienByMaTrungTam() {
     let trungTam = $('#ketQua_MaTrungTam').val();
     if (CheckIsNull(trungTam) != true) {
 
@@ -134,25 +118,17 @@ function CbbNhanVienByMaTrungTam() {
             DanToc: null,
             TonGiao: null
         };
-        $.ajax({
-            type: "POST",
-            url: "/Admin/NhanVien/SearchName",
-            async: false,
-            data: { item: nhanVien },
-            success: function (data) {
-                $('#ketQua_MaNhanVien').empty();
-                $('#ketQua_MaNhanVien').append($('<option>', {
-                    value: 0,
-                    text: "Tất cả"
-                }));
-                // Duyệt qua mảng data.$values và thêm option cho mỗi phần tử
-                $.each(data.$values, function (index, item) {
-                    $('#ketQua_MaNhanVien').append($('<option>', {
-                        value: item.maNhanVien,
-                        text: item.tenNhanVien
-                    }));
-                });
-            }
+        let nhanViens = await NhanVien_SearchName(nhanVien);
+        $('#ketQua_MaNhanVien').empty();
+        $('#ketQua_MaNhanVien').append($('<option>', {
+            value: 0,
+            text: "Tất cả"
+        }));
+        $.each(nhanViens, function (index, item) {
+            $('#ketQua_MaNhanVien').append($('<option>', {
+                value: item.maNhanVien,
+                text: item.tenNhanVien
+            }));
         });
     }
     else {
@@ -164,7 +140,7 @@ function CbbNhanVienByMaTrungTam() {
     }
 }
 
-function SearchNameHocSinh() {
+async function SearchNameHocSinh() {
     $('#ketQua_TenHocSinh').val(null);
     let trungTam = $('#ketQua_MaTrungTam').val();
     let maHocSinh = $('#ketQua_MaHocSinh').val();
@@ -200,15 +176,9 @@ function SearchNameHocSinh() {
             NgheNghiepCha: null,
             NgheNghiepMe: null
         };
-        $.ajax({
-            type: "POST",
-            url: "/Admin/HocSinh/SearchName",
-            data: { item: hocSinh },
-            success: function (data) {
-                $.each(data.$values, function (index, item) {
-                    $('#ketQua_TenHocSinh').val(item.tenHocSinh);
-                });
-            }
+        let hocSinhs = await HocSinh_SearchName(hocSinh);
+        $.each(hocSinhs, function (index, item) {
+            $('#ketQua_TenHocSinh').val(item.tenHocSinh);
         });
     }
     if (CheckIsNull(trungTam)) {
@@ -216,46 +186,27 @@ function SearchNameHocSinh() {
     }
 }
 
-function CreateKetQua() {
+async function CreateKetQua() {
     let item = GetKetQuaById();
     // Kiểm tra tính hợp lệ
     if (isValidKetQua(item)) {
         item.MaKetQua = null;
-        let status = false;
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/KetQua/Create",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+        let status = await KetQua_Create(item);
         return status;
     }
 }
 
-function UpdateKetQua() {
+async function UpdateKetQua() {
     let item = GetKetQuaById();
     // Kiểm tra tính hợp lệ
-    if (isValidKetQua(item)&& CheckIsNull(item.MaKetQua)!=true){
-        let status = false;
-        // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
-        $.ajax({
-            type: "POST",
-            url: "/Admin/KetQua/Update",
-            async: false,
-            data: { item: item },
-            success: function (data) {
-                status = data.isSuccess;
-            }
-        });
+    if (isValidKetQua(item) && CheckIsNull(item.MaKetQua) != true) {
+        let status = await KetQua_Update(item);
         return status;
     }
 }
 
-$(document).ready(function () {
+$(document).ready(async function () {
+    await CapNhatToken();
    // ============================================== TABLE ===============================================
     let ketQua = {
         MaKetQua: null,
@@ -278,10 +229,16 @@ $(document).ready(function () {
         ordering: false,
         ajax: {
             type: "POST",
-            url: "/Admin/KetQua/LoadingDataTableView",
+            url: "/KetQua/LoadingDataTableView",
             dataType: "json",
+            headers: {
+                "Authorization": `Bearer ${getToken()}`
+            },
             data: { item: ketQua },
-            dataSrc: 'data'
+            dataSrc: 'data',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
+            }
         },
         columns: [
             {
@@ -308,6 +265,14 @@ $(document).ready(function () {
                 'line-height': '25px',
                 'padding': '0 15px'
             });
+            // Thêm sự kiện cho việc thay đổi số lượng row trên trang
+            $('#myTable').on('length.dt', function (e, settings, len) {
+                // Gọi hàm CapNhatToken() khi có sự thay đổi
+                CapNhatToken().then(() => {
+                }).catch(error => {
+                    console.error("Cập nhật token thất bại:", error);
+                });
+            });
         }
     });
 
@@ -321,7 +286,7 @@ $(document).ready(function () {
     });
 
     // Event selectItem "myTable"
-    $('#myTable tbody').on('click', 'tr', function () {
+    $('#myTable tbody').on('click', 'tr', async function () {
         if ($(this).hasClass('selected')) {
             $(this).removeClass('selected')
         } else {
@@ -329,28 +294,19 @@ $(document).ready(function () {
             $(this).addClass('selected')
             // xử lý ở đây
             const rowId = table.row(this).data().maKetQua;
-            // Thực hiện get giá trị của Academic với rowId
-            $.ajax({
-                type: "POST",
-                url: "/Admin/KetQua/GetById",
-                //contentType: "application/json",
-                data: { id: rowId },
-                success: function (data) {
-
-                    $('#ketQua_MaKetQua').val(data.maKetQua);
-                    $('#ketQua_TenKetQua').val(data.tenKetQua);
-                    $('#ketQua_MaTrungTam').val(data.maTrungTam);
-                    $('#ketQua_MaHocSinh').val(data.maHocSinh);
-                    $('#ketQua_Diem').val(data.diem);
-                    $('#ketQua_XepLoai').val(data.xepLoai);
-                    $('#ketQua_NgayKiemTra').val(data.ngayKiemTra);
-                    $('#ketQua_TrangThai').val(data.trangThai);
-                    $('#ketQua_MaMonHoc').val(data.maMonHoc);
-                    SearchNameHocSinh();
-                    CbbNhanVienByMaTrungTam();
-                    $('#ketQua_MaNhanVien').val(data.maNhanVien);
-                }
-            });
+            let data = await KetQua_GetById(rowId);
+            $('#ketQua_MaKetQua').val(data.maKetQua);
+            $('#ketQua_TenKetQua').val(data.tenKetQua);
+            $('#ketQua_MaTrungTam').val(data.maTrungTam);
+            $('#ketQua_MaHocSinh').val(data.maHocSinh);
+            $('#ketQua_Diem').val(data.diem);
+            $('#ketQua_XepLoai').val(data.xepLoai);
+            $('#ketQua_NgayKiemTra').val(data.ngayKiemTra);
+            $('#ketQua_TrangThai').val(data.trangThai);
+            $('#ketQua_MaMonHoc').val(data.maMonHoc);
+            await SearchNameHocSinh();
+            await CbbNhanVienByMaTrungTam();
+            $('#ketQua_MaNhanVien').val(data.maNhanVien);
 
         }
     });
@@ -387,52 +343,38 @@ $(document).ready(function () {
         SearchNameHocSinh();
     });
     // ============================================== BUTTON ===============================================
-    $('#btnCreateKetQua').click(function () {
+    $('#btnCreateKetQua').click(async function () {
         //If Status Create = True => Update Row Table
-        if (CreateKetQua() == true) {
+        if (await CreateKetQua() == true) {
             displayMessages(1, "Thêm thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/KetQua/GetByIdTable",
-                async: false,
-                data: { id: $('#ketQua_MaKetQua').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await KetQua_GetByIdTable($('#ketQua_MaKetQua').val());
             itemView.maKetQua = '<input data-checkbox-id="' + itemView.maKetQua + '" type="checkbox"/>';
             if (itemView != null) {
                 table.row.add(itemView).draw(false);
             }
         }
         else {
-            displayMessages(2, "Thêm thông tin thất bại")
+            displayMessages(3, "Thêm thông tin thất bại")
         }
     });
 
-    $('#btnUpdateKetQua').click(function () {
+    $('#btnUpdateKetQua').click(async function () {
         //If Status Create = True => Update Row Table
-        if (UpdateKetQua() == true) {
+        if (await UpdateKetQua() == true) {
             displayMessages(1, "Cập nhật thông tin thành công");
-            let itemView;
-            $.ajax({
-                type: "POST",
-                url: "/Admin/KetQua/GetByIdTable",
-                async: false,
-                data: { id: $('#ketQua_MaKetQua').val() },
-                success: function (data) {
-                    itemView = data;
-                }
-            });
+            let itemView = await KetQua_GetByIdTable($('#ketQua_MaKetQua').val());
             itemView.maKetQua = '<input data-checkbox-id="' + itemView.maKetQua + '" type="checkbox"/>';
             if (itemView != null) {
-                table.rows('.selected').remove().draw(false);
-                table.row.add(itemView).draw(false);
+                // Xóa các hàng được chọn
+                table.rows('.selected').remove();
+                // Thêm hàng mới vào table
+                table.row.add(itemView);
+                // Vẽ lại table một lần
+                table.draw(false);
             }
         }
         else {
-            displayMessages(2, "Cập nhật thông tin thất bại")
+            displayMessages(3, "Cập nhật thông tin thất bại")
         }
     });
 
@@ -448,7 +390,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#btnDelete').click(function () {
+    $('#btnDelete').click(async function () {
         // Tạo một mảng để lưu trữ ID của các đối tượng được chọn
         let selectedIds = [];
         // Lặp qua các checkbox để xác định đối tượng nào được chọn
@@ -458,27 +400,10 @@ $(document).ready(function () {
         });
 
         if (selectedIds.length >= 1 && $('#accountActivation').is(':checked')) {
-            let statusDelete = false;
-            // Gửi danh sách ID được chọn đến action bằng Ajax
-            $.ajax({
-                type: "POST",
-                url: "/Admin/KetQua/Delete",
-                async: false,
-                data: { ids: selectedIds, nguoiXoa:"Nhân viên TEST" }, // Truyền danh sách ID đến action
-                success: function (data) {
-                    if (data.isSuccess == true) {
-                        displayMessages(1, "Xóa thành công");
-                        $("#DeleteModal").modal("hide");
-                        statusDelete = true;
-                    }
-                    else {
-                        statusDelete = false;
-                        displayMessages(2, "Xóa thất bại");
-                    }
-                }
-            });
+            let statusDelete = await KetQua_Delete(selectedIds, "Nhân viên Test");
             if (statusDelete) {
-                // Lặp qua từng hàng
+                displayMessages(1, "Xóa thành công");
+                $("#DeleteModal").modal("hide");
                 table.rows().every(function () {
                     var rowData = this.data();
                     // Kiểm tra xem rowData có tồn tại không trước khi truy cập thuộc tính
@@ -492,6 +417,9 @@ $(document).ready(function () {
                 });
                 // Vẽ lại DataTables sau khi xóa các hàng
                 table.draw();
+            }
+            else {
+                displayMessages(3, "Xóa thất bại");
             }
         }
     });
@@ -511,7 +439,8 @@ $(document).ready(function () {
         $('#ketQua_MaTrungTam').val(0);
     });
 
-    $('#btnSearchKetQua').click(function () {
+    $('#btnSearchKetQua').click(async function () {
+        await CapNhatToken();
         ketQua = GetKetQuaById();
 
         if (ketQua.TrangThai== "Tất cả") {
