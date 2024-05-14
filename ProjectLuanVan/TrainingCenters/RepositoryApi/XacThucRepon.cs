@@ -17,6 +17,8 @@ using ManagementService.Models.Authentication.SignUp;
 using ManagementService.Models.Authentication.Login;
 using TrainingCenters.Models.Auth;
 using System.Web;
+using Azure.Core;
+using System.Net.Http.Headers;
 namespace TrainingCenters.RepositoryApi
 {
     public class XacThucRepon : IXacThuc
@@ -30,6 +32,7 @@ namespace TrainingCenters.RepositoryApi
             _apiUrl = connectionStrings?.Value?.StringConnectAPI ?? throw new ArgumentNullException(nameof(connectionStrings));
             _httpClient.Timeout = TimeSpan.FromSeconds(30);
         }
+
         public async Task<ApiResponsePro<LoginResponse>> CapNhatToken(LoginResponse tokens)
         {
             try
@@ -76,12 +79,16 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> DangKy(RegisterUser item, string linkReturn)
+        public async Task<bool> DangKy(RegisterUser item, string linkReturn, string accessToken)
         {
             try
             {
                 var apiUrl = $"{_apiUrl}/api/Authentication/DangKy?linkReturn={linkReturn}";
-
+                if (!string.IsNullOrEmpty(accessToken))
+                {
+                    // Thêm accessToken vào header của HttpClient
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                }
                 var content = new StringContent(JsonConvert.SerializeObject(item), Encoding.UTF8, "application/json");
                 var response = await _httpClient.PostAsync(apiUrl, content);
                 // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
@@ -184,6 +191,51 @@ namespace TrainingCenters.RepositoryApi
             catch
             {
                 return false;
+            }
+        }
+
+        public async Task<ApiResponsePro<RegisterUser>> GetByEmail(string email)
+        {
+            try
+            {
+                var apiUrl = $"{_apiUrl}/api/Authentication/GetByEmail?email={email}";
+                var content = new StringContent(JsonConvert.SerializeObject(""), Encoding.UTF8, "application/json");
+                var response = await _httpClient.PostAsync(apiUrl, content);
+
+                // Kiểm tra mã trạng thái HTTP để xác định xem yêu cầu đã thành công hay không
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+                    var responseObject = JsonConvert.DeserializeObject<ApiResponsePro<RegisterUser>>(jsonResponse);
+                    if (responseObject != null)
+                    {
+                        return responseObject;
+                    }
+                    return new ApiResponsePro<RegisterUser>()
+                    {
+                        IsSuccess = false,
+                        Message = "Lỗi Dăng Nhập Null"
+
+                    };
+                }
+                else
+                {
+                    return new ApiResponsePro<RegisterUser>()
+                    {
+                        IsSuccess = false,
+                        Message = "Lỗi Gọi Api"
+
+                    };
+                }
+            }
+            catch
+            {
+                return new ApiResponsePro<RegisterUser>()
+                {
+                    IsSuccess = false,
+                    Message = "Lỗi Đăng Nhập"
+
+                };
             }
         }
 

@@ -33,6 +33,7 @@ namespace ManagementApi.Controllers
         }
 
 
+        [Authorize(Roles = "Quản lý trung tâm,Admin")]
         [HttpPost]
         [Route("DangKy")]
         public async Task<IActionResult> Register([FromBody] RegisterUser registerUser, string linkReturn)
@@ -54,6 +55,14 @@ namespace ManagementApi.Controllers
 
             return StatusCode(StatusCodes.Status500InternalServerError,
                   new Response { Message = tokenResponse.Message, IsSuccess = false });
+        }
+
+        [HttpPost]
+        [Route("GetByEmail")]
+        public async Task<IActionResult> GetByEmail(string email)
+        {
+            var user = await _user.GetByEmail(email);
+            return Ok(user);
         }
 
         [HttpGet("ConfirmEmail")]

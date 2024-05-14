@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ManagementApi.Controllers
 {
-    [Authorize(Roles = "Giáo viên,Admin")]
+    //[Authorize(Roles = "Giáo viên,Admin")]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LoSanPhamController : Controller

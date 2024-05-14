@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "_LayoutGiaoVien";
+    List<int> deletes = new List<int>();
+}
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="align-self-center">Thông Tin Môn Học</h4>
+    <!-- FORM DATA -->
+    <div class="card mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Mã môn học</label>
+                            <input class="form-control h-50" id="monHoc_MaMonHoc" type="number" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Tên môn học <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="monHoc_TenMonHoc" type="text" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Giá <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="monHoc_Gia" type="text" placeholder="" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Thông tin</label>
+                            <input class="form-control h-50" id="monHoc_ThongTin" placeholder="" type="text" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /FORM DATA -->
+    <!-- FORM Button -->
+    <div class="pb-2 mt-2">
+      
+        <button type="button" id="btnResetMonHoc" class="btn btn-sm btn-primary ">
+            Làm mới
+        </button>
+        <span class="p-1"></span>
+        <span class="p-1"></span>
+        <button type="button" id="btnSearchMonHoc" class="btn btn-sm btn-primary ">
+            Tìm kiếm
+        </button>
+    </div>
+    <!-- /FORM Button -->
+    <!-- Table-->
+    <div class="card">
+        <div class="table-responsive p-3">
+            <table id="myTable" class="table">
+                <thead>
+                    <tr>
+                        <th><input id="checkAll" type="checkbox" /></th>
+                        <th>Tên môn học</th>
+                        <th>Giá</th>
+                        <th>Thông tin</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!--/Table-->
+
+</div>
+<!-- / Content -->
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="~/funcdata/funcmonhoc.js"></script>
+
+    <script src="~/giaovien/monhoc.js"></script>
+}

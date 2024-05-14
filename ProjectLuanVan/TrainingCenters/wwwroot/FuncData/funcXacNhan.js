@@ -1,10 +1,13 @@
 ﻿function XacDinhRole(role) {
     switch (role) {
-        case "Giáo viên":
+        case "Admin":
             window.location.href = "/Admin/TrangChu/TrangChu";  // Điều hướng đến trang chủ của Admin
             break;
         case "Giáo viên":
-            window.location.href = "/User/Home";   // Điều hướng đến trang chủ của User
+            window.location.href = "/GiaoVien/TrangChu/TrangChu";   // Điều hướng đến trang chủ của User
+            break;
+        case "Quản lý trung tâm":
+            window.location.href = "/Admin/TrangChu/TrangChu";   // Điều hướng đến trang chủ của User
             break;
         // Thêm các điều hướng khác tùy theo role
         default:

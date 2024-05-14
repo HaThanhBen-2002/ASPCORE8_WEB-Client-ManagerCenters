@@ -361,6 +361,35 @@ namespace ManagementService.Services.Repository
             return principal;
 
         }
+
+        public async Task<ApiResponse<RegisterUser>> GetByEmail(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            List<string> userRoles = (List<string>)await _userManager.GetRolesAsync(user);
+            RegisterUser valueReturn = new RegisterUser();
+            valueReturn.Email = user.UserName;
+            valueReturn.MaTrungTam = user.MaTrungTam;
+            valueReturn.Password = user.PasswordHash;
+            valueReturn.Roles = userRoles;
+            if (user == null || userRoles == null)
+            {
+                return new ApiResponse<RegisterUser>()
+                {
+                    Response = new RegisterUser(),
+                    IsSuccess = false,
+                    StatusCode = 200,
+                    Message = $"Lấy thông tin tài khoản thất bại"
+                };
+            }
+
+            return new ApiResponse<RegisterUser>()
+            {
+                Response = valueReturn,
+                IsSuccess = true,
+                StatusCode = 200,
+                Message = $"Lấy thông tin tài khoản thành công"
+            };
+        }
         #endregion
 
     }

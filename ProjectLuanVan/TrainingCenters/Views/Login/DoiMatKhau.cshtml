@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Đổi mật khẩu";
 
     var token =  ViewData["Token"];
     var email = ViewData["Email"];
@@ -26,9 +26,6 @@
                     <div class="mb-3 form-password-toggle">
                         <div class="d-flex justify-content-between">
                             <label class="form-label" for="password">Mật khẩu Mới</label>
-                            <a href="auth-forgot-password-basic.html">
-                                <small>Quên mật khẩu?</small>
-                            </a>
                         </div>
                         <div class="input-group input-group-merge">
                             <input type="password"
@@ -43,9 +40,6 @@
                         <div class="mb-3 form-password-toggle">
                             <div class="d-flex justify-content-between">
                                 <label class="form-label" for="password">Xác Nhận Mật khẩu</label>
-                                <a href="auth-forgot-password-basic.html">
-                                    <small>Quên mật khẩu?</small>
-                                </a>
                             </div>
                             <div class="input-group input-group-merge">
                                 <input type="password"
@@ -58,7 +52,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <button class="btn btn-primary d-grid w-100" id="btn_doiMatKhau" type="submit">Đăng nhập</button>
+                            <button class="btn btn-primary d-grid w-100" id="btn_doiMatKhau" type="submit">Đổi mật khẩu</button>
                         </div>
 
                     <p class="text-center">

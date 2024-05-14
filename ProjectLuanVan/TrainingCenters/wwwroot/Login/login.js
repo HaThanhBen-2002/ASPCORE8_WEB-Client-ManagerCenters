@@ -48,7 +48,48 @@ $(document).ready(function () {
                     Cookies.set('refreshToken', JSON.stringify(cleanedResponse.response.refreshToken.token));
                     Cookies.set('accessToken_expiryTokenDate', JSON.stringify(cleanedResponse.response.accessToken.expiryTokenDate));
                     Cookies.set('refreshToken_expiryTokenDate', JSON.stringify(cleanedResponse.response.refreshToken.expiryTokenDate));
-                    XacDinhRole(cleanedResponse.response.role);
+                    let role = cleanedResponse.response.role;
+                    Cookies.set('role', JSON.stringify(role));
+
+                    if (role != "Admin") {
+                        let response1 = await $.ajax({
+                            type: "POST",
+                            url: "/Login/GetByEmail",
+                            data: { email: taiKhoan }
+                        });
+
+                        var nhanVien = {
+                            MaNhanVien: null,
+                            TenNhanVien: null,
+                            Cccd: null,
+                            NgaySinh: null,
+                            GioiTinh: null,
+                            DiaChi: null,
+                            SoDienThoai: null,
+                            Email: taiKhoan,
+                            ThongTin: null,
+                            HinhAnh: null,
+                            MaTrungTam: null,
+                            MaTaiKhoan: null,
+                            LoaiNhanVien: null,
+                            PhongBan: null,
+                            Luong: null,
+                            NganHang: null,
+                            SoTaiKhoan: null,
+                            DanToc: null,
+                            TonGiao: null
+                        };
+                        let thongTinNhanVien = await NhanVien_Search(nhanVien);
+
+                        Cookies.set('trungTam', JSON.stringify(response1.response.maTrungTam));
+                        Cookies.set('nhanVien', JSON.stringify(thongTinNhanVien[0].maNhanVien));
+                        console.log(thongTinNhanVien[0].maNhanVien);
+                    }
+                    else {
+                        Cookies.set('trungTam', JSON.stringify("Admin"));
+                        Cookies.set('nhanVien', JSON.stringify("Admin"));
+                    }
+                   XacDinhRole(cleanedResponse.response.role);
                    
                 }
                 else {
@@ -86,8 +127,11 @@ $(document).ready(function () {
 
     $('#btn_XacThuc1').click(async function () {
         showLoading1();
-        let item2 = await DichVu_GetById(2);
-        alert(item2.tenDichVu);
+        let response = await $.ajax({
+            type: "POST",
+            url: "/Login/GetByEmail",
+            data: { email: "mavuongkiki2002@gmail.com" }
+        });
         hideLoading1();
     });
 

@@ -371,7 +371,7 @@ $(document).ready(async function () {
 
     $('#btnSearchLop').click(async function () {
         await CapNhatToken();
-        lop = GetLopById();
+        lop = GetLopData();
         if (lop.MaNhanVien == 0) {
             lop.MaNhanVien = null;
         }

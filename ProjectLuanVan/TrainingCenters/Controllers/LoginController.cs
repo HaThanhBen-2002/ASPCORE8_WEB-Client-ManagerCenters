@@ -1,4 +1,5 @@
 ﻿using ManagementService.Models.Authentication.Login;
+using ManagementService.Models.Authentication.SignUp;
 using ManagementService.Models.Authentication.User;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -17,8 +18,15 @@ namespace TrainingCenters.Controllers
         {
             _unit = unit;
         }
-
+        private string GetXacThuc()
+        {
+            return HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+        }
         public IActionResult Index()
+        {
+            return View();
+        }
+        public IActionResult DangKy()
         {
             return View();
         }
@@ -52,13 +60,29 @@ namespace TrainingCenters.Controllers
             //var request = _httpContextAccessor.HttpContext.Request;
             //string url = "https://" + request.Host.ToString() + "/Login/DoiMatKhau";
             //var data = await _unit.XacThuc.QuenMatKhau(email, url );
-            var data = await _unit.XacThuc.QuenMatKhau(email, "url" );
+
+            string url = "https://localhost:7206/Login/DoiMatKhau";
+            var data = await _unit.XacThuc.QuenMatKhau(email, url);
+
+           // var data = await _unit.XacThuc.QuenMatKhau(email, "url" );
             return Ok(data);
         }
         // xông
         public async Task<IActionResult> DoiMatKhauApi(ResetPassword item)
         {
             var data = await _unit.XacThuc.DoiMatKhau(item);
+            return Ok(data);
+        }
+
+        public async Task<IActionResult> GetByEmail(string email)
+        {
+            var data = await _unit.XacThuc.GetByEmail(email);
+            return Ok(data);
+        }
+
+        public async Task<IActionResult> DangKyApi(RegisterUser user)
+        {
+            var data = await _unit.XacThuc.DangKy(user, "https://localhost:7206/Login", GetXacThuc());
             return Ok(data);
         }
     }

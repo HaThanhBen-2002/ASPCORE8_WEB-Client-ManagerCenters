@@ -383,16 +383,45 @@ $(document).ready(async function () {
     // ============================================== BUTTON ===============================================
     $('#btnCreateNhanVien').click(async function () {
         //If Status Create = True => Update Row Table
-        if (await CreateNhanVien() == true) {
-            displayMessages(1, "Thêm thông tin thành công");
-            let itemView = await NhanVien_GetByIdTable($('#nhanVien_MaNhanVien').val());
-            itemView.maNhanVien = '<input data-checkbox-id="' + itemView.maNhanVien + '" type="checkbox"/>';
-            if (itemView != null) {
-                table.row.add(itemView).draw(false);
-            }
+        let item = GetNhanVienById();
+        var nhanVien1 = {
+            MaNhanVien: null,
+            TenNhanVien: null,
+            Cccd: null,
+            NgaySinh: null,
+            GioiTinh: null,
+            DiaChi: null,
+            SoDienThoai: null,
+            Email: item.Email,
+            ThongTin: null,
+            HinhAnh: null,
+            MaTrungTam: null,
+            MaTaiKhoan: null,
+            LoaiNhanVien: null,
+            PhongBan: null,
+            Luong: null,
+            NganHang: null,
+            SoTaiKhoan: null,
+            DanToc: null,
+            TonGiao: null
+        };
+        let checkEmail = await NhanVien_Search(nhanVien1);
+
+        if (checkEmail.length != 0) {
+            displayMessages(2, "Email đã tồn tại")
         }
         else {
-            displayMessages(3, "Thêm thông tin thất bại")
+            if (await CreateNhanVien() == true) {
+                displayMessages(1, "Thêm thông tin thành công");
+                let itemView = await NhanVien_GetByIdTable($('#nhanVien_MaNhanVien').val());
+                itemView.maNhanVien = '<input data-checkbox-id="' + itemView.maNhanVien + '" type="checkbox"/>';
+                if (itemView != null) {
+                    table.row.add(itemView).draw(false);
+                }
+            }
+            else {
+                displayMessages(3, "Thêm thông tin thất bại")
+            }
         }
     });
 

@@ -16,5 +16,6 @@ namespace ManagementService.Services.Interfaces
         Task<ApiResponse<LoginResponse>> GetJwtTokenAsync(ApplicationUser user);
         Task<ApiResponse<LoginResponse>> LoginUserWithJWTokenAsync(string userName, SignInResult signIn);
         Task<ApiResponse<LoginResponse>> RenewAccessTokenAsync(LoginResponse tokens);
+        Task<ApiResponse<RegisterUser>> GetByEmail(string email);
     }
 }

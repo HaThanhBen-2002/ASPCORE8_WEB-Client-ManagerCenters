@@ -1,0 +1,443 @@
+﻿ <!DOCTYPE html>
+
+
+<!-- beautify ignore:start -->
+<html lang="en"
+      class="light-style layout-menu-fixed"
+      dir="ltr"
+      data-theme="theme-default"
+      data-assets-path="/AdminAssets/assets/"
+      data-template="vertical-menu-template-free">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Admin BENBEN</title>
+
+    <meta name="description" content="" />
+    <!-- HÌNH ẢNH ICON -->
+    <link rel="icon" type="image/x-icon" class="rounded-circle" href="/AdminAssets/assets/img/favicon/HTB.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="/AdminAssets/assets/vendor/fonts/boxicons.css" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/AdminAssets/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/AdminAssets/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/AdminAssets/assets/css/demo.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="/AdminAssets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.1/css/buttons.dataTables.css" />
+    <!-- Page CSS -->
+    <!-- Helpers -->
+    <script src="/AdminAssets/assets/vendor/js/helpers.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <link href="~/css/loadding.css" rel="stylesheet" />
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="~/funcdata/funcxacnhan.js"></script>
+</head>
+
+<body>
+    <!-- Màn hình loading -->
+    <div id="loadingScreen">
+        <div id="loadingAnimation"></div>
+        <div id="loadingText">Đang tải...</div>
+    </div>
+    <!-- Màn hình Trợ Giúp -->
+    <div class="modal fade" id="troGiup" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable  " role="document">
+            <div class="modal-content bg-body ">
+                <div class="modal-header mb-0  pb-0">
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body mt-0 pt-0 ">
+                    <div class="mt-0 pt-0 ">
+                        <div class="list-group list-group-horizontal-md text-md-center mt-0 pt-2">
+                            <a class="list-group-item list-group-item-action active"
+                               id="huongdan-list-item"
+                               data-bs-toggle="list"
+                               href="#horizontal-huongdan">Hướng dẫn</a>
+                            <a class="list-group-item list-group-item-action"
+                               id="baocaosuco-list-item"
+                               data-bs-toggle="list"
+                               href="#horizontal-baocaosuco">Báo cáo sự cố</a>
+                        </div>
+                        <div class="tab-content px-0 mt-0">
+                            @* Hướng dẫn *@
+                            <div class="tab-pane fade show active" id="horizontal-huongdan">
+                                <div class="col-md-12 m-0 p-0 accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button type="button"
+                                                class="accordion-button ps-3 text-primary"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#hd-Create"
+                                                aria-expanded="true"
+                                                aria-controls="hd-Create">
+                                            Thêm mới dữ liệu
+                                        </button>
+                                    </h2>
+
+                                    <div id="hd-Create"
+                                         class="accordion-collapse collapse  m-0 p-0"
+                                         data-bs-parent="#accordionExample">
+                                        <div class="accordion-body row m-0 p-0 ">
+                                            <p>1. Bạn cần (nhập/chọn) tối thiểu đầy đủ các thông tin có ký hiệu <span class="text-danger">(*)</span>.</p>
+                                            <div class="col-sm-12">
+                                                <p>
+                                                    2. Sau khi nhập dữ liệu, bạn hãy nhấn nút <span>
+                                                        <button type="button" class="btn btn-sm btn-primary ">
+                                                            Thêm
+                                                        </button>
+                                                    </span>
+                                                    để dữ liệu được lưu vào hệ thống.
+                                                </p>
+
+                                            </div>
+                                            <p>
+                                                3. Khi dữ liệu được thêm thành công bạn sẽ nhìn thấy thống báo <span>
+
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @* Liên hệ kỹ thuật viên *@
+                            <div class="tab-pane fade" id="horizontal-baocaosuco">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="form-label m-0 p-0">Tên của bạn<span class="text-danger">(*)</span></label>
+                                        <input class="form-control h-50" id="emailKyThuat_TenKhachHang" type="text" placeholder="" autofocus />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label m-0 p-0">Số điện thoại<span class="text-danger">(*)</span></label>
+                                        <input class="form-control h-50" id="emailKyThuat_SDT" type="text" placeholder="" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label  m-0 p-0">Sự cố mà bạn gặp phải <span class="text-danger">(*)</span></label>
+                                        <select name="nhanVien_NganHang" id="emailKyThuat_SuCo" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                            <option>Lỗi Khi Thêm Dữ Liệu</option>
+                                            <option>Lỗi Khi Xóa Dữ Liệu</option>
+                                            <option>Lỗi Khi Cập Nhật Dữ Liệu</option>
+                                            <option>Lỗi Khi Tìm Kiếm Dữ Liệu</option>
+                                            <option>Lỗi Khi Làm Mới</option>
+                                            <option>Lỗi Khi Xuất Excel Full</option>
+                                            <option>Lỗi Khi Xuất PDF</option>
+                                            <option>Lỗi Khi Print</option>
+                                            <option>Lỗi Khi Copy</option>
+                                            <option>Lỗi Khi Xuất CSV</option>
+                                            <option>Lỗi Khi Phân Trang</option>
+                                            <option>Lỗi Khi Chuyển Trang</option>
+                                            <option>Lỗi Khi Hiển Thị Dữ Liệu</option>
+                                            <option>Lỗi Khi Gửi Email</option>
+                                            <option>Lỗi Khác</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label m-0 p-0">Mô tả sự cố<span class="text-danger">(*)</span></label>
+                                        <textarea id="emailKyThuat_MoTaSuCo" class="form-control"
+                                                  placeholder="Mô tả sự cố mà bạn gặp phải"></textarea>
+                                    </div>
+                                    <div class="col-md-12 mt-2 ps-3 align-content-center row">
+                                        <button type="button" onclick="sendEmailKyThuatVien()" class="btn btn-primary ps-1 ms-2" data-bs-dismiss="modal">
+                                            Gửi Thông Báo Sự Cố Đến Kỹ Thuật Viên
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Màn hình Send Email -->
+    <div class="modal fade" id="viewSendEmail" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable  " role="document">
+            <div class="modal-content bg-body ">
+                <div class="modal-header mb-0  pb-0">
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body mt-0 pt-0 ">
+                    <div class="mt-0 pt-0">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label id="quantityEmail" class="form-label m-0 p-0">Địa chỉ Email</label>
+                                <input class="form-control h-50" id="email_ThemDiaChiEmail" type="text" placeholder="" />
+                            </div>
+                            <div class="col-md-6 pt-3">
+                                <button type="button" id="btnThemEmail" class="btn btn-sm btn-success mt-2">
+                                    Thêm Email
+                                </button>
+                            </div>
+                            <div class="col-md-12">
+                                <div class=" row card mx-0 mt-2">
+                                    <div class="table-responsive" style="max-height: 300px">
+                                        <table id="myTableEmail" class="table table-condensed nomargin">
+                                            <thead>
+                                                <tr>
+                                                    <th class="px-1">Email</th>
+                                                    <th class="px-1"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-2">
+                                <label class="form-label m-0 p-0">Tiêu đề Email<span class="text-danger">(*)</span></label>
+                                <textarea id="email_TieuDe" class="form-control"
+                                          placeholder="Nhập tiêu đề Email"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label m-0 p-0">Nội dung cần gửi<span class="text-danger">(*)</span></label>
+                                <textarea id="summernote" name="editordata"></textarea>
+                            </div>
+                            <div class="col-md-12 mt-2 ps-3 align-content-center row">
+                                <button type="button" id="btnSendEmail" class="btn btn-primary ps-1 ms-2" data-bs-dismiss="modal">
+                                    Gửi Email
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+
+        <div class="layout-container">
+
+
+
+
+
+            @await Html.PartialAsync("_MenuMain")
+            <!-- Layout container -->
+            <div class="layout-page">
+
+                <!-- Navbar -->
+                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
+                     id="layout-navbar">
+                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                            <i class="bx bx-menu bx-sm"></i>
+                        </a>
+                    </div>
+
+                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+
+                        <ul class="navbar-nav flex-row align-items-center ms-auto">
+                            <!-- User -->
+                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                    <div class="avatar avatar-online">
+                                        <!-- HÌNH ẢNH ICON -->
+                                        <img src="/AdminAssets/assets/img/favicon/HTB.ico" alt class="w-px-40 h-auto rounded-circle" />
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    @* <li>
+                                        <a class="dropdown-item" href="#">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <div class="avatar avatar-online">
+                                                        <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <span class="fw-semibold d-block">John Doe</span>
+                                                    <small class="text-muted ">Admin</small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li> *@
+                                   @*  <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="bx bx-user me-2"></i>
+                                            <span class="align-middle">My Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="bx bx-cog me-2"></i>
+                                            <span class="align-middle">Settings</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <span class="d-flex align-items-center align-middle">
+                                                <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
+                                                <span class="flex-grow-1 align-middle">Billing</span>
+                                                <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
+                                            </span>
+                                        </a>
+                                    </li> *@
+                                    <li>
+                                        <a class="dropdown-item" onclick="deleteCookie('IdAccount')" asp-area="Admin" asp-controller="Login" asp-action="Index">
+                                            <i class="bx bx-power-off me-2"></i>
+                                            <span class="align-middle">Đăng xuất</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--/ User -->
+                        </ul>
+                    </div>
+                </nav>
+                <!-- / Navbar -->
+                @await Html.PartialAsync("_NotificationAlert")
+                <div class="content-wrapper">
+                    <!-- Delete Modal -->
+                        <div class="modal fade" id="DeleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <!-- modal-xl  Lớn-->
+                            <!-- modal-lg  Vừa-->
+                            <!-- modal-sm  Nhỏ-->
+                            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title ">Cảnh báo</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body mt-0 pt-0">
+                                        <div class="card-body pb-0 mt-0">
+                                            <div class="col-12 mb-0">
+                                                <div class="alert alert-warning">
+                                                    <h6 class="alert-heading fw-bold mb-1">Bạn có chắc muốn xóa những thông tin trên?</h6>
+                                                    <p class="mb-0">Không thể khôi phục lại dữ liệu đã được xóa</p>
+                                                </div>
+                                            </div>
+                                            <form id="formDelete" onsubmit="return false">
+                                                <div class="form-check pb-2">
+                                                    <input class="form-check-input"
+                                                           type="checkbox"
+                                                           name="accountActivation"
+                                                           id="accountActivation" />
+                                                    <label class="form-check-label" for="accountActivation">Tôi đồng ý</label>
+                                                </div>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Quay lại</button>
+                                                <button type="submit" form="formDelete" id="btnDelete" class="btn btn-danger deactivate-account">Xóa</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- /Delete Modal -->
+                    @RenderBody()
+                        <!-- Footer -->
+                    <footer class="content-footer footer bg-footer-theme">
+                        <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+                            <div class="mb-2 mb-md-0">
+                                ©
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>
+                                , made with ❤️ by
+                                <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">Hà Thanh Bền</a>
+                            </div>
+                            <div>
+                                <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                                   target="_blank"
+                                   class="footer-link me-4">Support</a>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- / Footer -->
+                    <div class="content-backdrop fade"></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-menu-toggle"></div>
+
+
+    </div>
+
+    <!-- / Layout wrapper -->
+    <style>
+        table tbody tr.selected td{
+            background-color: green;
+            color:red;
+        }
+    </style>
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="/AdminAssets/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="/AdminAssets/assets/vendor/libs/popper/popper.js"></script>
+    <script src="/AdminAssets/assets/vendor/js/bootstrap.js"></script>
+    <script src="/AdminAssets/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.1/js/dataTables.buttons.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.print.min.js"></script>
+
+    <link href="/AdminAssets/assets/summernote/summernote-lite.css" rel="stylesheet" />
+    <script src="/AdminAssets/assets/summernote/summernote-lite.js"></script>
+
+    <script src="/AdminAssets/assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+    <!-- Vendors JS -->
+    <!-- Main JS -->
+    <script src="/AdminAssets/assets/js/main.js"></script>
+    <!-- Page JS -->
+    <script src="/AdminAssets/assets/js/ui-toasts.js"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+    <script>
+        function deleteCookie(cookieName) {
+            document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

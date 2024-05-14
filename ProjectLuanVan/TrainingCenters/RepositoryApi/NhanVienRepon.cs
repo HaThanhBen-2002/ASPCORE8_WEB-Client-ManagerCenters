@@ -181,9 +181,19 @@ namespace TrainingCenters.RepositoryApi
                     var values = JsonConvert.DeserializeObject<ICollection<NhanVien>>(content1);
                     if (values != null)
                     {
-                        responseModel.IsSuccess = true;
-                        responseModel.Message = "Thành công";
-                        responseModel.Data = values;
+                        if(values.Count() != 0)
+                        {
+                            responseModel.IsSuccess = true;
+                            responseModel.Message = "Thành công";
+                            responseModel.Data = values;
+                        }
+                        else
+                        {
+                            responseModel.IsSuccess = false;
+                            responseModel.Message = "Không có đối tượng nào được tìm thấy";
+                            responseModel.Data = values;
+                        }
+
                     }
                     else
                     {

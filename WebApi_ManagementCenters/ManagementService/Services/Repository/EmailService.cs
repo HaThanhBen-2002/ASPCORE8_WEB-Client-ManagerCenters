@@ -1,8 +1,8 @@
 ﻿using ManagementService.Models;
 using MailKit.Net.Smtp;
 using MimeKit;
-using ManagementService.Constants;
 using ManagementService.Services.Interfaces;
+using ManagementService.Helper.Constants;
 namespace ManagementService.Services.Repository
 {
     public class EmailService : IEmailService

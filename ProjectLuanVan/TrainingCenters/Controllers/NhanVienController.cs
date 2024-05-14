@@ -47,6 +47,7 @@ namespace TrainingCenters.Controllers
 
         public async Task<IActionResult> Create(NhanVien item)
         {
+   //        var checkEmail = await _unit.NhanVien
             var data = await _unit.NhanVien.Create(item, GetXacThuc());
             return Ok(data);
         }

@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Đăng ký";
+}
+<div class="container-xxl">
+
+    <div class="authentication-wrapper authentication-basic container-p-y">
+
+        <div class="authentication-inner justify-content-center d-flex">
+
+            <div>
+                <!-- Register -->
+                <div class="card" id="showContent">
+                    <div class="card-body">
+                        <!-- Logo -->
+                        <div class="app-brand justify-content-center">
+                            <a href="index.html" class="app-brand-link gap-2">
+                                <span class="app-brand-logo demo">
+                                    <img class="rounded-circle w-px-50 h-px-50" src="~/adminassets/assets/img/trademark/logob.jpg" />
+                                </span>
+                                <span class="app-brand-text demo text-body fw-bolder text-uppercase">BENBEN</span>
+                            </a>
+                        </div>
+                        <!-- /Logo -->
+                        <p class="mb-4">Vui lòng đăng ký để sử dụng hệ thống</p>
+                        @* Tài khoản *@
+                        <div class="mb-3" id="showTaiKhoan">
+                            <label for="email" class="form-label">Tài khoản (EMAIL)</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="dangKy_Email"
+                                   name="email-username"
+                                   placeholder="Nhập tài khoản của bạn"
+                                   autofocus />
+                        </div>
+                        <div class="mb-3 form-password-toggle">
+                            <label for="email" class="form-label">Phân quyền</label>
+                            <select style="line-height: 2;" id="dangKy_PhanQuyen" class="form-control h-50 pt-0 pb-1">
+                                <option value="Quản lý trung tâm">Quản lý trung tâm</option>
+                                <option value="Giáo viên">Giáo viên</option>
+                                <option value="Thu Ngân">Thu Ngân</option>
+                                <option value="Thủ Kho">Thủ Kho</option>
+                             <select>
+                        </div>
+                        <div class="mb-3 form-password-toggle">
+                            <label for="email" class="form-label">Trung Tâm</label>
+                            <select style="line-height: 2;" id="dangKy_TrungTam" class="form-control h-50 pt-0 pb-1">
+                                <select>
+                        </div>
+                        @* Ghi nhớ Tài khoản *@
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="dangKy_MatKhauMacDinh" />
+                                <label class="form-check-label" for="remember-me"> Tạo mật khẩu mặc định</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label  class="form-label">Mật khẩu</label>
+                            <input type="password"
+                                   class="form-control"
+                                   id="dangKy_MatKhau"
+                                   placeholder="Nhập mật khẩu"
+                                    />
+                        </div>
+                        <div class="mb-3" >
+                            <label  class="form-label">Xác nhận mật khẩu</label>
+                            <input type="password"
+                                   class="form-control"
+                                   id="dangKy_MatKhau1"
+                                   placeholder="Xác nhận lại mật khẩu"
+                                    />
+                        </div>
+
+                        @* Button *@
+                        <div class="mb-3" id="showBtn">
+                            <button class="btn btn-primary d-grid w-100" id="btn_Login" type="submit">Đăng ký</button>
+                        </div>
+                        <p class="text-center">
+                            <span>Đây là hệ thống nội bộ chỉ có Admin và Quản lý trung tâm mới được phép tạo tài khoản</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="justify-content-around d-flex" id="loadingScreen2">
+                    <h4 id="loadingScreen0" class="mt-2 me-3">Đợi BenBen xử lý nhé...</h4>
+                    <div id="loadingScreen1" class="spinner-border spinner-border-lg text-primary" role="status">
+                    </div>
+                </div>
+                <!-- /Register -->
+            </div>
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="~/funcdata/functrungtam.js"></script>
+    <script src="~/funcdata/funcnhanvien.js"></script>
+    <script src="~/login/dangky.js"></script>
+}

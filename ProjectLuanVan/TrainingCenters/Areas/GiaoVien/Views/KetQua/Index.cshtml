@@ -1,0 +1,132 @@
+﻿@{
+    Layout = "_LayoutGiaoVien";
+    List<int> deletes = new List<int>();
+}
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="align-self-center">Thông Tin Kết Quả</h4>
+    <!-- FORM DATA -->
+    <div class="card mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Mã kết quả</label>
+                            <input class="form-control h-50" id="ketQua_MaKetQua" type="number" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Trung tâm <span class="text-danger">(*)</span></label>
+                            <select name="ketQua_MaTrungTam" disabled id="ketQua_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Tên kết quả  <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="ketQua_TenKetQua" type="text" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Mã học sinh <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="ketQua_MaHocSinh" type="number" placeholder="" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Tên học sinh</label>
+                            <input class="form-control h-50" id="ketQua_TenHocSinh" type="text" placeholder="" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Điểm <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="ketQua_Diem" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Xếp loại <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="ketQua_XepLoai" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Ngày kiểm tra <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="ketQua_NgayKiemTra" placeholder="" type="text" />
+                        </div>
+
+
+
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Trạng thái <span class="text-danger">(*)</span></label>
+                            <select name="ketQua_TrangThai" id="ketQua_TrangThai" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                <option>Tất cả</option>
+                                <option>Đạt</option>
+                                <option>Chưa đạt</option>
+                                <option>Chờ chấm lại</option>
+                                <option>Hủy kết quả</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Môn thi <span class="text-danger">(*)</span></label>
+                            <select name="ketQua_MaMonHoc" id="ketQua_MaMonHoc" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Giáo viên chấm thi <span class="text-danger">(*)</span></label>
+                            <select name="ketQua_MaNhanVien" id="ketQua_MaNhanVien" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /FORM DATA -->
+    <!-- FORM Button -->
+    <div class="pb-2 mt-2">
+        <button type="button" id="btnCreateKetQua" class="btn btn-sm btn-primary ">
+            Thêm
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnDeleteKetQua" class="btn btn-sm btn-primary ">
+            Xóa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnResetKetQua" class="btn btn-sm btn-primary ">
+            Làm mới
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnUpdateKetQua" class="btn btn-sm btn-primary ">
+            Sửa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnSearchKetQua" class="btn btn-sm btn-primary ">
+            Tìm kiếm
+        </button>
+    </div>
+    <!-- /FORM Button -->
+    <!-- Table-->
+    <div class="card">
+        <div class="table-responsive p-3">
+            <table id="myTable" class="table">
+                <thead>
+                    <tr>
+                        <th><input id="checkAll" type="checkbox" /></th>
+                        <th>Tên kết quả</th>
+                        <th>Học sinh</th>
+                        <th>Môn học</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!--/Table-->
+
+</div>
+<!-- / Content -->
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="~/funcdata/functrungtam.js"></script>
+    <script src="~/funcdata/funcnhanvien.js"></script>
+    <script src="~/funcdata/funclop.js"></script>
+    <script src="~/funcdata/funchocsinh.js"></script>
+    <script src="~/funcdata/funcmonhoc.js"></script>
+    <script src="~/funcdata/funcketqua.js"></script>
+    <script src="~/giaovien/ketqua.js"></script>
+
+}

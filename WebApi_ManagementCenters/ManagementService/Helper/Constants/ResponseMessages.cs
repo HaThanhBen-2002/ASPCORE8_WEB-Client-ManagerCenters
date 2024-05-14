@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ManagementService.Constants
+namespace ManagementService.Helper.Constants
 {
     public class ResponseMessages
     {
