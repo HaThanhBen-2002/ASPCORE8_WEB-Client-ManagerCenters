@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "_LayouThuNgan";
+    Layout = "_LayoutThuNgan";
     List<int> deletes = new List<int>();
 }
 
@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label  m-0 p-0">Trung tâm  <span class="text-danger">(*)</span></label>
-                            <select name="suDungDichVu_MaTrungTam" id="suDungDichVu_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            <select name="suDungDichVu_MaTrungTam" disabled id="suDungDichVu_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
                             </select>
                         </div>
                         <div class="col-md-4">
@@ -116,8 +116,7 @@
     <script src="/AdminAssets/module/support.js"></script>
     <script src="~/funcdata/functrungtam.js"></script>
     <script src="~/funcdata/funcdichvu.js"></script>
-
     <script src="~/funcdata/funchocsinh.js"></script>
     <script src="~/funcdata/funcsudungdichvu.js"></script>
-    <script src="/AdminAssets/module/suDungDichVu.js"></script>
+    <script src="~/thungan/suDungDichVu.js"></script>
 }

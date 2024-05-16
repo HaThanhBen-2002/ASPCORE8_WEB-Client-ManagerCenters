@@ -1,0 +1,157 @@
+﻿@{
+    Layout = "_LayoutQuanLyTrungTam";
+    List<int> deletes = new List<int>();
+}
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="align-self-center">Thông Tin Lô Sản Phẩm</h4>
+    <!-- FORM DATA -->
+    <div class="card mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Mã lô sản phẩm</label>
+                            <input class="form-control h-50" id="loSanPham_MaLoSanPham" type="number" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Tên lô sản phẩm <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="loSanPham_TenLoSanPham" type="text" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Số lượng <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="loSanPham_SoLuong" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Đơn vị <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="loSanPham_DonVi" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Ngày nhập <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="loSanPham_NgayNhap" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Ngày hết hạn <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="loSanPham_NgayHetHan" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Ghi chú</label>
+                            <input class="form-control h-50" id="loSanPham_GhiChu" placeholder="" type="text" />
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Trung tâm <span class="text-danger">(*)</span></label>
+                            <select name="loSanPham_MaTrungTam" disabled id="loSanPham_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+                        @* Hỗ trọ tìm kiếm *@
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Loại sản phẩm <span>(hỗ trợ tìm kiếm sản phẩm)</span></label>
+                            <select name="sanPham_LoaiSanPham" id="sanPham_LoaiSanPham" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                <option>Tất cả</option>
+                                <option>Y tế</option>
+                                <option>Hàng gia dụng</option>
+                                <option>Thiết bị</option>
+                                <option>Nguyên liệu nấu ăn</option>
+                                <option>Thực phẩm</option>
+                                <option>Thực phẩm đông lạnh</option>
+                                <option>Đồ uống</option>
+                                <option>Điện tử</option>
+                                <option>Thời trang</option>
+                                <option>Đồ gia dụng</option>
+                                <option>Phụ kiện công nghệ</option>
+                                <option>Đồ chơi</option>
+                                <option>Đồ trang trí</option>
+                                <option>Sách và văn phòng phẩm</option>
+                                <option>Công cụ và thiết bị làm vườn</option>
+                                <option>Trang trí nội thất</option>
+                                <option>Dụng cụ nghề nghiệp</option>
+                                <option>Đồ dùng cho em bé và trẻ nhỏ</option>
+                                <option>Quà lưu niệm</option>
+                                <option>Khác</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Sản phẩm <span class="text-danger">(*)</span></label>
+                            <select name="loSanPham_MaSanPham" id="loSanPham_MaSanPham" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Trạng thái <span class="text-danger">(*)</span></label>
+                            <select name="loSanPham_TrangThai" id="loSanPham_TrangThai" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                <option>Tất cả</option>
+                                <option>Đặt hàng</option>
+                                <option>Chuẩn bị nhận hàng</option>
+                                <option>Đã nhập kho</option>
+                                <option>Đã sử dụng hết</option>
+                                <option>Gần hết hạn</option>
+                                <option>Đã hủy</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Nhân viên <span class="text-danger">(*)</span></label>
+                            <select name="loSanPham_MaNhanVien" id="loSanPham_MaNhanVien" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /FORM DATA -->
+    <!-- FORM Button -->
+    <div class="pb-2 mt-2">
+        <button type="button" id="btnCreateLoSanPham" class="btn btn-sm btn-primary ">
+            Thêm
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnDeleteLoSanPham" class="btn btn-sm btn-primary ">
+            Xóa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnResetLoSanPham" class="btn btn-sm btn-primary ">
+            Làm mới
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnUpdateLoSanPham" class="btn btn-sm btn-primary ">
+            Sửa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnSearchLoSanPham" class="btn btn-sm btn-primary ">
+            Tìm kiếm
+        </button>
+    </div>
+    <!-- /FORM Button -->
+    <!-- Table-->
+    <div class="card">
+        <div class="table-responsive p-3">
+            <table id="myTable" class="table">
+                <thead>
+                    <tr>
+                        <th><input id="checkAll" type="checkbox" /></th>
+                        <th>Tên lô sản phẩm</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Trạng thái</th>
+                        <th>Ngày nhập</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!--/Table-->
+
+</div>
+<!-- / Content -->
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="~/funcdata/functrungtam.js"></script>
+    <script src="~/funcdata/funcsanpham.js"></script>
+    <script src="~/funcdata/funcnhanvien.js"></script>
+    <script src="~/funcdata/funclosanpham.js"></script>
+    <script src="~/quanlytrungtam/loSanPham.js"></script>
+}

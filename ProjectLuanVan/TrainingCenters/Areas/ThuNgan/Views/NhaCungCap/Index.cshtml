@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "_LayouThuNgan";
+    Layout = "_LayoutThuNgan";
     List<int> deletes = new List<int>();
 }
 
@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label  m-0 p-0">Trung tâm <span class="text-danger">(*)</span></label>
-                            <select name="nhaCungCap_MaTrungTam" id="nhaCungCap_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            <select name="nhaCungCap_MaTrungTam" disabled id="nhaCungCap_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
                             </select>
                         </div>
                     </div>
@@ -81,22 +81,11 @@
     <!-- FORM Button -->
     <div class="row col-sm-12">
         <div class="pb-2 mt-2  col-sm-6">
-            <button type="button" id="btnCreateNhaCungCap" class="btn btn-sm btn-primary ">
-                Thêm
-            </button>
-            <span class="p-1"></span>
-            <button type="button" id="btnDeleteNhaCungCap" class="btn btn-sm btn-primary ">
-                Xóa
-            </button>
-            <span class="p-1"></span>
             <button type="button" id="btnResetNhaCungCap" class="btn btn-sm btn-primary ">
                 Làm mới
             </button>
             <span class="p-1"></span>
-            <button type="button" id="btnUpdateNhaCungCap" class="btn btn-sm btn-primary ">
-                Sửa
-            </button>
-            <span class="p-1"></span>
+           
             <button type="button" id="btnSearchNhaCungCap" class="btn btn-sm btn-primary ">
                 Tìm kiếm
             </button>
@@ -169,5 +158,5 @@
     <script src="/AdminAssets/module/support.js"></script>
     <script src="~/funcdata/functrungtam.js"></script>
     <script src="~/funcdata/funcnhacungcap.js"></script>
-    <script src="/AdminAssets/module/nhaCungCap.js"></script>
+    <script src="~/thungan/nhaCungCap.js"></script>
 }

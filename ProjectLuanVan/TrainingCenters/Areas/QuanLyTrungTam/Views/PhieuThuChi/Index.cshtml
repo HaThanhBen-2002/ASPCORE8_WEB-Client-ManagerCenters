@@ -1,0 +1,304 @@
+﻿@{
+    Layout = "_LayoutQuanLyTrungTam";
+    List<int> deletes = new List<int>();
+}
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <div class="modal fade" id="showHoaDon" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+            <div class="modal-content  bg-body">
+                <div class="modal-header mb-0 pb-0">
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="modal-body mt-0 pt-0">
+                    @* Hóa đơn *@
+                    <div class="col-sm-12">
+                        <div class="mb-0">
+                            <div class="container bootstrap snippets bootdey card p-4">
+                                <div class="panel panel-default ">
+                                    <div id="printableDiv" class="panel-body">
+                                        <div class="row">
+                                            <div class="col text-right ">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="row">
+                                                            <div class="w-auto">
+                                                                <img id="imageDiv" class="w-px-75 h-px-75 rounded-circle" src="/AdminAssets/assets/img/favicon/HTB.ico" />
+                                                            </div>
+                                                            <div class="col d-flex align-items-center ps-0">
+                                                                <h4 class="text-start mt-3 "><strong>BEN BEN</strong></h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 row h-px-100">
+                                                        <h6 id="phieuThuChi_MaCodeHoaDon" class="my-0 mx-0 py-0" style="font-size:13px">Mã HD: HDC-????????-??????-???</h6>
+                                                        <h6 id="phieuThuChi_NgayTao" class="my-0 mx-0 py-0" style="font-size:13px">Ngày tạo: ??/??/???? ??:??:??</h6>
+                                                        <h6 id="phieuThuChi_NgayThanhToan" class="my-0 mx-0 py-0" style="font-size:13px">Ngày thanh toán: ??/??/???? ??:??:??</h6>
+                                                        <h6 class="my-0 mx-0 py-0" style="font-size:13px">Tạo bởi: Admin</h6>
+                                                        <h6 id="phieuThuChi_TrangThai" class="my-0 mx-0 py-0" style="font-size:13px">Trạng thái:</h6>
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="row mt-3">
+
+                                                    <div class="col-md-6">
+                                                        <label id="phieuThuChi_TrungTam" class="form-label  m-0 p-0">Trung tâm : </label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label id="phieuThuChi_LoaiPhieu" class="form-label  m-0 p-0">Loại phiếu : </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="table-responsive">
+                                            <table id="myTableHoaDon" class="table table-condensed nomargin">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="30%" class="px-1">Thông tin</th>
+                                                        <th class="px-1">Giá</th>
+                                                        <th width="10%" class="px-1">SL</th>
+                                                        <th class="px-1">Tổng Tiền</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <hr class="nomargin-top">
+                                        <div class="row">
+                                            <div class="col text-left">
+                                                <div class="">
+                                                    <label class="form-label m-0 p-0">Ghi chú</label>
+                                                    <p id="phieuThuChi_GhiChu"></p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col text-right">
+                                                <div class="mb-3">
+                                                    <div class="">
+                                                        <label id="phieuThuChi_HinhThucThanhToan" class="form-label m-0 p-0">Hình thức thanh toán: </label>
+                                                    </div>
+                                                </div>
+                                                <ul class="list-unstyled">
+                                                    <li><strong style="font-size: 20px">Tổng tiền:</strong> <span id="phieuThuChiTongTien" style="font-size: 20px"></span></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" id="updateHoaDon" class="btn btn-primary" data-bs-dismiss="modal">
+                        Thanh Toán
+                    </button>
+                    <button type="button" id="prinHoaDon" class="btn btn-primary">
+                        Print
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="align-self-center">Danh Sách Hóa Đơn</h4>
+    <!-- FORM DATA -->
+    <div class="card mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row ">
+                        @* Các thành phần khác *@
+                        <div class="col-sm-3">
+
+                            <div class="col-md-12 m-0 p-0 accordion-item">
+                                <h2 class="accordion-header p-0 m-0" id="headingOne">
+                                    <button type="button"
+                                            class="accordion-button p-0 m-0"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#phieuThuChi_BoxLoaiPhieu"
+                                            aria-expanded="true"
+                                            aria-controls="phieuThuChi_BoxLoaiPhieu">
+                                        <h5 class="mt-3">Loại Hóa Đơn</h5>
+                                    </button>
+                                </h2>
+                                <div id="phieuThuChi_BoxLoaiPhieu"
+                                     class="accordion-collapse collapse show  m-0 p-0"
+                                     data-bs-parent="#accordionExample">
+                                    <div class="accordion-body row m-0 p-0 ">
+                                        <form id="loaiHoaDonForm">
+                                            <input type="checkbox" id="loaiHoaDonTatCa" name="loaiHoaDon" value="Tất cả">
+                                            <label for="loaiHoaDonTatCa">Tất cả</label><br>
+                                            <input type="checkbox" id="loaiHoaDonThu" name="loaiHoaDon" value="Hóa đơn thu">
+                                            <label for="loaiHoaDonThu">Hóa đơn thu</label><br>
+                                            <input type="checkbox" id="loaiHoaDonChi" name="loaiHoaDon" value="Hóa đơn chi">
+                                            <label for="loaiHoaDonChi">Hóa đơn chi</label><br>
+                                            <input type="checkbox" id="loaiHoaDonTamUng" name="loaiHoaDon" value="Hóa đơn tạm ứng">
+                                            <label for="loaiHoaDonTamUng">Hóa đơn tạm ứng</label><br>
+                                            <input type="checkbox" id="loaiHoaDonKhac" name="loaiHoaDon" value="Hóa đơn khác">
+                                            <label for="loaiHoaDonKhac">Hóa đơn khác</label><br>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+
+                            <div class="col-md-12 m-0 p-0 accordion-item">
+                                <h2 class="accordion-header p-0 m-0" id="headingOne">
+                                    <button type="button"
+                                            class="accordion-button p-0 m-0"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#phieuThuChi_BoxTrangThai"
+                                            aria-expanded="true"
+                                            aria-controls="phieuThuChi_BoxTrangThai">
+                                        <h5 class="mt-3">Trạng Thái Hóa Đơn</h5>
+                                    </button>
+                                </h2>
+                                <div id="phieuThuChi_BoxTrangThai"
+                                     class="accordion-collapse collapse show  m-0 p-0"
+                                     data-bs-parent="#accordionExample">
+                                    <div class="accordion-body row m-0 p-0 ">
+                                        <form id="trangThaiForm">
+                                            <input type="checkbox" id="trangThaiTatCa" name="trangThai" value="Tất cả">
+                                            <label for="trangThaiTatCa">Tất cả</label><br>
+                                            <input type="checkbox" id="trangThaiDaThanhToan" name="trangThai" value="Đã thanh toán">
+                                            <label for="trangThaiDaThanhToan">Đã thanh toán</label><br>
+                                            <input type="checkbox" id="trangThaiChuaThanhToan" name="trangThai" checked value="Chưa thanh toán">
+                                            <label for="trangThaiChuaThanhToan">Chưa thanh toán</label><br>
+                                            <input type="checkbox" id="trangThaiDangGhiNo" name="trangThai" value="Đang ghi nợ">
+                                            <label for="trangThaiDangGhiNo">Đang ghi nợ</label><br>
+                                            <input type="checkbox" id="trangThaiDangTraGop" name="trangThai" value="Đang trả góp">
+                                            <label for="trangThaiDangTraGop">Đang trả góp</label><br>
+                                            <input type="checkbox" id="trangThaiDaHuy" name="trangThai" value="Đã hủy">
+                                            <label for="trangThaiDaHuy">Đã hủy</label><br>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+
+                            <div class="col-md-12 m-0 p-0 accordion-item">
+                                <h2 class="accordion-header p-0 m-0" id="headingOne">
+                                    <button type="button"
+                                            class="accordion-button p-0 m-0"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#phieuThuChi_BoxHTTT"
+                                            aria-expanded="true"
+                                            aria-controls="phieuThuChi_BoxHTTT">
+                                        <h5 class="mt-3">Hình Thức Thanh Toán</h5>
+                                    </button>
+                                </h2>
+                                <div id="phieuThuChi_BoxHTTT"
+                                     class="accordion-collapse collapse show  m-0 p-0"
+                                     data-bs-parent="#accordionExample">
+                                    <div class="accordion-body row m-0 p-0 ">
+                                        <form id="hinhThucThanhToanForm">
+                                            <input type="checkbox" id="hinhThucThanhToanTatCa" name="hinhThucThanhToan" value="Tất cả">
+                                            <label for="hinhThucThanhToanTatCa">Tất cả</label><br>
+                                            <input type="checkbox" id="tienMat" name="hinhThucThanhToan" value="Tiền mặt">
+                                            <label for="tienMat">Tiền mặt</label><br>
+                                            <input type="checkbox" id="theTinDung" name="hinhThucThanhToan" value="Thẻ tín dụng">
+                                            <label for="theTinDung">Thẻ tín dụng</label><br>
+                                            <input type="checkbox" id="traGop" name="hinhThucThanhToan" value="Trả góp">
+                                            <label for="traGop">Trả góp</label><br>
+                                            <input type="checkbox" id="viDienTu" name="hinhThucThanhToan" value="Ví điện tử">
+                                            <label for="viDienTu">Ví điện tử</label><br>
+                                            <input type="checkbox" id="chuyenKhoan" name="hinhThucThanhToan" value="Chuyển khoản ngân hàng">
+                                            <label for="chuyenKhoan">Chuyển khoản ngân hàng</label><br>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+
+                            <div class="col-md-12 m-0 p-0 accordion-item">
+                                <h2 class="accordion-header p-0 m-0" id="headingOne">
+                                    <button type="button"
+                                            class="accordion-button p-0 m-0"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#phieuThuChi_BoxThongTinKhac"
+                                            aria-expanded="true"
+                                            aria-controls="phieuThuChi_BoxThongTinKhac">
+                                        <h5 class="mt-3">Thông Tin Khác</h5>
+                                    </button>
+                                </h2>
+                                <div id="phieuThuChi_BoxThongTinKhac"
+                                     class="accordion-collapse collapse show  m-0 p-0"
+                                     data-bs-parent="#accordionExample">
+                                    <div class="accordion-body row m-0 p-0 ">
+                                        <div class="col-md-12">
+                                            <label class="form-label m-0 p-0">Mã hóa đơn</label>
+                                            <input class="form-control h-50" id="phieuThuChi_SearchMaHoaDon" placeholder="" type="text" />
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="form-label m-0 p-0">Ngày tạo</label>
+                                            <input class="form-control h-50" id="phieuThuChi_SearchNgayTao" placeholder="" type="text" />
+                                        </div>
+                                        <button id="btnPhieuThuChi_TimKiem" class="btn btn-sm btn-primary mt-2">Tìm kiếm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /FORM DATA -->
+    <!-- FORM Button -->
+    <div class="pb-2 mt-2">
+        <a asp-area="Admin" asp-controller="PhieuThuChi" class="btn btn-sm btn-primary " asp-action="ChiTietHoaDon">
+            Tạo hóa đơn
+        </a>
+    </div>
+    <!-- /FORM Button -->
+
+    <!-- Table-->
+    <div class="card">
+        <div class="table-responsive p-3">
+            <table id="myTable" class="table">
+                <thead>
+                    <tr>
+                        <th><input id="checkAll" type="checkbox" /></th>
+                        <th>Loại phiếu</th>
+                        <th>Tổng tiền</th>
+                        <th>Ngày tạo</th>
+                        <th>HTTT</th>
+                        <th>Trạng thái</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!--/Table-->
+
+</div>
+<!-- / Content -->
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="~/funcdata/functrungtam.js"></script>
+    <script src="~/funcdata/funcphieuthuchi.js"></script>
+    <script src="~/funcdata/funcchitietthuchi.js"></script>
+    <script src="~/quanlytrungtam/hoaDon.js"></script>
+}

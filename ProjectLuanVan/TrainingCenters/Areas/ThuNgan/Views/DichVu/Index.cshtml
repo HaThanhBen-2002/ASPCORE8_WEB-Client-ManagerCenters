@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "_LayouThuNgan";
+    Layout = "_LayoutThuNgan";
     List<int> deletes = new List<int>();
 }
 
@@ -37,20 +37,8 @@
     <!-- /FORM DATA -->
     <!-- FORM Button -->
     <div class="pb-2 mt-2">
-        <button type="button" id="btnCreateDichVu" class="btn btn-sm btn-primary ">
-            Thêm
-        </button>
-        <span class="p-1"></span>
-        <button type="button" id="btnDeleteDichVu" class="btn btn-sm btn-primary ">
-            Xóa
-        </button>
-        <span class="p-1"></span>
         <button type="button" id="btnResetDichVu" class="btn btn-sm btn-primary ">
             Làm mới
-        </button>
-        <span class="p-1"></span>
-        <button type="button" id="btnUpdateDichVu" class="btn btn-sm btn-primary ">
-            Sửa
         </button>
         <span class="p-1"></span>
         <button type="button" id="btnSearchDichVu" class="btn btn-sm btn-primary ">
@@ -79,5 +67,5 @@
 @section Scripts {
     <script src="/AdminAssets/module/support.js"></script>
     <script src="~/funcdata/funcdichvu.js"></script>
-    <script src="/AdminAssets/module/dichVu.js"></script>
+    <script src="~/thungan/dichVu.js"></script>
 }

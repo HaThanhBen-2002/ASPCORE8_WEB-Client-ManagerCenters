@@ -1,0 +1,160 @@
+﻿@{
+    Layout = "_LayoutQuanLyTrungTam";
+    List<int> deletes = new List<int>();
+}
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="align-self-center">Thông Tin Sản Phẩm</h4>
+    <!-- FORM DATA -->
+    <div class="card mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Mã sản phẩm</label>
+                            <input class="form-control h-50" id="sanPham_MaSanPham" type="number" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Tên sản phẩm <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="sanPham_TenSanPham" type="text" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Thông tin</label>
+                            <input class="form-control h-50" id="sanPham_ThongTin" type="text" placeholder="" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Giá <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="sanPham_Gia" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Hạn sử dụng <span class="text-danger">(*)</span></label>
+                            <select name="sanPham_HanSuDung" id="sanPham_HanSuDung" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                <option>Tất cả</option>
+                                <option>1 tuần</option>
+                                <option>2 tuần</option>
+                                <option>3 tuần</option>
+                                <option>1 tháng</option>
+                                <option>2 tháng</option>
+                                <option>3 tháng</option>
+                                <option>4 tháng</option>
+                                <option>5 tháng</option>
+                                <option>6 tháng</option>
+                                <option>7 tháng</option>
+                                <option>8 tháng</option>
+                                <option>9 tháng</option>
+                                <option>10 tháng</option>
+                                <option>11 tháng</option>
+                                <option>12 tháng</option>
+                                <option>13 tháng</option>
+                                <option>14 tháng</option>
+                                <option>15 tháng</option>
+                                <option>16 tháng</option>
+                                <option>17 tháng</option>
+                                <option>18 tháng</option>
+                                <option>19 tháng</option>
+                                <option>20 tháng</option>
+                                <option>21 tháng</option>
+                                <option>22 tháng</option>
+                                <option>23 tháng</option>
+                                <option>24 tháng</option>
+                                <option>Khác</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Loại sản phẩm <span class="text-danger">(*)</span></label>
+                            <select name="sanPham_LoaiSanPham" id="sanPham_LoaiSanPham" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                <option>Tất cả</option>
+                                <option>Y tế</option>
+                                <option>Hàng gia dụng</option>
+                                <option>Thiết bị</option>
+                                <option>Nguyên liệu nấu ăn</option>
+                                <option>Thực phẩm</option>
+                                <option>Thực phẩm đông lạnh</option>
+                                <option>Đồ uống</option>
+                                <option>Điện tử</option>
+                                <option>Thời trang</option>
+                                <option>Đồ gia dụng</option>
+                                <option>Phụ kiện công nghệ</option>
+                                <option>Đồ chơi</option>
+                                <option>Đồ trang trí</option>
+                                <option>Sách và văn phòng phẩm</option>
+                                <option>Công cụ và thiết bị làm vườn</option>
+                                <option>Trang trí nội thất</option>
+                                <option>Dụng cụ nghề nghiệp</option>
+                                <option>Đồ dùng cho em bé và trẻ nhỏ</option>
+                                <option>Quà lưu niệm</option>
+                                <option>Khác</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Trung tâm <span class="text-danger">(*)</span></label>
+                            <select name="sanPham_MaTrungTam" disabled id="sanPham_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Nhà cung cấp <span class="text-danger">(*)</span></label>
+                            <select name="sanPham_MaNhaCungCap" id="sanPham_MaNhaCungCap" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /FORM DATA -->
+    <!-- FORM Button -->
+    <div class="pb-2 mt-2">
+        <button type="button" id="btnCreateSanPham" class="btn btn-sm btn-primary ">
+            Thêm
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnDeleteSanPham" class="btn btn-sm btn-primary ">
+            Xóa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnResetSanPham" class="btn btn-sm btn-primary ">
+            Làm mới
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnUpdateSanPham" class="btn btn-sm btn-primary ">
+            Sửa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnSearchSanPham" class="btn btn-sm btn-primary ">
+            Tìm kiếm
+        </button>
+    </div>
+    <!-- /FORM Button -->
+    <!-- Table-->
+    <div class="card">
+        <div class="table-responsive p-3">
+            <table id="myTable" class="table">
+                <thead>
+                    <tr>
+                        <th><input id="checkAll" type="checkbox" /></th>
+                        <th>Tên sản phẩm</th>
+                        <th>Loại sản phẩm</th>
+                        <th>Hạn sử dụng</th>
+                        <th>Giá</th>
+                        <th>Nhà cung cấp</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!--/Table-->
+
+</div>
+<!-- / Content -->
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="~/funcdata/funcnhacungcap.js"></script>
+    <script src="~/funcdata/functrungtam.js"></script>
+    <script src="~/funcdata/funcsanpham.js"></script>
+    <script src="~/quanlytrungtam/sanPham.js"></script>
+}

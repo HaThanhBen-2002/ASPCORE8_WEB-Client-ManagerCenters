@@ -1,0 +1,119 @@
+﻿@{
+    Layout = "_LayoutQuanLyTrungTam";
+    List<int> deletes = new List<int>();
+}
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="align-self-center">Thông Tin Lớp</h4>
+    <!-- FORM DATA -->
+    <div class="card mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Mã lớp</label>
+                            <input class="form-control h-50" id="lop_MaLop" type="number" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Tên lớp <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="lop_TenLop" type="text" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Năm học <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="lop_NamHoc" placeholder="" type="number" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Học phí <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="lop_HocPhi" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Lịch học <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="lop_LichHoc" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Thông tin</label>
+                            <input class="form-control h-50" id="lop_ThongTin" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Ngày bắt đầu <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="lop_NgayBatDau" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Ngày kết thúc <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="lop_NgayKetThuc" placeholder="" type="text" />
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Trung tâm <span class="text-danger">(*)</span></label>
+                            <select name="lop_MaTrungTam" disabled id="lop_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Giáo viên phụ trách <span class="text-danger">(*)</span></label>
+                            <select name="lop_MaNhanVien" id="lop_MaNhanVien" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /FORM DATA -->
+    <!-- FORM Button -->
+    <div class="pb-2 mt-2">
+        <button type="button" id="btnCreateLop" class="btn btn-sm btn-primary ">
+            Thêm
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnDeleteLop" class="btn btn-sm btn-primary ">
+            Xóa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnResetLop" class="btn btn-sm btn-primary ">
+            Làm mới
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnUpdateLop" class="btn btn-sm btn-primary ">
+            Sửa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnSearchLop" class="btn btn-sm btn-primary ">
+            Tìm kiếm
+        </button>
+    </div>
+    <!-- /FORM Button -->
+    <!-- Table-->
+    <div class="card">
+        <div class="table-responsive p-3">
+            <table id="myTable" class="table">
+                <thead>
+                    <tr>
+                        <th><input id="checkAll" type="checkbox" /></th>
+                        <th>Tên lớp</th>
+                        <th>Giáo viên</th>
+                        <th>Học phí</th>
+                        <th>Năm học</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!--/Table-->
+
+</div>
+<!-- / Content -->
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="~/funcdata/functrungtam.js"></script>
+    <script src="~/funcdata/funcnhanvien.js"></script>
+
+    <script src="~/funcdata/funclop.js"></script>
+    <script src="~/quanlytrungtam/lop.js"></script>
+}

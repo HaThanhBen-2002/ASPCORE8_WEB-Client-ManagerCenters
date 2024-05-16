@@ -22,6 +22,10 @@ namespace TrainingCenters.Controllers
         {
             return HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
         }
+        private string GetHot()
+        {
+            return HttpContext.Request.Headers.Host;
+        }
         public IActionResult Index()
         {
             return View();
@@ -61,7 +65,7 @@ namespace TrainingCenters.Controllers
             //string url = "https://" + request.Host.ToString() + "/Login/DoiMatKhau";
             //var data = await _unit.XacThuc.QuenMatKhau(email, url );
 
-            string url = "https://localhost:7206/Login/DoiMatKhau";
+            string url = "https://"+ GetHot() +"/Login/DoiMatKhau";
             var data = await _unit.XacThuc.QuenMatKhau(email, url);
 
            // var data = await _unit.XacThuc.QuenMatKhau(email, "url" );
@@ -82,7 +86,7 @@ namespace TrainingCenters.Controllers
 
         public async Task<IActionResult> DangKyApi(RegisterUser user)
         {
-            var data = await _unit.XacThuc.DangKy(user, "https://localhost:7206/Login", GetXacThuc());
+            var data = await _unit.XacThuc.DangKy(user, "https://"+ GetHot() +"/Login", GetXacThuc());
             return Ok(data);
         }
     }

@@ -9,273 +9,371 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TrainingCenters
 build_property.RootNamespace = TrainingCenters
-build_property.ProjectDir = C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\TrainingCenters\TrainingCenters\
+build_property.ProjectDir = C:\Users\mavuo\OneDrive\Tài liệu\GitHub\ASPCORE8_WEB-Client-ManagerCenters\ASPCORE8_WEB-Client-ManagerCenters\ProjectLuanVan\TrainingCenters\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\mavuo\OneDrive\Tài liệu\GitHub\DuAnTotNghiep\Code\TrainingCenters\TrainingCenters
+build_property.MSBuildProjectDirectory = C:\Users\mavuo\OneDrive\Tài liệu\GitHub\ASPCORE8_WEB-Client-ManagerCenters\ASPCORE8_WEB-Client-ManagerCenters\ProjectLuanVan\TrainingCenters
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/AcademicScore/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWNhZGVtaWNTY29yZVxJbmRleC5jc2h0bWw=
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/DichVu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGljaFZ1XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/DormitoryRoom/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRG9ybWl0b3J5Um9vbVxDcmVhdGUuY3NodG1s
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/HocSinh/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9jU2luaFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/DormitoryRoom/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRG9ybWl0b3J5Um9vbVxEZWxldGUuY3NodG1s
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/KetQua/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcS2V0UXVhXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/DormitoryRoom/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRG9ybWl0b3J5Um9vbVxEZXRhaWxzLmNzaHRtbA==
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/Lop/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9wXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/DormitoryRoom/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRG9ybWl0b3J5Um9vbVxFZGl0LmNzaHRtbA==
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/LoSanPham/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9TYW5QaGFtXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/DormitoryRoom/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRG9ybWl0b3J5Um9vbVxJbmRleC5jc2h0bWw=
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/MonHoc/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTW9uSG9jXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Employee/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRW1wbG95ZWVcQ3JlYXRlLmNzaHRtbA==
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/NhaCungCap/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTmhhQ3VuZ0NhcFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Employee/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRW1wbG95ZWVcRGVsZXRlLmNzaHRtbA==
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/NhanVien/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTmhhblZpZW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Employee/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRW1wbG95ZWVcRGV0YWlscy5jc2h0bWw=
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/PhieuThuChi/ChiTietHoaDon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGhpZXVUaHVDaGlcQ2hpVGlldEhvYURvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Employee/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRW1wbG95ZWVcRWRpdC5jc2h0bWw=
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/PhieuThuChi/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGhpZXVUaHVDaGlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Employee/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRW1wbG95ZWVcSW5kZXguY3NodG1s
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/SanPham/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2FuUGhhbVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Parent/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFyZW50XENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Parent/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFyZW50XERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Parent/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFyZW50XERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Parent/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFyZW50XEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Parent/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcUGFyZW50XEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Shared/_MenuMain.cshtml]
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/Shared/_MenuMain.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9NZW51TWFpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Shared/_NotificationAlert.cshtml]
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/Shared/_NotificationAlert.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb25BbGVydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Student/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudFxDcmVhdGUuY3NodG1s
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/SuDungDichVu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3VEdW5nRGljaFZ1XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Student/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudFxEZWxldGUuY3NodG1s
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/TrangChu/TrangChu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJhbmdDaHVcVHJhbmdDaHUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Student/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudFxEZXRhaWxzLmNzaHRtbA==
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/TrungTam/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJ1bmdUYW1cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Student/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudFxFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Student/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3R1ZGVudFxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Subject/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3ViamVjdFxDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Subject/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3ViamVjdFxEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Subject/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3ViamVjdFxEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Subject/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3ViamVjdFxFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Subject/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU3ViamVjdFxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/TrainingCenter/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJhaW5pbmdDZW50ZXJcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/TrainingCenter/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJhaW5pbmdDZW50ZXJcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/TrainingCenter/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJhaW5pbmdDZW50ZXJcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/TrainingCenter/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJhaW5pbmdDZW50ZXJcRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/TrainingCenter/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVHJhaW5pbmdDZW50ZXJcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/_ViewImports.cshtml]
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/_ViewStart.cshtml]
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/AcademicScore/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNhZGVtaWNTY29yZVxDcmVhdGUuY3NodG1s
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/GiaoVien/Views/HocSinh/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhb1ZpZW5cVmlld3NcSG9jU2luaFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/AcademicScore/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNhZGVtaWNTY29yZVxEZWxldGUuY3NodG1s
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/GiaoVien/Views/KetQua/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhb1ZpZW5cVmlld3NcS2V0UXVhXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/AcademicScore/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNhZGVtaWNTY29yZVxEZXRhaWxzLmNzaHRtbA==
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/GiaoVien/Views/Lop/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhb1ZpZW5cVmlld3NcTG9wXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/AcademicScore/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNhZGVtaWNTY29yZVxFZGl0LmNzaHRtbA==
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/GiaoVien/Views/MonHoc/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhb1ZpZW5cVmlld3NcTW9uSG9jXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/AcademicScore/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNhZGVtaWNTY29yZVxJbmRleC5jc2h0bWw=
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/GiaoVien/Views/Shared/_MenuMain.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhb1ZpZW5cVmlld3NcU2hhcmVkXF9NZW51TWFpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Account/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDcmVhdGUuY3NodG1s
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/GiaoVien/Views/Shared/_NotificationAlert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhb1ZpZW5cVmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb25BbGVydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Account/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxEZWxldGUuY3NodG1s
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/GiaoVien/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhb1ZpZW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Account/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxEZXRhaWxzLmNzaHRtbA==
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/GiaoVien/Views/TrangChu/TrangChu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhb1ZpZW5cVmlld3NcVHJhbmdDaHVcVHJhbmdDaHUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Account/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxFZGl0LmNzaHRtbA==
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/GiaoVien/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhb1ZpZW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Account/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxJbmRleC5jc2h0bWw=
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/GiaoVien/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhb1ZpZW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/CenterStatistic/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VudGVyU3RhdGlzdGljXENyZWF0ZS5jc2h0bWw=
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/DichVu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcRGljaFZ1XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/CenterStatistic/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VudGVyU3RhdGlzdGljXERlbGV0ZS5jc2h0bWw=
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/HocSinh/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcSG9jU2luaFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/CenterStatistic/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VudGVyU3RhdGlzdGljXERldGFpbHMuY3NodG1s
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/KetQua/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcS2V0UXVhXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/CenterStatistic/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VudGVyU3RhdGlzdGljXEVkaXQuY3NodG1s
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/Lop/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcTG9wXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/CenterStatistic/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2VudGVyU3RhdGlzdGljXEluZGV4LmNzaHRtbA==
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/LoSanPham/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcTG9TYW5QaGFtXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Class/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NcQ3JlYXRlLmNzaHRtbA==
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/MonHoc/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcTW9uSG9jXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Class/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NcRGVsZXRlLmNzaHRtbA==
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/NhaCungCap/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcTmhhQ3VuZ0NhcFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Class/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NcRGV0YWlscy5jc2h0bWw=
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/NhanVien/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcTmhhblZpZW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Class/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NcRWRpdC5jc2h0bWw=
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/PhieuThuChi/ChiTietHoaDon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcUGhpZXVUaHVDaGlcQ2hpVGlldEhvYURvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Class/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3NcSW5kZXguY3NodG1s
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/PhieuThuChi/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcUGhpZXVUaHVDaGlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Home/Index.cshtml]
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/SanPham/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcU2FuUGhhbVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/Shared/_MenuMain.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcU2hhcmVkXF9NZW51TWFpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/Shared/_NotificationAlert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb25BbGVydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/SuDungDichVu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcU3VEdW5nRGljaFZ1XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/TrangChu/TrangChu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcVHJhbmdDaHVcVHJhbmdDaHUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuKho/Views/LoSanPham/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1S2hvXFZpZXdzXExvU2FuUGhhbVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuKho/Views/NhaCungCap/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1S2hvXFZpZXdzXE5oYUN1bmdDYXBcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuKho/Views/SanPham/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1S2hvXFZpZXdzXFNhblBoYW1cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuKho/Views/Shared/_MenuMain.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1S2hvXFZpZXdzXFNoYXJlZFxfTWVudU1haW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuKho/Views/Shared/_NotificationAlert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1S2hvXFZpZXdzXFNoYXJlZFxfTm90aWZpY2F0aW9uQWxlcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuKho/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1S2hvXFZpZXdzXFNoYXJlZFxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuKho/Views/TrangChu/TrangChu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1S2hvXFZpZXdzXFRyYW5nQ2h1XFRyYW5nQ2h1LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuKho/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1S2hvXFZpZXdzXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuKho/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1S2hvXFZpZXdzXF9WaWV3U3RhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/DichVu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xEaWNoVnVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/HocSinh/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xIb2NTaW5oXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/Lop/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xMb3BcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/LoSanPham/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xMb1NhblBoYW1cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/MonHoc/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xNb25Ib2NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/NhaCungCap/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xOaGFDdW5nQ2FwXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/NhanVien/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xOaGFuVmllblxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/PhieuThuChi/ChiTietHoaDon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xQaGlldVRodUNoaVxDaGlUaWV0SG9hRG9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/PhieuThuChi/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xQaGlldVRodUNoaVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/SanPham/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xTYW5QaGFtXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/Shared/_MenuMain.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xTaGFyZWRcX01lbnVNYWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/Shared/_NotificationAlert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xTaGFyZWRcX05vdGlmaWNhdGlvbkFsZXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xTaGFyZWRcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/SuDungDichVu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xTdUR1bmdEaWNoVnVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/TrangChu/TrangChu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xUcmFuZ0NodVxUcmFuZ0NodS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Home/Privacy.cshtml]
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Shared/Error.cshtml]
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Views/Login/DangKy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cRGFuZ0t5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Views/Login/DoiMatKhau.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cRG9pTWF0S2hhdS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Views/Login/QuenMatKhau.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cUXVlbk1hdEtoYXUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Views/Shared/_NotificationAlert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb25BbGVydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/_ViewImports.cshtml]
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/_ViewStart.cshtml]
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-usaf15q15f
 
-[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/DuAnTotNghiep/Code/TrainingCenters/TrainingCenters/Views/Shared/_Layout.cshtml]
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/GiaoVien/Views/Shared/_LayoutGiaoVien.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhb1ZpZW5cVmlld3NcU2hhcmVkXF9MYXlvdXRHaWFvVmllbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-cr9d7qhmfm
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/QuanLyTrungTam/Views/Shared/_LayoutQuanLyTrungTam.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcUXVhbkx5VHJ1bmdUYW1cVmlld3NcU2hhcmVkXF9MYXlvdXRRdWFuTHlUcnVuZ1RhbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-xo03rejq21
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuKho/Views/Shared/_LayoutThuKho.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1S2hvXFZpZXdzXFNoYXJlZFxfTGF5b3V0VGh1S2hvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-j8a0102ify
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Areas/ThuNgan/Views/Shared/_LayoutThuNgan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcVGh1TmdhblxWaWV3c1xTaGFyZWRcX0xheW91dFRodU5nYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-vdptzshl2n
+
+[C:/Users/mavuo/OneDrive/Tài liệu/GitHub/ASPCORE8_WEB-Client-ManagerCenters/ASPCORE8_WEB-Client-ManagerCenters/ProjectLuanVan/TrainingCenters/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ygjc9oy46i

@@ -1861,6 +1861,126 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\chiTietHoaDon.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\chiTietHoaDon.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\dichVu.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\dichVu.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\func_baocaothongke\\func_baocaothongke.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\func_baocaothongke\\func_baocaothongke.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\hoaDon.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\hoaDon.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\hocSinh.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\hocSinh.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\ketQua.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\ketQua.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\loSanPham.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\loSanPham.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\lop.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\lop.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\monHoc.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\monHoc.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\nhaCungCap.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\nhaCungCap.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\nhanVien.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\nhanVien.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\sanPham.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\sanPham.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\suDungDichVu.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\suDungDichVu.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\quanLyTrungTam\\trangChu.js",
+      "PackagePath": "staticwebassets\\quanLyTrungTam\\trangChu.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuKho\\loSanPham.js",
+      "PackagePath": "staticwebassets\\thuKho\\loSanPham.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuKho\\nhaCungCap.js",
+      "PackagePath": "staticwebassets\\thuKho\\nhaCungCap.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuKho\\sanPham.js",
+      "PackagePath": "staticwebassets\\thuKho\\sanPham.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuKho\\trangChu.js",
+      "PackagePath": "staticwebassets\\thuKho\\trangChu.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuNgan\\chiTietHoaDon.js",
+      "PackagePath": "staticwebassets\\thuNgan\\chiTietHoaDon.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuNgan\\dichVu.js",
+      "PackagePath": "staticwebassets\\thuNgan\\dichVu.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuNgan\\hoaDon.js",
+      "PackagePath": "staticwebassets\\thuNgan\\hoaDon.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuNgan\\hocSinh.js",
+      "PackagePath": "staticwebassets\\thuNgan\\hocSinh.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuNgan\\loSanPham.js",
+      "PackagePath": "staticwebassets\\thuNgan\\loSanPham.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuNgan\\lop.js",
+      "PackagePath": "staticwebassets\\thuNgan\\lop.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuNgan\\monHoc.js",
+      "PackagePath": "staticwebassets\\thuNgan\\monHoc.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuNgan\\nhaCungCap.js",
+      "PackagePath": "staticwebassets\\thuNgan\\nhaCungCap.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuNgan\\nhanVien.js",
+      "PackagePath": "staticwebassets\\thuNgan\\nhanVien.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuNgan\\sanPham.js",
+      "PackagePath": "staticwebassets\\thuNgan\\sanPham.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuNgan\\suDungDichVu.js",
+      "PackagePath": "staticwebassets\\thuNgan\\suDungDichVu.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\thuNgan\\trangChu.js",
+      "PackagePath": "staticwebassets\\thuNgan\\trangChu.js"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.TrainingCenters.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

@@ -79,8 +79,9 @@ namespace TrainingCenters.RepositoryApi
             }
         }
 
-        public async Task<bool> DangKy(RegisterUser item, string linkReturn, string accessToken)
+        public async Task<ResponseDI<bool>> DangKy(RegisterUser item, string linkReturn, string accessToken)
         {
+            var responseModel = new ResponseDI<bool>();
             try
             {
                 var apiUrl = $"{_apiUrl}/api/Authentication/DangKy?linkReturn={linkReturn}";
@@ -98,20 +99,28 @@ namespace TrainingCenters.RepositoryApi
                     var responseObject = JsonConvert.DeserializeObject<ApiResponse>(jsonResponse);
                     if (responseObject != null)
                     {
-                        if (responseObject != null) { return responseObject.IsSuccess; }
-                        return false;
+                        responseModel.IsSuccess = true;
+                        responseModel.Message = "Thành công";
+                        responseModel.Data = responseObject.IsSuccess;
                     }
-                    return false;
+                    else
+                    {
+                        responseModel.IsSuccess = false;
+                        responseModel.Message = "Chuyển đổi dữ liệu thất bại";
+                    }
                 }
                 else
                 {
-                    return false;
+                    responseModel.IsSuccess = false;
+                    responseModel.Message = "Authorization";
                 }
             }
             catch
             {
-                return false;
+                responseModel.IsSuccess = false;
+                responseModel.Message = $"Lỗi Try_C";
             }
+            return responseModel;
         }
         // xông
         public async Task<ApiResponsePro<LoginResponse>> DangNhap(LoginModel item)

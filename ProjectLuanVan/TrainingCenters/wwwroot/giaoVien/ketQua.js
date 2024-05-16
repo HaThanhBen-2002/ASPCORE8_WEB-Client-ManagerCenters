@@ -1,6 +1,6 @@
 ﻿let CtrungTam = JSON.parse(Cookies.get('trungTam'));
 let CnhanVien = JSON.parse(Cookies.get('nhanVien'));
-
+let Crole = JSON.parse(Cookies.get('role'));
 function isValidKetQua(item) {
     if (CheckIsNull(item.TenKetQua)) {
         displayMessages(2, "Vui lòng nhập (Tên kết quả)");

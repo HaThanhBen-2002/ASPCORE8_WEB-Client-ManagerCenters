@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "_LayouThuNgan";
+    Layout = "_LayoutThuNgan";
     List<int> deletes = new List<int>();
 }
 
@@ -91,7 +91,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label  m-0 p-0">Trung tâm <span class="text-danger">(*)</span></label>
-                            <select name="sanPham_MaTrungTam" id="sanPham_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            <select name="sanPham_MaTrungTam" disabled id="sanPham_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
                             </select>
                         </div>
                         <div class="col-md-4">
@@ -109,20 +109,8 @@
     <!-- /FORM DATA -->
     <!-- FORM Button -->
     <div class="pb-2 mt-2">
-        <button type="button" id="btnCreateSanPham" class="btn btn-sm btn-primary ">
-            Thêm
-        </button>
-        <span class="p-1"></span>
-        <button type="button" id="btnDeleteSanPham" class="btn btn-sm btn-primary ">
-            Xóa
-        </button>
-        <span class="p-1"></span>
         <button type="button" id="btnResetSanPham" class="btn btn-sm btn-primary ">
             Làm mới
-        </button>
-        <span class="p-1"></span>
-        <button type="button" id="btnUpdateSanPham" class="btn btn-sm btn-primary ">
-            Sửa
         </button>
         <span class="p-1"></span>
         <button type="button" id="btnSearchSanPham" class="btn btn-sm btn-primary ">
@@ -156,5 +144,5 @@
     <script src="~/funcdata/funcnhacungcap.js"></script>
     <script src="~/funcdata/functrungtam.js"></script>
     <script src="~/funcdata/funcsanpham.js"></script>
-    <script src="/AdminAssets/module/sanPham.js"></script>
+    <script src="~/thungan/sanPham.js"></script>
 }

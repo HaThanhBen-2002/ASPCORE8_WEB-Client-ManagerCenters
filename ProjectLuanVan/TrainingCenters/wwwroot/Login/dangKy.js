@@ -44,6 +44,23 @@ function showOption() {
     $('#dangKy_PhanQuyen option[value="Quản lý trung tâm"]').show();
 }
 
+async function DangKyTaiKhoan(registerUser) {
+    try {
+        const response = await $.ajax({
+            type: "POST", url: "/Login/DangKyApi", data: { user: registerUser },
+            headers: { "Authorization": `Bearer ${getToken()}` }
+        });
+        if (response.isSuccess === false && response.message === "Authorization") {
+            await CapNhatToken();
+            return await DangKyTaiKhoan();
+        }
+        return response.isSuccess;
+    } catch (error) {
+        console.error("Lỗi Try_Ca:", error);
+        throw error;
+    }
+}
+
 async function CbbTrungTam() {
     var trungTam = {
         MaTrungTam: null,
@@ -148,11 +165,7 @@ $(document).ready(async function () {
                                     Roles: []
                                 };
                                 registerUser.Roles.push(phanQuyen);
-                                let dangKyTaiKhoan = await $.ajax({
-                                    type: "POST",
-                                    url: "/Login/DangKyApi",
-                                    data: { user: registerUser }
-                                });
+                                let dangKyTaiKhoan = await DangKyTaiKhoan(registerUser);
                                 if (dangKyTaiKhoan == true) {
                                     displayMessages(1, "Kiểm tra email để kích hoạt tài khoản");
                                 }
@@ -225,11 +238,7 @@ $(document).ready(async function () {
                                             Roles: []
                                         };
                                         registerUser.Roles.push(phanQuyen);
-                                        let dangKyTaiKhoan = await $.ajax({
-                                            type: "POST",
-                                            url: "/Login/DangKyApi",
-                                            data: { user: registerUser }
-                                        });
+                                        let dangKyTaiKhoan = await DangKyTaiKhoan(registerUser);
                                         if (dangKyTaiKhoan == true) {
                                             displayMessages(1, "Kiểm tra email để kích hoạt tài khoản");
                                         }

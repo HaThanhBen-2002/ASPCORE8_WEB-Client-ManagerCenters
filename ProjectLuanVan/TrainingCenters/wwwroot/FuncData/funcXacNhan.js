@@ -1,13 +1,19 @@
 ﻿function XacDinhRole(role) {
     switch (role) {
         case "Admin":
-            window.location.href = "/Admin/TrangChu/TrangChu";  // Điều hướng đến trang chủ của Admin
+            window.location.href = "/Admin/TrangChu/TrangChu";  
             break;
         case "Giáo viên":
-            window.location.href = "/GiaoVien/TrangChu/TrangChu";   // Điều hướng đến trang chủ của User
+            window.location.href = "/GiaoVien/TrangChu/TrangChu";
+            break;
+        case "Kho":
+            window.location.href = "/ThuKho/TrangChu/TrangChu"; 
+            break;
+        case "Thu ngân":
+            window.location.href = "/ThuNgan/TrangChu/TrangChu";
             break;
         case "Quản lý trung tâm":
-            window.location.href = "/Admin/TrangChu/TrangChu";   // Điều hướng đến trang chủ của User
+            window.location.href = "/QuanLyTrungTam/TrangChu/TrangChu";
             break;
         // Thêm các điều hướng khác tùy theo role
         default:
@@ -86,3 +92,4 @@ function removeIdFields(data) {
 
     return cleanedData;
 }
+

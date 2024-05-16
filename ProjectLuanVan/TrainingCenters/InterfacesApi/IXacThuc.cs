@@ -8,7 +8,7 @@ namespace TrainingCenters.InterfacesApi
 {
     public interface IXacThuc
     {
-        Task<bool> DangKy(RegisterUser item, string linkReturn, string accessToken);
+        Task<ResponseDI<bool>> DangKy(RegisterUser item, string linkReturn, string accessToken);
         Task<ApiResponsePro<LoginResponse>> DangNhap(LoginModel item);
         Task<ApiResponsePro<RegisterUser>> GetByEmail(string email);
         Task<ApiResponsePro<LoginResponse>> CapNhatToken(LoginResponse tokens);

@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "_LayouThuNgan";
+    Layout = "_LayoutThuNgan";
     List<int> deletes = new List<int>();
 }
 
@@ -37,20 +37,8 @@
     <!-- /FORM DATA -->
     <!-- FORM Button -->
     <div class="pb-2 mt-2">
-        <button type="button" id="btnCreateMonHoc" class="btn btn-sm btn-primary ">
-            Thêm
-        </button>
-        <span class="p-1"></span>
-        <button type="button" id="btnDeleteMonHoc" class="btn btn-sm btn-primary ">
-            Xóa
-        </button>
-        <span class="p-1"></span>
         <button type="button" id="btnResetMonHoc" class="btn btn-sm btn-primary ">
             Làm mới
-        </button>
-        <span class="p-1"></span>
-        <button type="button" id="btnUpdateMonHoc" class="btn btn-sm btn-primary ">
-            Sửa
         </button>
         <span class="p-1"></span>
         <button type="button" id="btnSearchMonHoc" class="btn btn-sm btn-primary ">
@@ -80,5 +68,5 @@
 @section Scripts {
     <script src="/AdminAssets/module/support.js"></script>
     <script src="~/funcdata/funcmonhoc.js"></script>
-    <script src="/AdminAssets/module/monHoc.js"></script>
+    <script src="~/thungan/monHoc.js"></script>
 }

@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "_LayouThuNgan";
+    Layout = "_LayoutThuNgan";
     List<int> deletes = new List<int>();
 }
 
@@ -111,7 +111,7 @@
                                 <div class="accordion-body row m-0 p-0 ">
                                     <div class="col-md-6">
                                         <label class="form-label  m-0 p-0">Trung tâm <span class="text-danger">(*)</span></label>
-                                        <select name="nhanVien_MaTrungTam" id="nhanVien_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                        <select name="nhanVien_MaTrungTam" disabled id="nhanVien_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
                                         </select>
                                     </div>
                                     <div class="col-md-6">
@@ -316,20 +316,8 @@
     <!-- FORM Button -->
     <div class="row col-sm-12">
         <div class="pb-2 mt-2 col-sm-6">
-            <button type="button" id="btnCreateNhanVien" class="btn btn-sm btn-primary ">
-                Thêm
-            </button>
-            <span class="p-1"></span>
-            <button type="button" id="btnDeleteNhanVien" class="btn btn-sm btn-primary ">
-                Xóa
-            </button>
-            <span class="p-1"></span>
             <button type="button" id="btnResetNhanVien" class="btn btn-sm btn-primary ">
                 Làm mới
-            </button>
-            <span class="p-1"></span>
-            <button type="button" id="btnUpdateNhanVien" class="btn btn-sm btn-primary ">
-                Sửa
             </button>
             <span class="p-1"></span>
             <button type="button" id="btnSearchNhanVien" class="btn btn-sm btn-primary ">
@@ -405,5 +393,5 @@
     <script src="/AdminAssets/module/support.js"></script>
     <script src="~/funcdata/functrungtam.js"></script>
     <script src="~/funcdata/funcnhanvien.js"></script>
-    <script src="/AdminAssets/module/nhanVien.js"></script>
+    <script src="~/thungan/nhanVien.js"></script>
 }
