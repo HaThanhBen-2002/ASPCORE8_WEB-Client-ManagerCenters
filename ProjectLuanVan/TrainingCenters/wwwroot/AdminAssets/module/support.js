@@ -80,6 +80,77 @@ function getTimeToday() {
 
     return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 }
+
+function addOneMonth(dateStr) {
+    var parts = dateStr.split('/');
+    var day = parseInt(parts[0]);
+    var month = parseInt(parts[1]);
+    var year = parseInt(parts[2]);
+
+    // Create a new date object
+    var date = new Date(year, month - 1, day);
+    date.setMonth(date.getMonth() + 1); // Add one month
+
+    // If month overflow to next year
+    if (date.getMonth() == 0) {
+        date.setFullYear(date.getFullYear());
+    }
+
+    // Format the date as dd/mm/yyyy
+    var nextMonth = ('0' + (date.getMonth() + 1)).slice(-2);
+    var nextDay = ('0' + date.getDate()).slice(-2);
+    var nextYear = date.getFullYear();
+
+    return `${nextDay}/${nextMonth}/${nextYear}`;
+}
+
+function addMonthNumber(dateStr, number) {
+    var parts = dateStr.split('/');
+    var day = parseInt(parts[0]);
+    var month = parseInt(parts[1]);
+    var year = parseInt(parts[2]);
+
+    // Tạo đối tượng Date mới
+    var date = new Date(year, month - 1, day);
+    date.setMonth(date.getMonth() + number);
+
+    // Nếu ngày hiện tại là ngày cuối cùng của tháng, cần kiểm tra và điều chỉnh lại
+    if (day !== date.getDate()) {
+        date.setDate(0); // Đặt ngày thành ngày cuối cùng của tháng trước
+    }
+
+    // Định dạng ngày dưới dạng dd/mm/yyyy
+    var nextDay = ('0' + date.getDate()).slice(-2);
+    var nextMonth = ('0' + (date.getMonth() + 1)).slice(-2);
+    var nextYear = date.getFullYear();
+
+    return `${nextDay}/${nextMonth}/${nextYear}`;
+}
+// Trả về số ngày của date2 = date1 - có trả về số âm
+function getDaysDifference(date1, date2) {
+    // Chuyển đổi date1 từ chuỗi thành đối tượng Date
+    var parts1 = date1.split('/');
+    var day1 = parseInt(parts1[0]);
+    var month1 = parseInt(parts1[1]);
+    var year1 = parseInt(parts1[2]);
+    var dateObj1 = new Date(year1, month1 - 1, day1);
+
+    // Chuyển đổi date2 từ chuỗi thành đối tượng Date
+    var parts2 = date2.split('/');
+    var day2 = parseInt(parts2[0]);
+    var month2 = parseInt(parts2[1]);
+    var year2 = parseInt(parts2[2]);
+    var dateObj2 = new Date(year2, month2 - 1, day2);
+
+    // Tính toán sự khác biệt giữa hai ngày (milliseconds)
+    var differenceInTime = dateObj2 - dateObj1;
+
+    // Chuyển đổi sự khác biệt từ milliseconds sang ngày
+    var differenceInDays = differenceInTime / (1000 * 3600 * 24);
+
+    return differenceInDays;
+}
+
 // Func lấy ngày tháng năm hiện tại
 function GetToDay() {
     // Lấy ngày hiện tại

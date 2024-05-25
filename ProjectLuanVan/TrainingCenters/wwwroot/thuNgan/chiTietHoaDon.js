@@ -2,6 +2,7 @@
 let CnhanVien = JSON.parse(Cookies.get('nhanVien'));
 let Crole = JSON.parse(Cookies.get('role'));
 var selectedItems = [];
+var listSuDungDichVu_HoaDon = [];
 function GetLopData() {
     return {
         MaLop: $('#lop_MaLop').val(),
@@ -40,9 +41,22 @@ function updateTable() {
             };
         }
     });
+
     // Chuyển đổi tempItems trở lại thành mảng selectedItems
     selectedItems = Object.values(tempItems).map(function (value) {
         return value;
+    });
+    listSuDungDichVu_HoaDon.forEach(function (item) {
+        selectedItems.forEach(function (itemHD, index) {
+            if (item.tenSuDungDichVu == itemHD.ten) {
+                if (item.trangThai == "Chờ thanh toán") {
+                    if (selectedItems[index].soLuong != 1) {
+                        selectedItems[index].tongGia = formatToVND(selectedItems[index].gia);
+                    }
+                    selectedItems[index].soLuong = 1;
+                }
+            }
+        });
     });
     // Tính tổng tiền của hóa đơn
     selectedItems.forEach(function (item) {
@@ -67,13 +81,21 @@ function updateTable() {
     // Thêm Id cho mỗi button trong hàng, chứa chỉ mục của hàng
     $('#myTableHoaDon tbody tr').each(function (index) {
         var rowIndex = index; // Lấy chỉ mục của hàng
-        $(this).append('<td width="10%" class="px-1"><button onclick="DeleteItem(' + rowIndex +')" class="btn btn-xs btn-danger">Xóa</button></td>');
+        $(this).append('<td width="10%" class="px-1"><button onclick="DeleteItem(' + rowIndex + ')" class="btn btn-xs btn-danger">Xóa</button></td>');
     });
 
 }
 function DeleteItem(index) {
     // Xóa phần tử tương ứng trong danh sách selectedItems
+    var itemDelete = selectedItems[index];
     selectedItems.splice(index, 1);
+    // Tìm phần tử trung tên với itemDelete
+    listSuDungDichVu_HoaDon.forEach(function (item, index1) {
+        // Nếu trùng tên thì xóa phần tử đó
+        if (item.tenSuDungDichVu == itemDelete.ten) {
+            listSuDungDichVu_HoaDon.splice(index1, 1);
+        }
+    });
     // Cập nhật lại bảng
     updateTable();
 }
@@ -143,9 +165,6 @@ async function CbbNhaCungCapByMaTrungTam() {
     }
 }
 async function CbbNhanVienByMaTrungTam() {
-    let trungTam = CtrungTam;
-    if (CheckIsNull(trungTam)!=true) {
-
         let nhanVien = {
             MaNhanVien: null,
             TenNhanVien: null,
@@ -157,7 +176,7 @@ async function CbbNhanVienByMaTrungTam() {
             Email: null,
             ThongTin: null,
             HinhAnh: null,
-            MaTrungTam: trungTam,
+            MaTrungTam: CtrungTam,
             MaTaiKhoan: null,
             LoaiNhanVien: "Giáo viên",
             PhongBan: null,
@@ -179,16 +198,62 @@ async function CbbNhanVienByMaTrungTam() {
                 text: item.tenNhanVien
             }));
         });
-    }
-    else {
-        $('#lop_MaNhanVien').empty();
-        $('#lop_MaNhanVien').append($('<option>', {
-            value: 0,
-            text: "Tất cả"
-        }));
+}
+async function SearchNameHocSinh() {
+    $('#suDungDichVu_TenHocSinh').val(null);
+    let maHocSinh = $('#suDungDichVu_MaHocSinh').val();
+    if (!CheckIsNull(maHocSinh)) {
+        let hocSinh = {
+            MaHocSinh: maHocSinh,
+            TenHocSinh: null,
+            NgaySinh: null,
+            GioiTinh: null,
+            MaLop: null,
+            MaTrungTam: CtrungTam,
+            ThongTin: null,
+            HinhAnh: null,
+            DiaChi: null,
+            ChieuCao: null,
+            CanNang: null,
+            TinhTrangRang: null,
+            TinhTrangMat: null,
+            Bmi: null,
+            TinhTrangTamLy: null,
+            ChucNangCoThe: null,
+            DanhGiaSucKhoe: null,
+            Cccdcha: null,
+            Cccdme: null,
+            TenCha: null,
+            TenMe: null,
+            NgaySinhCha: null,
+            NgaySinhMe: null,
+            SoDienThoaiCha: null,
+            SoDienThoaiMe: null,
+            EmailCha: null,
+            EmailMe: null,
+            NgheNghiepCha: null,
+            NgheNghiepMe: null
+        };
+        let hocSinhs = await HocSinh_SearchName(hocSinh);
+        $.each(hocSinhs, function (index, item) {
+            $('#suDungDichVu_TenHocSinh').val(item.tenHocSinh);
+        });
+
     }
 }
 
+function getSubstringUntilDen(inputStr) {
+    // Tìm vị trí của từ "đến"
+    var indexOfDen = inputStr.indexOf("đến");
+
+    // Nếu tìm thấy từ "đến", lấy chuỗi từ đầu đến vị trí của từ "đến"
+    if (indexOfDen !== -1) {
+        return inputStr.substring(0, indexOfDen + "đến".length);
+    }
+
+    // Nếu không tìm thấy từ "đến", trả về chuỗi ban đầu
+    return inputStr;
+}
 $(document).ready(async function () {
     await CapNhatToken();
     let thanhToan = false;
@@ -367,21 +432,25 @@ $(document).ready(async function () {
     // Dịch vụ
     $("#btnResetChiTietPhieuThuChiDichVu").click(function () {
 
-        $('#dichVu_MaDichVu').val(null);
-        $('#dichVu_TenDichVu').val(null);
-        $('#dichVu_ThongTin').val(null);
-        $('#dichVu_Gia').val(null);
+        $('#suDungDichVu_MaSuDungDichVu').val(null);
+        $('#suDungDichVu_TenSuDungDichVu').val(null);
+        $('#suDungDichVu_MaHocSinh').val(null);
+        $('#suDungDichVu_TenHocSinh').val(null);
+        $('#suDungDichVu_NgayBatDau').val(null);
+        $('#suDungDichVu_NgayKetThuc').val(null);
+        $('#suDungDichVu_MaDichVu').val(0);
+        $('#suDungDichVu_TrangThai').val("Tất cả");
 
-        $('#checkAllDichVu').prop('checked', false);
+        $('#checkAllSuDungDichVu').prop('checked', false);
         var isChecked = $(this).prop('checked');
         if (isChecked) {
-            $('#myTableDichVu input[type="checkbox"]').each(function () {
+            $('#myTableSuDungDichVu input[type="checkbox"]').each(function () {
                 if (!$(this).hasClass('form-check-input')) {
                     $(this).prop('checked', true);
                 }
             });
         } else {
-            $('#myTableDichVu input[type="checkbox"]').each(function () {
+            $('#myTableSuDungDichVu input[type="checkbox"]').each(function () {
                 if (!$(this).hasClass('form-check-input')) {
                     $(this).prop('checked', false);
                 }
@@ -389,39 +458,78 @@ $(document).ready(async function () {
         }
     });
     $("#btnCreateChiTietPhieuThuChiDichVu").click(function () {
-        $('#myTableDichVu tbody tr').each(function () {
+        $('#myTableSuDungDichVu tbody tr').each(async function () {
             var checkbox = $(this).find('.checkbox');
             if (checkbox.prop('checked')) {
                 var tenDichVu = $(this).find('td:nth-child(2)').text();
-                var gia = $(this).find('td:nth-child(3)').text();
-                var soLuong = $(this).find('.quantity-input').val();
-                selectedItems.push({
-                    ten: tenDichVu,
-                    gia: gia,
-                    soLuong: soLuong,
-                    donViTinh: "dv",
-                    tongGia: formatToVND(soLuong * parseVNDToNumber(gia))
-                });
+                let suDungDichVu = {
+                    MaSuDungDichVu: null,
+                    TenSuDungDichVu: tenDichVu,
+                    MaDichVu: null,
+                    MaHocSinh: null,
+                    MaTrungTam: null,
+                    TrangThai: null,
+                    NgayBatDau: null,
+                    NgayKetThuc: null
+                };
+                let listSuDungDichVu = await SuDungDichVu_Search(suDungDichVu);
+                if (listSuDungDichVu.length != 0) {
+                    var suDungDichVu1 = listSuDungDichVu[0];
+                    if (listSuDungDichVu_HoaDon.length != 0) {
+                        let dem = 0;
+                        listSuDungDichVu_HoaDon.forEach(function (dichVu) {
+                            if (dichVu.maSuDungDichVu == suDungDichVu1.maSuDungDichVu) {
+                                dem += 1;
+                                return;
+                            }
+                        });
+                        if (dem == 0) {
+                            listSuDungDichVu_HoaDon.push(suDungDichVu1);
+                        }
+                    }
+                    else {
+                        listSuDungDichVu_HoaDon.push(suDungDichVu1);
+                    }
+
+                    let thongTinDichVu = await DichVu_GetById(suDungDichVu1.maDichVu);
+                    var gia = thongTinDichVu.gia;
+                    var soLuong = $(this).find('.quantity-input').val();
+                    selectedItems.push({
+                        ten: tenDichVu,
+                        gia: gia,
+                        soLuong: soLuong,
+                        donViTinh: "dv",
+                        tongGia: formatToVND(soLuong * parseVNDToNumber(gia))
+                    });
+                    updateTable();
+                } else {
+                    displayMessages(3, "Lỗi truy xuất dữ liệu SUDUNGDICHVU");
+                }
             }
         });
-        updateTable();
+
     });
     $("#btnSearchChiTietPhieuThuChiDichVu").click(async function () {
         await CapNhatToken();
-
-        let dichVu = {
-            MaDichVu: $('#dichVu_MaDichVu').val(),
-            TenDichVu: $('#dichVu_TenDichVu').val(),
-            ThongTin: $('#dichVu_ThongTin').val(),
-            Gia: $('#dichVu_Gia').val(),
+        let suDungDichVu = {
+            MaSuDungDichVu: $('#suDungDichVu_MaSuDungDichVu').val(),
+            TenSuDungDichVu: $('#suDungDichVu_TenSuDungDichVu').val(),
+            MaDichVu: $('#suDungDichVu_MaDichVu').val(),
+            MaHocSinh: $('#suDungDichVu_MaHocSinh').val(),
+            MaTrungTam: $('#phieuThuChi_MaTrungTam').val(),
+            TrangThai: $('#suDungDichVu_TrangThai').val(),
+            NgayBatDau: $('#suDungDichVu_NgayBatDau').val(),
+            NgayKetThuc: $('#suDungDichVu_NgayKetThuc').val()
         };
+        if (suDungDichVu.TrangThai == "Tất cả") {
+            suDungDichVu.TrangThai = null;
+        }
 
-        
-        if ($.fn.DataTable.isDataTable('#myTableDichVu')) {
-            $('#myTableDichVu').DataTable().destroy();
+        if ($.fn.DataTable.isDataTable('#myTableSuDungDichVu')) {
+            $('#myTableSuDungDichVu').DataTable().destroy();
         }
         // Table Object
-        $('#myTableDichVu').DataTable({
+        $('#myTableSuDungDichVu').DataTable({
             serverSide: true,
             scrollY: 300,
             searching: false,
@@ -429,12 +537,12 @@ $(document).ready(async function () {
             ordering: false,
             ajax: {
                 type: "POST",
-                url: "/DichVu/LoadingDataTableView",
+                url: "/SuDungDichVu/LoadingDataTableView",
                 dataType: "json",
                 headers: {
                     "Authorization": `Bearer ${getToken()}`
                 },
-                data: { item: dichVu },
+                data: { item: suDungDichVu },
                 dataSrc: 'data',
                 beforeSend: function (xhr) {
                     xhr.setRequestHeader("Authorization", `Bearer ${getToken()}`);
@@ -442,19 +550,13 @@ $(document).ready(async function () {
             },
             columns: [
                 {
-                    data: 'maDichVu',
+                    data: 'maSuDungDichVu',
                     render: function (data, type, row) {
                         return '<input data-checkbox-id="' + data + '" type="checkbox" class="checkbox"/>';
                     }
                 },
                 {
-                    data: "tenDichVu"
-                },
-                {
-                    data: "gia",
-                    render: function (data, type, row) {
-                        return formatToVND(data);
-                    }
+                    data: "tenSuDungDichVu"
                 },
                 {
                     data: null,
@@ -475,21 +577,21 @@ $(document).ready(async function () {
             }
         });
         // Event pageChange"myTable"
-        $('#myTableDichVu').on('page.dt', function () {
+        $('#myTableSuDungDichVu').on('page.dt', function () {
             // Thực hiện các hành động khi trang của DataTable thay đổi
-            $('#checkAllDichVu').prop('checked', false);
+            $('#checkAllSuDungDichVu').prop('checked', false);
         });
         // Event checkbox "Check All"
-        $('#checkAllDichVu').change(function () {
+        $('#checkAllSuDungDichVu').change(function () {
             var isChecked = $(this).prop('checked');
             if (isChecked) {
-                $('#myTableDichVu input[type="checkbox"]').each(function () {
+                $('#myTableSuDungDichVu input[type="checkbox"]').each(function () {
                     if (!$(this).hasClass('form-check-input')) {
                         $(this).prop('checked', true);
                     }
                 });
             } else {
-                $('#myTableDichVu input[type="checkbox"]').each(function () {
+                $('#myTableSuDungDichVu input[type="checkbox"]').each(function () {
                     if (!$(this).hasClass('form-check-input')) {
                         $(this).prop('checked', false);
                     }
@@ -707,6 +809,28 @@ $(document).ready(async function () {
                 });
                 // Gửi dữ liệu thông qua AJAX để thêm vào CSDL
                 phieuThuChi = await PhieuThuChi_Create(phieuThuChi, listChiTietHoaDon, thanhToan);
+                //------------- Update Sử dụng dịch vụ
+                listSuDungDichVu_HoaDon.forEach(function (item) {
+                    selectedItems.forEach(async function (itemHD) {
+                        // Kiểm tra đối tượng có nằm trong mục thanh toán không
+                        if (item.tenSuDungDichVu == itemHD.ten) {
+                            // Nếu trạng thái sử dụng dịch vụ là Chờ thanh toán thì
+                            if (item.trangThai == "Chờ thanh toán") {
+                                item.trangThai = "Đang sử dụng";
+                                await SuDungDichVu_Update(item);
+                            }
+                            else {
+                                item.trangThai = "Đang sử dụng";
+                                var ngayKetThucUpdate = addMonthNumber(item.ngayKetThuc, itemHD.soLuong);
+                                var tenSuDungDichVu = getSubstringUntilDen(item.tenSuDungDichVu);
+                                item.tenSuDungDichVu = tenSuDungDichVu + " " + ngayKetThucUpdate;
+                                item.ngayKetThuc = ngayKetThucUpdate;
+                                await SuDungDichVu_Update(item);
+                            }
+                        }
+                    });
+                });
+                //------------- End Update Sử dụng dịch vụ
                 if (phieuThuChi != null) {
                     
                     $('#phieuThuChi_MaCodeHoaDon').text("Mã HD: " + phieuThuChi.CodeHoaDon);
@@ -746,7 +870,7 @@ $(document).ready(async function () {
                     var originalContent = $('body').html();
                     $('body').empty().html(invoiceContent);
                     window.print();
-                    window.location.href = "/Admin/PhieuThuChi/ChiTietHoaDon";
+                    window.location.href = "/ThuNgan/PhieuThuChi/ChiTietHoaDon";
                     displayMessages(1, "Tạo hóa đơn thành công");
                     
                 }

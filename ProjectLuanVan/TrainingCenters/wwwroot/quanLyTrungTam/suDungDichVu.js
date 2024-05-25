@@ -14,9 +14,6 @@ function isValidSuDungDichVu(item) {
     } else if (CheckIsNull($('#suDungDichVu_TenHocSinh').val())) {
         displayMessages(2, "Học sinh không hợp lệ");
         return false;
-    } else if (CheckIsNull(item.MaTrungTam)) {
-        displayMessages(2, "Vui lòng chọn (Mã trung tâm)");
-        return false;
     } else if (CheckIsNull(item.TrangThai)) {
         displayMessages(2, "Vui lòng nhập (Trạng thái)");
         return false;
@@ -92,11 +89,31 @@ async function CbbDichVu() {
     });
 }
 
+let ACN_tenHocSinh = "";
+let ACN_tenDichVuSuDung = "";
+let ACN_tenNgayBatDau = "";
+let ACN_tenNgayKetThuc = "";
+function AutoCreateName_SuDungDichVu() {
+    $('#suDungDichVu_TenSuDungDichVu').val(ACN_tenHocSinh + "-" + ACN_tenDichVuSuDung + "-" + ACN_tenNgayBatDau + " đến " + ACN_tenNgayKetThuc);
+}
+function SoNgaySuDung(date1) {
+    var ketQua = '';
+    let homNay = GetToDay();
+    let soNgay = getDaysDifference(homNay, date1);
+    if (soNgay >= 0) {
+        ketQua = '<label class="text-success" >Còn ' + soNgay + ' ngày</label>';
+    }
+    else {
+        ketQua = '<label class="text-danger" >Đã hết hạng ' + soNgay + ' ngày</label>';
+
+    }
+    return ketQua;
+}
 async function SearchNameHocSinh() {
     $('#suDungDichVu_TenHocSinh').val(null);
     let trungTam = CtrungTam;
     let maHocSinh = $('#suDungDichVu_MaHocSinh').val();
-    if (!CheckIsNull(trungTam) && !CheckIsNull(maHocSinh)) {
+    if (!CheckIsNull(maHocSinh)) {
         let hocSinh = {
             MaHocSinh: maHocSinh,
             TenHocSinh: null,
@@ -131,11 +148,10 @@ async function SearchNameHocSinh() {
         let hocSinhs = await HocSinh_SearchName(hocSinh);
         $.each(hocSinhs, function (index, item) {
             $('#suDungDichVu_TenHocSinh').val(item.tenHocSinh);
+            ACN_tenHocSinh = item.tenHocSinh;
+            AutoCreateName_SuDungDichVu();
         });
 
-    }
-    if (CheckIsNull(trungTam)) {
-        displayMessages(2, "Vui lòng chọn (Trung tâm)");
     }
 }
 
@@ -161,7 +177,12 @@ async function UpdateSuDungDichVu() {
 }
 
 $(document).ready(async function () {
-    await CapNhatToken
+    await CapNhatToken();
+    $('#suDungDichVu_NgayBatDau').val(GetToDay());
+    ACN_tenNgayBatDau = GetToDay();
+    ACN_tenNgayKetThuc = addOneMonth(ACN_tenNgayBatDau);
+    $('#suDungDichVu_NgayKetThuc').val(ACN_tenNgayKetThuc);
+    AutoCreateName_SuDungDichVu();
     // ============================================== TABLE ===============================================
     var suDungDichVu = {
         MaSuDungDichVu: null,
@@ -198,13 +219,20 @@ $(document).ready(async function () {
                 data: 'maSuDungDichVu',
                 render: function (data, type, row) {
                     return '<input data-checkbox-id="' + data + '" type="checkbox"/>';
-                }
+                },
             },
             { data: "tenSuDungDichVu" },
             { data: "tenDichVu" },
             { data: "trangThai" },
-            { data: "ngayKetThuc" },
             { data: "tenHocSinh" },
+            { data: "ngayKetThuc" },
+            {
+                data: 'ngayKetThuc',
+                title: 'Số Ngày Sử Dụng',
+                render: function (data) {
+                    return SoNgaySuDung(data);
+                }
+            }
 
         ],
         layout: {
@@ -258,7 +286,8 @@ $(document).ready(async function () {
             $('#suDungDichVu_MaDichVu').val(data.maDichVu);
             $('#suDungDichVu_TrangThai').val(data.trangThai);
             await SearchNameHocSinh();
-
+            ACN_tenDichVuSuDung = $('#suDungDichVu_MaDichVu option:selected').text();
+            AutoCreateName_SuDungDichVu();
         }
     });
 
@@ -285,9 +314,23 @@ $(document).ready(async function () {
     // ============================================== CBB ===============================================
     CbbTrungTam();
     CbbDichVu();
+    $('#suDungDichVu_MaDichVu').change(function () {
+        ACN_tenDichVuSuDung = $('#suDungDichVu_MaDichVu option:selected').text();
+        AutoCreateName_SuDungDichVu();
+    });
     // ============================================== TEXT CHANGE ===============================================
     $('#suDungDichVu_MaHocSinh').on('input', function () {
         SearchNameHocSinh();
+    });
+    $('#suDungDichVu_NgayBatDau').on('input', function () {
+        ACN_tenNgayBatDau = $('#suDungDichVu_NgayBatDau').val();
+        ACN_tenNgayKetThuc = addOneMonth(ACN_tenNgayBatDau);
+        $('#suDungDichVu_NgayKetThuc').val(ACN_tenNgayKetThuc);
+        AutoCreateName_SuDungDichVu();
+    });
+    $('#suDungDichVu_NgayKetThuc').on('input', function () {
+        ACN_tenNgayKeThuc = $('#suDungDichVu_NgayKetThuc').val();
+        AutoCreateName_SuDungDichVu();
     });
     // ============================================== BUTTON ===============================================
     $('#btnCreateSuDungDichVu').click(async function () {
@@ -373,6 +416,10 @@ $(document).ready(async function () {
     });
 
     $('#btnResetSuDungDichVu').click(function () {
+        ACN_tenDichVuSuDung = "";
+        ACN_tenHocSinh = "";
+        ACN_tenNgayBatDau = "";
+        ACN_tenNgayKetThuc = "";
         $('#suDungDichVu_MaSuDungDichVu').val(null);
         $('#suDungDichVu_TenSuDungDichVu').val(null);
         $('#suDungDichVu_MaHocSinh').val(null);

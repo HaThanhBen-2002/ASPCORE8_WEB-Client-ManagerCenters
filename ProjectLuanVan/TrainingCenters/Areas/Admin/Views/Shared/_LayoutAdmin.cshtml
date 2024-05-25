@@ -312,18 +312,12 @@
                                     </li> *@
                                     <li>
                                         <a class="dropdown-item" asp-area="" asp-controller="Login" asp-action="DangKy">
-                                            <i class="bx bx-power-off me-2"></i>
+                                            @* <i class="bx bx-power-off me-2"></i> *@
                                             <span class="align-middle">Tạo tài khoản</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" asp-area="" asp-controller="Login" asp-action="DoiMatKhau">
-                                            <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle">Đổi mật khẩu</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" onclick="deleteCookie('IdAccount')" asp-area="" asp-controller="Login" asp-action="Index">
+                                        <a class="dropdown-item" asp-area="" asp-controller="Login" asp-action="Index">
                                             <i class="bx bx-power-off me-2"></i>
                                             <span class="align-middle">Đăng xuất</span>
                                         </a>
