@@ -7,22 +7,24 @@
 <div class="container-xxl flex-grow-1 container-p-y">
 
     <h4 class="align-self-center">Yêu Cầu Thanh Toán Dịch Vụ</h4>
-    <!-- FORM DATA -->
-    <div class="card mb-2">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-sm">
-                    <div class="row">
 
-                    </div>
+    <!-- Table-->
+    <div class="card">
+        <div class="col-sm-12">
+            <div class="row ms-2 mt-2">
+                <div class="col-md-4">
+                    <label class="form-label  m-0 p-0">Trung tâm <span class="text-danger"></span></label>
+                    <select name="yeuCauThanhToan_MaTrungTam" id="yeuCauThanhToan_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label  m-0 p-0">Dịch vụ <span class="text-danger"></span></label>
+                    <select name="yeuCauThanhToan_MaDichVu" id="yeuCauThanhToan_MaDichVu" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                    </select>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- /FORM DATA -->
-    <!-- Table-->
-    <div class="card">
-        <div class="table-responsive p-3">
+        <div class="table-responsive p-3 pt-1">
             <table id="myTable" class="table">
                 <thead>
                     <tr>
@@ -39,14 +41,97 @@
         </div>
     </div>
     <!--/Table-->
-
+    <!-- FORM DATA -->
+    <div class="card mb-2 mt-2" style="min-height:500px">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-md-12 pt-3">
+                            <button type="button" id="btnLoadMessage" class="btn btn-sm btn-primary mt-2">
+                                Tải tin nhắn
+                            </button>
+                        </div>
+                        <div class="col-md-12">
+                            <label id="soluongMessage" class="form-label m-0 p-0">Địa chỉ Email</label>
+                            <div class=" row card mx-0 mt-2">
+                                <div class="table-responsive" style="max-height: 300px">
+                                    <table id="myTableMessage" class="table table-condensed nomargin">
+                                        <thead>
+                                            <tr>
+                                                <th class="px-1">Tin nhắn</th>
+                                                <th class="px-1"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 mt-2 ps-3 align-content-center row">
+                            <button type="button" id="btnSendMessage" class="btn btn-primary ps-1 ms-2" data-bs-dismiss="modal">
+                                Gửi Toàn Bộ Tin Nhắn
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label id="soLuongEmail" class="form-label m-0 p-0">Địa chỉ Email</label>
+                            <input class="form-control h-50" id="email_ThemDiaChiEmail1" type="text" placeholder="" />
+                        </div>
+                        <div class="col-md-6 pt-3">
+                            <button type="button" id="btnThemEmail1" class="btn btn-sm btn-success mt-2">
+                                Thêm Email
+                            </button>
+                        </div>
+                        <div class="col-md-12">
+                            <div class=" row card mx-0 mt-2">
+                                <div class="table-responsive" style="max-height: 300px">
+                                    <table id="myTableEmail1" class="table table-condensed nomargin">
+                                        <thead>
+                                            <tr>
+                                                <th class="px-1">Email</th>
+                                                <th class="px-1"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label class="form-label m-0 p-0">Tiêu đề Email<span class="text-danger">(*)</span></label>
+                            <textarea id="email_TieuDe1" class="form-control"
+                                      placeholder="Nhập tiêu đề Email"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label m-0 p-0">Nội dung tin nhắn<span class="text-danger">(*)</span></label>
+                            <textarea id="summernote1" name="editordata"></textarea>
+                        </div>
+                        <div class="col-md-12 mt-2 ps-3 align-content-center row">
+                            <button type="button" id="btnUpdateMessger" class="btn btn-primary ps-1 ms-2" data-bs-dismiss="modal">
+                                Cập nhật tin nhắn
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /FORM DATA -->
 </div>
 <!-- / Content -->
 @section Scripts {
     <script src="/AdminAssets/module/support.js"></script>
     <script src="~/funcdata/functrungtam.js"></script>
     <script src="~/funcdata/funcdichvu.js"></script>
+    <script src="~/funcdata/funcsendemail.js"></script>
     <script src="~/funcdata/funchocsinh.js"></script>
     <script src="~/funcdata/funcsudungdichvu.js"></script>
-    <script src="~AdminAssets/module/sudungdichvu_yeucauthanhtoan.js"></script>
+    <script src="~/AdminAssets/module/sudungdichvu_yeucauthanhtoan.js"></script>
 }

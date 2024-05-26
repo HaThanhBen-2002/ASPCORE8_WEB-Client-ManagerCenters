@@ -20,7 +20,7 @@ namespace ManagementService.Services.Repository
         private MimeMessage CreateEmailMessage(Message message)
         {
             var emailMessage = new MimeMessage();
-            emailMessage.From.Add(new MailboxAddress("Your Name", _emailConfig.From));
+            emailMessage.From.Add(new MailboxAddress("Hệ thống BENBEN", _emailConfig.From));
             emailMessage.To.AddRange(message.To);
             emailMessage.Subject = message.Subject;
 
