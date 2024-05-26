@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Aw83n5hbz/cOfaHwJWQZU+aCXyVEIiKBOiC37iPBJ5U=",
+  "Hash": "Y4eQsF0+THvFq9EBYC+ty1EpxNtJW9O8KK7/vGXIXjY=",
   "Source": "TrainingCenters",
   "BasePath": "_content/TrainingCenters",
   "Mode": "Default",
@@ -5487,6 +5487,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\AdminAssets\\module\\suDungDichVu_BaoCaoThongKe.js"
+    },
+    {
+      "Identity": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\suDungDichVu_ThongBaoGiaHanDichVu.js",
+      "SourceId": "TrainingCenters",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\",
+      "BasePath": "_content/TrainingCenters",
+      "RelativePath": "AdminAssets/module/suDungDichVu_ThongBaoGiaHanDichVu.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssets\\module\\suDungDichVu_ThongBaoGiaHanDichVu.js"
     },
     {
       "Identity": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\suDungDichVu_YeuCauThanhToan.js",

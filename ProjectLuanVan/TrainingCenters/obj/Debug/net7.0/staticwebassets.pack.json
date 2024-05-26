@@ -1149,6 +1149,10 @@
       "PackagePath": "staticwebassets\\AdminAssets\\module\\suDungDichVu_BaoCaoThongKe.js"
     },
     {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\suDungDichVu_ThongBaoGiaHanDichVu.js",
+      "PackagePath": "staticwebassets\\AdminAssets\\module\\suDungDichVu_ThongBaoGiaHanDichVu.js"
+    },
+    {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\suDungDichVu_YeuCauThanhToan.js",
       "PackagePath": "staticwebassets\\AdminAssets\\module\\suDungDichVu_YeuCauThanhToan.js"
     },

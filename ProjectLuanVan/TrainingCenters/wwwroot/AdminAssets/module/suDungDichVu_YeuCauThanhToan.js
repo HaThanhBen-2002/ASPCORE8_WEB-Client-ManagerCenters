@@ -309,7 +309,7 @@ $(document).ready(async function () {
                                 </tr>
                                 <tr>
                                     <td><strong>Giá dịch vụ:</strong></td>
-                                    <td>`+ dichVu.gia + `</td>
+                                    <td>`+ formatToVND(dichVu.gia) + `</td>
                                 </tr>
                                 <tr>
                                     <td><strong>Ngày đăng ký dịch vụ:</strong></td>
@@ -320,6 +320,7 @@ $(document).ready(async function () {
                                     <td>`+ suDungDichVu.ngayKetThuc + `</td>
                                 </tr>
                             </table>
+                            </br>
                             <p>Vui lòng thanh toán dịch vụ sau 7 ngày kể từ ngày đăng ký để tránh gián đoạn dịch vụ.</p>
                             <p>Nếu bạn có bất kỳ câu hỏi nào, xin vui lòng liên hệ với chúng tôi.</p>
                         </div>
