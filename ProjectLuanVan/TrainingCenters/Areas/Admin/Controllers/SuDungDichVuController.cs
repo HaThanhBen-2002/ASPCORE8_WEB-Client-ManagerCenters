@@ -14,5 +14,30 @@ namespace TrainingCenters.Areas.Admin.Controllers
             TempData["menu"] = "SuDungDichVu";
             return View();
         }
+        public IActionResult SuDungDichVu_BaoCaoThongKe()
+        {
+            TempData["menu"] = "SuDungDichVu_BaoCaoThongKe";
+            return View();
+        }
+        public IActionResult SuDungDichVu_YeuCauThanhToan()
+        {
+            TempData["menu"] = "SuDungDichVu_YeuCauThanhToan";
+            return View();
+        }
+        public IActionResult SuDungDichVu_ThongBaoGiaHan()
+        {
+            TempData["menu"] = "SuDungDichVu_ThongBaoGiaHan";
+            return View();
+        }
+        public IActionResult SuDungDichVu_CanhBaoHuyDichVu()
+        {
+            TempData["menu"] = "SuDungDichVu_CanhBaoHuyDichVu";
+            return View();
+        }
+        public IActionResult SuDungDichVu_CapNhatTrangThai()
+        {
+            TempData["menu"] = "SuDungDichVu_CapNhatTrangThai";
+            return View();
+        }
     }
 }

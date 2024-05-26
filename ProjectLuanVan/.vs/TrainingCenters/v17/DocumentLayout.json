@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\projectluanvan\\trainingcenters\\areas\\admin\\views\\sudungdichvu\\sudungdichvu_yeucauthanhtoan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\areas\\admin\\views\\sudungdichvu\\sudungdichvu_yeucauthanhtoan.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SuDungDichVu_YeuCauThanhToan.cshtml",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\SuDungDichVu\\SuDungDichVu_YeuCauThanhToan.cshtml",
+              "RelativeDocumentMoniker": "TrainingCenters\\Areas\\Admin\\Views\\SuDungDichVu\\SuDungDichVu_YeuCauThanhToan.cshtml",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\SuDungDichVu\\SuDungDichVu_YeuCauThanhToan.cshtml",
+              "RelativeToolTip": "TrainingCenters\\Areas\\Admin\\Views\\SuDungDichVu\\SuDungDichVu_YeuCauThanhToan.cshtml",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAgwC0AAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-26T03:23:08.752Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -80,8 +80,15 @@
                     </ul>
                 </li>
             }
+
             <!-- Dịch vụ - Sử dụng dịch vụ -->
-            @if (TempData["menu"] == "DichVu" || TempData["menu"] == "SuDungDichVu")
+            @if (TempData["menu"] == "DichVu" 
+            || TempData["menu"] == "SuDungDichVu" 
+            || TempData["menu"] == "SuDungDichVu_BaoCaoThongKe"
+            || TempData["menu"] == "SuDungDichVu_YeuCauThanhToan"
+            || TempData["menu"] == "SuDungDichVu_ThongBaoGiaHan"
+            || TempData["menu"] == "SuDungDichVu_CanhBaoHuyDichVu"
+            || TempData["menu"] == "SuDungDichVu_CapNhatTrangThai")
             {
                 <li class="menu-item active open">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -91,6 +98,7 @@
                         <div data-i18n="DichVu" class="ms-2 ps-1">Dịch Vụ</div>
                     </a>
                     <ul class="menu-sub">
+                        @* Menu Dịch Vụ *@
                         @if (TempData["menu"] == "DichVu")
                         {
                             <li class="menu-item active">
@@ -98,25 +106,124 @@
                                     <div data-i18n="DichVu">Thông tin dịch vụ</div>
                                 </a>
                             </li>
-                            <li class="menu-item">
-                                <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="Index" class="menu-link">
-                                    <div data-i18n="SuDungDichVu">Sử dụng dịch vụ</div>
-                                </a>
-                            </li>
                         }
-                        @if (TempData["menu"] == "SuDungDichVu")
+                        else
                         {
-                            <li class="menu-item ">
+                            <li class="menu-item">
                                 <a asp-area="Admin" asp-controller="DichVu" asp-action="Index" class="menu-link">
                                     <div data-i18n="DichVu">Thông tin dịch vụ</div>
                                 </a>
                             </li>
+                        }
+
+                        @* Menu SuDungDichVu *@
+                        @if (TempData["menu"] == "SuDungDichVu")
+                        {
                             <li class="menu-item active">
                                 <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="Index" class="menu-link">
                                     <div data-i18n="SuDungDichVu">Sử dụng dịch vụ</div>
                                 </a>
                             </li>
                         }
+                        else
+                        {
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="Index" class="menu-link">
+                                    <div data-i18n="SuDungDichVu">Sử dụng dịch vụ</div>
+                                </a>
+                            </li>
+                        }
+
+                        @* Menu SuDungDichVu_BaoCaoThongKe *@
+                        @if (TempData["menu"] == "SuDungDichVu_BaoCaoThongKe")
+                        {
+                            <li class="menu-item active">
+                                <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_BaoCaoThongKe" class="menu-link">
+                                    <div data-i18n="SuDungDichVu_BaoCaoThongKe">Báo cáo thống kê</div>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_BaoCaoThongKe" class="menu-link">
+                                    <div data-i18n="SuDungDichVu_BaoCaoThongKe">Báo cáo thống kê</div>
+                                </a>
+                            </li>
+                        }
+
+                        @* Menu SuDungDichVu_YeuCauThanhToan *@
+                        @if (TempData["menu"] == "SuDungDichVu_YeuCauThanhToan")
+                        {
+                            <li class="menu-item active">
+                                <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_YeuCauThanhToan" class="menu-link">
+                                    <div data-i18n="SuDungDichVu_YeuCauThanhToan">Yêu cầu thanh toán dịch vụ</div>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_YeuCauThanhToan" class="menu-link">
+                                    <div data-i18n="SuDungDichVu_YeuCauThanhToan">Yêu cầu thanh toán dịch vụ</div>
+                                </a>
+                            </li>
+                        }
+
+                        @* Menu SuDungDichVu_ThongBaoGiaHan *@
+                        @if (TempData["menu"] == "SuDungDichVu_ThongBaoGiaHan")
+                        {
+                            <li class="menu-item active">
+                                <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_ThongBaoGiaHan" class="menu-link">
+                                    <div data-i18n="SuDungDichVu_ThongBaoGiaHan">Yêu cầu gia hạn dịch vụ</div>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_ThongBaoGiaHan" class="menu-link">
+                                    <div data-i18n="SuDungDichVu_ThongBaoGiaHan">Yêu cầu gia hạn dịch vụ</div>
+                                </a>
+                            </li>
+                        }
+
+                        @* Menu SuDungDichVu_CanhBaoHuyDichVu *@
+                        @if (TempData["menu"] == "SuDungDichVu_CanhBaoHuyDichVu")
+                        {
+                            <li class="menu-item active">
+                                <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_CanhBaoHuyDichVu" class="menu-link">
+                                    <div data-i18n="SuDungDichVu_CanhBaoHuyDichVu">Cảnh báo hủy sử dụng dịch vụ</div>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_CanhBaoHuyDichVu" class="menu-link">
+                                    <div data-i18n="SuDungDichVu_CanhBaoHuyDichVu">Cảnh báo hủy sử dụng dịch vụ</div>
+                                </a>
+                            </li>
+                        }
+
+                        @* Menu SuDungDichVu_CapNhatTrangThai *@
+                        @if (TempData["menu"] == "SuDungDichVu_CapNhatTrangThai")
+                        {
+                            <li class="menu-item active">
+                                <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_CapNhatTrangThai" class="menu-link">
+                                    <div data-i18n="SuDungDichVu_CapNhatTrangThai">Cập nhật trạng thái</div>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="menu-item">
+                                <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_CapNhatTrangThai" class="menu-link">
+                                    <div data-i18n="SuDungDichVu_CapNhatTrangThai">Cập nhật trạng thái</div>
+                                </a>
+                            </li>
+                        }
+
                     </ul>
                 </li>
             }
@@ -140,9 +247,35 @@
                                 <div data-i18n="SuDungDichVu">Sử dụng dịch vụ</div>
                             </a>
                         </li>
+                        <li class="menu-item">
+                            <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_BaoCaoThongKe" class="menu-link">
+                                <div data-i18n="SuDungDichVu_BaoCaoThongKe">Báo cáo thống kê</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_YeuCauThanhToan" class="menu-link">
+                                <div data-i18n="SuDungDichVu_YeuCauThanhToan">Yêu cầu thanh toán dịch vụ</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_ThongBaoGiaHan" class="menu-link">
+                                <div data-i18n="SuDungDichVu_ThongBaoGiaHan">Yêu cầu gia hạn dịch vụ</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_CanhBaoHuyDichVu" class="menu-link">
+                                <div data-i18n="SuDungDichVu_CanhBaoHuyDichVu">Cảnh báo hủy sử dụng dịch vụ</div>
+                            </a>
+                        </li>
+                        <li class="menu-item">
+                            <a asp-area="Admin" asp-controller="SuDungDichVu" asp-action="SuDungDichVu_CapNhatTrangThai" class="menu-link">
+                                <div data-i18n="SuDungDichVu_CapNhatTrangThai">Cập nhật trạng thái</div>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             }
+
             @* Môn học *@
             @if (TempData["menu"] == "MonHoc")
             {

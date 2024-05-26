@@ -301,52 +301,6 @@ $(document).ready(async function () {
 
     // ============================================== BUTTON ===============================================
 
-    //$('#btnDeletePhieuThuChi').click(function () {
-    //    let selectedIds = [];
-    //    // Lặp qua các checkbox để xác định đối tượng nào được chọn
-    //    $('input[type="checkbox"]:checked').each(function () {
-    //        let checkboxId = $(this).data("checkbox-id");
-    //        selectedIds.push(parseInt(checkboxId));
-    //    });
-    //    if (selectedIds.length >= 1 && selectedIds != null) {
-    //        $("#DeleteModal").modal("show");
-    //    }
-    //});
-
-    //$('#btnDelete').click(async function () {
-    //    // Tạo một mảng để lưu trữ ID của các đối tượng được chọn
-    //    let selectedIds = [];
-    //    // Lặp qua các checkbox để xác định đối tượng nào được chọn
-    //    $('input[type="checkbox"]:checked').each(function () {
-    //        let checkboxId = $(this).data("checkbox-id");
-    //        selectedIds.push(parseInt(checkboxId));
-    //    });
-
-    //    if (selectedIds.length >= 1 && $('#accountActivation').is(':checked')) {
-    //        let statusDelete = await PhieuThuChi_Delete(selectedIds,"Nhân viên Test");
-    //        if (statusDelete) {
-    //            displayMessages(1, "Xóa thành công");
-    //            $("#DeleteModal").modal("hide");
-    //            // Lặp qua từng hàng
-    //            table.rows().every(function () {
-    //                var rowData = this.data();
-    //                // Kiểm tra xem rowData có tồn tại không trước khi truy cập thuộc tính
-    //                if (rowData && rowData.maPhieuThuChi) {
-    //                    var checkbox = $('input[data-checkbox-id="' + rowData.maPhieuThuChi + '"]');
-    //                    if (checkbox.prop('checked')) {
-    //                        // Xóa hàng nếu checkbox được kiểm tra
-    //                        this.remove();
-    //                    }
-    //                }
-    //            });
-    //            // Vẽ lại DataTables sau khi xóa các hàng
-    //            table.draw();
-    //        }
-    //        else {
-    //            displayMessages(3, "Xóa thất bại");
-    //        }
-    //    }
-    //});
 
     $('#btnPhieuThuChi_TimKiem').click(async function () {
         await CapNhatToken();

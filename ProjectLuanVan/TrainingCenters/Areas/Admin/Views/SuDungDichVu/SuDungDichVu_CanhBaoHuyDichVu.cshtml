@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    List<int> deletes = new List<int>();
+}
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="align-self-center">Thông Tin Sử Dụng Dịch Vụ</h4>
+    <!-- FORM DATA -->
+    <div class="card mb-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row ">
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Mã sử dụng dịch vụ</label>
+                            <input class="form-control h-50" id="suDungDichVu_MaSuDungDichVu" type="number" placeholder="" autofocus />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Tên sử dụng dịch vụ <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="suDungDichVu_TenSuDungDichVu" type="text" placeholder="" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Trung tâm  <span class="text-danger">(*)</span></label>
+                            <select name="suDungDichVu_MaTrungTam" id="suDungDichVu_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Mã học sinh <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="suDungDichVu_MaHocSinh" placeholder="" type="number" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Tên học sinh</label>
+                            <input class="form-control h-50" disabled id="suDungDichVu_TenHocSinh" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Ngày bắt đầu <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="suDungDichVu_NgayBatDau" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label m-0 p-0">Ngày kết thúc <span class="text-danger">(*)</span></label>
+                            <input class="form-control h-50" id="suDungDichVu_NgayKetThuc" placeholder="" type="text" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Dịch vụ <span class="text-danger">(*)</span></label>
+                            <select name="suDungDichVu_MaDichVu" id="suDungDichVu_MaDichVu" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                            </select>
+                        </div>     
+                        <div class="col-md-4">
+                            <label class="form-label  m-0 p-0">Trạng thái <span class="text-danger">(*)</span></label>
+                            <select name="suDungDichVu_TrangThai" id="suDungDichVu_TrangThai" style="line-height: 2;" class="form-control h-50 pt-0 pb-1">
+                                <option>Tất cả</option>
+                                <option>Đang sử dụng</option>
+                                <option>Chưa có hiệu lực</option>
+                                <option selected>Chờ thanh toán</option>
+                                <option>Sắp hết hạn</option>
+                                <option>Hết hạn</option>
+                                <option>Đã hủy</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /FORM DATA -->
+    <!-- FORM Button -->
+    <div class="pb-2 mt-2">
+        <button type="button" id="btnCreateSuDungDichVu" class="btn btn-sm btn-primary ">
+            Thêm
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnDeleteSuDungDichVu" class="btn btn-sm btn-primary ">
+            Xóa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnResetSuDungDichVu" class="btn btn-sm btn-primary ">
+            Làm mới
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnUpdateSuDungDichVu" class="btn btn-sm btn-primary ">
+            Sửa
+        </button>
+        <span class="p-1"></span>
+        <button type="button" id="btnSearchSuDungDichVu" class="btn btn-sm btn-primary ">
+            Tìm kiếm
+        </button>
+    </div>
+    <!-- /FORM Button -->
+    <!-- Table-->
+    <div class="card">
+        <div class="table-responsive p-3">
+            <table id="myTable" class="table">
+                <thead>
+                    <tr>
+                        <th><input id="checkAll" type="checkbox" /></th>
+                        <th>Tên sử dụng dịch vụ</th>
+                        <th>Tên dịch vụ</th>
+                        <th>Trạng thái</th>
+                        <th>Tên học sinh</th>
+                        <th>Ngày kết thúc</th>
+                        <th>Hạng</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <!--/Table-->
+
+</div>
+<!-- / Content -->
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="~/funcdata/functrungtam.js"></script>
+    <script src="~/funcdata/funcdichvu.js"></script>
+
+    <script src="~/funcdata/funchocsinh.js"></script>
+    <script src="~/funcdata/funcsudungdichvu.js"></script>
+    <script src="/AdminAssets/module/suDungDichVu.js"></script>
+}

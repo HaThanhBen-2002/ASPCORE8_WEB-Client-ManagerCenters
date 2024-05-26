@@ -1,0 +1,159 @@
+﻿@{
+    Layout = "_LayoutAdmin";
+    List<int> deletes = new List<int>();
+}
+
+<!-- Content -->
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="align-self-center">Báo Cáo Thống Kê Sử Dụng Dịch Vụ Của Trung Tâm</h4>
+    <!-- FORM DATA -->
+    <div class="mb-2">
+        <div class="mx-3 mt-1 pt-1">
+            <div class="row">
+                <div class="col-sm-4 col-md-3 col-2">
+                    <div class="card row" style="height:615px; max-height:615px; min-height:615px">
+                        <div class="col-12 mt-3">
+                            <label class="form-label m-0 p-0" style="font-size:14px; font-weight:800">Chọn Trung tâm </label>
+                            <button name="btnChonDichVu" id="btnChonDichVu" style="line-height: 2;" class="btn btn-sm h-px-30 btn-primary w-px-100">Thống kê</button>
+                            <select name="BCTK_MaTrungTam" id="BCTK_MaTrungTam" style="line-height: 2;" class="form-control h-50 pt-0 pb-1 mt-2">
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col">
+                                    <label class="form-label m-0 p-0" style="font-size:14px; font-weight:800">Trạng Thái Sử Dụng Dịch VỤ </label>
+                                </div>
+                            </div>
+                            <form id="BCTK_TrangThaiSuDungDichVu">
+                                <div class="row">
+                                    <div class="w-px-20 col-auto">
+                                        <input type="checkbox" id="trangThai0" name="trangThaiSuDungDichVu" value="Tất cả">
+                                    </div>
+                                    <div class="col">
+                                        <label for="trangThai0">Tất cả</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="w-px-20 col-auto">
+                                        <input type="checkbox" id="trangThai1" name="trangThaiSuDungDichVu" value="Đang sử dụng">
+                                    </div>
+                                    <div class="col">
+                                        <label for="trangThai1">Đang sử dụng</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="w-px-20 col-auto">
+                                        <input type="checkbox" id="trangThai2" name="trangThaiSuDungDichVu" value="Chưa có hiệu lực">
+                                    </div>
+                                    <div class="col">
+                                        <label for="trangThai2">Chưa có hiệu lực</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="w-px-20 col-auto">
+                                        <input type="checkbox" id="trangThai3" name="trangThaiSuDungDichVu" value="Chờ thanh toán">
+                                    </div>
+                                    <div class="col">
+                                        <label for="trangThai3">Chờ thanh toán</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="w-px-20 col-auto">
+                                        <input type="checkbox" id="trangThai4" name="trangThaiSuDungDichVu" value="Sắp hết hạn">
+                                    </div>
+                                    <div class="col">
+                                        <label for="trangThai4">Sắp hết hạn</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="w-px-20 col-auto">
+                                        <input type="checkbox" id="trangThai5" name="trangThaiSuDungDichVu" value="Hết hạn">
+                                    </div>
+                                    <div class="col">
+                                        <label for="trangThai5">Hết hạn</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="w-px-20 col-auto">
+                                        <input type="checkbox" id="trangThai6" name="trangThaiSuDungDichVu" value="Đã hủy">
+                                    </div>
+                                    <div class="col">
+                                        <label for="trangThai6">Đã hủy</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label m-0 p-0" style="font-size:14px; font-weight:800">Chọn Dịch Vụ</label>
+                            <form id="BCTK_TatCaDichVu">
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-md-9 col-10">
+                    <div class="row ms-0 ps-0">
+                        @* Biểu đồ lượt sử dụng dịch vụ *@
+                        <div class="row p-0 m-0">
+                            <div class="card col-sm-12">
+                                <div class="row">
+                                    <h5 class="mt-3 col">Biểu đồ lượt sử dụng dịch vụ của trung tâm</h5>
+                                </div>
+                                <div id="chartDichVuLuotSuDung"></div>
+                            </div>
+                        </div>
+
+                        <div class="card p-0 m-0 mt-1">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="row">
+                                        <h5 class="mt-3 ms-3 col">Biểu đồ lượt sử dụng dịch vụ của trung tâm</h5>
+                                    </div>
+                                    <div id="chartSuDungDichVuTrangThai"></div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5 id="lbTongLuotHeThong" class="mt-3 col"></h5>
+                                    <h5 id="lbTongLuotTrungTam"  class="mt-3 col"></h5>
+                                    <br />
+                                    <h5 id="lbTongLuot" class="mt-3 col text-primary"></h5>
+                                    <h5 id="lbTongLuotHetHan"  class="mt-3 col text-danger"></h5>
+                                    <h5 id="lbTongLuotChoThanhToan"  class="mt-3 col text-success"> </h5>
+                                    <h5 id="lbTongLuotCanGiaHan"  class="mt-3 col text-gray"> </h5>
+                                    <h5 id="lbTongLuotDaHuy" class="mt-3 col text-danger"> </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mt-2">
+            <div class="table-responsive p-3">
+                <table id="myTable" class="table">
+                    <thead>
+                        <tr>
+                            <th>Tên sử dụng dịch vụ</th>
+                            <th>Trạng thái</th>
+                            <th>Ngày bắt đầu</th>
+                            <th>Ngày kết thúc</th>
+                            <th>Hạng</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <!-- /FORM Button -->
+</div>
+<!-- / Content -->
+@section Scripts {
+    <script src="/AdminAssets/module/support.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="~/funcdata/functrungtam.js"></script>
+    <script src="~/funcdata/funcdichvu.js"></script>
+    <script src="~/funcdata/funchocsinh.js"></script>
+    <script src="~/funcdata/funcsudungdichvu.js"></script>
+    <script src="~/AdminAssets/module/sudungdichvu_baocaothongke.js"></script>
+}
