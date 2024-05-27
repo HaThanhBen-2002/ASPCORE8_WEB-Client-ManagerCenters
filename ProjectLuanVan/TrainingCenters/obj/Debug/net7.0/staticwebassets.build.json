@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Y4eQsF0+THvFq9EBYC+ty1EpxNtJW9O8KK7/vGXIXjY=",
+  "Hash": "uFvrmBPYnlN1wJ+lAGhE7xdNC5C39z1mSlrUpdFM8rw=",
   "Source": "TrainingCenters",
   "BasePath": "_content/TrainingCenters",
   "Mode": "Default",
@@ -5489,6 +5489,25 @@
       "OriginalItemSpec": "wwwroot\\AdminAssets\\module\\suDungDichVu_BaoCaoThongKe.js"
     },
     {
+      "Identity": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\suDungDichVu_CanhBaoHuySuDungDichVu.js",
+      "SourceId": "TrainingCenters",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\",
+      "BasePath": "_content/TrainingCenters",
+      "RelativePath": "AdminAssets/module/suDungDichVu_CanhBaoHuySuDungDichVu.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\AdminAssets\\module\\suDungDichVu_CanhBaoHuySuDungDichVu.js"
+    },
+    {
       "Identity": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\suDungDichVu_ThongBaoGiaHanDichVu.js",
       "SourceId": "TrainingCenters",
       "SourceType": "Discovered",
@@ -7748,6 +7767,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\scrollbar.js"
+    },
+    {
+      "Identity": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\js\\scrollbarY.js",
+      "SourceId": "TrainingCenters",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\",
+      "BasePath": "_content/TrainingCenters",
+      "RelativePath": "js/scrollbarY.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\scrollbarY.js"
     },
     {
       "Identity": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\js\\site.js",

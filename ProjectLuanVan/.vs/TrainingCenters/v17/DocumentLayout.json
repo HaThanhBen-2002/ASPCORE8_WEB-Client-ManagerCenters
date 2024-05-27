@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\projectluanvan\\trainingcenters\\wwwroot\\css\\scrollbar.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\wwwroot\\css\\scrollbar.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\projectluanvan\\trainingcenters\\areas\\admin\\views\\sudungdichvu\\sudungdichvu_baocaothongke.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\areas\\admin\\views\\sudungdichvu\\sudungdichvu_baocaothongke.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|c:\\users\\mavuo\\onedrive\\ta\u0300i li\u00EA\u0323u\\github\\aspcore8_web-client-managercenters\\aspcore8_web-client-managercenters\\projectluanvan\\trainingcenters\\areas\\admin\\views\\trangchu\\trangchu.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A5578FF2-204F-468E-B748-355D3A7EB958}|TrainingCenters\\TrainingCenters.csproj|solutionrelative:trainingcenters\\areas\\admin\\views\\trangchu\\trangchu.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "scrollbar.css",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\css\\scrollbar.css",
+              "RelativeDocumentMoniker": "TrainingCenters\\wwwroot\\css\\scrollbar.css",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\css\\scrollbar.css",
+              "RelativeToolTip": "TrainingCenters\\wwwroot\\css\\scrollbar.css",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAACYAAABIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-05-26T23:47:16.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TrangChu.cshtml",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\TrangChu\\TrangChu.cshtml",
+              "RelativeDocumentMoniker": "TrainingCenters\\Areas\\Admin\\Views\\TrangChu\\TrangChu.cshtml",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\TrangChu\\TrangChu.cshtml",
+              "RelativeToolTip": "TrainingCenters\\Areas\\Admin\\Views\\TrangChu\\TrangChu.cshtml",
+              "ViewState": "AQIAALwBAAAAAAAAAAAAAMEBAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-26T23:44:12.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SuDungDichVu_BaoCaoThongKe.cshtml",
+              "DocumentMoniker": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\SuDungDichVu\\SuDungDichVu_BaoCaoThongKe.cshtml",
+              "RelativeDocumentMoniker": "TrainingCenters\\Areas\\Admin\\Views\\SuDungDichVu\\SuDungDichVu_BaoCaoThongKe.cshtml",
+              "ToolTip": "C:\\Users\\mavuo\\OneDrive\\Ta\u0300i li\u00EA\u0323u\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\Areas\\Admin\\Views\\SuDungDichVu\\SuDungDichVu_BaoCaoThongKe.cshtml",
+              "RelativeToolTip": "TrainingCenters\\Areas\\Admin\\Views\\SuDungDichVu\\SuDungDichVu_BaoCaoThongKe.cshtml",
+              "ViewState": "AQIAAI4AAAAAAAAAAAAzwJgAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-26T23:42:10.285Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

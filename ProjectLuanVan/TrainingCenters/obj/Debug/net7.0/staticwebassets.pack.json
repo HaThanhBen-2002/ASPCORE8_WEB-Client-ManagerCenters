@@ -1149,6 +1149,10 @@
       "PackagePath": "staticwebassets\\AdminAssets\\module\\suDungDichVu_BaoCaoThongKe.js"
     },
     {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\suDungDichVu_CanhBaoHuySuDungDichVu.js",
+      "PackagePath": "staticwebassets\\AdminAssets\\module\\suDungDichVu_CanhBaoHuySuDungDichVu.js"
+    },
+    {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\AdminAssets\\module\\suDungDichVu_ThongBaoGiaHanDichVu.js",
       "PackagePath": "staticwebassets\\AdminAssets\\module\\suDungDichVu_ThongBaoGiaHanDichVu.js"
     },
@@ -1639,6 +1643,10 @@
     {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\js\\scrollbar.js",
       "PackagePath": "staticwebassets\\js\\scrollbar.js"
+    },
+    {
+      "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\js\\scrollbarY.js",
+      "PackagePath": "staticwebassets\\js\\scrollbarY.js"
     },
     {
       "Id": "C:\\Users\\mavuo\\OneDrive\\Tài liệu\\GitHub\\ASPCORE8_WEB-Client-ManagerCenters\\ASPCORE8_WEB-Client-ManagerCenters\\ProjectLuanVan\\TrainingCenters\\wwwroot\\js\\site.js",

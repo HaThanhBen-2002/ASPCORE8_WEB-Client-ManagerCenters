@@ -73,15 +73,7 @@ namespace Data.RepositoryData
                 );
                 expressions.Add(expression);
             }
-            if (!string.IsNullOrEmpty(item.TrangThai))
-            {
-                var expression = Expression.Call(
-                    Expression.Property(parameterExpression, nameof(SuDungDichVu.TrangThai)),
-                    typeof(string).GetMethod("Contains", new[] { typeof(string) }),
-                    Expression.Constant(item.TrangThai)
-                );
-                expressions.Add(expression);
-            }
+
             if (!string.IsNullOrEmpty(item.NgayBatDau))
             {
                 var expression = Expression.Call(
@@ -106,6 +98,14 @@ namespace Data.RepositoryData
                 var expression = Expression.Equal(
                     Expression.Property(parameterExpression, nameof(SuDungDichVu.MaSuDungDichVu)),
                     Expression.Constant(item.MaSuDungDichVu, typeof(int?))
+                );
+                expressions.Add(expression);
+            }
+            if (!string.IsNullOrEmpty(item.TrangThai))
+            {
+                var expression = Expression.Equal(
+                    Expression.Property(parameterExpression, nameof(SuDungDichVu.TrangThai)),
+                    Expression.Constant(item.TrangThai)
                 );
                 expressions.Add(expression);
             }

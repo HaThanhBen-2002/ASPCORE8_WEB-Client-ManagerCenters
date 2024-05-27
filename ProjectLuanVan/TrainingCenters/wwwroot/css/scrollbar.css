@@ -20,3 +20,26 @@
         width: 180px; /* Chiều rộng cố định cho các thẻ con */
         margin-right: 0px; /* Khoảng cách giữa các thẻ con */
     }
+
+
+.custom-scrollbar1 {
+    overflow-y: auto; /* Cuộn dọc khi nội dung vượt quá chiều cao */
+    overflow-x: hidden; /* Ẩn thanh cuộn ngang */
+    display: flex; /* Sử dụng flexbox */
+    flex-direction: column; /* Đặt hướng flexbox theo cột để cuộn dọc */
+    height: 320px; /* Đặt chiều cao cố định hoặc tối đa cho vùng cuộn */
+    max-height: 320px; /* Đặt chiều cao cố định hoặc tối đa cho vùng cuộn */
+    scrollbar-width: thin; /* Chiều rộng của thanh cuộn */
+    scrollbar-color: #B4C3D1 #f5f5f5; /* Màu của thanh cuộn */
+    cursor: grab; /* Đổi con trỏ chuột khi trỏ vào div */
+    user-select: none;
+}
+
+    .custom-scrollbar1:active {
+        cursor: grabbing; /* Đổi con trỏ chuột khi giữ chuột trên div */
+    }
+
+    .custom-scrollbar1 > div {
+        flex: 0 0 auto; /* Không co giãn, không thu gọn, không tự động */
+        margin-bottom: 10px; /* Khoảng cách giữa các thẻ con */
+    }

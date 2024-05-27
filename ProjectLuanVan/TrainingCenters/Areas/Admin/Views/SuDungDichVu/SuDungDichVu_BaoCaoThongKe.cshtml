@@ -12,7 +12,7 @@
         <div class="mx-3 mt-1 pt-1">
             <div class="row">
                 <div class="col-sm-4 col-md-3 col-2">
-                    <div class="card row" style="height:615px; max-height:615px; min-height:615px">
+                    <div class="card row">
                         <div class="col-12 mt-3">
                             <label class="form-label m-0 p-0" style="font-size:14px; font-weight:800">Chọn Trung tâm </label>
                             <button name="btnChonDichVu" id="btnChonDichVu" style="line-height: 2;" class="btn btn-sm h-px-30 btn-primary w-px-100">Thống kê</button>
@@ -84,11 +84,12 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12" >
                             <label class="form-label m-0 p-0" style="font-size:14px; font-weight:800">Chọn Dịch Vụ</label>
-                            <form id="BCTK_TatCaDichVu">
-                                
-                            </form>
+                            <div class="row custom-scrollbar1 pb-2">
+                                <form id="BCTK_TatCaDichVu">
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -149,6 +150,8 @@
 </div>
 <!-- / Content -->
 @section Scripts {
+    <link href="~/css/scrollbar.css" rel="stylesheet" />
+    <script src="~/js/scrollbary.js"></script>
     <script src="/AdminAssets/module/support.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="~/funcdata/functrungtam.js"></script>

@@ -188,7 +188,6 @@ async function ThongKe() {
             }
         }
     }
-    console.log("DanhSachSuDungDichVuDaThongKe", DanhSachSuDungDichVuDaThongKe);
 }
 
 //============ Biểu đồ Thống kê lượt sử dụng của từng dịch vụ
